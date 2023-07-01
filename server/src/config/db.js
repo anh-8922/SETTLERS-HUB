@@ -8,7 +8,7 @@ export default async function dbConnect() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        console.log('CONNECTINNG to DB:')
+        console.log('CONNECTED to DB:')
     } catch (error){
         console.log('error CONNECTINNG to DB:', error.message)
     }
