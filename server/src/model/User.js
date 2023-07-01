@@ -29,7 +29,7 @@ const userSchema = new Schema ({
         type: String,
         required: [true, "Please provide a password"],
         minlength: 6,
-        select:false
+        // select:false
       },
       resetPasswordToken: String,
       resetPasswordExpire: Date,
