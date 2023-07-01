@@ -57,6 +57,7 @@ export default function Register() {
         }
       );
    navigate('/login')
+   console.log('Userdtais:', response.User)
   };
   return (
     <ThemeProvider theme={defaultTheme}>

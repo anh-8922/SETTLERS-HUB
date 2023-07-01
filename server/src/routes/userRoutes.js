@@ -1,7 +1,10 @@
 import express from 'express'
 
 import {handleUserRegister,
-        handleUserLogin } from "../controllers/userControllers.js"
+        handleUserLogin,
+        handleUpdateProfile } from "../controllers/userControllers.js"
+
+
 
 const router = express.Router()
 
@@ -22,5 +25,6 @@ export const verifyToken = (req, res, next) => {
           res.sendStatus(401);
         }
       };
+
 
 export default router

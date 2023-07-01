@@ -40,9 +40,11 @@ export default function SignIn() {
       console.log(response.data);
       setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
+      console.log("Login sucessfull:", response.data.userID)
       navigate('/profile');
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      navigate('/login');
     }
   };
 
@@ -94,12 +96,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="/resetpassword" variant="body2">
+                <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/userregister" variant="body2">
+                <Link href="/register" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

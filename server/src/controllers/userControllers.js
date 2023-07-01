@@ -34,28 +34,82 @@ export const handleUserRegister = async (req, res) => {
   };
 
 
-export const handleUserLogin = async (req, res) => {
+  // export const handleUserLogin = async (req, res) => {
+  //   try {
+  //     const { username, password } = req.body;
+  //     if (!username || !password) return res.send({ success: false, errorId: 1 });
+  
+  //     const user = await User.findOne({ username });
+  
+  //     if (!user) {
+  //       return res.send({ message: "Username or password is incorrect" });
+  //     }
+  
+  //     const isPasswordValid = await bcrypt.compare(password, user.password);
+  //     console.log("pass valid:", isPasswordValid)
+  
+  //     if (!isPasswordValid) {
+  //       return res.send({ message: "Username or password is incorrect" });
+  //     }
+  
+  //     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+  
+  //     res.json({ token, userID: user._id });
+  //     console.log('user login sucsessfull')
+  //   } catch (error) {
+  //     console.log("Error in user login: " + error.message);
+  //     res.send("error login");
+  //   }
+  // };
+
+
+  export const handleUserLogin = async (req, res) => {
     try {
       const { username, password } = req.body;
+      console.log("password:", password)
+      if (!username || !password) return res.send({ success: false, errorId: 1 });
   
       const user = await User.findOne({ username });
+      console.log('user:', user)
   
       if (!user) {
-        return res.status(400).json({ message: "Username or password is incorrect" });
+        return res.send({ message: "Username or password is incorrect" });
       }
-  
+      console.log("user.pass:", user.password)
       const isPasswordValid = await bcrypt.compare(password, user.password);
+     
   
       if (!isPasswordValid) {
-        return res.status(400).json({ message: "Username or password is incorrect" });
+        return res.send({ message: "Username or password is incorrect" });
       }
   
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   
       res.json({ token, userID: user._id });
-      console.log('user login sucsessfull')
+      console.log('User login successful');
     } catch (error) {
-      console.log("Error in user login: " + error.message);
+      console.log("Error in user login:", error.message);
       res.status(500).json({ error: "Internal server error" });
     }
   };
+  
+  
+  
+  
+  
+  
+
+  export const handleUpdateProfile = async (req, res) => {
+    
+  
+    try {
+    
+      console.log("User Image Uploaded")
+      res.send("User Image Uploaded");
+    } catch (error) {
+      console.log("error handleUpdateProfile:", error.message);
+  
+      res.send("Error in handleUpdateProfile" + error.message);
+    }
+  };
+  
