@@ -4,7 +4,6 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login"
 import ProfilePage from "./Pages/Profile";
 
-
 export default function AllRoutes () {
     return(
     <Routes>

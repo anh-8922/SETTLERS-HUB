@@ -1,7 +1,17 @@
+import HeroSectionA from "../Components/HeroSectionA";
+import SpotLight from "../Components/SpotLight";
+import LondonGuide from "../Components/Guide";
+import NewsLetter from "../Components/NewsLetter";
+import MainLayout from "../Layout/MainLayout";
+
+
 export default function HomePage() {
     return (
-      <div>
-        Hello
-      </div>
+        <MainLayout>
+            <HeroSectionA/>
+            <SpotLight/>
+            <LondonGuide/>
+            <NewsLetter/>
+        </MainLayout>
     )
 }
