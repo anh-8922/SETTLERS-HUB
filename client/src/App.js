@@ -1,20 +1,15 @@
 import './App.css';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-
+import { BrowserRouter } from 'react-router-dom';
+import AllRoutes from './AllRoutes';
 
 function App() {
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await axios.get("http://localhost:5000/cookbook/list");
-      console.log("🚀 ~ data:", data);
-    }
-    fetchData()
-  })
+
   return (
-    <div>
-      Good Morning
-    </div>
+    <BrowserRouter>
+      <div>
+        <AllRoutes/>
+      </div>
+    </BrowserRouter>
   );
 }
 
