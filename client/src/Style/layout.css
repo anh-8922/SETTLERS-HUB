@@ -1,0 +1,12 @@
+.homelayout {
+    background-image: url('../Assets/thamesriver.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 80vh;
+    padding: 2rem 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

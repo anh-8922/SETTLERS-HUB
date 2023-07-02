@@ -7,7 +7,6 @@ export default function NavBar() {
         <div className="nav-bar">
             <div className="navigator">
                 <NavLink className="NavItems" to="/">Home</NavLink>
-                <NavLink className="NavItems" to="/">Discorver</NavLink>
                 <NavLink className="NavItems">Services</NavLink>
                 <NavLink className="NavItems">Housing</NavLink>
                 <NavLink className="NavItems">Community</NavLink>
