@@ -146,7 +146,12 @@ export default function Register() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="space-between">
+              <Grid item>
+                <Link href="/forgotpassword" variant="body2">
+                  Forgot Password?
+                </Link>
+              </Grid>
               <Grid item>
                 <Link href="/login" variant="body2">
                   Already have an account? Sign in

@@ -11,7 +11,12 @@ export default function Header() {
             justifyContent: "space-between"
         }}>
             <img src={logo1} alt="logo" style={{width: "20rem"}}/>
-            <button>Login</button>
+            <button >Join Us</button>
+            <button >Login</button>
+            <button >Profile</button>
+            <button >Log out</button>
+            <button >notifications</button>
+            
         </div>
     )
 }
