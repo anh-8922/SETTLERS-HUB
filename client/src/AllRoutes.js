@@ -3,6 +3,7 @@ import HomePage from "./Pages/HomePage";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login"
 import ProfilePage from "./Pages/Profile";
+import InfoLondon from "./Pages/HomeSubPage/info";
 
 export default function AllRoutes () {
     return(
@@ -11,6 +12,7 @@ export default function AllRoutes () {
         <Route path="/userregister" element={<Register/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/profile" element={<ProfilePage/>}/>
+        <Route path="/guide/info" element={<InfoLondon/>}/>
       </Routes>
     )
 }
