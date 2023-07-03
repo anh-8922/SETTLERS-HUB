@@ -65,12 +65,8 @@ export const handleUserRegister = async (req, res) => {
       res.status(500).json({ error: "Internal server error" });
     }
   };
-  
-  
-  
-  
-  
-  
+
+
 
   export const handleUpdateProfile = async (req, res) => {
     
@@ -85,4 +81,18 @@ export const handleUserRegister = async (req, res) => {
       res.send("Error in handleUpdateProfile" + error.message);
     }
   };
+
+
+  export const handleListUsers = async (req, res) => {
+    try{
+      const users = await User.find()
+      .select("-password -__v")
+      res.send({ success: true, users });
+      console.log(users)
+
+    } catch (error) {
+      console.log("Error listing users:", error.message)
+      res.send({ success: false, error: error.message })
+    }
+  }
   

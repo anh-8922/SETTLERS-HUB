@@ -16,7 +16,18 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 
-
+function Copyright(props) {
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://mui.com/">
+          SettlerHub
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 const defaultTheme = createTheme();
 
 export default function ResetPassowrd() {
@@ -87,6 +98,7 @@ export default function ResetPassowrd() {
             </Grid> */}
           </Box>
         </Box>
+        <Copyright sx={{mt:5}}/>
       </Container>
     
     </ThemeProvider>

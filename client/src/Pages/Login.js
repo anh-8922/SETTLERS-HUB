@@ -17,6 +17,20 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 
 
+
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        SettlerHub
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 const defaultTheme = createTheme();
 
 export default function SignIn() {
@@ -38,12 +52,13 @@ export default function SignIn() {
         },
       });
       console.log(response.data);
-      setCookies("access_token", response.data.token);
+      // setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
       console.log("Login sucessfull:", response.data.userID)
       navigate('/profile');
     } catch (error) {
       console.log(error);
+      console.log("Login Unsuccessfull:", error.message)
       navigate('/login');
     }
   };
@@ -108,6 +123,7 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
+        <Copyright sx={{ mt: 5 }}/>
       </Container>
     
     </ThemeProvider>
