@@ -19,19 +19,6 @@ import { useState } from 'react';
 
 
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        SettlerHub
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 const defaultTheme = createTheme();
 
 export default function SignIn() {
@@ -141,7 +128,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }}/>
       </Container>
     
     </ThemeProvider>
