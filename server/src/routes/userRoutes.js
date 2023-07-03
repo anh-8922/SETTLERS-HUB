@@ -3,6 +3,7 @@ import express from 'express'
 import {handleUserRegister,
         handleUserLogin,
         handleListUsers,
+        handleListOneUsers,
         handleUpdateProfile } from "../controllers/userControllers.js"
 
 
@@ -12,6 +13,7 @@ const router = express.Router()
 router.post('/register', handleUserRegister)
 router.post('/login', handleUserLogin)
 router.get('/userlist', handleListUsers)
+router.get('/listoneuser/:id', handleListOneUsers)
 
 
 

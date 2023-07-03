@@ -39,26 +39,27 @@ export const handleUserRegister = async (req, res) => {
   export const handleUserLogin = async (req, res) => {
     try {
       const { username, password } = req.body;
-      // console.log("password:", password)
-      if (!username || !password) return res.send({ success: false, errorId: 1 });
+      console.log("password:", password)
+      if (!username || !password) return res.send({ success: false, error:"Both filed must be filled" });
   
       const user = await User.findOne({ username });
-      // console.log('user:', user)
+      console.log('user:', user)
   
       if (!user) {
-        return res.send({ message: "Username or password is incorrect" });
+        return res.send({ success: false,message: "Username or password is incorrect" });
       }
       // console.log("user.pass:", user.password)
       const isPasswordValid = await bcrypt.compare(password, user.password);
      
   
       if (!isPasswordValid) {
-        return res.send({ message: "Username or password is incorrect" });
+        return res.send({ success: false, message: "Username or password is incorrect" });
       }
   
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   
-      res.json({ token, userID: user._id });
+      // res.json({token, userID: user._id });
+      res.send({success: true, token, userID: user._id })
       console.log('User login successful');
     } catch (error) {
       console.log("Error in user login:", error.message);
@@ -94,5 +95,19 @@ export const handleUserRegister = async (req, res) => {
       console.log("Error listing users:", error.message)
       res.send({ success: false, error: error.message })
     }
+  }
+
+  export const handleListOneUsers = async (req, res) => {
+    try{
+      const selectedUser = await User.findById()
+      .select("-password -__v")
+      res.send({ success: true, selectedUser });
+      console.log(selectedUser)
+
+    } catch (error) {
+      console.log("Error listing selected user:", error.message)
+      res.send({ success: false, error: error.message })
+    }
+
   }
   

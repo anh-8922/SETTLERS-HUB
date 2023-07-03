@@ -15,6 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
+import { useState } from 'react';
 
 
 
@@ -35,8 +36,9 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 
-  const [_, setCookies] = useCookies(["access_token"]);
-  const navigate = useNavigate();
+  const [_, setCookies] = useCookies(["access_token"])
+  const [error, setError] = useState("")
+  const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -51,15 +53,26 @@ export default function SignIn() {
           'Content-Type': 'application/json',
         },
       });
-      // console.log(response.data);
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      console.log("Login sucessfull:", response.data.userID)
-      navigate('/profile');
+      console.log(response.data);
+      if (response.data.success === false) {
+        return setError("Error: Both fields must be filled.");
+        
+      }
+
+      // if (response.data.success){
+        setCookies("access_token", response.data.token);
+        console.log(response.data)
+        window.localStorage.setItem("userID", response.data.userID);
+        console.log("Login sucessfull:", response.data.userID)
+        navigate('/profile');
+      // }
+
     } catch (error) {
+      setError(error.message);
       console.log(error);
       console.log("Login Unsuccessfull:", error.message)
       navigate('/login');
+      
     }
   };
 
@@ -106,6 +119,11 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+          {error && (
+  <Typography variant="body2" color="error" align="center">
+    {error}
+  </Typography>
+)}
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
