@@ -6,10 +6,10 @@ export default function NavBar() {
     return(
         <div className="nav-bar">
             <div className="navigator">
-                <NavLink className="NavItems" to="/">Home</NavLink>
-                <NavLink className="NavItems">Services</NavLink>
-                <NavLink className="NavItems">Housing</NavLink>
-                <NavLink to="/community" className="NavItems">Community</NavLink>
+                <NavLink className="NavItems" to="/">HOME</NavLink>
+                <NavLink className="NavItems" to="/service">SERVICES</NavLink>
+                <NavLink className="NavItems">HOUSING</NavLink>
+                <NavLink to="/community" className="NavItems">COMMUNITY</NavLink>
             </div>
             <SearchBar/>
         </div>

@@ -1,4 +1,4 @@
-import HeroSectionA from "../Components/HeroSectionA";
+import HeroSectionA from "../Components/HeroSection";
 import SpotLight from "../Components/SpotLight";
 import LondonGuide from "../Components/Guide";
 import NewsLetter from "../Components/NewsLetter";
