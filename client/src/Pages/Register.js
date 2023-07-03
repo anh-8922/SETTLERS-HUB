@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -32,6 +33,8 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function Register() {
+
+    const [error, setError] = useState("")
     const navigate = useNavigate()
     // const [_, setCookies] = useCookies(["access_token"]);
 
@@ -47,17 +50,39 @@ export default function Register() {
         password: formData.get("password"),
       };
 
-    const response = await axios.post(
-        "http://localhost:5000/user/register",
+    
+
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/user/register",
         User,
         {
           Headers: {
             "Content-type": 'application/json',
           },
         }
-      );
-   navigate('/login')
-   console.log('Userdtais:', response.User)
+        );
+        console.log(response.data)
+        if (response.data.success === false){
+          return setError(response.data.error);
+        }
+
+        if (response.data.success === true){
+          navigate('/login')
+          console.log('Userdtails:', response.User)
+          // return ("Username or email already exists");
+
+        }
+        
+        
+
+      } catch (error) {
+        setError(error.message)
+          console.log("User Register Error:", error)
+          
+      }
+        
+
   };
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -138,6 +163,11 @@ export default function Register() {
                 />
               </Grid>
             </Grid>
+            {error && (
+              <Typography variant="body2" color="error" align="center">
+                {error}
+              </Typography>
+            )}
             <Button
               type="submit"
               fullWidth
