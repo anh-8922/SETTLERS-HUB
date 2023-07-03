@@ -51,8 +51,8 @@ export default function SignIn() {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response.data);
-      // setCookies("access_token", response.data.token);
+      // console.log(response.data);
+      setCookies("access_token", response.data.token);
       window.localStorage.setItem("userID", response.data.userID);
       console.log("Login sucessfull:", response.data.userID)
       navigate('/profile');
