@@ -7,11 +7,14 @@ const saltRounds = 10;
 export const handleUserRegister = async (req, res) => {
     try {
       const { firstName, lastName, username, email, password} = req.body;
-  
+      
+      if(!firstName ||  !lastName || !username || !email || !password){
+        return res.send({ success: false, error:"All filed must be filled" })
+      }
       const existingUser = await User.findOne({ $or: [{ username }, { email }] });
   
       if (existingUser) {
-        return res.status(400).json({ error: "Username or email already exists" });
+        return res.send({success: false, error: "Username or email already exists" });
       }
   
       const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -26,10 +29,10 @@ export const handleUserRegister = async (req, res) => {
   
       await newUser.save();
   
-      res.status(200).json({ message: "User registered successfully" });
+      res.send({success: true, message: "User registered successfully" });
     } catch (error) {
       console.log("Error in user register: " + error.message);
-      res.status(500).json({ error: "Internal server error" });
+      res.sens({success: false, error: "Internal server error" });
     }
   };
 
