@@ -14,10 +14,10 @@ export default function Header() {
     const userID = useGetUserID ()
     const [profileName, setProfileName] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
-    // console.log("userID:", userID)
+    console.log("userID:", userID)
     const navigate = useNavigate()
     const {data} = useFetchData(`http://localhost:5000/user/userlist`)
-    // console.log("list user:", data)
+    console.log("list user:", data)
     const profile = data?.users || []
 
     useEffect(() => {
@@ -83,4 +83,3 @@ export default function Header() {
         </div>
     )
 }
-
