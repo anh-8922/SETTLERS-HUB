@@ -3,14 +3,59 @@
     padding: 0;
     box-sizing: border-box;
     color: #333A44;
+    font-family: 'Ysabeau Infant', sans-serif;
 }
 :root {
 --black-color: #333A44;
 --khaki-color: #E7D4C0;
 }
 
-.heroSection-A {
-    background-image: url('../Assets/londonA.jpg');
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------HEADER - LOG BUTTONS--------*/
+/*====================================*/
+
+.log-button {
+        margin-left: 1rem;
+        
+        
+        color: #fff;
+        padding: 0.5rem 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        z-index: 0;
+        background: #fff;
+        overflow: hidden;
+        border: 2px solid var(--black-color);
+        color: var(--black-color);
+        font-size: 1.2rem;
+}
+.log-button:hover {
+        color: #fff;
+}
+.log-button:hover:after {
+        width: 100%;
+}
+.log-button:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: all 0.3s ease;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: var(--black-color);
+}
+
+
+.heroSection {
+    
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
