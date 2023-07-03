@@ -69,13 +69,13 @@ export default function Header() {
             </div>
             {!loggedIn ? (
         <div>
-          <button onClick={handelUserRegister}>Sign up</button>
-          <button onClick={handleLogin}>Sign In</button>
+          <button className='log-button' onClick={handelUserRegister}>Sign up</button>
+          <button className='log-button' onClick={handleLogin}>Sign In</button>
         </div>
       ) : (
         <div>
-        <button onClick={handleLogout}>Logout</button>
-        <button onClick={handleprofile}>{profileName}</button>
+        <button className='log-button' onClick={handleLogout}>Logout</button>
+        <button className='log-button' onClick={handleprofile}>{profileName}</button>
         </div>
       )}
             {/* <button >notifications</button> */}
