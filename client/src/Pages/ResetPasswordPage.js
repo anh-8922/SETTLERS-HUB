@@ -16,52 +16,27 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 
-
-
 function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        SettlerHub
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://mui.com/">
+          SettlerHub
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+export default function ResetPassowrd() {
+    const navigate = useNavigate()
 
-  const [_, setCookies] = useCookies(["access_token"]);
-  const navigate = useNavigate();
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const User = {
-      username: formData.get('username'),
-      password: formData.get('password'),
-    };
-
-    try {
-      const response = await axios.post('http://localhost:5000/user/login', User, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      // console.log(response.data);
-      setCookies("access_token", response.data.token);
-      window.localStorage.setItem("userID", response.data.userID);
-      console.log("Login sucessfull:", response.data.userID)
-      navigate('/profile');
-    } catch (error) {
-      console.log(error);
-      console.log("Login Unsuccessfull:", error.message)
-      navigate('/login');
+    const handleSubmit = () => {
+        navigate ('/profile')
     }
-  };
+  
 
   return (
     
@@ -97,21 +72,21 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              name="password"
-              label="Password"
+              name="new password"
+              label="New Password"
               type="password"
-              id="password"
+              id="newpassword"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-              Sign In
+              Submit
             </Button>
-            <Grid container>
+            {/* <Grid container>
               <Grid item xs>
-                <Link href="/forgotpassword" variant="body2">
+                <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
               </Grid>
@@ -120,10 +95,10 @@ export default function SignIn() {
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
-            </Grid>
+            </Grid> */}
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }}/>
+        <Copyright sx={{mt:5}}/>
       </Container>
     
     </ThemeProvider>

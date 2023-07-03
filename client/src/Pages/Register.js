@@ -19,7 +19,7 @@ function Copyright(props) {
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        SettlerHub
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -100,7 +100,7 @@ export default function Register() {
                   autoComplete="family-name"
                 />
               </Grid>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} >
                 <TextField
                   required
                   fullWidth
@@ -146,7 +146,12 @@ export default function Register() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="space-between">
+              <Grid item>
+                <Link href="/forgotpassword" variant="body2">
+                  Forgot Password?
+                </Link>
+              </Grid>
               <Grid item>
                 <Link href="/login" variant="body2">
                   Already have an account? Sign in
