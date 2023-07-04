@@ -1,9 +1,11 @@
 import Communitypost from "../model/Communitypost.js"
 
 export const handleAddPostToCommunity = async (req, res) =>{
-    console.log(req.body)
+    console.log("Add new community post:", req.body)
+    console.log("Add new community post image file:", req.file)
     try{
-        const {owner, text} = req.body
+        let  {owner, text, image} = req.body
+        image  = req.file.filename
         console.log("Post owner:", owner)
 
         if (!owner || !text) {
@@ -11,7 +13,12 @@ export const handleAddPostToCommunity = async (req, res) =>{
             return
         }
 
-        const newPost = await Communitypost.create(req.body) 
+        const newPost = await Communitypost.create({
+            text,
+            image,
+            owner
+
+        }) 
         console.log("New post added:", newPost)
         res.send({success: true, message: "Post added successfully" })
     } catch (error){
