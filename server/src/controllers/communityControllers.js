@@ -19,10 +19,21 @@ export const handleAddPostToCommunity = async (req, res) =>{
             owner
 
         }) 
+
         console.log("New post added:", newPost)
         res.send({success: true, message: "Post added successfully" })
     } catch (error){
         console.log("Error adding new post:" + error.message)
         res.send({success: false, error: "Internal server error" });
+    }
+}
+
+export const handleListPostFromCommunity = async (req, res) => {
+    console.log("handleListPostFromCommunity:", req.body)
+
+    try{
+        res.send("Hello list community post")
+    } catch (error) {
+        res.send("Error in List community post:", error)
     }
 }

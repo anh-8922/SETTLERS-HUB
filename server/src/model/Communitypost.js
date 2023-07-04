@@ -31,4 +31,5 @@ const communityPostSchema = new Schema ( {
 
 })
 
+
 export default mongoose.model("Communitypost", communityPostSchema)
