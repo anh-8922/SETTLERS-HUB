@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {HeroSectionC} from "../Components/HeroSection";
 import MainLayout from "../Layout/MainLayout";
+import ListCommunityPost from "../Components/CommunityPostsList";
 
 
 export default function HomePage() {
@@ -13,7 +14,7 @@ export default function HomePage() {
         <MainLayout>
             <HeroSectionC/>
             <button onClick={handleAddPostPage}>Add New Post</button>
-            Let test the page out
+            <ListCommunityPost/>
         </MainLayout>
     )
 }
