@@ -2,15 +2,15 @@ import useFetchData from "../CustomHooks/useFetchData"
 import TimeAgo from 'react-timeago'
 
 export default function ListCommunityPost () {
-    const {data} = useFetchData(`http://localhost:5000/community/listpost`)
+    const {data,error} = useFetchData(`http://localhost:5000/community/listpost`)
     console.log(data)
-    const post = data.communityPosts
+    // const post = data.communityPosts
 
-    console.log("posts:", post)
+    // console.log("posts:", post)
 
     if (!data){
         return (
-            <div>Loading</div>
+            <div>{error}</div>
         )
     }
 
@@ -18,13 +18,16 @@ export default function ListCommunityPost () {
         <div className="community_post_list">
             <div>community posts</div>
             {
-                post.map((item) => {
-                    const {_id, owner, text, date} = item
+               data.communityPosts.map((item) => {
+                    const {_id, owner, text, date, image} = item
                     return (
                         <div key={_id}>
                             <div className="post-owner" style={{fontSize:"1.2rem", fontWeight:"bold"}}>
                                 {owner.firstName} <span>{owner.lastName}</span>
                             </div>
+                            {/* <div>
+                                <img src={`https://res.cloudinary.com/dgnqjr0we/image/upload/v1688490791/${image}`} alt={image}/>
+                            </div> */}
 
                             <div className="post-topic">
                                 {text}
