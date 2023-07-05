@@ -9,7 +9,8 @@ const communityPostSchema = new Schema ( {
       image: String,
       owner: {
         type: Schema.Types.ObjectId,
-        ref: "User", 
+        ref: "User",
+        required: true, 
       },
       likes: [],
       date: {
@@ -22,13 +23,37 @@ const communityPostSchema = new Schema ( {
             type: String,
             required: true,
           },
-          owner: {
+          commentowner: {
             type: Schema.Types.ObjectId,
             ref: "User",
           },
+          commentslikes:[],
+          date: {
+            type: Date,
+            default: Date.now
         },
+          reply:[
+            {
+              reply:{
+                type: String,
+                required: true
+              },
+              replyowner: {
+                type: Schema.Types.ObjectId,
+                required: true
+              },
+              replylikes: [],
+              date: {
+                type: Date,
+                default: Date.now
+            },
+            }
+          ]
+        },
+      
       ],
 
 })
+
 
 export default mongoose.model("Communitypost", communityPostSchema)

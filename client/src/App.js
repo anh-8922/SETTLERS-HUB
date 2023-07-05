@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BrowserRouter } from 'react-router-dom';
 import AllRoutes from './AllRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import AddCommunitypost from './Components/AddCommunityPost';
 
 function App() {
   
@@ -11,6 +12,7 @@ function App() {
     <BrowserRouter>
         <div>
           <AllRoutes/>
+          <AddCommunitypost/>
         </div>
     </BrowserRouter>
   );
