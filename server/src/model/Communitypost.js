@@ -23,11 +23,34 @@ const communityPostSchema = new Schema ( {
             type: String,
             required: true,
           },
-          owner: {
+          commentowner: {
             type: Schema.Types.ObjectId,
             ref: "User",
           },
+          commentslikes:[],
+          date: {
+            type: Date,
+            default: Date.now
         },
+          reply:[
+            {
+              reply:{
+                type: String,
+                required: true
+              },
+              replyowner: {
+                type: Schema.Types.ObjectId,
+                required: true
+              },
+              replylikes: [],
+              date: {
+                type: Date,
+                default: Date.now
+            },
+            }
+          ]
+        },
+      
       ],
 
 })

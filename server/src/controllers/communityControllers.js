@@ -40,7 +40,11 @@ export const handleListPostFromCommunity = async (req, res) => {
 
     try{
         const communityPosts = await Communitypost.find()
-        .populate({ path: "owner", select: "username email image firstName lastName" })
+            .populate({ path: "owner", select: "username email image firstName lastName" })
+            .select("-__v")
+            .limit(10)
+            .skip(0)
+            .sort({ _id: "desc" });
         console.log("Community post list:", communityPosts)
         res.send({success: true, communityPosts})
     } catch (error) {
