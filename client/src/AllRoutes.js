@@ -4,10 +4,11 @@ import ServicePage from './Pages/ServicePage';
 import Register from "./Pages/Register";
 import Login from "./Pages/Login"
 import ProfilePage from "./Pages/Profile";
-import InfoLondon from "./Pages/HomeSubPage/info";
+import InfoLondon from "./SubPage/info";
 import Community from "./Pages/CommunityPage";
 import ResetPassowrd from "./Pages/ResetPasswordPage";
 import ForgotPassowrd from "./Pages/ForgotPasswordPage";
+import AddGuidePost from "./AdminUnpublished/AddGuidePost";
 
 export default function AllRoutes () {
     return(
@@ -21,6 +22,7 @@ export default function AllRoutes () {
         <Route path="/guide/info" element={<InfoLondon/>}/>
         <Route path="/resetpassword" element={<ResetPassowrd/>}/>
         <Route path="/forgotpassword" element={<ForgotPassowrd/>}/>
+        <Route path='/admin/addguidepost' element={<AddGuidePost/>}/>
       </Routes>
     )
 }
