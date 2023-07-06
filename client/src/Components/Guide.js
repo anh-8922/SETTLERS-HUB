@@ -8,7 +8,7 @@ export default function LondonGuide() {
             <h1>London Guide</h1>
             <div className='guide-content'>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to="/guide/info">
                         <HiInformationCircle/><h3>About London</h3><p>General Information</p>
                     </NavLink>
                 </div>

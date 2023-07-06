@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import dbConnect from './config/db.js';
+import userRoutes from './routes/userRoutes.js';
+import guideRoutes from './routes/guideRoutes.js';
 import userRoutes from './routes/userRoutes.js'
 import communityRoutes from './routes/communityRoutes.js'
 
@@ -13,6 +15,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded ({extended : false}));
 
+
+app.get('/settlershub/list', (req,res) => {
+    res.send('Testing the server')
+})
+
+//APP USE: GUIDE
+app.use('/guide', guideRoutes)
+//APP USE: USER
 // app.get('/settlershub/list', (req,res) => {
 //     res.send('Testing the server')
 // })
