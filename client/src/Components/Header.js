@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react'
 
 
 export default function Header() {
-    const [cookies, setCookies] = useCookies(["access_token"])
+    const [cookies, setCookies, removeCookie] = useCookies(["access_token"])
     const userID = useGetUserID ()
     const [profileName, setProfileName] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
@@ -48,7 +48,7 @@ export default function Header() {
         navigate ('/login')
     }
     const handleLogout = () => {
-        setCookies("access_token", "")
+        removeCookie(["access_token"], "")
         window.localStorage.clear()
         setLoggedIn(false)
         navigate("/");

@@ -51,7 +51,7 @@ export default function SignIn() {
 
       // if (response.data.success === true){
         setCookies("access_token", response.data.token);
-        console.log(response.data)
+        // console.log(response.data)
         window.localStorage.setItem("userID", response.data.userID);
         console.log("Login sucessfull:", response.data.username)
         navigate('/profile');
