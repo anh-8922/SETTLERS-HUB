@@ -1,11 +1,15 @@
-import Logo from './Logo'
+
 import '../Style/component.css'
-import LoginButtons from '../Features/LoginButtons'
+import { useCookies } from "react-cookie"
+import { useNavigate } from 'react-router-dom'
+import useFetchData from '../CustomHooks/useFetchData'
+import { useGetUserID } from '../CustomHooks/useGetUserID'
+import { useState, useEffect } from 'react'
 
 
 
-export default function Header() {
-    const [cookies, setCookies, removeCookie] = useCookies(["access_token"])
+export default function LoginButtons() {
+    const [cookies, setCookies] = useCookies(["access_token"])
     const userID = useGetUserID ()
     const [profileName, setProfileName] = useState('')
     const [loggedIn, setLoggedIn] = useState(false)
@@ -43,7 +47,7 @@ export default function Header() {
         navigate ('/login')
     }
     const handleLogout = () => {
-        removeCookie(["access_token"], "")
+        setCookies("access_token", "")
         window.localStorage.clear()
         setLoggedIn(false)
         navigate("/");
@@ -52,16 +56,22 @@ export default function Header() {
     const handleprofile = () =>{
         navigate('/profile')
     }
-    
     return(
-        <div className='header' style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            justifyContent: "space-between"
-        }}>
-            <Logo/>
-            <LoginButtons/>
+        <>
+            
+            {!loggedIn ? (
+        <div>
+          <button className='log-button' onClick={handelUserRegister}>Sign up</button>
+          <button className='log-button' onClick={handleLogin}>Sign In</button>
         </div>
+      ) : (
+        <div>
+        <button className='log-button' onClick={handleLogout}>Logout</button>
+        <button className='log-button' onClick={handleprofile}>{profileName}</button>
+        </div>
+      )}
+            {/* <button >notifications</button> */}
+            
+        </>
     )
 }

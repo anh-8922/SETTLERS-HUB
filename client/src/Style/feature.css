@@ -58,6 +58,60 @@
     
 }
 
+/*====================================*/
+/*~~~~SUMMARY CARD FOR GUIDE SECTION~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
 
+.summary-card {
+    margin: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}
+.guide-card {
+    display: flex;
+    flex-direction: row;
+    margin: 0 6rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid grey;
+    gap: 2rem;
+}
+.guide-img {
+    width: 20rem;
+    border-radius: 0.5rem;
+}
 
-
+.css-button-sliding-to-left--red {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #d90429;
+    color: #d90429;
+  }
+  .css-button-sliding-to-left--red:hover {
+    color: #fff;
+  }
+  .css-button-sliding-to-left--red:hover:after {
+    width: 100%;
+  }
+  .css-button-sliding-to-left--red:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #d90429;
+  }

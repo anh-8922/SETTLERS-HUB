@@ -2,21 +2,19 @@ import '../Style/layout.css';
 import NavBar from "../Features/NavBar";
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
+import london3 from '../Assets/london3.jpg';
 
-export default function HomeLayout({children}) {
+export default function GuideLayout({children}) {
     return(
         <>
             <div className='homelayout'>
                 <Header/>
                 <NavBar/>
-                <h1 style={{
-                    display:"flex", 
-                    flexDirection:"column", 
-                    justifyContent: "center", 
-                    height:"100%",
-                    color:"whitesmoke"}}>
-                Some Main Text Should Be Here
-                </h1>
+                <div style={{
+                    backgroundImage: `url("${london3}")`, 
+                    width: "100%",
+                    height: "60vh",
+                    borderRadius: "1rem"}}><button>Info</button></div>
             </div>
             <div>{children}</div>
             <Footer/>
