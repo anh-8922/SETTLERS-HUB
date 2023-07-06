@@ -33,7 +33,7 @@ const housingSchema = new Schema ({
         type: String,
         required:true
     },
-    type:{
+    category:{
         type: String,
         required:true
     },
@@ -58,7 +58,7 @@ const housingSchema = new Schema ({
         type: String,
         required:true
     }, 
-    availableon: {
+    availableOn: {
         type: String,
         required:true
     },
@@ -67,7 +67,8 @@ const housingSchema = new Schema ({
         required:true
     },
     feature:{
-        type:Boolean
+        type:String,
+        default: false,
     }
 })
 

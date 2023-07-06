@@ -1,9 +1,10 @@
-import City from "./City"
+import NewProperty from "./AddNewPropertyAds"
+
 export default  function PostNewHousingAds () {
     return(
         <div>
             
-                <City/>
+                <NewProperty/>
             
         </div>
     )
