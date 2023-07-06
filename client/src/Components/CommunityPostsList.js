@@ -26,7 +26,7 @@ export default function ListCommunityPost () {
                                 {owner.firstName} <span>{owner.lastName}</span>
                             </div>
                             {/* <div>
-                                <img src={`https://res.cloudinary.com/dgnqjr0we/image/upload/v1688490791/${image}`} alt={image}/>
+                                <img src={`https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`} alt={image}/>
                             </div> */}
 
                             <div className="post-topic">

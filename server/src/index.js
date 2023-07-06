@@ -20,6 +20,6 @@ app.use('/user', userRoutes)
 app.use('/community', communityRoutes)
 app.use('/housing', housingRoutes)
 app.use("/image", express.static("./server/uploads"));
-
+// app.use("/uploads", express.static("./server/uploads"))
 const port = process.env.PORT || 5000
 app.listen(port, () => console.log(`Server is up and running at port ${port}`))

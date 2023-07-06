@@ -2,8 +2,20 @@ import House from "../model/Housing.js"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
-        const {address, image, bath, beds} = req.body
+        const {address,
+               image,  
+               rate, 
+               beds, 
+               bath, 
+               type, 
+               owner, 
+               longitude, 
+               latitude,
+               description,
+               availableon,
+               houseType} = req.body
         res.send("hello new property")
+        image = req.file.filename
 
     } catch (error) {
         console.log("Error in adding new property:", error)

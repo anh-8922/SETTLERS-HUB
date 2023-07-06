@@ -5,7 +5,10 @@ export const handleAddPostToCommunity = async (req, res) =>{
     console.log("Add new community post:", req.body)
     console.log("Add new community post image file:", req.file)
     try{
-        let  {owner, text, image} = req.body
+        let  {owner, 
+              text, 
+              image} = req.body
+              
         image  = req.file.filename
         console.log("community post:", req.body)
         

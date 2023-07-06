@@ -61,6 +61,13 @@ const housingSchema = new Schema ({
     availableon: {
         type: String,
         required:true
+    },
+    houseType:{
+        type: String,
+        required:true
+    },
+    feature:{
+        type:Boolean
     }
 })
 
