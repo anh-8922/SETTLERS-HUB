@@ -9,8 +9,12 @@ export default function AddGuidePost ( ) {
 
   const [title, setTitle] = useState('');
   const [subtitle, setsubtitle] = useState('');
+  const [subtitle1, setsubtitle1] = useState('');
+  const [subtitle2, setsubtitle2] = useState('');
   const [abstract, setAbstract] = useState('');
   const [paragraph, setParagraph] = useState('');
+  const [paragraph1, setParagraph1] = useState('');
+  const [paragraph2, setParagraph2] = useState('');
   const [category, setCategory] = useState('');
   const [image, setImage] = useState({
     url: noimage,
@@ -41,9 +45,13 @@ export default function AddGuidePost ( ) {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("subtitle", subtitle);
+      formData.append("subtitle1", subtitle1);
+      formData.append("subtitle2", subtitle2);
       formData.append("category", category);
       formData.append("abstract", abstract);
-      formData.append("paragraph", paragraph)
+      formData.append("paragraph", paragraph);
+      formData.append("paragraph1", paragraph1);
+      formData.append("paragraph2", paragraph2)
       if (image.file) {
         formData.append("image", image.file);
         
@@ -67,9 +75,20 @@ export default function AddGuidePost ( ) {
     return(
         <>
         
-          <div className='AddNewRecipe'>
+          <div className='Admin-addPost' style={{
+            display: "flex",
+            flexDirection:"column",
+            width:"100rem"
+
+            
+          }}>
             {!formSubmitted ? (
-              <form className="addForm" onSubmit={handleSubmit}>
+              <form className="addForm" style={{
+                display: "flex",
+                flexDirection:"column",
+                width:"60rem"
+
+              }} onSubmit={handleSubmit}>
                 <label>Add your recipe title:</label>
                 <input
                   type="text"
@@ -101,13 +120,51 @@ export default function AddGuidePost ( ) {
                 </div>
                 <label>Add paragraph:</label>
                 <textarea
+                style={{height:"20rem"}}
                   type="text"
                   id="paragraph"
                   placeholder="Paragraph"
                   value={paragraph}
                   onChange={(e) => setParagraph(e.target.value)}
                 />
-                
+                <div>
+                    <label>Add subtitle1:</label>
+                    <textarea
+                    type="text"
+                    id="subtitle1"
+                    placeholder="subtitle1"
+                    value={subtitle1}
+                    onChange={(e) => setsubtitle1(e.target.value)}
+                    />
+                </div>
+                <label>Add paragraph1:</label>
+                <textarea
+                style={{height:"20rem"}}
+                  type="text"
+                  id="paragraph1"
+                  placeholder="Paragraph1"
+                  value={paragraph1}
+                  onChange={(e) => setParagraph1(e.target.value)}
+                />
+                <div>
+                    <label>Add subtitle2:</label>
+                    <textarea
+                    type="text"
+                    id="subtitle2"
+                    placeholder="subtitle2"
+                    value={subtitle2}
+                    onChange={(e) => setsubtitle2(e.target.value)}
+                    />
+                </div>
+                <label>Add paragraph2:</label>
+                <textarea
+                style={{height:"20rem"}}
+                  type="text"
+                  id="paragraph2"
+                  placeholder="Paragraph2"
+                  value={paragraph2}
+                  onChange={(e) => setParagraph2(e.target.value)}
+                />
                 <label>Category: </label>
                 <select
                   value={category}

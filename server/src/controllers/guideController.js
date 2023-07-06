@@ -17,7 +17,17 @@ export const handleAddGuide = async (req, res) => {
   console.log("handleAddGuide:", req.body);
 
   try {
-    let {title, subtitle, category, abstract, paragraph, image } = req.body;
+    let {
+      title, 
+      subtitle, 
+      subtitle1, 
+      subtitle2, 
+      category, 
+      abstract, 
+      paragraph, 
+      paragraph1, 
+      paragraph2, 
+      image } = req.body;
     
     if (req.file) {
       image  = req.file.filename;
@@ -25,9 +35,13 @@ export const handleAddGuide = async (req, res) => {
     const addNewGuide = await Guide.create({
       title,
       subtitle,
+      subtitle1, 
+      subtitle2,
       category,
       abstract,
       paragraph,
+      paragraph1, 
+      paragraph2,
       image,
     });
 

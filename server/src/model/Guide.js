@@ -11,6 +11,24 @@ const guideSchema = new Schema({
         type: String,
         required:true
     },
+    subtitle1:{
+        type: String,
+        required:false
+    },
+    subtitle2:{
+        type: String,
+        required:false
+    },
+    subtitle1:{
+        type: String,
+        required:false
+    },
+    subtitle2:{
+        type: String,
+        required:false
+    },
+    
+    
     category:{
         type: String,
         required:true
@@ -25,6 +43,18 @@ const guideSchema = new Schema({
         {
             type: String,
             required:true
+        }
+    ,
+    paragraph1: 
+        {
+            type: String,
+            required:false
+        }
+    ,
+    paragraph2: 
+        {
+            type: String,
+            required:false
         }
     ,
     image: {
