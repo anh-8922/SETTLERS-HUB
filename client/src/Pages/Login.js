@@ -16,21 +16,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState } from 'react';
+// import Alert from '@mui/material/Alert';
+// import AlertTitle from '@mui/material/AlertTitle';
+// import Stack from '@mui/material/Stack';
 
 
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        SettlerHub
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const defaultTheme = createTheme();
 
@@ -55,22 +45,22 @@ export default function SignIn() {
       });
       console.log(response.data);
       if (response.data.success === false) {
-        return setError("Error: Both fields must be filled.");
+        return setError(response.data.error || response.data.message);
         
       }
 
-      // if (response.data.success){
+      // if (response.data.success === true){
         setCookies("access_token", response.data.token);
         console.log(response.data)
         window.localStorage.setItem("userID", response.data.userID);
-        console.log("Login sucessfull:", response.data.userID)
+        console.log("Login sucessfull:", response.data.username)
         navigate('/profile');
       // }
 
     } catch (error) {
-      setError(error.message);
+      setError(error);
       console.log(error);
-      console.log("Login Unsuccessfull:", error.message)
+      // console.log("Login Unsuccessfull:", error)
       navigate('/login');
       
     }
@@ -79,6 +69,15 @@ export default function SignIn() {
   return (
     
     <ThemeProvider theme={defaultTheme}>
+      {/* {error && (
+              <Stack sx={{ width: '100%' }} spacing={2}>
+              <Alert variant="filled" severity="error">
+                <AlertTitle>Error</AlertTitle>
+                {error } — <strong>check it out!</strong>
+              </Alert>
+              </Stack>
+      )} */}
+
       
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -119,11 +118,11 @@ export default function SignIn() {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-          {error && (
-  <Typography variant="body2" color="error" align="center">
-    {error}
-  </Typography>
-)}
+            {error && (
+              <Typography variant="body2" color="error" align="center">
+                Error: {error }
+              </Typography>
+            )}
             <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
               Sign In
             </Button>
@@ -141,7 +140,6 @@ export default function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }}/>
       </Container>
     
     </ThemeProvider>

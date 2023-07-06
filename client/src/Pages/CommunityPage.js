@@ -1,12 +1,20 @@
+import { useNavigate } from "react-router-dom";
 import {HeroSectionC} from "../Components/HeroSection";
 import MainLayout from "../Layout/MainLayout";
+import ListCommunityPost from "../Components/CommunityPostsList";
 
 
 export default function HomePage() {
+    const navigate = useNavigate()
+
+    const handleAddPostPage = () => {
+        navigate('/addcommunitypost')
+    }
     return (
         <MainLayout>
             <HeroSectionC/>
-            Let test the page out
+            <button onClick={handleAddPostPage}>Add New Post</button>
+            <ListCommunityPost/>
         </MainLayout>
     )
 }
