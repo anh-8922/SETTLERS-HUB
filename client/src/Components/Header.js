@@ -5,8 +5,7 @@ import LoginButtons from '../Features/LoginButtons'
 
 
 export default function Header() {
-
-    
+   
     return(
         <div className='header' style={{
             display: "flex",
