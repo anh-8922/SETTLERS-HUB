@@ -40,6 +40,7 @@ const housingSchema = new Schema ({
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User",
+        required:true
     },
     date: {
         type: Date,
@@ -73,3 +74,4 @@ const housingSchema = new Schema ({
 })
 
 export default mongoose.model ("House", housingSchema)
+

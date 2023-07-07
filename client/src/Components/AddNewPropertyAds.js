@@ -5,11 +5,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState, useEffect } from 'react';
-import useFetchData from '../CustomHooks/useFetchData';
+// import { useCookies } from "react-cookie"
+import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from 'axios';
 
 
 export default function NewProperty() {
+  const userID = useGetUserID ()
+  console.log("Add property post ueseID:", userID)
+  // const [cookies, setCookies] = useCookies(["access_token"])
   const [category, setCategory] = useState('')
   const [propertyType, setPropertyType] = useState('Flat')
   const [availableOn, setAvailableOn] = useState ('')
@@ -140,36 +144,36 @@ export default function NewProperty() {
 
 
   useEffect(() => {
- console.log("category:", category)
- console.log("property type:", propertyType)
- console.log('Available on:', availableOn)
- console.log("Address1", addressline1)
- console.log("Address1", addressline2)
- console.log("City", city)
- console.log("post", postCode)
-  }, [category, propertyType, availableOn, rate, addressline1, addressline2, city, postCode, featured, selectedImages]);
+ 
+  }, [userID,
+      category, 
+      propertyType, 
+      availableOn, 
+      rate, 
+      addressline1, 
+      addressline2, 
+      city, 
+      postCode, 
+      featured, 
+      selectedImages]);
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
     const formData = new FormData()
+        formData.append("owner", userID )
         formData.append("category", category);
-        // formData.append("addressline1", addressline1);
-        // formData.append("addressline2", addressline2);
-        // formData.append("city", city);
-        // formData.append("postCode", postCode)
         formData.append("address[0][addressline1]", addressline1);
-  formData.append("address[0][addressline2]", addressline2);
-  formData.append("address[0][city]", city);
-  formData.append("address[0][postcode]", postCode);
+        formData.append("address[0][addressline2]", addressline2);
+        formData.append("address[0][city]", city);
+        formData.append("address[0][postcode]", postCode);
         formData.append("houseType", propertyType);
         formData.append("availableOn", availableOn);
-        // formData.append("address", address);
         formData.append("longitude", longitude)
         formData.append("rate", rate);
         formData.append("latitude", latitude);
         selectedImages.forEach((image, index) => {
-          formData.append(`images[${index}]`, image.file);
+        formData.append(`images[${index}]`, image.file);
         });
         // formData.append(`image[${index}]`, selectedImages.files);
         formData.append("baths", baths);
@@ -272,6 +276,7 @@ export default function NewProperty() {
         <InputGroup className="mb-3" as={Col} >
           <InputGroup.Text>£</InputGroup.Text>
           <Form.Control type="text" 
+                        required = {true}
                         placeholder="Rate"
                         value={rate}
                         onChange={(e) => setRate (e.target.value)} />
@@ -288,6 +293,7 @@ export default function NewProperty() {
         <Form.Label>Property Address</Form.Label>
         <Form.Control placeholder="Apartment, studio, or floor"
                       value={addressline1}
+                      required = {true}
                       onChange={(e) => setAddressline1(e.target.value)}/>
       </Form.Group>
 
@@ -295,6 +301,7 @@ export default function NewProperty() {
         <Form.Label>Address line 2</Form.Label>
         <Form.Control placeholder= "1234 Main St" 
                       value={addressline2}
+                      required = {true}
                       onChange={(e) => setAddressline2(e.target.value)}/>
       </Form.Group>
       </Row>
@@ -303,7 +310,8 @@ export default function NewProperty() {
         <Form.Group as={Col} controlId="formGridCity">
           <Form.Label>City</Form.Label>
           <Form.Control value={city}
-                      onChange={(e) => setCity(e.target.value)}/>
+                        required = {true}
+                        onChange={(e) => setCity(e.target.value)}/>
         </Form.Group>
 
         {/* <Form.Group as={Col} controlId="formGridState">
@@ -317,6 +325,7 @@ export default function NewProperty() {
         <Form.Group as={Col} controlId="formGridZip">
           <Form.Label>Post Code</Form.Label>
           <Form.Control  value={postCode}
+                         required = {true}
                          onChange={handlePostCode} />
         </Form.Group>
       </Row>
@@ -324,12 +333,18 @@ export default function NewProperty() {
         <Form.Label>Upload Images</Form.Label>
         <Form.Control type="file" 
                       multiple
+                      required = {true}
                       onChange={handleImageChange} />
       </Form.Group>
     
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Property Description</Form.Label>
-        <Form.Control as="textarea" rows={10} type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <Form.Control as="textarea" 
+                      required = {true}
+                      rows={10} 
+                      type="text" 
+                      value={description} 
+                      onChange={(e) => setDescription(e.target.value)} />
       </Form.Group>
 
       <Form.Group className="mb-3" id="formGridCheckbox">
@@ -342,5 +357,4 @@ export default function NewProperty() {
     </Form>
   );
 }
-
 

@@ -2,7 +2,7 @@ import House from "../model/Housing.js"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
-        let {address,
+        let {  address,
                image,  
                rate, 
                beds, 
@@ -18,6 +18,26 @@ export const handleAddNewProperty = async (req, res) => {
 
         image = req.files
         
+        if (!owner) {
+            res.send({success: false, error: "Resister your self"})
+            return
+        }
+
+        if (!address ||
+            // image,  
+            !rate ||
+            !beds ||
+            !baths ||
+            !category||
+            // !owner||
+            !longitude ||
+            !latitude ||
+            !description ||
+            !availableOn ||
+            !houseType) {
+            res.send({success: false, error: "All fields must fill"})
+            return
+        }
 
         const newPropertyPost = await (await House.create( {
                address,
@@ -34,8 +54,8 @@ export const handleAddNewProperty = async (req, res) => {
                houseType,
                feature
         })).populate({
-            path: "address",
-            select: "addressline1 addressline2 city postcode",
+            path: "owner",
+            select: "username email image firstName lastName",
         })
         
            
