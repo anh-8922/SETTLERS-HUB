@@ -16,7 +16,7 @@ export default function NewProperty() {
   const [addressline2, setAddressline2] = useState('')
   const [city, setCity] = useState ('')
   const [ postCode, setPostCode] = useState ('')
-  const [selectedImages, setSelectedImages] = useState([])
+  const [selectedImages, setSelectedImages] = useState([{url:'', file:null}])
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value)
@@ -34,12 +34,27 @@ export default function NewProperty() {
   }
 
   const handleImageChange = (e) => {
-    e.preventDefault()
-    const files = Array.from(e.target.files);
-    setSelectedImages( ...files, selectedImages);
-    console.log("file:", files)
-    
-  };
+    const files = Array.from(e.target.files)
+
+    if (files.length > 5) {
+      alert("You can only upload up to 5 files.")
+      return
+    }
+
+    if (files.length = 0) {
+      alert("Upload an image")
+      return
+    }
+
+    const updatedImages = files.map((file) => ({
+      url: URL.createObjectURL(file),
+      file: file,
+    }));
+    setSelectedImages(updatedImages)
+    console.log("updated images:", updatedImages)
+
+  }
+
   console.log("Images:", selectedImages)
   console.log("Rate:", rate)
   console.log("Address line  one:", addressline1)
