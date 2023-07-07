@@ -2,20 +2,45 @@ import House from "../model/Housing.js"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
-        const {address,
+        let {address,
                image,  
                rate, 
                beds, 
-               bath, 
-               type, 
+               baths, 
+               category, 
                owner, 
                longitude, 
                latitude,
                description,
-               availableon,
-               houseType} = req.body
-        res.send("hello new property")
-        image = req.file.filename
+               availableOn,
+               houseType,
+               feature} = req.body
+
+        image = req.files
+        
+
+        const newPropertyPost = await (await House.create( {
+               address,
+               image,  
+               rate, 
+               beds, 
+               baths, 
+               category, 
+               owner, 
+               longitude, 
+               latitude,
+               description,
+               availableOn,
+               houseType,
+               feature
+        })).populate({
+            path: "address",
+            select: "addressline1 addressline2 city postcode",
+        })
+        
+           
+        console.log("New property post added:", newPropertyPost)
+        res.send({success: true, newPropertyPost })
 
     } catch (error) {
         console.log("Error in adding new property:", error)

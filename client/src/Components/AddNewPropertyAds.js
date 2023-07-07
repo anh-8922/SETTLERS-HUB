@@ -18,15 +18,16 @@ export default function NewProperty() {
   const [addressline2, setAddressline2] = useState('')
   const [city, setCity] = useState ('')
   const [ postCode, setPostCode] = useState ('')
-  const [ beds, setBeds] = useState (1)
-  const [ baths, setBaths] = useState (1)
-  const [selectedImages, setSelectedImages] = useState([{url:'', file:null}])
+  const [ beds, setBeds] = useState (0)
+  const [ baths, setBaths] = useState (0)
+  const [selectedImages, setSelectedImages] = useState([])
   const [longitude, setLongitude] = useState()
   const [latitude, setLatitude] = useState ()
   const [description, setDescription] = useState ()
   const [featured, setFeatured] = useState (false)
+  const address = [{addressline1}, {addressline2}, {city}, {postCode}]
 
-  const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
+  // const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
 
   const handleCategoryChange = (event) => {
     setCategory(event.target.value)
@@ -43,27 +44,44 @@ export default function NewProperty() {
     console.log('Available on:', availableOn)
   }
 
+  // const handleImageChange = (e) => {
+  //   const files = Array.from(e.target.files)
+
+  //   if (files.length > 5) {
+  //     alert("You can only upload up to 5 Images.")
+  //     return
+  //   }
+
+  //   if (files.length = 0) {
+  //     alert("Upload an image")
+  //     return
+  //   }
+
+  //   const updatedImages = files.map((file) => ({
+  //     url: URL.createObjectURL(file),
+  //     file: file,
+  //   }));
+  //   setSelectedImages(updatedImages)
+  //   console.log("updated images:", updatedImages)
+
+  // }
+
+  // const handleImageChange = (e) => {
+  //   const files = Array.from(e.target.files);
+  //   const updatedImages = files.map((file) => ({
+  //     url: URL.createObjectURL(file),
+  //     file: file,
+  //   }));
+  //   setSelectedImages(updatedImages);
+  //   console.log("updated images:", updatedImages);
+  // };
+
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files)
-
-    if (files.length > 5) {
-      alert("You can only upload up to 5 files.")
-      return
-    }
-
-    if (files.length = 0) {
-      alert("Upload an image")
-      return
-    }
-
-    const updatedImages = files.map((file) => ({
-      url: URL.createObjectURL(file),
-      file: file,
-    }));
-    setSelectedImages(updatedImages)
-    console.log("updated images:", updatedImages)
-
-  }
+    const updatedImages = Array.from(e.target.files);
+    
+    setSelectedImages(updatedImages);
+    console.log("updated images:", updatedImages);
+  };
 
   const handleFeatured = (e) => {
     setFeatured(e.target.checked)
@@ -116,38 +134,70 @@ export default function NewProperty() {
   // useEffect(() => {
   //   fetchCoordinates();
   // }, [postCode]);
-  console.log("long:", longitude)
-        console.log("lat:", latitude)
 
-  console.log("Images:", selectedImages)
-  console.log("Rate:", rate)
-  console.log("Address line  one:", addressline1)
-  console.log("Address line  one:", addressline2)
-  console.log("City:", city)
-  console.log("Post Code:", postCode)
-  console.log("Beds:", beds)
-  console.log("Baths:", baths)
-  console.log("featured:", featured)
 
  
 
 
   useEffect(() => {
-    console.log('category:', category)
-    console.log('property type:', propertyType)
-    console.log('Available on:', availableOn)
-    console.log('Rate:', rate)
-    console.log("Address line  one:", addressline1)
-    // console.log("Address line  one:", addressline2)
-    console.log("City:", city)
-    console.log("Post Code:", postCode)
-    // console.log("Images:",selectedImages)
-    console.log("featured:", featured)
-  }, [category, propertyType, availableOn, rate, addressline1, city, postCode, featured]);
+ console.log("category:", category)
+ console.log("property type:", propertyType)
+ console.log('Available on:', availableOn)
+ console.log("Address1", addressline1)
+ console.log("Address1", addressline2)
+ console.log("City", city)
+ console.log("post", postCode)
+  }, [category, propertyType, availableOn, rate, addressline1, addressline2, city, postCode, featured, selectedImages]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+        formData.append("category", category);
+        // formData.append("addressline1", addressline1);
+        // formData.append("addressline2", addressline2);
+        // formData.append("city", city);
+        // formData.append("postCode", postCode)
+        formData.append("address[0][addressline1]", addressline1);
+  formData.append("address[0][addressline2]", addressline2);
+  formData.append("address[0][city]", city);
+  formData.append("address[0][postcode]", postCode);
+        formData.append("houseType", propertyType);
+        formData.append("availableOn", availableOn);
+        // formData.append("address", address);
+        formData.append("longitude", longitude)
+        formData.append("rate", rate);
+        formData.append("latitude", latitude);
+        selectedImages.forEach((image, index) => {
+          formData.append(`images[${index}]`, image.file);
+        });
+        // formData.append(`image[${index}]`, selectedImages.files);
+        formData.append("baths", baths);
+        formData.append("beds", beds);
+        formData.append("description", description);
+        formData.append("feature", featured);
+
+        console.log("formData:", formData)
+        try {
+          const response = await axios.post("/housing/addnewproperty", formData, {
+            headers: {
+              "Content-type": "multipart/form-data; charset=UTF-8",
+            },
+          });
+    
+          // setFormSubmitted(true);
+          console.log("Response:", response);
+          
+          // navigate("/user");
+        } catch (error) {
+          console.log("Error:", error);
+        }
+
+  }
 
   
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
          <Row className="mb-3">
          <Form.Label>Category</Form.Label>
          <div key={`inline-radio`} className="mb-3">
