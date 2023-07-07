@@ -20,6 +20,7 @@ const CustomLinkify = ({ children }) => (
 export default function GuideItem(props) {
     const { _id, image, title, subtitle, subtitle1, subtitle2, abstract, paragraph, paragraph1, paragraph2} = props;
     const imagePath =`http://localhost:5000/uploads/${image}`;
+    console.log("image path:", image)
 
     return (
       <div key={_id} className="item-card">

@@ -33,13 +33,14 @@ const housingSchema = new Schema ({
         type: String,
         required:true
     },
-    type:{
+    category:{
         type: String,
         required:true
     },
     owner:{
         type: Schema.Types.ObjectId,
         ref: "User",
+        required:true
     },
     date: {
         type: Date,
@@ -58,10 +59,19 @@ const housingSchema = new Schema ({
         type: String,
         required:true
     }, 
-    availableon: {
+    availableOn: {
         type: String,
         required:true
+    },
+    houseType:{
+        type: String,
+        required:true
+    },
+    feature:{
+        type:String,
+        default: false,
     }
 })
 
 export default mongoose.model ("House", housingSchema)
+
