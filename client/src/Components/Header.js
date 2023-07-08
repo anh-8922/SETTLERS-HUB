@@ -3,8 +3,8 @@ import '../Style/component.css'
 import LoginButtons from '../Features/LoginButtons'
 import { LogoRed } from './Logo'
 
+export default function Header() {
 
-export default function Header() {   
     return(
         <div className='header' style={{
             display: "flex",

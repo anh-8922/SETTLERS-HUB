@@ -6,13 +6,13 @@ import AllRoutes from './AllRoutes';
 import 'bootstrap/dist/css/bootstrap.min.css';
 //import AddCommunitypost from './Components/AddCommunityPost';
 
+
 function App() {
   
   return (
     <BrowserRouter>
         <div>
           <AllRoutes/>
-          
         </div>
     </BrowserRouter>
   );
