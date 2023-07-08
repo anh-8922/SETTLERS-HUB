@@ -1,6 +1,13 @@
 import '../Style/component.css';
 import { NavLink } from 'react-router-dom';
 import {HiInformationCircle} from 'react-icons/hi';
+import {BiSolidHomeSmile} from 'react-icons/bi';
+import {MdWork} from 'react-icons/md';
+import {IoMdSchool} from 'react-icons/io';
+import {MdHealthAndSafety} from 'react-icons/md';
+import {MdOutlineSportsEsports} from 'react-icons/md';
+import {SiTransportforlondon} from 'react-icons/si';
+import {RxMix} from 'react-icons/rx'
 
 export default function LondonGuide() {
     return(
@@ -14,37 +21,37 @@ export default function LondonGuide() {
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/accommodations'>
-                        <HiInformationCircle/><h3>Accommodations</h3><p>Rent or Buy a property</p>
+                        <BiSolidHomeSmile/><h3>Accommodations</h3><p>Rent or Buy a property</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/work'>
-                        <HiInformationCircle/><h3>Work</h3><p>Looking for a job</p>
+                        <MdWork/><h3>Work</h3><p>Looking for a job</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/study'>
-                        <HiInformationCircle/><h3>Study</h3><p>Education</p>
+                        <IoMdSchool/><h3>Study</h3><p>Education</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/health'>
-                        <HiInformationCircle/><h3>Health Care</h3><p>Public and Private Healthcare</p>
+                        <MdHealthAndSafety/><h3>Health Care</h3><p>Public and Private</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/leisure'>
-                        <HiInformationCircle/><h3>Leisure</h3><p>Activities, Sports, Shopping, Attractions</p>
+                        <MdOutlineSportsEsports/><h3>Leisure</h3><p>Activities, Sports, Shopping, Attractions</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
                     <NavLink className="guide-topic" to='/guide/transport'>
-                        <HiInformationCircle/><h3>Transport</h3><p>Getting around</p>
+                        <SiTransportforlondon/><h3>Transport</h3><p>Getting around</p>
                     </NavLink>
                 </div>
                 <div className="guide-items" >
                     <NavLink className="guide-topic" to='/guide/miscellaneous'>
-                        <HiInformationCircle/><h3>Miscellaneous</h3><p>Family Life</p>
+                        <RxMix/><h3>Miscellaneous</h3><p>Others</p>
                     </NavLink>
                 </div>
             </div>

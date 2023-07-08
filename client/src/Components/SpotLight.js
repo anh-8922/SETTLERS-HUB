@@ -7,12 +7,12 @@ import useFetchData from "../CustomHooks/useFetchData";
 import {SpotlightsCard} from "../Features/SummaryCard";
 import Spinner from "../Features/Spinner";
 import { useNavigate } from "react-router-dom";
-
-//import "../Styles/category.css";
-//import InfoLayout from '../Layout/GuideLayout'
+import NewsTicker from 'react-advanced-news-ticker';
+import {BsChevronCompactDown} from 'react-icons/bs';
+import { useRef } from 'react';
 
 export default function SpotLight() {
-
+    const ref = useRef();
     const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
@@ -39,7 +39,11 @@ export default function SpotLight() {
                     <h2>Spotlights</h2>
                    
                     <div className='spotlight-news'>
-                        {spotlightCard.map((item) => {
+                        <NewsTicker style={{height:"30rem", listStyle:"none"}} 
+                            rowHeight={150} 
+                            ref={ref} 
+                            duration={6000}>
+                            {spotlightCard.map((item) => {
                             const { _id, image, title, abstract } = item;
                                 return (
                                     <SpotlightsCard
@@ -50,7 +54,10 @@ export default function SpotLight() {
                                     onHandleClick={() => handleReadMore(_id)}
                                     />
                                 );
-                        })}
+                            })}
+                        </NewsTicker>
+                        <BsChevronCompactDown style={{fontSize:"3rem", cursor:'pointer'}} 
+                        onClick={() => { ref.current.moveNext(); ref.current.resetInterval(); }}/>
                     </div>
                     
                     
@@ -64,18 +71,18 @@ export default function SpotLight() {
 
 function CarouselA() {
     return (
-      <Carousel style={{width: '70%', height:'100%'}}>
-        <Carousel.Item style={{background: `url(${london1})`, height: '100%', backgroundSize: "cover"}}>
+      <Carousel fade style={{width: '70%', height:'100%'}}>
+        <Carousel.Item interval={500} style={{background: `url(${london1})`, height: '100%', backgroundSize: "cover"}}>
             <div className='spotlight-slide'>
                 
             </div>
         </Carousel.Item>
-        <Carousel.Item style={{background: `url(${london2})`, height: '100%', backgroundSize: "cover"}}>
+        <Carousel.Item interval={500} style={{background: `url(${london2})`, height: '100%', backgroundSize: "cover"}}>
             <div className='spotlight-slide'>
                 
             </div>
         </Carousel.Item>
-        <Carousel.Item style={{background: `url(${london3})`, height: '100%', backgroundSize: "cover"}}>
+        <Carousel.Item interval={500} style={{background: `url(${london3})`, height: '100%', backgroundSize: "cover"}}>
             <div className='spotlight-slide'>
                 
             </div>

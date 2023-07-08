@@ -110,11 +110,7 @@
 .spotlight-items {
     background-color: whitesmoke;
     width: 27%;
-    height: 37rem;
-}
-
-.spotlight-news{
-   
+    height: max-content;
 }
 
 .london-guide {
