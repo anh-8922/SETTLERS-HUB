@@ -87,18 +87,17 @@ export default function NewProperty() {
   //   console.log("updated images:", updatedImages);
   // };
 
-
   const handleImageChange = (e) => {
-
     const files = Array.from(e.target.files);
-
+  
     if (files.length > 5) {
-      alert("You can only upload up to 5 Images.")
-      return
+      alert("You can only upload up to 5 images.");
+      return;
     }
+  
+    setSelectedImages(files);
+  };
 
-    setSelectedImages(files)
-  }
   console.log("selected images:", selectedImages)
 
     
@@ -357,11 +356,17 @@ export default function NewProperty() {
                       required = {true}
                       onChange={handleImageChange} />
       </Form.Group>
-{/* 
-      <Container>
-    <Row>
-      {mockData.map((data, index) => (
-        <Col md={4} 
+
+      {/* <Container> */}
+      <div>
+      {selectedImages.map((file, index) => (
+      <div key={index}>{file.name}</div>
+    ))}
+      </div>
+
+    {/* <Row>
+      {selectedImages.map((file, index) => (
+        <Col md={} 
         key={index} 
         >
           <div className="img-card" 
@@ -374,8 +379,8 @@ export default function NewProperty() {
         </Col>
      )
      )} 
-    </Row>
-  </Container> */}
+    </Row> */}
+  {/* </Container> */}
     
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Property Description</Form.Label>

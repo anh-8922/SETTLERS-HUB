@@ -17,11 +17,12 @@ export const handleAddNewProperty = async (req, res) => {
                houseType,
                feature} = req.body
                const images = req.files
-
-               if (images) {
-               let  images  = req.file;
                console.log("images backend:", images)
-              }
+
+            //    if (images) {
+            //    let  images  = req.file;
+            //    console.log("images backend:", images)
+            //   }
         
         
         if (!owner) {
@@ -51,6 +52,7 @@ export const handleAddNewProperty = async (req, res) => {
         );
 
         const uploadedResults = await Promise.all(uploadPromises);
+        console.log("uploaded result:", uploadedResults)
 
         uploadedResults.forEach((result) => {
             uploadedImages.push(result.secure_url);
