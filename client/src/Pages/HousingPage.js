@@ -5,6 +5,8 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box'
 import {useState} from "react"
+import RentedHouses from '../SubPage/RentedHouses';
+import PropertyToSale from '../SubPage/PropertyToSale';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,7 +58,7 @@ export default function Housing() {
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
+        three={{ borderRight: 1, borderColor: 'divider' }}
       >
         <Tab label="Sale" {...a11yProps(0)} />
         <Tab label="Rent" {...a11yProps(1)} />
@@ -67,10 +69,12 @@ export default function Housing() {
         <Tab label="Item Seven" {...a11yProps(6)} /> */}
       </Tabs>
       <TabPanel value={value} index={0}>
-        Sale
+        <h1>Properties for Sale</h1>
+        <PropertyToSale/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Rent
+       <h1>Properties to Rent</h1> 
+       <RentedHouses/>
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
         Item Three
