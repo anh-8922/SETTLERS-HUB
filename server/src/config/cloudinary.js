@@ -18,13 +18,14 @@ const storage = new CloudinaryStorage({
     params: {
         folder: "SettlerHub",
         format: async (req, file) => {
+          console.log("fileinside:",file)
           let extension = "";
           if (file.mimetype.includes("image")) extension = file.mimetype.slice(6);
     
           console.log("INSIDE MULTER STORAGE file:", extension);
           return extension;
         },
-        public_id: (req, file) => Date.now(),
+        public_id: (req, file) => Date.now() + '-' + Math.random(),
       },
     });
 

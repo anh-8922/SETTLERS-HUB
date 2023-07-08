@@ -17,11 +17,13 @@ export const handleAddNewProperty = async (req, res) => {
                houseType,
                feature} = req.body
                const images = req.files
+               console.log("images backend:", images)
 
-               if (req.file) {
-                images  = req.file.filename;
-              }
-        console.log("images backend:", images)
+            //    if (images) {
+            //    let  images  = req.file;
+            //    console.log("images backend:", images)
+            //   }
+        
         
         if (!owner) {
             res.send({success: false, error: "Resister your self"})
@@ -50,6 +52,7 @@ export const handleAddNewProperty = async (req, res) => {
         );
 
         const uploadedResults = await Promise.all(uploadPromises);
+        console.log("uploaded result:", uploadedResults)
 
         uploadedResults.forEach((result) => {
             uploadedImages.push(result.secure_url);
