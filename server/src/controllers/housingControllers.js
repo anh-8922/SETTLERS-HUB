@@ -3,8 +3,7 @@ import cloudinary from "cloudinary"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
-        let {  address,
-            //    image,  
+        let {  address,  
                rate, 
                beds, 
                baths, 
@@ -18,15 +17,9 @@ export const handleAddNewProperty = async (req, res) => {
                feature} = req.body
                const images = req.files
                console.log("images backend:", images)
-
-            //    if (images) {
-            //    let  images  = req.file;
-            //    console.log("images backend:", images)
-            //   }
-        
         
         if (!owner) {
-            res.send({success: false, error: "Resister your self"})
+            res.send({success: false, error: "Register your self to create advertiestments"})
             return
         }
 
@@ -36,7 +29,6 @@ export const handleAddNewProperty = async (req, res) => {
             !beds ||
             !baths ||
             !category||
-            // !owner||
             !longitude ||
             !latitude ||
             !description ||
@@ -77,7 +69,6 @@ export const handleAddNewProperty = async (req, res) => {
             path: "owner",
             select: "username email image firstName lastName",
         })
-        
            
         console.log("New property post added:", newPropertyPost)
         res.send({success: true, newPropertyPost })
@@ -89,9 +80,20 @@ export const handleAddNewProperty = async (req, res) => {
 
 
 export const handleListProperties = async (req, res) => {
-    try{res.send("hello list new property")
+    console.log("handleListPropertyAds:", req.body)
+    try{
+        const propertyAds = await House.find()
+        .populate({
+            path: "owner",
+            select: "username email image firstName lastName",
+        })
+        .select ("-__v")
+        .sort({ _id: "desc" })
+        console.log("Property Ads list:", propertyAds)
+        res.send({success: true, propertyAds})
 
     } catch (error) {
-        console.log("Error in list new property:", error)
+        console.log("Error in list new property:", error.message)
+        res.send(("Error in list new property:" + error.message))
     }
 }

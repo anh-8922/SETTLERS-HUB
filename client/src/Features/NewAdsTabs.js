@@ -1,6 +1,6 @@
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
-import PostNewHousingAds from './PostNewHousingAds';
+import PostNewHousingAds from '../Components/PostNewHousingAds';
 
 export default function NewAddTabs() {
   return (

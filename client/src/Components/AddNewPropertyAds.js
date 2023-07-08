@@ -45,48 +45,6 @@ export default function NewProperty() {
     console.log('Available on:', availableOn)
   }
 
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files)
-
-  //   if (files.length > 5) {
-  //     alert("You can only upload up to 5 Images.")
-  //     return
-  //   }
-
-  //   if (files.length = 0) {
-  //     alert("Upload an image")
-  //     return
-  //   }
-
-  //   const updatedImages = files.map((file) => ({
-  //     url: URL.createObjectURL(file),
-  //     file: file,
-  //   }));
-  //   setSelectedImages(updatedImages)
-  //   console.log("updated images:", updatedImages)
-
-  // }
-
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
-  //   const updatedImages = files.map((file) => ({
-  //     url: URL.createObjectURL(file),
-  //     file: file,
-  //   }));
-  //   setSelectedImages(updatedImages);
-  //   console.log("updated images:", updatedImages);
-  // };
-
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
-  //   const updatedImages = files.map((file) => ({
-  //     url: URL.createObjectURL(file),
-  //     file: file,
-  //   }));
-  //   setSelectedImages(updatedImages);
-  //   console.log("updated images:", updatedImages);
-  // };
-
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
   
@@ -176,30 +134,23 @@ export default function NewProperty() {
 
     const formData = new FormData()
         formData.append("owner", userID )
-        formData.append("category", category);
-        formData.append("address[0][addressline1]", addressline1);
-        formData.append("address[0][addressline2]", addressline2);
-        formData.append("address[0][city]", city);
-        formData.append("address[0][postcode]", postCode);
-        formData.append("houseType", propertyType);
-        formData.append("availableOn", availableOn);
+        formData.append("category", category)
+        formData.append("address[0][addressline1]", addressline1)
+        formData.append("address[0][addressline2]", addressline2)
+        formData.append("address[0][city]", city)
+        formData.append("address[0][postcode]", postCode)
+        formData.append("houseType", propertyType)
+        formData.append("availableOn", availableOn)
         formData.append("longitude", longitude)
-        formData.append("rate", rate);
-        formData.append("latitude", latitude);
-        // selectedImages.forEach((image) => {
-        //   formData.append('images', image.file);
-        // })
+        formData.append("rate", rate)
+        formData.append("latitude", latitude)
         selectedImages.forEach((file) => {
-          formData.append('images', file);
-        });
-        // selectedImages.forEach((image, index) => {
-        // formData.append(`images[${index}]`, image.file);
-        // });
-        // formData.append(`image[${index}]`, selectedImages.files);
-        formData.append("baths", baths);
-        formData.append("beds", beds);
-        formData.append("description", description);
-        formData.append("feature", featured);
+          formData.append('images', file)
+        })
+        formData.append("baths", baths)
+        formData.append("beds", beds)
+        formData.append("description", description)
+        formData.append("feature", featured)
 
         console.log("formData:", formData)
         try {

@@ -19,6 +19,7 @@ import AddGuidePost from "./AdminUnpublished/AddGuidePost";
 import SingleSubPage from "./SubPage/SingleSubPage";
 import AddCommunitypost from "./SubPage/AddCommunityPost";
 import AddNewAds from "./SubPage/AddNewAds";
+import Housing from "./Pages/HousingPage";
 
 
 
@@ -45,6 +46,7 @@ export default function AllRoutes () {
         <Route path="/singleguidepost/:id" element={<SingleSubPage/>} />
         <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
+        <Route path='/housing' element= {<Housing/>} />
       </Routes>
     )
 }
