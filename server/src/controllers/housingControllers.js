@@ -1,9 +1,10 @@
 import House from "../model/Housing.js"
+import cloudinary from "cloudinary"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
         let {  address,
-               image,  
+            //    image,  
                rate, 
                beds, 
                baths, 
@@ -15,8 +16,12 @@ export const handleAddNewProperty = async (req, res) => {
                availableOn,
                houseType,
                feature} = req.body
+               const images = req.files
 
-        image = req.files
+               if (req.file) {
+                images  = req.file.filename;
+              }
+        console.log("images backend:", images)
         
         if (!owner) {
             res.send({success: false, error: "Resister your self"})
@@ -24,7 +29,7 @@ export const handleAddNewProperty = async (req, res) => {
         }
 
         if (!address ||
-            // image,  
+            !images,  
             !rate ||
             !beds ||
             !baths ||
@@ -39,9 +44,21 @@ export const handleAddNewProperty = async (req, res) => {
             return
         }
 
+        const uploadedImages = [];
+        const uploadPromises = images.map((image) =>
+          cloudinary.uploader.upload(image.path)
+        );
+
+        const uploadedResults = await Promise.all(uploadPromises);
+
+        uploadedResults.forEach((result) => {
+            uploadedImages.push(result.secure_url);
+          })
+
+       
         const newPropertyPost = await (await House.create( {
                address,
-               image,  
+               image: uploadedImages,
                rate, 
                beds, 
                baths, 
