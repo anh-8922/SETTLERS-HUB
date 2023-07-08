@@ -66,6 +66,19 @@
     align-items: center;
     
 }
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------HEADER - WITH RED LOGO--------*/
+/*====================================*/
+
+.single-post-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2rem;
+    margin: 0 10rem;
+}
 /*====================================*/
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 /*--------SPOTLIGHTS --------*/
@@ -73,7 +86,7 @@
 .spotlight {
     background-color: grey;
     width: 100%;
-    height: 100vh;
+    height: max-content;
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -98,6 +111,10 @@
     background-color: whitesmoke;
     width: 27%;
     height: 37rem;
+}
+
+.spotlight-news{
+   
 }
 
 .london-guide {
@@ -189,6 +206,7 @@
     align-items: center;
     padding: 3rem 5rem;
     border-bottom: 1rem solid #B5A197;
+    
 }
 
 .foot-navigator {

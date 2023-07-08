@@ -1,8 +1,6 @@
 import Linkify from 'react-linkify';
 //import '../Styles/component.css';
 
-// const LineBreak = () => <br />;
-
 const CustomLinkify = ({ children }) => (
   <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (
     <a href={decoratedHref} 
@@ -19,7 +17,8 @@ const CustomLinkify = ({ children }) => (
 
 export default function GuideItem(props) {
     const { _id, image, title, subtitle, subtitle1, subtitle2, abstract, paragraph, paragraph1, paragraph2} = props;
-    const imagePath =`http://localhost:5000/uploads/${image}`;
+    const imagePath =`https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`;
+
     console.log("image path:", image)
 
     return (

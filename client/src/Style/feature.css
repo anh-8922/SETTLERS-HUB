@@ -64,7 +64,6 @@
 /*====================================*/
 
 .summary-card {
-    margin: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center ;
@@ -72,10 +71,10 @@
 .guide-card {
     display: flex;
     flex-direction: row;
-    margin: 0 6rem;
-    padding-bottom: 1rem;
+    padding: 2rem 0;
     border-bottom: 2px solid grey;
     gap: 2rem;
+  
 }
 .guide-img {
     width: 20rem;
@@ -115,3 +114,20 @@
     height: 100%;
     background: #d90429;
   }
+
+/*====================================*/
+/*~~~~SUMMARY CARD FOR SPOTLIGHS~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.spotlights-parts{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.spot-img {
+    width: 8rem;
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+}

@@ -99,7 +99,8 @@ export default function AddGuidePost ( ) {
                 />
                 <label>Add Abstract:</label>
                 <div>
-                  <input 
+                  <textarea 
+                    style={{width:"50rem", height:"10rem"}}
                     type="text"
                     id='abstract'
                     value={abstract}
@@ -171,9 +172,15 @@ export default function AddGuidePost ( ) {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                   <option value="">Select a category</option>
+                  <option value="spotlights">Spotlights</option>
                   <option value="info">Info</option>
-                  <option value="health">Health</option>
+                  <option value="accommodations">Accommodations</option>
                   <option value="work">Work</option>
+                  <option value="study">Study</option>
+                  <option value="health">Health</option>
+                  <option value="leisure">Leisure</option>
+                  <option value="transport">Transport</option>
+                  <option value="miscellaneous">Miscellaneous</option>
             
                 </select>
                 <div className="uploadImage">

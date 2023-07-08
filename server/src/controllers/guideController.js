@@ -7,8 +7,8 @@ export const handleListGuide = async (req, res) => {
         console.log("Guide list:" , guides)
         res.send(guides)
     } catch (error) {
-        console.log('Error list recipes:', error.message)
-        res.send('Error in listing recipes' + error.message)
+        console.log('Error list post:', error.message)
+        res.send('Error in listing post' + error.message)
     }
 
 }

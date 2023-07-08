@@ -2,7 +2,8 @@ import GuideItem from '../Features/GuideItem';
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../Features/Spinner";
 import useFetchData from "../CustomHooks/useFetchData";
-// import '../Styles/page.css';
+import '../Style/page.css';
+import SinglePostLayout from '../Layout/SinglePostLayout';
 
 export default function SingleSubPage() {
   const { id } = useParams();
@@ -23,9 +24,9 @@ export default function SingleSubPage() {
   const {image, title, subtitle, subtitle1, subtitle2, abstract, paragraph, paragraph1, paragraph2} = selectedPost;
 
   return (
-    <div>
+    <SinglePostLayout>
         
-        <div className="single-page">
+        <div className="single-post">
           <GuideItem
             title={title}
             image={image}
@@ -46,6 +47,6 @@ export default function SingleSubPage() {
                           borderRadius:'0.5rem'}}>Back to Home</button>
           </Link>
         </div>
-    </div>
+    </SinglePostLayout>
   )
 }
