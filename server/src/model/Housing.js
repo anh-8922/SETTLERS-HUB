@@ -46,7 +46,10 @@ const housingSchema = new Schema ({
         type: Date,
         default: Date.now
     },
-    image:[String],
+    image:[{ 
+        type: String,
+        required:true
+     }],
     longitude: {
         type: String,
         required:true    
