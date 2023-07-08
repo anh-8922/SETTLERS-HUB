@@ -13,37 +13,37 @@ export default function LondonGuide() {
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/accommodations'>
                         <HiInformationCircle/><h3>Accommodations</h3><p>Rent or Buy a property</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/work'>
                         <HiInformationCircle/><h3>Work</h3><p>Looking for a job</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/study'>
                         <HiInformationCircle/><h3>Study</h3><p>Education</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/health'>
                         <HiInformationCircle/><h3>Health Care</h3><p>Public and Private Healthcare</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/leisure'>
                         <HiInformationCircle/><h3>Leisure</h3><p>Activities, Sports, Shopping, Attractions</p>
                     </NavLink>
                 </div>
                 <div className="guide-items">
-                    <NavLink className="guide-topic">
+                    <NavLink className="guide-topic" to='/guide/transport'>
                         <HiInformationCircle/><h3>Transport</h3><p>Getting around</p>
                     </NavLink>
                 </div>
-                <div className="guide-items">
-                    <NavLink className="guide-topic">
+                <div className="guide-items" >
+                    <NavLink className="guide-topic" to='/guide/miscellaneous'>
                         <HiInformationCircle/><h3>Miscellaneous</h3><p>Family Life</p>
                     </NavLink>
                 </div>

@@ -3,9 +3,9 @@ import SummaryCard1 from "../Features/SummaryCard";
 import Spinner from "../Features/Spinner";
 import { useNavigate } from "react-router-dom";
 //import "../Styles/category.css";
-import InfoLayout from '../Layout/GuideLayout'
+import {TransportLayout} from '../Layout/GuideLayout'
 
-export default function InfoLondon() {
+export default function Transport() {
     const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
@@ -19,11 +19,11 @@ export default function InfoLondon() {
       return <Spinner />;
     }
     const infoCard = data.filter(
-      (item) => item.category.toLowerCase() === "info"
+      (item) => item.category.toLowerCase() === "transport"
     );
    console.log(infoCard)
     return(
-        <InfoLayout>
+        <TransportLayout>
             {infoCard.map((item) => {
                 const { _id, image, title, abstract } = item;
                 return (
@@ -36,7 +36,7 @@ export default function InfoLondon() {
                     />
                 );
             })}
-        </InfoLayout>
+        </TransportLayout> 
     )
 }
 
