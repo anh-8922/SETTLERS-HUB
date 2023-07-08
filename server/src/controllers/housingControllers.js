@@ -18,10 +18,11 @@ export const handleAddNewProperty = async (req, res) => {
                feature} = req.body
                const images = req.files
 
-               if (req.file) {
-                images  = req.file.filename;
+               if (images) {
+               let  images  = req.file;
+               console.log("images backend:", images)
               }
-        console.log("images backend:", images)
+        
         
         if (!owner) {
             res.send({success: false, error: "Resister your self"})

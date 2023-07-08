@@ -1,13 +1,10 @@
 
-import Container from 'react-bootstrap/Container'
-import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState, useEffect } from 'react';
-// import { useCookies } from "react-cookie"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from 'axios';
 
@@ -15,7 +12,6 @@ import axios from 'axios';
 export default function NewProperty() {
   const userID = useGetUserID ()
   console.log("Add property post ueseID:", userID)
-  // const [cookies, setCookies] = useCookies(["access_token"])
   const [category, setCategory] = useState('')
   const [propertyType, setPropertyType] = useState('Flat')
   const [availableOn, setAvailableOn] = useState ('')
@@ -26,12 +22,11 @@ export default function NewProperty() {
   const [ postCode, setPostCode] = useState ('')
   const [ beds, setBeds] = useState (0)
   const [ baths, setBaths] = useState (0)
-  const [selectedImages, setSelectedImages] = useState([{url:"", file:null}])
+  const [selectedImages, setSelectedImages] = useState([])
   const [longitude, setLongitude] = useState()
   const [latitude, setLatitude] = useState ()
   const [description, setDescription] = useState ()
   const [featured, setFeatured] = useState (false)
-  const address = [{addressline1}, {addressline2}, {city}, {postCode}]
 
   // const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
 
@@ -82,16 +77,31 @@ export default function NewProperty() {
   //   console.log("updated images:", updatedImages);
   // };
 
-  const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    const updatedImages = files.map((file) => ({
-      url: URL.createObjectURL(file),
-      file: file,
-    }));
-    setSelectedImages(updatedImages);
-    console.log("updated images:", updatedImages);
-  };
+  // const handleImageChange = (e) => {
+  //   const files = Array.from(e.target.files);
+  //   const updatedImages = files.map((file) => ({
+  //     url: URL.createObjectURL(file),
+  //     file: file,
+  //   }));
+  //   setSelectedImages(updatedImages);
+  //   console.log("updated images:", updatedImages);
+  // };
 
+
+  const handleImageChange = (e) => {
+
+    const files = Array.from(e.target.files);
+
+    if (files.length > 5) {
+      alert("You can only upload up to 5 Images.")
+      return
+    }
+
+    setSelectedImages(files)
+  }
+  console.log("selected images:", selectedImages)
+
+    
   const handleFeatured = (e) => {
     setFeatured(e.target.checked)
   }
@@ -177,9 +187,12 @@ export default function NewProperty() {
         formData.append("longitude", longitude)
         formData.append("rate", rate);
         formData.append("latitude", latitude);
-        selectedImages.forEach((image) => {
-          formData.append('images', image.file);
-        })
+        // selectedImages.forEach((image) => {
+        //   formData.append('images', image.file);
+        // })
+        selectedImages.forEach((file) => {
+          formData.append('images', file);
+        });
         // selectedImages.forEach((image, index) => {
         // formData.append(`images[${index}]`, image.file);
         // });
@@ -344,25 +357,25 @@ export default function NewProperty() {
                       required = {true}
                       onChange={handleImageChange} />
       </Form.Group>
-
+{/* 
       <Container>
     <Row>
-      {/* {mockData.map((data, index) => ( */}
+      {mockData.map((data, index) => (
         <Col md={4} 
-        // key={index} 
+        key={index} 
         >
           <div className="img-card" 
-          // onClick={() => handleClick(data.src)}
+          onClick={() => handleClick(data.src)}
           >
             <Image style={{ width: '300px', height: "300px" }} thumbnail 
-            // src={data.src}
+            src={data.src}
              />
           </div>
         </Col>
-      {/* )
-     )} */}
+     )
+     )} 
     </Row>
-  </Container>
+  </Container> */}
     
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Property Description</Form.Label>
