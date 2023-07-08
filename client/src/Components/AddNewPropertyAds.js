@@ -1,4 +1,6 @@
 
+import Container from 'react-bootstrap/Container'
+import Image from 'react-bootstrap/Image'
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
@@ -24,7 +26,7 @@ export default function NewProperty() {
   const [ postCode, setPostCode] = useState ('')
   const [ beds, setBeds] = useState (0)
   const [ baths, setBaths] = useState (0)
-  const [selectedImages, setSelectedImages] = useState([])
+  const [selectedImages, setSelectedImages] = useState([{url:"", file:null}])
   const [longitude, setLongitude] = useState()
   const [latitude, setLatitude] = useState ()
   const [description, setDescription] = useState ()
@@ -81,8 +83,11 @@ export default function NewProperty() {
   // };
 
   const handleImageChange = (e) => {
-    const updatedImages = Array.from(e.target.files);
-    
+    const files = Array.from(e.target.files);
+    const updatedImages = files.map((file) => ({
+      url: URL.createObjectURL(file),
+      file: file,
+    }));
     setSelectedImages(updatedImages);
     console.log("updated images:", updatedImages);
   };
@@ -172,9 +177,12 @@ export default function NewProperty() {
         formData.append("longitude", longitude)
         formData.append("rate", rate);
         formData.append("latitude", latitude);
-        selectedImages.forEach((image, index) => {
-        formData.append(`images[${index}]`, image.file);
-        });
+        selectedImages.forEach((image) => {
+          formData.append('images', image.file);
+        })
+        // selectedImages.forEach((image, index) => {
+        // formData.append(`images[${index}]`, image.file);
+        // });
         // formData.append(`image[${index}]`, selectedImages.files);
         formData.append("baths", baths);
         formData.append("beds", beds);
@@ -336,6 +344,25 @@ export default function NewProperty() {
                       required = {true}
                       onChange={handleImageChange} />
       </Form.Group>
+
+      <Container>
+    <Row>
+      {/* {mockData.map((data, index) => ( */}
+        <Col md={4} 
+        // key={index} 
+        >
+          <div className="img-card" 
+          // onClick={() => handleClick(data.src)}
+          >
+            <Image style={{ width: '300px', height: "300px" }} thumbnail 
+            // src={data.src}
+             />
+          </div>
+        </Col>
+      {/* )
+     )} */}
+    </Row>
+  </Container>
     
       <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
         <Form.Label>Property Description</Form.Label>
