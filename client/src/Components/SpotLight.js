@@ -7,6 +7,7 @@ import useFetchData from "../CustomHooks/useFetchData";
 import {SpotlightsCard} from "../Features/SummaryCard";
 import Spinner from "../Features/Spinner";
 import { useNavigate } from "react-router-dom";
+
 //import "../Styles/category.css";
 //import InfoLayout from '../Layout/GuideLayout'
 
@@ -36,6 +37,7 @@ export default function SpotLight() {
                 <CarouselA/>
                 <div className='spotlight-items'>
                     <h2>Spotlights</h2>
+                   
                     <div className='spotlight-news'>
                         {spotlightCard.map((item) => {
                             const { _id, image, title, abstract } = item;
@@ -50,6 +52,8 @@ export default function SpotLight() {
                                 );
                         })}
                     </div>
+                    
+                    
                 </div>
             </div>
             
