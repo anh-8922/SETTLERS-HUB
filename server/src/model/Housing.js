@@ -77,4 +77,3 @@ const housingSchema = new Schema ({
 })
 
 export default mongoose.model ("House", housingSchema)
-
