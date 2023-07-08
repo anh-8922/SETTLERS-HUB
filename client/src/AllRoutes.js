@@ -17,6 +17,9 @@ import ResetPassowrd from "./Pages/ResetPasswordPage";
 import ForgotPassowrd from "./Pages/ForgotPasswordPage";
 import AddGuidePost from "./AdminUnpublished/AddGuidePost";
 import SingleSubPage from "./SubPage/SingleSubPage";
+import AddCommunitypost from "./SubPage/AddCommunityPost";
+import AddNewAds from "./SubPage/AddNewAds";
+
 
 
 export default function AllRoutes () {
@@ -40,6 +43,8 @@ export default function AllRoutes () {
         <Route path="/forgotpassword" element={<ForgotPassowrd/>}/>
         <Route path='/admin/addguidepost' element={<AddGuidePost/>}/>
         <Route path="/singleguidepost/:id" element={<SingleSubPage/>} />
+        <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
+        <Route path='/addnewad' element={<AddNewAds/>}/>
       </Routes>
     )
 }
