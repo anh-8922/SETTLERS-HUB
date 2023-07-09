@@ -6,6 +6,7 @@ export default function HousinhgSummaryCard (props) {
     const {_id, beds, baths, houseType,rate, address, category, image } =props
     // const imagePath = `https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`;
 
+
     return (
         <div className='summary-card'>
             <div key={_id} className="guide-card">
@@ -14,7 +15,10 @@ export default function HousinhgSummaryCard (props) {
                 <div className='property-details'>
                     <h3 style={{fontWeight:"bold"}}>{beds} bed {houseType} for {category} </h3>
                     <h4>{address}</h4>
-                    <div>£ {rate} PCM </div>
+
+                    {category === "Rent" ?  
+                    <div>£ {rate} PCM </div> : 
+                    <div>£ {rate}</div>}
                     
                     <div>
                     <p> <FaBed/> {beds}</p>

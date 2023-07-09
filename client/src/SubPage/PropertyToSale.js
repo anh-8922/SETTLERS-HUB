@@ -1,5 +1,6 @@
 import HousinhgSummaryCard from "../Features/HousingSummaryCard";
 import useFetchData from "../CustomHooks/useFetchData"
+import Spinner from "../Features/Spinner";
 
 export default function PropertyToSale  ( ) {
     const {data} = useFetchData("http://localhost:5000/housing/listproperties")
@@ -8,7 +9,7 @@ export default function PropertyToSale  ( ) {
     // console.log("listed new properties:", newPropertyAds)
 
     if (!data) {
-        return <div>Loading...</div>; 
+        return <Spinner />; 
       }
 
 
