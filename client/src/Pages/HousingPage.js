@@ -72,7 +72,7 @@ export default function Housing() {
       </Tabs>
       <TabPanel value={value} index={0}>
         <h1>Properties for Sale</h1>
-        <PropertyToSale/>
+        <PropertyToSale />
       </TabPanel>
       <TabPanel value={value} index={1}>
        <h1>Properties to Rent</h1> 

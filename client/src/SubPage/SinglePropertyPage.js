@@ -1,12 +1,15 @@
 import SinglePostLayout from "../Layout/SinglePostLayout";
+import Map from "../Features/Map"
 
-export default function SinglrProperty () {
+export default function SingleProperty () {
 
     return (
         <SinglePostLayout>
             <div>
-                Hi from single propery
+                <h2>Hi from single propery</h2>
+                <Map/>
             </div>
+            
         </SinglePostLayout>
     )
 }

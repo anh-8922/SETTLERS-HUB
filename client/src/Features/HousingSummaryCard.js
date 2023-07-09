@@ -29,7 +29,7 @@ export default function HousinhgSummaryCard (props) {
                     <p> <FaBath/> {baths}</p>
                     </div>
                     <button className="css-button-sliding-to-left--red" 
-                    onClick={props.onHandleClick}>Read more...</button>
+                    onClick={props.onHandleClick}>Details...</button>
                 </div>
         
             </div>

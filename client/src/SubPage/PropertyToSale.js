@@ -1,12 +1,19 @@
 import HousinhgSummaryCard from "../Features/HousingSummaryCard";
 import useFetchData from "../CustomHooks/useFetchData"
 import Spinner from "../Features/Spinner";
+import { useNavigate } from "react-router-dom";
 
 export default function PropertyToSale  ( ) {
     const {data} = useFetchData("http://localhost:5000/housing/listproperties")
     console.log("listed properties:", data)
     // const newPropertyAds = data
     // console.log("listed new properties:", newPropertyAds)
+    const navigate = useNavigate ()
+
+    const handlePropertyDetais = (_id) => {
+        console.log("Sale property detail id:", _id)
+        navigate (`/singlepropertypage/${_id}`)
+    }
 
     if (!data) {
         return <Spinner />; 
@@ -34,7 +41,8 @@ export default function PropertyToSale  ( ) {
                                      rate={rate}
                                      address= {postCode}
                                      category={category}
-                                     image={firstImage}/>
+                                     image={firstImage}
+                                     onHandleClick={ () => handlePropertyDetais (_id)}/>
                      </div>
                 )
                 

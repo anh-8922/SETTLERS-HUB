@@ -20,7 +20,7 @@ import SingleSubPage from "./SubPage/SingleSubPage";
 import AddCommunitypost from "./SubPage/AddCommunityPost";
 import AddNewAds from "./SubPage/AddNewAds";
 import Housing from "./Pages/HousingPage";
-import SinglrProperty from "./SubPage/SinglePropertyPage";
+import SingleProperty from "./SubPage/SinglePropertyPage";
 
 
 
@@ -48,7 +48,7 @@ export default function AllRoutes () {
         <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
         <Route path='/housing' element= {<Housing/>} />
-        <Route path= '/singleproperty' element = {<SinglrProperty/>} />
+        <Route path= '/singlepropertypage' element = {<SingleProperty/>} />
       </Routes>
     )
 }

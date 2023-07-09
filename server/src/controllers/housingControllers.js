@@ -97,3 +97,21 @@ export const handleListProperties = async (req, res) => {
         res.send(("Error in list new property:" + error.message))
     }
 }
+
+export const handleListOnePropery = async (req, res) => {
+    try{
+        const id = req.params.id
+
+        if (!id) return res.send({ success: false, error: "Property id is not provided" });
+
+        const selectedProperty = await House.findById(id)
+        .populate({path: "owner", select:"username email firstName lastName"})
+        .select("-__v")
+        console.log("Selected property:" , selectedProperty)
+        res.send({success: true, selectedProperty})
+    } catch (error) {
+        console.log('Error Selected property:', error.message)
+        res.send('Error in Selected property' + error.message)
+    }
+
+}
