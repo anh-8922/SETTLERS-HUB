@@ -7,6 +7,7 @@ import Box from '@mui/material/Box'
 import {useState} from "react"
 import RentedHouses from '../SubPage/RentedHouses';
 import PropertyToSale from '../SubPage/PropertyToSale';
+import SinglePostLayout from '../Layout/SinglePostLayout';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -49,8 +50,9 @@ export default function Housing() {
   };
 
   return (
+    <SinglePostLayout>
     <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}
     >
       <Tabs
         orientation="vertical"
@@ -92,5 +94,6 @@ export default function Housing() {
         Item Seven
       </TabPanel> */}
     </Box>
+    </SinglePostLayout>
   );
 }
