@@ -1,4 +1,4 @@
-import NewAddTabs from "../Components/NewAdsTabs";
+import NewAddTabs from "../Features/NewAdsTabs";
 
 export default function AddNewAds () {
     return (

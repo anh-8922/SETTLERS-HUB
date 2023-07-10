@@ -8,7 +8,7 @@ export default function NavBar() {
             <div className="navigator">
                 <NavLink className="NavItems" to="/">HOME</NavLink>
                 <NavLink className="NavItems" to="/service">SERVICES</NavLink>
-                <NavLink className="NavItems">HOUSING</NavLink>
+                <NavLink to="/housing" className="NavItems">HOUSING</NavLink>
                 <NavLink to="/community" className="NavItems">COMMUNITY</NavLink>
             </div>
             <SearchBar/>
