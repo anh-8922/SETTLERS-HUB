@@ -9,7 +9,7 @@ import {FaInstagram} from 'react-icons/fa';
 import {FaTwitter} from 'react-icons/fa';
 import {FaLinkedin} from 'react-icons/fa';
 import {FaPinterestSquare} from 'react-icons/fa';
-import {BsMenuUp} from 'react-icons/bs';
+import {VscBook} from 'react-icons/vsc';
 
 export default function FooterMb() {
     return(
@@ -35,7 +35,7 @@ function FootNavigator() {
     return(
         
         <div style={{display:'flex', flexDirection:'column'}}>
-            <BsMenuUp style={{fontSize:'2.5rem'}} onClick={handleOpen}/>
+            <VscBook style={{fontSize:'3.5rem', cursor:'pointer'}} onClick={handleOpen}/>
                 <Modal
                 open={open}
                 onClose={handleClose}
