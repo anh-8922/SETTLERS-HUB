@@ -37,7 +37,8 @@ export default function PropertyDetails () {
 
     const {address, availableOn, baths, beds, category, date, description, houseType, latitude, longitude, owner, rate, image, letType, deposit, furnishedType, councilTaxBand} = data.selectedProperty
     const postCode = address[0].postcode 
-    const city = address[0].city               
+    const city = address[0].city    
+    const contact = owner.email           
 
     
 
@@ -95,6 +96,7 @@ export default function PropertyDetails () {
             <div className='funished-type'> Fernished Type: {furnishedType}</div>
             <div className='taxt-band'> Council Tax: Band {councilTaxBand}</div>
             <div className='description'> Description: {description}</div>
+            <div className='contact'> Contact: {contact}</div>
             <div className='advertised-on'> Advertised On: <TimeAgo date={date}/></div>
             
         <div className="map-container" ref={mapRef}>
