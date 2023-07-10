@@ -48,7 +48,7 @@ export default function AllRoutes () {
         <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
         <Route path='/housing' element= {<Housing/>} />
-        <Route path= '/singlepropertypage' element = {<SingleProperty/>} />
+        <Route path= '/singlepropertypage/:id' element = {<SingleProperty/>} />
       </Routes>
     )
 }
