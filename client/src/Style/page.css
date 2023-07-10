@@ -1,3 +1,71 @@
 .single-post {
     
 }
+
+/*==================*/
+/*==REGISGTER PAGE==*/
+/*==================*/
+
+.register-page {
+    display: flex;
+    flex-direction: row;
+}
+
+.register-ad{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100vh;
+    background-image: url(../Assets/bigben1.jpg);
+}
+
+.login-ad{
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 100vh;
+    background-image: url(../Assets/tfl.jpg);
+}
+
+
+.css-button-sliding-to-left--grey {
+    color: #fff;
+    padding: 0.8rem 2.5rem 0.8rem 1.5rem;
+    top: 5%;
+    left: 2%;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #495057;
+    color: #495057;
+  }
+  .css-button-sliding-to-left--grey:hover {
+    color: #fff;
+  }
+  .css-button-sliding-to-left--grey:hover:after {
+    width: 100%;
+  }
+  .css-button-sliding-to-left--grey:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    right: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #495057;
+  }
+
+#mui-test {
+    width: 30rem;
+    
+}
