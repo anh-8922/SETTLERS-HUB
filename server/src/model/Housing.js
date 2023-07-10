@@ -73,6 +73,20 @@ const housingSchema = new Schema ({
     feature:{
         type:String,
         default: false,
+    }, 
+    letType:{
+        type:String,
+        required:true
+    },
+    deposit:{
+        type:String
+    },
+    furnishedType:{
+        type:String,
+        required:true
+    },
+    councilTaxBand:{
+        type:String
     }
 })
 

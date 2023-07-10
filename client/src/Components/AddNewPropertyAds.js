@@ -14,8 +14,10 @@ export default function NewProperty() {
   console.log("Add property post ueseID:", userID)
   const [category, setCategory] = useState('')
   const [propertyType, setPropertyType] = useState('Flat')
+  const [letType, setLetType] = useState('Long Term')
   const [availableOn, setAvailableOn] = useState ('')
   const [rate, setRate] = useState('')
+  const [deposit, setDeposit] = useState('')
   const [addressline1, setAddressline1] = useState('')
   const [addressline2, setAddressline2] = useState('')
   const [city, setCity] = useState ('')
@@ -27,6 +29,8 @@ export default function NewProperty() {
   const [latitude, setLatitude] = useState ()
   const [description, setDescription] = useState ()
   const [featured, setFeatured] = useState (false)
+  const [councilTaxBand, setCouncilTaxBand] = useState('')
+  const [ furnishedType, setFurnishedType] = useState ('Furnished')
 
   // const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
 
@@ -38,6 +42,16 @@ export default function NewProperty() {
   const handlePropertyType = (e) => {
     setPropertyType(e.target.value)
     console.log("property type:", propertyType)
+  }
+
+  const handleLetType = (e) => {
+    setLetType(e.target.value)
+    console.log("let type:", letType)
+  }
+
+  const handleFernishedType = (e) => {
+    setFurnishedType(e.target.value)
+    console.log("furnished type:",furnishedType)
   }
 
   const handleDateChange = (e) => {
@@ -127,6 +141,8 @@ export default function NewProperty() {
       city, 
       postCode, 
       featured, 
+      letType,
+      furnishedType,
       selectedImages]);
 
   const handleSubmit = async (e) => {
@@ -143,6 +159,10 @@ export default function NewProperty() {
         formData.append("availableOn", availableOn)
         formData.append("longitude", longitude)
         formData.append("rate", rate)
+        formData.append("deposit", deposit)
+        formData.append("letType", letType)
+        formData.append("furnishedType", furnishedType)
+        formData.append("councilTaxBand", councilTaxBand)
         formData.append("latitude", latitude)
         selectedImages.forEach((file) => {
           formData.append('images', file)
@@ -218,6 +238,17 @@ export default function NewProperty() {
           </Form.Select>
          </Form.Group>
 
+         <Form.Group as={Col} controlId="formGridlettingType">
+         <Form.Label>Let type</Form.Label>
+          <Form.Select value={letType} 
+                       onChange={handleFernishedType}>
+            {/* <option >Select...</option> */}
+            <option value="Furnished">Furnished</option>
+            <option value="Unfurnished">Unfurnished</option>
+           
+          </Form.Select>
+         </Form.Group>
+
          <Form.Group as={Col} controlId="formGridBeds">
           <Form.Label>Beds</Form.Label>
           <Form.Control type="number" 
@@ -242,7 +273,23 @@ export default function NewProperty() {
                         onChange={handleDateChange}/>
         </Form.Group>
 
-        <Form.Group as={Col} controlId="formGridEmail">
+        </Row>
+         <Row className="mb-3">
+
+        <Form.Group as={Col} controlId="formGridlettingType">
+         <Form.Label>Let type</Form.Label>
+          <Form.Select value={letType} 
+                       onChange={handleLetType}>
+            {/* <option >Select...</option> */}
+            <option value="Long term">Long term</option>
+            <option value="Short term">Short term</option>
+            <option value="Leasehold ">Leasehold</option>
+            <option value="Freehold">Freehold</option>
+           
+          </Form.Select>
+         </Form.Group>
+
+        <Form.Group as={Col} controlId="formGridRate">
         <Form.Label>Rate</Form.Label>
         <InputGroup className="mb-3" as={Col} >
           <InputGroup.Text>£</InputGroup.Text>
@@ -254,6 +301,27 @@ export default function NewProperty() {
                         
          
           </InputGroup>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridDeposit">
+        <Form.Label>Deposit</Form.Label>
+        <InputGroup className="mb-3" as={Col} >
+          <InputGroup.Text>£</InputGroup.Text>
+          <Form.Control type="text" 
+                        placeholder="Deposit"
+                        value={deposit}
+                        onChange={(e) => setDeposit (e.target.value)} />
+                        
+         
+          </InputGroup>
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridTaxBand">
+        <Form.Label>Council Tax </Form.Label>
+        <Form.Control placeholder="Band"
+                      value={councilTaxBand}
+                      required = {true}
+                      onChange={(e) => setCouncilTaxBand(e.target.value)}/>
           </Form.Group>
 
          </Row>
