@@ -5,6 +5,9 @@ import Spinner from './Spinner'
 import PlaceIcon from '@mui/icons-material/Place'
 import Map from './Map'
 import { useRef, useState, useEffect } from 'react';
+import TimeAgo from 'react-timeago'
+import {FaBath} from "react-icons/fa"
+import {FaBed} from "react-icons/fa"
 
 export default function PropertyDetails () {
     const { id } = useParams()
@@ -32,9 +35,10 @@ export default function PropertyDetails () {
         return <Spinner />
       }
 
-    const {_id, address, availableOn, baths, beds, category, date, description, houseType, latitude, longitude, owner, rate, image } = data.selectedProperty
+    const {address, availableOn, baths, beds, category, date, description, houseType, latitude, longitude, owner, rate, image, letType, deposit, furnishedType, councilTaxBand} = data.selectedProperty
     const postCode = address[0].postcode 
-    const city = address[0].city               
+    const city = address[0].city    
+    const contact = owner.email           
 
     
 
@@ -71,9 +75,29 @@ export default function PropertyDetails () {
             </div>
             <div className="rate-property-details">
             {category === "Rent" ?  
-                    <div>£ {rate} PCM </div> : 
+                    <div>Rent: £ {rate} PCM </div> : 
                     <div>£ {rate}</div>}
             </div>
+
+            <div className='houseType'> Property Type: {houseType}</div>
+            <div>
+            {category === "Rent"  && (
+                <div className='deposit'> Deposit: £ {deposit}</div>
+            )
+            }
+           </div>
+                        
+            <div className='let-type'> Let Type: {letType}</div>
+            <div>
+                    <p> <FaBed/> {beds}</p>
+                    <p> <FaBath/> {baths}</p>
+            </div>
+            <div className='avialableOn'> Available On: {availableOn}</div>
+            <div className='funished-type'> Fernished Type: {furnishedType}</div>
+            <div className='taxt-band'> Council Tax: Band {councilTaxBand}</div>
+            <div className='description'> Description: {description}</div>
+            <div className='contact'> Contact: {contact}</div>
+            <div className='advertised-on'> Advertised On: <TimeAgo date={date}/></div>
             
         <div className="map-container" ref={mapRef}>
           

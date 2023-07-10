@@ -14,6 +14,10 @@ export const handleAddNewProperty = async (req, res) => {
                description,
                availableOn,
                houseType,
+               deposit,
+               furnishedType,
+               letType,
+               councilTaxBand,
                feature} = req.body
                const images = req.files
                console.log("images backend:", images)
@@ -33,6 +37,8 @@ export const handleAddNewProperty = async (req, res) => {
             !latitude ||
             !description ||
             !availableOn ||
+            !letType ||
+            ! furnishedType ||
             !houseType) {
             res.send({success: false, error: "All fields must fill"})
             return
@@ -64,7 +70,11 @@ export const handleAddNewProperty = async (req, res) => {
                description,
                availableOn,
                houseType,
-               feature
+               feature,
+               deposit,
+               furnishedType,
+               councilTaxBand,
+               letType,
         })).populate({
             path: "owner",
             select: "username email image firstName lastName",
