@@ -30,7 +30,7 @@ export function SpotlightsCard (props) {
         <div>
             <div key={_id} className="spotlights-parts" onClick={props.onHandleClick} style={{cursor:'pointer'}}>
                 <img className='spot-img' src={imagePath} alt={image} />
-                <h3 style={{fontWeight:"bold", fontSize: "1.3rem", textAlign:'left'}}>{title}</h3>
+                <h3 style={{fontWeight:"bold", fontSize: "1.2rem", textAlign:'left'}}>{title}</h3>
             </div>
         </div>
     )

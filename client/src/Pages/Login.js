@@ -17,6 +17,9 @@ import { useNavigate } from 'react-router-dom';
 import { useCookies } from "react-cookie";
 import { useState } from 'react';
 import {LogoRed} from '../Components/Logo';
+import {TiArrowBack} from 'react-icons/ti';
+import {NavLink} from 'react-router-dom';
+import '../Style/page.css';
 // import Alert from '@mui/material/Alert';
 // import AlertTitle from '@mui/material/AlertTitle';
 // import Stack from '@mui/material/Stack';
@@ -68,8 +71,15 @@ export default function SignIn() {
   };
 
   return (
-    
-    <ThemeProvider theme={defaultTheme}>
+    <div className="register-page">
+      <div className="login-ad">
+        <NavLink to='/'>
+          <button className="css-button-sliding-to-left--grey">
+            <TiArrowBack/><span style={{marginLeft:'0.6rem'}}>HOME</span>
+          </button>
+        </NavLink>
+      </div>
+      <ThemeProvider theme={defaultTheme}>
       {/* {error && (
               <Stack sx={{ width: '100%' }} spacing={2}>
               <Alert variant="filled" severity="error">
@@ -80,7 +90,7 @@ export default function SignIn() {
       )} */}
 
       
-      <Container component="main" maxWidth="xs">
+      <Container component="main" id='mui-test'>
         <CssBaseline />
         <Box
           sx={{
@@ -90,12 +100,11 @@ export default function SignIn() {
             alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
+
+          <Typography component="h1" variant="h5" style={{paddingBottom:'1rem'}}>
             <LogoRed />
           </Typography>
+          <Typography style={{fontSize:'2rem'}}>Hello friend, Join us today!</Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
@@ -143,7 +152,9 @@ export default function SignIn() {
         </Box>
       </Container>
     
-    </ThemeProvider>
+      </ThemeProvider>  
+    </div>
+    
    
   );
 }

@@ -1,17 +1,55 @@
-import Carousel from 'react-bootstrap/Carousel';
-import london1 from '../Assets/london1.jpg';
-import london2 from '../Assets/london2.jpg';
-import london3 from '../Assets/london3.jpg';
-import '../Style/component.css';
+import londonA from '../Assets/londonA.jpg';
+import '../Style/responsive.css';
+import logo1 from '../Assets/logo1.png';
+import MenuBarMb from './MenuBarMb';
+import {BsChevronCompactDown} from 'react-icons/bs';
+import { useRef } from 'react';
+import NewsTicker from 'react-advanced-news-ticker';
 import useFetchData from "../CustomHooks/useFetchData";
 import {SpotlightsCard} from "../Features/SummaryCard";
 import Spinner from "../Features/Spinner";
 import { useNavigate } from "react-router-dom";
-import NewsTicker from 'react-advanced-news-ticker';
-import {BsChevronCompactDown} from 'react-icons/bs';
-import { useRef } from 'react';
+import CategoryMb from './CategoryMb';
+import FooterMb from './FooterMb';
+import LayoutMB from './LayoutMB';
 
-export default function SpotLight() {
+export default function HomeMb() {
+    
+    return(
+        <>
+            <HeroSectionMb/>
+            <SpotLightMb/>
+            <CategoryMb/>
+            <FooterMb/>
+        </>
+    )
+}
+
+function HeroSectionMb() {
+    
+
+    return(
+        <div className="heroSectionMb" style={{
+            backgroundImage: `url("${londonA}")`, backgroundPosition:'contain',
+            textAlign:'center', 
+            height:'60vh'}}>
+            <div style={{display:'flex', flexDirection:'row', justifyContent:'space-between', padding:'2rem 3rem'}}>
+                <img src={logo1} style={{width:'40%', height:'70%'}}/>
+                <MenuBarMb/>
+            </div>
+            <h1 style={{
+                display:"flex", 
+                flexDirection:"column", 
+                justifyContent: "center", 
+                height:'50%',
+                color:"whitesmoke"}}>
+            Some Main Text Should Be Here
+            </h1>
+        </div>
+    )
+}
+
+function SpotLightMb() {
     const ref = useRef();
     const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
@@ -29,16 +67,8 @@ export default function SpotLight() {
       (item) => item.category.toLowerCase() === "spotlights"
     );
    console.log(spotlightCard)
-
     return(
-        <div className="spotlight">
-            <h1>What's on in London</h1>
-            <div className='spotlight-content'>
-                <CarouselA/>
-                <div className='spotlight-items'>
-                    <h2>Spotlights</h2>
-                   
-                    <div className='spotlight-news'>
+        <div className='spotlight-news'>
                         <NewsTicker style={{height:"30rem", listStyle:"none"}} 
                             rowHeight={150} 
                             ref={ref} 
@@ -59,35 +89,6 @@ export default function SpotLight() {
                         <BsChevronCompactDown style={{fontSize:"3rem", cursor:'pointer'}} 
                         onClick={() => { ref.current.moveNext(); ref.current.resetInterval(); }}/>
                     </div>
-                    
-                    
-                </div>
-            </div>
-            
-        </div>
     )
 }
-
-
-function CarouselA() {
-    return (
-      <Carousel fade style={{width: '70%', height:'100%'}}>
-        <Carousel.Item interval={500} style={{background: `url(${london1})`, height: '100%', backgroundSize: "cover"}}>
-            <div className='spotlight-slide'>
-                
-            </div>
-        </Carousel.Item>
-        <Carousel.Item interval={500} style={{background: `url(${london2})`, height: '100%', backgroundSize: "cover"}}>
-            <div className='spotlight-slide'>
-                
-            </div>
-        </Carousel.Item>
-        <Carousel.Item interval={500} style={{background: `url(${london3})`, height: '100%', backgroundSize: "cover"}}>
-            <div className='spotlight-slide'>
-                
-            </div>
-        </Carousel.Item>
-      </Carousel>
-    );
-  }
 
