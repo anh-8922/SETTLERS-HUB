@@ -143,3 +143,17 @@ export const handleListProperiesByUSer = async (req, res) => {
     }
 
 }
+
+export const handeleDeleteProperty = async (req, res) => {
+    console.log("Delete Property:", req.params)
+
+    try{
+        const deleteProperty = await House.findByIdAndDelete(req.params.id)
+        console.log('Delete Property:', deleteProperty)
+        res.send("Property deleted from the DB")
+    } catch (error) {
+        console.log('Error deleting Property:', error.message)
+        res.send('Error in deleting Property:', error.message)
+    }
+
+}

@@ -2,13 +2,20 @@ import useFetchData from "../CustomHooks/useFetchData"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import Table from 'react-bootstrap/Table'
 import Spinner from "./Spinner"
+import axios from 'axios'
+import { useEffect } from "react"
 
 export default function MyAds () {
     const userId = useGetUserID ()
     console.log("user from my ads:", userId)
-    const {data} = useFetchData(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`)
+    const {data, refetchData} = useFetchData(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`)
     console.log("Ads by user:", data)
 
+    useEffect(() =>{
+        if (data && data.adverticedPropertyByUser){
+            console.log("New data:", data)
+        }
+    },[data])
 
     if (!data || !data.adverticedPropertyByUser) {
         return <Spinner />
@@ -16,6 +23,20 @@ export default function MyAds () {
 
     const properties = data.adverticedPropertyByUser
     console.log("properties:", properties)
+
+
+    
+
+    const handleDeleteProperty= async(id) => {
+        console.log("id:", id)
+        try {
+            await axios.delete(`http://localhost:5000/housing/delete/${id}`)
+            refetchData()
+          } catch (error) {
+            console.error("Error deleting property:", error.message);
+          }
+       
+      }
   
     
     return (
@@ -51,7 +72,7 @@ export default function MyAds () {
                 <td>{deposit}</td>
                 <td>{availableOn}</td>
                 <td><button>Edit</button></td>
-                <td><button>Delete</button></td>
+                <td><button onClick={() => handleDeleteProperty(_id)}>Delete</button></td>
               </tr>
             )
           })}
