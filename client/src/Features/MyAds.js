@@ -8,7 +8,7 @@ import { useEffect } from "react"
 export default function MyAds () {
     const userId = useGetUserID ()
     console.log("user from my ads:", userId)
-    const {data, refetchData} = useFetchData(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`)
+    const {data} = useFetchData(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`)
     console.log("Ads by user:", data)
 
     useEffect(() =>{
@@ -31,7 +31,7 @@ export default function MyAds () {
         console.log("id:", id)
         try {
             await axios.delete(`http://localhost:5000/housing/delete/${id}`)
-            refetchData()
+            
           } catch (error) {
             console.error("Error deleting property:", error.message);
           }
