@@ -126,20 +126,20 @@ export const handleListOnePropery = async (req, res) => {
 
 }
 
-// export const handleListProperiesByUSer = async (req, res) => {
-//     try{
-//         const id = req.params.id
+export const handleListProperiesByUSer = async (req, res) => {
+    try{
+        const owner = req.query.owner
+        console.log("owner:", owner)
 
-//         if (!id) return res.send({ success: false, error: "Property id is not provided" });
+        if (!owner) return res.send({ success: false, error: "User id is not provided" });
 
-//         const selectedProperty = await House.findById(id)
-//         .populate({path: "owner", select:"username email firstName lastName"})
-//         .select("-__v")
-//         console.log("Selected property:" , selectedProperty)
-//         res.send({success: true, selectedProperty})
-//     } catch (error) {
-//         console.log('Error Selected property:', error.message)
-//         res.send('Error in Selected property' + error.message)
-//     }
+        const adverticedPropertyByUser = await House.find({owner: owner})
+        .select("address category baths beds rate deposit availableOn letType")
+        console.log("Advertised property:" , adverticedPropertyByUser)
+        res.send({success: true, adverticedPropertyByUser})
+    } catch (error) {
+        console.log('Error Adverticed property:', error.message)
+        res.send('Error in Adverticed property' + error.message)
+    }
 
-// }
+}
