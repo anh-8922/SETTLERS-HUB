@@ -71,7 +71,7 @@ export default function MyAds () {
                 <td>{rate}</td>
                 <td>{deposit}</td>
                 <td>{availableOn}</td>
-                <td><button>Edit</button></td>
+                <td><button onClick={() => handleDeleteProperty(_id)}>Edit</button></td>
                 <td><button onClick={() => handleDeleteProperty(_id)}>Delete</button></td>
               </tr>
             )

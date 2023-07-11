@@ -9,6 +9,8 @@ import TimeAgo from 'react-timeago'
 import {FaBath} from "react-icons/fa"
 import {FaBed} from "react-icons/fa"
 
+
+
 export default function PropertyDetails () {
     const { id } = useParams()
     const [center, setCenter] = useState({ lat: 51.5072, lng: -0.1876 })
@@ -95,7 +97,8 @@ export default function PropertyDetails () {
             <div className='avialableOn'> Available On: {availableOn}</div>
             <div className='funished-type'> Fernished Type: {furnishedType}</div>
             <div className='taxt-band'> Council Tax: Band {councilTaxBand}</div>
-            <div className='description'> Description: {description}</div>
+            <div>Description : </div>
+            <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'sans-serif', fontSize: '1rem', margin: "2rem 0"}}className='description'>{description}</pre>
             <div className='contact'> Contact: {contact}</div>
             <div className='advertised-on'> Advertised On: <TimeAgo date={date}/></div>
             
@@ -109,6 +112,14 @@ export default function PropertyDetails () {
                  text={"Porperty"}
                 />
         </div>  
+        <Link to="/housing">
+            <button style={{
+                          fontSize:'1.5rem', 
+                          backgroundColor:'pink', 
+                          marginLeft:'5rem', 
+                          padding:'0.8rem',
+                          borderRadius:'0.5rem'}}>Back to Housing</button>
+          </Link>
         
         </div>
     )

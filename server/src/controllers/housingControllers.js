@@ -157,3 +157,8 @@ export const handeleDeleteProperty = async (req, res) => {
     }
 
 }
+
+export const handleEditProperties = async (req, res) => {
+    
+
+}
