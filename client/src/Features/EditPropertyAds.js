@@ -11,10 +11,13 @@ import axios from 'axios';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import useFetchData from '../CustomHooks/useFetchData';
 
 
-export default function NewProperty() {
+export default function EditProperties() {
+  const {id} = useParams()
+  console.log("edit property id:", id)
   const userID = useGetUserID ()
   console.log("Add property post ueseID:", userID)
   const [ cookies, _] = useCookies(["access_token"])
@@ -40,6 +43,54 @@ export default function NewProperty() {
   const [ furnishedType, setFurnishedType] = useState ('Furnished')
   const [isFormSubmit, setFormSubmitted] = useState (false)
   const navigate = useNavigate()
+
+  const {data, error} = useFetchData(`http://localhost:5000/housing/listoneproperty/${id}`)
+  console.log("data to edit:", data)
+
+  useEffect(() => {
+    if (data && data.selectedProperty
+        ) {
+      const {address,  
+        rate, 
+        beds, 
+        baths, 
+        category, 
+        longitude, 
+        latitude,
+        description,
+        availableOn,
+        houseType,
+        deposit,
+        furnishedType,
+        letType,
+        councilTaxBand,
+        feature} = data.selectedProperty
+        const addressline1= address[0].addressline1
+        const addressline2= address[0].addressline2
+        const city = address[0].city
+        const postCode = address[0]. postcode
+      setCategory(category)
+      setPropertyType(houseType)
+      setLetType(letType)
+      setBeds(beds)
+      setBaths(baths)
+      setAvailableOn(availableOn)
+      setAddressline1(addressline1)
+      setAddressline2(addressline2)
+      setCity(city)
+      setPostCode(postCode)
+      setCouncilTaxBand(councilTaxBand)
+      setDeposit(deposit)
+      setRate(rate)
+      setDescription(description)
+      setFeatured(feature)
+      setFurnishedType(furnishedType)
+      setLongitude(longitude)
+      setLatitude(latitude)
+   
+     
+    }
+  }, [data]);
 
   // const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
 
@@ -184,13 +235,14 @@ export default function NewProperty() {
 
         console.log("formData:", formData)
         try {
-          const response = await axios.post("/housing/addnewproperty", formData, {
+          const response = await axios.put(`http://localhost:5000/housing/edit/id=${id}`, formData, {
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",
             },
           });
-    
+          
           setFormSubmitted(true);
+          console.log("form data", formData)
           console.log("Response:", response);
           
           // navigate("/user");
@@ -251,7 +303,7 @@ export default function NewProperty() {
         </Form.Group>
 
         <Form.Group as={Col} controlId="formGridlettingType">
-        <Form.Label>Let type</Form.Label>
+        <Form.Label>Furnished type</Form.Label>
          <Form.Select value={letType} 
                       onChange={handleFernishedType}>
            {/* <option >Select...</option> */}
@@ -385,6 +437,7 @@ export default function NewProperty() {
        <Form.Control type="file" 
                      multiple
                      required = {true}
+                     name="images"
                      onChange={handleImageChange} />
      </Form.Group>
 
@@ -436,7 +489,7 @@ export default function NewProperty() {
         <Stack sx={{ width: '30%' }} spacing={2} onClick={() => navigate("/profile")}>
               <Alert variant="filled" severity="success">
                 <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>
-                <strong style={{ color: 'white' }}>Posted Successfully!</strong>
+                <strong style={{ color: 'white' }}>Edited Successfully!</strong>
               </Alert>
               </Stack>
         </div>
