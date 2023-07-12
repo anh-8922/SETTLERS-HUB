@@ -235,7 +235,8 @@ export default function EditProperties() {
 
         console.log("formData:", formData)
         try {
-          const response = await axios.put(`http://localhost:5000/housing/edit/id=${id}`, formData, {
+          const response = await axios.put(`http://localhost:5000/housing/edit?id=${id}`, formData, {
+          withCredentials: true,
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",
             },
