@@ -3,10 +3,10 @@ import '../Style/component.css';
 export default function NewsLetter() {
     return(
         <div className="newsletter"> 
-            <h1>NEWSLETTER</h1>
+            
             <div className='newsletter-content'>
                 <div className="N-body" style={{width: "15%"}}>
-                    <div className="N-child-1"></div>
+                    <div className="N-child-1" style={{borderTopLeftRadius:'1rem'}}></div>
                     <div id="child-1a">
                         <h5>NEWSLETTER</h5>
                         <h2>SETTLER HUB</h2>
@@ -29,7 +29,7 @@ export default function NewsLetter() {
                     </div>
                 </div>
                 <div className="N-body" style={{width: "25%"}}>
-                    <div className="N-child-1"></div>
+                    <div className="N-child-1" style={{borderTopRightRadius:'1rem'}}></div>
                     <div></div>
                 </div>
                 
