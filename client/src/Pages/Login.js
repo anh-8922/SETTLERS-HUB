@@ -18,6 +18,7 @@ import { useCookies } from "react-cookie";
 import { useState } from 'react';
 import {LogoRed} from '../Components/Logo';
 import {TiArrowBack} from 'react-icons/ti';
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import {NavLink} from 'react-router-dom';
 import '../Style/page.css';
 // import Alert from '@mui/material/Alert';
@@ -32,6 +33,8 @@ export default function SignIn() {
 
   const [_, setCookies] = useCookies(["access_token"])
   const [error, setError] = useState("")
+  const [showPass, setShowPass] = useState(false)
+
   const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -69,6 +72,8 @@ export default function SignIn() {
       
     }
   };
+
+
 
   return (
     <div className="register-page">
@@ -115,15 +120,28 @@ export default function SignIn() {
               name="username"
               autoFocus
             />
-            <TextField
+         
+            <TextField style={{backgroundColor: 'lightblue'}}
               margin="normal"
               required
               fullWidth
               name="password"
               label="Password"
-              type="password"
+              type={showPass ? "text" : "password"}
               id="password"
+              InputProps={{
+                endAdornment: (
+                  <span onClick={() => setShowPass((prev) => !prev)}>
+                    {showPass ? (
+                      <AiOutlineEyeInvisible />
+                    ) : (
+                      <AiOutlineEye />
+                    )}
+                  </span>
+                ),
+              }}
             />
+          
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"

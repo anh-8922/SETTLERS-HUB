@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import InputGroup from 'react-bootstrap/InputGroup';
 import { useState, useEffect } from 'react';
+import { useCookies } from "react-cookie"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from 'axios';
 
@@ -12,6 +13,8 @@ import axios from 'axios';
 export default function NewProperty() {
   const userID = useGetUserID ()
   console.log("Add property post ueseID:", userID)
+  const [ cookies, _] = useCookies(["access_token"])
+  console.log("acess:", cookies)
   const [category, setCategory] = useState('')
   const [propertyType, setPropertyType] = useState('Flat')
   const [letType, setLetType] = useState('Long Term')
@@ -150,6 +153,7 @@ export default function NewProperty() {
 
     const formData = new FormData()
         formData.append("owner", userID )
+        formData.append("cookies", cookies )
         formData.append("category", category)
         formData.append("address[0][addressline1]", addressline1)
         formData.append("address[0][addressline2]", addressline2)

@@ -3,6 +3,7 @@ import cloudinary from "cloudinary"
 
 export const handleAddNewProperty = async (req, res) => {
     try{
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" });
         let {  address,  
                rate, 
                beds, 
@@ -133,6 +134,8 @@ export const handleListProperiesByUSer = async (req, res) => {
 
         if (!owner) return res.send({ success: false, error: "User id is not provided" });
 
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" });
+
         const adverticedPropertyByUser = await House.find({owner: owner})
         .select("address category baths beds rate deposit availableOn letType")
         console.log("Advertised property:" , adverticedPropertyByUser)
@@ -148,6 +151,8 @@ export const handeleDeleteProperty = async (req, res) => {
     console.log("Delete Property:", req.params)
 
     try{
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" });
+
         const deleteProperty = await House.findByIdAndDelete(req.params.id)
         console.log('Delete Property:', deleteProperty)
         res.send("Property deleted from the DB")
@@ -159,6 +164,6 @@ export const handeleDeleteProperty = async (req, res) => {
 }
 
 export const handleEditProperties = async (req, res) => {
-    
+
 
 }
