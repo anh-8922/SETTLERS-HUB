@@ -23,6 +23,7 @@ import Housing from "./Pages/HousingPage";
 import SingleProperty from "./SubPage/SinglePropertyPage";
 import ProtectedLayout from "./Layout/ProtectedLayout";
 import LoginLayout from "./Layout/LoginLayout";
+import EditProperties from "./Features/EditPropertyAds";
 
 
 
@@ -64,6 +65,7 @@ export default function AllRoutes () {
       <Route element={<ProtectedLayout/>}>
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
+        <Route path='/editpropertyad/:id' element={<EditProperties/>}/>
         <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
       </Route>
 
