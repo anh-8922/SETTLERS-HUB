@@ -6,14 +6,22 @@ import userRoutes from './routes/userRoutes.js'
 import guideRoutes from './routes/guideRoutes.js'
 import communityRoutes from './routes/communityRoutes.js'
 import housingRoutes from './routes/housingRoutes.js'
+import cookieParser from "cookie-parser"
 
 dotenv.config();
 dbConnect();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+  }))
+app.use(cookieParser())
 app.use(express.json());
 app.use(express.urlencoded ({extended : false}));
+
+
 
 app.use('/guide', guideRoutes)
 app.use('/user', userRoutes)
