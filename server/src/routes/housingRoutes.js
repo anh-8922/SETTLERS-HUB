@@ -16,6 +16,6 @@ router.get ('/listproperties', handleListProperties)
 router.get ('/listoneproperty/:id', handleListOnePropery)
 router.get ('/listpropertiesbyuser', auth, handleListProperiesByUSer)
 router.delete('/delete/:id', auth, handeleDeleteProperty)
-router.put('/edit',auth,  upload.array('image', 5), handleEditProperties)
+router.put('/edit', auth, upload.array('images', 5), handleEditProperties)
 
 export default router

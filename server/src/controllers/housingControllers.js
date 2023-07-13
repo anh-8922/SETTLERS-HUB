@@ -39,7 +39,7 @@ export const handleAddNewProperty = async (req, res) => {
             !description ||
             !availableOn ||
             !letType ||
-            ! furnishedType ||
+            !furnishedType ||
             !houseType) {
             res.send({success: false, error: "All fields must fill"})
             return
@@ -163,7 +163,202 @@ export const handeleDeleteProperty = async (req, res) => {
 
 }
 
+// export const handleEditProperties = async (req, res) => {
+//     const id = req.query.id
+//     console.log("Property to edit:", id)
+//     console.log("User:", req.user);
+//     try{
+//         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+//         let {address,  
+//             rate, 
+//             beds, 
+//             baths, 
+//             category, 
+//             owner,
+//             longitude, 
+//             latitude,
+//             description,
+//             availableOn,
+//             houseType,
+//             deposit,
+//             furnishedType,
+//             letType,
+//             councilTaxBand,
+//             feature} = req.body
+//             const images = req.files
+//             console.log("images backend:", images)
+     
+//      if (!owner) {
+//          res.send({success: false, error: "Register your self to create advertiestments"})
+//          return
+//      }
+
+//      if (!address ||
+//          !images,  
+//          !rate ||
+//          !beds ||
+//          !baths ||
+//          !category||
+//          !longitude ||
+//          !latitude ||
+//          !description ||
+//          !availableOn ||
+//          !letType ||
+//          ! furnishedType ||
+//          !houseType) {
+//          res.send({success: false, error: "All fields must fill"})
+//          return
+//      }
+
+//      const uploadedImages = [];
+//      const uploadPromises = images.map((image) =>
+//        cloudinary.uploader.upload(image.path)
+//      );
+
+//      const uploadedResults = await Promise.all(uploadPromises);
+//      console.log("uploaded result:", uploadedResults)
+
+//      uploadedResults.forEach((result) => {
+//          uploadedImages.push(result.secure_url);
+//        })
+
+    
+//      const editedPropertyPost = await (await House.findByIdAndUpdate( id, {
+//             address,
+//             image: uploadedImages,
+//             rate, 
+//             beds, 
+//             baths, 
+//             category, 
+//             owner, 
+//             longitude, 
+//             latitude,
+//             description,
+//             availableOn,
+//             houseType,
+//             feature,
+//             deposit,
+//             furnishedType,
+//             councilTaxBand,
+//             letType,
+//      },
+//      { new: true }))
+        
+
+//         if (!id) return res.send({ success: false, error: "Property id is not provided" })
+//         console.log("property edited:" , editedPropertyPost)
+//         res.send("Property updated in the DB")
+
+//     } catch (error) {
+//         console.log("error in edit property:", error.message)
+//         res.send({success: false, error: error.message})
+//     }
+
+
+// }
+
 export const handleEditProperties = async (req, res) => {
-
-
-}
+    const id = req.query.id
+    console.log("Property to edit:", id)
+    console.log("User:", req.user)
+    try {
+      if (!req.user) {
+        return res.status(401).send({ success: false, error: "Unauthorized" })
+      }
+      
+      let {
+        address,
+        rate,
+        beds,
+        baths,
+        category,
+        owner,
+        longitude,
+        latitude,
+        description,
+        availableOn,
+        houseType,
+        deposit,
+        furnishedType,
+        letType,
+        councilTaxBand,
+        feature
+      } = req.body
+  
+      const images = req.files
+      console.log("images backend:", images)
+  
+      if (!owner) {
+        return res
+          .status(400)
+          .send({ success: false, error: "Register yourself to create advertisements" })
+      }
+  
+      if (
+        !address ||
+        !images ||
+        !rate ||
+        !beds ||
+        !baths ||
+        !category ||
+        !longitude ||
+        !latitude ||
+        !description ||
+        !availableOn ||
+        !letType ||
+        !furnishedType ||
+        !houseType
+      ) {
+        return res
+          .status(400)
+          .send({ success: false, error: "All fields must be filled" });
+      }
+  
+      const uploadedImages = [];
+      const uploadPromises = images.map((image) =>
+        cloudinary.uploader.upload(image.path)
+      );
+  
+      const uploadedResults = await Promise.all(uploadPromises);
+      console.log("uploaded result:", uploadedResults);
+  
+      uploadedResults.forEach((result) => {
+        uploadedImages.push(result.secure_url);
+      });
+  
+      const editedPropertyPost = await House.findByIdAndUpdate(
+        id, 
+        {
+          address,
+          image: uploadedImages,
+          rate,
+          beds,
+          baths,
+          category,
+          owner,
+          longitude,
+          latitude,
+          description,
+          availableOn,
+          houseType,
+          feature,
+          deposit,
+          furnishedType,
+          councilTaxBand,
+          letType,
+        },
+        { new: true }
+      );
+  
+      if (!id) {
+        return res.status(400).send({ success: false, error: "Property ID is not provided" })
+      }
+  
+      console.log("property edited:", editedPropertyPost)
+      res.status(200).send("Property updated in the DB")
+    } catch (error) {
+      console.log("error in edit property:", error.message)
+      res.status(500).send({ success: false, error: error.message })
+    }
+  };
+  
