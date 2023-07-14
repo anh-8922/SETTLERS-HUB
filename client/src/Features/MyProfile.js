@@ -45,8 +45,9 @@ export default function MyProfile () {
                         
            ):(
             <div>
-                Hi profile update
-                <button onClick={handleSaveProfile}>Update</button>
+                <button onClick={handleSaveProfile}>Save</button>
+                
+
             </div>
            ) }
         </div>
