@@ -35,9 +35,25 @@ const userSchema = new Schema ({
       resetPasswordExpire: Date,
       image: String,
 
-      address: {
-        type: String,
-      },
+      address: [{
+        addressline1:{
+          type: String,
+        },
+        addressline2:{
+          type: String,
+        },
+        city:{
+          type: String,
+        },
+        postcode:{
+          type: String,
+        }
+        
+      }],
+      gender:String,
+      telephone:String,
+      about: String,
+
     })
 
 

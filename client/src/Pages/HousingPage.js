@@ -8,6 +8,7 @@ import {useState} from "react"
 import RentedHouses from '../SubPage/RentedHouses';
 import PropertyToSale from '../SubPage/PropertyToSale';
 import SinglePostLayout from '../Layout/SinglePostLayout';
+import Filters from "../Features/Filters"
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -72,10 +73,12 @@ export default function Housing() {
       </Tabs>
       <TabPanel value={value} index={0}>
         <h1>Properties for Sale</h1>
+        <Filters/>
         <PropertyToSale />
       </TabPanel>
       <TabPanel value={value} index={1}>
        <h1>Properties to Rent</h1> 
+       <Filters/>
        <RentedHouses/>
       </TabPanel>
       {/* <TabPanel value={value} index={2}>
