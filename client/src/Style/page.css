@@ -69,3 +69,68 @@
     width: 30rem;
     
 }
+
+/*==================*/
+/*==HOUSING PAGE==*/
+/*==================*/
+
+.housing-content {
+  padding: 2rem 10rem;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-column{
+  border-radius: 1rem;
+  width: max-content;
+  border: 1rem solid #7A6969;
+  margin-right: 2rem;
+  background-color: #7A6969;
+}
+
+#left-tabs-example-tab-second {
+  font-size: 1.5rem;
+  font-family: var(--font-second);
+  color: whitesmoke;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+#left-tabs-example-tab-first {
+  font-size: 1.5rem;
+  font-family: var(--font-second);
+  color: whitesmoke;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+#left-tabs-example-tab-first.nav-link.active {
+  background-color: var(--platinum);
+  color: var(--Red-Pictorial-Carmine);
+  font-weight: bold;
+}
+#left-tabs-example-tab-second.nav-link.active {
+  background-color: var(--platinum);
+  color: var(--Red-Pictorial-Carmine);
+  font-weight: bold;
+}
+
+/*==================*/
+/*==COMMUNITY PAGE==*/
+/*==================*/
+
+.community-content{
+  display: flex;
+  flex-direction: row;
+  
+}
+.forum {
+  width: 100%;
+  background-color: #495057;
+}
+.communityRight {
+  display: flex;
+  flex-direction: row;
+}

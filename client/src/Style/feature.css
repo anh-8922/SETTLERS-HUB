@@ -131,3 +131,32 @@
     margin-right: 1rem;
     border-radius: 0.3rem;
 }
+
+/*====================================*/
+/*~~~~SUMMARY CARD FOR HOUSING SECTION~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.housing-summary-card {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+}
+.house-card {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 0;
+    border-bottom: 2px solid grey;
+    gap: 2rem;
+    width: 50rem;
+}
+
+/*====================================*/
+/*~~~~COMMUNITY LIST ~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+.community_post_list {
+    background-color: pink;
+    width: 100%;
+    padding: 2rem 2rem 2rem 10rem;
+}

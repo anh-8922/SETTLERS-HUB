@@ -3,7 +3,8 @@ import NavBar from "../Features/NavBar";
 import Header from './Header';
 import londonA from '../Assets/londonA.jpg';
 import service1 from '../Assets/service1.jpg';
-import redphone from '../Assets/redphone.jpg'
+import trafargal from '../Assets/trafargal.jpg';
+import indoor from '../Assets/indoor.jpg';
 
 export default function HeroSectionA() {
     return(
@@ -41,7 +42,24 @@ export function HeroSectionB() {
 
 export function HeroSectionC() {
     return (
-        <div className="heroSection" style={{backgroundImage: `url("${redphone}")`}}>
+        <div className="heroSection" style={{backgroundImage: `url("${trafargal}")`, backgroundPosition:'center'}}>
+            <Header/>
+            <NavBar/>
+            <h1 style={{
+                display:"flex", 
+                flexDirection:"column", 
+                justifyContent: "center", 
+                height:"100%",
+                color:"whitesmoke"}}>
+            Some Main Text Should Be Here
+            </h1>
+        </div>
+    )
+}
+
+export function HeroSectionD() {
+    return (
+        <div className="heroSection" style={{backgroundImage: `url("${indoor}")`}}>
             <Header/>
             <NavBar/>
             <h1 style={{

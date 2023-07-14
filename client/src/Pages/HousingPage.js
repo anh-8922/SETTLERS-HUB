@@ -1,99 +1,45 @@
-
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box'
-import {useState} from "react"
+import '../Style/page.css';
+import Col from 'react-bootstrap/Col';
+import Nav from 'react-bootstrap/Nav';
+import Row from 'react-bootstrap/Row';
+import Tab from 'react-bootstrap/Tab';
 import RentedHouses from '../SubPage/RentedHouses';
 import PropertyToSale from '../SubPage/PropertyToSale';
-import SinglePostLayout from '../Layout/SinglePostLayout';
-
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
+import { HeroSectionD } from '../Components/HeroSection';
+import MainLayout from '../Layout/MainLayout';
+import house1 from '../Assets/house1.jpg';
+import house2 from '../Assets/house2.jpg';
+import NewsLetter from "../Components/NewsLetter";
 
 export default function Housing() {
-  const [value, setValue] = useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
-    <SinglePostLayout>
-    <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex' }}
-    >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        three={{ borderRight: 1, borderColor: 'divider' }}
-      >
-        <Tab label="Sale" {...a11yProps(0)} />
-        <Tab label="Rent" {...a11yProps(1)} />
-        {/* <Tab label="Item Three" {...a11yProps(2)} />
-        <Tab label="Item Four" {...a11yProps(3)} />
-        <Tab label="Item Five" {...a11yProps(4)} />
-        <Tab label="Item Six" {...a11yProps(5)} />
-        <Tab label="Item Seven" {...a11yProps(6)} /> */}
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        <h1>Properties for Sale</h1>
-        <PropertyToSale />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-       <h1>Properties to Rent</h1> 
-       <RentedHouses/>
-      </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel> */}
-    </Box>
-    </SinglePostLayout>
+    <MainLayout>
+      <HeroSectionD/>
+      <div className='housing-content'>
+      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+      <Row>
+        <Col sm={3}>
+          <Nav variant="pills" className="flex-column">
+            <Nav.Item>
+              <Nav.Link  eventKey="first"><img src={house2} style={{width:'15rem', borderRadius:'0.5rem'}}/>PROPERTY FOR RENT</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link className='house-tabs' eventKey="second"><img src={house1} style={{width:'15rem', borderRadius:'0.5rem'}}/>PROPERTY FOR SALE</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Col>
+        <Col sm={9}>
+          <Tab.Content>
+            <Tab.Pane eventKey="first" ><h2 style={{paddingLeft:'2rem'}}>This is where we list rent property</h2><RentedHouses/></Tab.Pane>
+            <Tab.Pane eventKey="second"><h2 style={{paddingLeft:'2rem'}}>This is where we list sale property</h2><PropertyToSale/></Tab.Pane>
+          </Tab.Content>
+        </Col>
+      </Row>
+    </Tab.Container>
+      </div>
+      <NewsLetter/>
+   
+    </MainLayout>
   );
 }

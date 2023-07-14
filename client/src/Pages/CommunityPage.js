@@ -3,6 +3,9 @@ import {HeroSectionC} from "../Components/HeroSection";
 import MainLayout from "../Layout/MainLayout";
 import ListCommunityPost from "../Features/CommunityPostsList";
 import AddCommunitypost from '../Features/AddCommunityPost';
+import {SpotlightNews} from "../Components/SpotLight";
+
+import '../Style/page.css'
 
 export default function HomePage() {
     const navigate = useNavigate()
@@ -13,8 +16,18 @@ export default function HomePage() {
     return (
         <MainLayout>
             <HeroSectionC/>
-            <button onClick={handleAddPostPage}>Add New Post</button>
-            <ListCommunityPost/>
+            <div className="community-content">
+
+                <div className="forum">
+                    <button onClick={handleAddPostPage}>Add New Post</button>
+                    <div className="communityRight">
+                        <ListCommunityPost/>
+                        <SpotlightNews/>
+                    </div>
+                    
+                </div>
+                
+            </div>
             <AddCommunitypost/>
         </MainLayout>
     )

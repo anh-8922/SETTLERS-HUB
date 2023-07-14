@@ -1,5 +1,6 @@
 import useFetchData from "../CustomHooks/useFetchData"
 import TimeAgo from 'react-timeago'
+import '../Style/feature.css'
 
 export default function ListCommunityPost () {
     const {data,error} = useFetchData(`http://localhost:5000/community/listpost`)
