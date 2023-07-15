@@ -9,6 +9,7 @@ import RentedHouses from '../SubPage/RentedHouses';
 import PropertyToSale from '../SubPage/PropertyToSale';
 import SinglePostLayout from '../Layout/SinglePostLayout';
 import MyAds from "../Features/MyAds";
+import MyProfile from "../Features/MyProfile";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -76,6 +77,7 @@ export default function ProfilePage ()  {
       </Tabs>
       <TabPanel value={value} index={0}>
         <h1>Your Profile</h1>
+        <MyProfile/>
         
       </TabPanel>
       <TabPanel value={value} index={1}>

@@ -1,5 +1,4 @@
-// import { useContext } from "react";
-// import { AppContext } from "../components/Context";
+
 import { Outlet, Navigate } from "react-router-dom";
 import { useGetUserID } from "../CustomHooks/useGetUserID";
 
