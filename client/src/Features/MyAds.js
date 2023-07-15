@@ -17,7 +17,7 @@ export default function MyAds() {
     if (cookies.access_token) {
       fetchData();
     }
-  }, [cookies.access_token]);
+  }, [cookies.access_token ]);
 
   const fetchData = async () => {
     try {
@@ -44,6 +44,8 @@ export default function MyAds() {
       await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
         withCredentials: true
       });
+    fetchData()
+    
     } catch (error) {
       console.error("Error deleting property:", error.message);
     }

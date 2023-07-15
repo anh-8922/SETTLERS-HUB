@@ -155,7 +155,7 @@ export const handeleDeleteProperty = async (req, res) => {
 
         const deleteProperty = await House.findByIdAndDelete(req.params.id)
         console.log('Delete Property:', deleteProperty)
-        res.send("Property deleted from the DB")
+        res.send({ success: true, deleteProperty})
     } catch (error) {
         console.log('Error deleting Property:', error.message)
         res.send('Error in deleting Property:', error.message)
