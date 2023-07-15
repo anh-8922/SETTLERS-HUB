@@ -14,6 +14,7 @@ import Stack from '@mui/material/Stack';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchData from '../CustomHooks/useFetchData';
 import profile from "../Assets/profile.png"
+import Spinner from '../Features/Spinner';
 
 export default function EditProfile () {
     const userID = useGetUserID ()
@@ -33,14 +34,59 @@ export default function EditProfile () {
         file: null,
     })
     const [isFormSubmit, setFormSubmitted] = useState (false)
+    const {data} = useFetchData(`http://localhost:5000/user/listoneuser/${userID}`)
+    console.log("data:", data)
 
     const navigate = useNavigate ()
-    const handleGender = (e) => {
-        setGender(e.target.value)
-        console.log("Gendery:", gender)
-      }
-    console.log("title:", title)
+    
 
+    useEffect(() => {
+      console.log("gender:", gender);
+    }, [
+      userID,
+      gender,
+      title,
+      about,
+      telephone,
+      addressline1,
+      addressline2,
+      city,
+      postCode,
+    ]);
+    
+    useEffect(() => {
+      if (data && data.selectedUser) {
+        const {
+          gender,
+          title,
+          address,
+          image,
+          telephone,
+          about,
+        } = data.selectedUser;
+        const addressline1 = address[0].addressline1;
+        const addressline2 = address[0].addressline2;
+        const city = address[0].city;
+        const postCode = address[0].postcode;
+        setGender(gender);
+        setTitle(title);
+        setAddressline1(addressline1);
+        setAddressline2(addressline2);
+        setCity(city);
+        setPostCode(postCode);
+        setImage(`https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`);
+        setTelephone(telephone);
+        setAbout(about);
+      }
+    }, [data]);
+
+
+
+    const handleGender = (e) => {
+      setGender(e.target.value)
+      console.log("Gendery:", gender)
+    }
+    console.log("title:", title)
     const handleImageChange = (e) => {
         console.log("the file is", e.currentTarget.files[0]);
     
@@ -56,19 +102,6 @@ export default function EditProfile () {
         });
       };
 
-      useEffect(() => {
-        console.log("gender:", gender)
- 
-      }, [userID,
-          gender, 
-          title, 
-          about, 
-          telephone, 
-          addressline1, 
-          addressline2, 
-          city, 
-          postCode, 
-        ]);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -83,7 +116,7 @@ export default function EditProfile () {
         formData.append("title", title)
         formData.append("telephone", telephone)
         formData.append("about", about)
-        formData.append("image", image)
+        formData.append("image", image.file || image)
         
 
         console.log("formData:", formData)
@@ -113,18 +146,6 @@ export default function EditProfile () {
         <div>
       { !isFormSubmit ? (
         <Form onSubmit={handleSubmit}>
-        {/* <div>
-        <label className="cursorointer">
-          Select your Profile image
-          <input
-            id="file"
-            type="file"
-            className="hidden"
-            onChange={handleImageChange}
-            accept="image/png, image/jpeg"
-          />
-        </label>
-      </div> */}
         <Form.Group controlId="formFile" className="mb-3">
             <Form.Label>Select your Profile image</Form.Label>
             <Form.Control type="file" 
@@ -134,7 +155,7 @@ export default function EditProfile () {
         <img
           className="Upladed-image"
           style={{width:"150px", height:"150px"}}
-          src={image.url || profile}
+          src={image.file ? URL.createObjectURL(image.file) :image }
           alt="profile"
         />
       </div>
@@ -213,7 +234,7 @@ export default function EditProfile () {
        <Form.Label>Address</Form.Label>
        <Form.Control placeholder="Apartment, studio, or floor"
                      value={addressline1}
-                     required = {true}
+                    //  required = {true}
                      onChange={(e) => setAddressline1(e.target.value)}/>
      </Form.Group>
 
@@ -221,7 +242,7 @@ export default function EditProfile () {
        <Form.Label>Address line 2</Form.Label>
        <Form.Control placeholder= "1234 Main St" 
                      value={addressline2}
-                     required = {true}
+                    //  required = {true}
                      onChange={(e) => setAddressline2(e.target.value)}/>
      </Form.Group>
      </Row>
@@ -230,14 +251,14 @@ export default function EditProfile () {
        <Form.Group as={Col} controlId="formGridCity">
          <Form.Label>City</Form.Label>
          <Form.Control value={city}
-                       required = {true}
+                      //  required = {true}
                        onChange={(e) => setCity(e.target.value)}/>
        </Form.Group>
 
        <Form.Group as={Col} controlId="formGridZip">
          <Form.Label>Post Code</Form.Label>
          <Form.Control  value={postCode}
-                        required = {true}
+                        // required = {true}
                         onChange={(e) => setPostCode(e.target.value)} />
        </Form.Group>
      </Row>

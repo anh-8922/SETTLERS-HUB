@@ -74,17 +74,37 @@ export const handleUserRegister = async (req, res) => {
 
   export const handleUpdateProfile = async (req, res) => {
     console.log("data to update profile:", req.body)
-  
+    const _id =req.body.owner
     try {
       if (!req.user) return res.send({ success: false, error: "Unauthorized" });
-      const { firstName, lastName, username, email, password} = req.body;
+      const { address, 
+              telephone, 
+              about, 
+              gender, 
+              title} = req.body;
+      // const image = req.file.filename || req.file
+      let image
+      if (req.file) {
+        image = req.file.filename
+      } else {
+        image = req.file
+      }
       console.log("user:", req.user)
-      console.log("User Image Uploaded")
-      res.send("User Image Uploaded");
+
+      const updatedProfile = await User.findByIdAndUpdate (_id, {
+              address,
+              telephone, 
+              about, 
+              gender, 
+              title,
+              image
+      }, {new: true})
+      console.log("Updated profile details:", updatedProfile)
+      res.send({success: true, updatedProfile});
     } catch (error) {
       console.log("error handleUpdateProfile:", error.message);
   
-      res.send("Error in handleUpdateProfile" + error.message);
+      res.send({success: false,  error});
     }
   };
 
