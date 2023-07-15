@@ -4,7 +4,7 @@ import Header from './Header';
 import londonA from '../Assets/londonA.jpg';
 import service1 from '../Assets/service1.jpg';
 import trafargal from '../Assets/trafargal.jpg';
-import indoor from '../Assets/indoor.jpg';
+import heroSectionD from '../Assets/herosectionD.jpg';
 
 export default function HeroSectionA() {
     return(
@@ -33,7 +33,7 @@ export function HeroSectionB() {
                 flexDirection:"column", 
                 justifyContent: "center", 
                 height:"100%",
-                color:"whitesmoke"}}>
+                color:"whitesmoke"}}> 
             Some Main Text Should Be Here
             </h1>
         </div>
@@ -59,7 +59,7 @@ export function HeroSectionC() {
 
 export function HeroSectionD() {
     return (
-        <div className="heroSection" style={{backgroundImage: `url("${indoor}")`}}>
+        <div className="heroSection" style={{backgroundImage: `url("${heroSectionD}")`}}>
             <Header/>
             <NavBar/>
             <h1 style={{
