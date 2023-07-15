@@ -12,6 +12,21 @@ import {BsChevronCompactDown} from 'react-icons/bs';
 import { useRef } from 'react';
 
 export default function SpotLight() {
+    
+
+    return(
+        <div className="spotlight">
+            <h1>What's on in London</h1>
+            <div className='spotlight-content'>
+                <CarouselA/>
+                <SpotlightNews/>
+            </div>
+            
+        </div>
+    )
+}
+
+export function SpotlightNews() {
     const ref = useRef();
     const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
@@ -29,15 +44,9 @@ export default function SpotLight() {
       (item) => item.category.toLowerCase() === "spotlights"
     );
    console.log(spotlightCard)
-
     return(
-        <div className="spotlight">
-            <h1>What's on in London</h1>
-            <div className='spotlight-content'>
-                <CarouselA/>
-                <div className='spotlight-items'>
+        <div className='spotlight-items'>
                     <h2>Spotlights</h2>
-                   
                     <div className='spotlight-news'>
                         <NewsTicker style={{height:"30rem", listStyle:"none"}} 
                             rowHeight={150} 
@@ -62,12 +71,8 @@ export default function SpotLight() {
                     
                     
                 </div>
-            </div>
-            
-        </div>
     )
 }
-
 
 function CarouselA() {
     return (

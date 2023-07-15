@@ -11,10 +11,10 @@ export default function HousinhgSummaryCard (props) {
 
 
     return (
-        <div className='summary-card'>
-            <div key={_id} className="guide-card">
+        <div className='housing-summary-card'>
+            <div key={_id} className="house-card">
             
-                <img className='property-img' src={image} alt={category}/>
+                <img style={{width:'20rem', height:'15rem', borderRadius:'0.5rem'}} src={image} alt={category}/>
                 <div className='property-details'>
                     <h3 style={{fontWeight:"bold"}}>{beds} bed {houseType} for {category} </h3>
                     <h4> <PlaceIcon /><span> {address}</span></h4>
