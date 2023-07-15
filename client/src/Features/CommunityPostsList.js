@@ -1,5 +1,6 @@
 import useFetchData from "../CustomHooks/useFetchData"
 import TimeAgo from 'react-timeago'
+import '../Style/feature.css'
 
 export default function ListCommunityPost () {
     const {data,error} = useFetchData(`http://localhost:5000/community/listpost`)
@@ -25,9 +26,9 @@ export default function ListCommunityPost () {
                             <div className="post-owner" style={{fontSize:"1.2rem", fontWeight:"bold"}}>
                                 {owner.firstName} <span>{owner.lastName}</span>
                             </div>
-                            {/* <div>
+                            /* <div>
                                 <img src={`https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`} alt={image}/>
-                            </div> */}
+                            </div> */
 
                             <div className="post-topic">
                                 {text}

@@ -17,7 +17,7 @@ import ResetPassowrd from "./Pages/ResetPasswordPage";
 import ForgotPassowrd from "./Pages/ForgotPasswordPage";
 import AddGuidePost from "./AdminUnpublished/AddGuidePost";
 import SingleSubPage from "./SubPage/SingleSubPage";
-import AddCommunitypost from "./SubPage/AddCommunityPost";
+import AddCommunitypost from "./Features/AddCommunityPost";
 import AddNewAds from "./SubPage/AddNewAds";
 import Housing from "./Pages/HousingPage";
 import SingleProperty from "./SubPage/SinglePropertyPage";
@@ -60,7 +60,7 @@ export default function AllRoutes () {
         {/* <Route path='/addnewad' element={<AddNewAds/>}/> */}
         <Route path='/housing' element= {<Housing/>} />
         <Route path= '/singlepropertypage/:id' element = {<SingleProperty/>} />
-      
+        <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
 
       <Route element={<ProtectedLayout/>}>
         <Route path="/profile" element={<ProfilePage/>}/>
