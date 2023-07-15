@@ -3,11 +3,19 @@
     padding: 0;
     box-sizing: border-box;
     color: #333A44;
-    font-family: 'Ysabeau Infant', sans-serif;
+    font-family: 'Ysabeau Infant', sans-serif; 
+    margin: 0;
+    padding: 0;
+    
 }
 :root {
 --black-color: #333A44;
+--dark-silver: #7A6969;
 --khaki-color: #E7D4C0;
+--pale-blue: #B6EAF1;
+--platinum: #EDE9E2;
+--Red-Pictorial-Carmine:  #C80E50;
+--font-second: 'Hanken Grotesk', sans-serif;
 }
 
 /*====================================*/

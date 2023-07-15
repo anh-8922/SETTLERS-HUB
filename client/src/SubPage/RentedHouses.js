@@ -26,6 +26,7 @@ export default function RentedHouses  ( ) {
 
     return (
         <div className="rented-houses">
+            
            {
             rentedProperties
             .map((item) => {
@@ -35,6 +36,7 @@ export default function RentedHouses  ( ) {
                
                 return (
                     <div key = {_id}>
+                        
                     <HousinhgSummaryCard beds={beds}
                                      baths={baths}
                                      houseType={houseType}
