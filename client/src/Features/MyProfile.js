@@ -3,6 +3,7 @@ import { useGetUserID } from "../CustomHooks/useGetUserID"
 import profile from "../Assets/profile.png"
 import Spinner from "./Spinner"
 import { useState } from "react"
+import EditProfile from "../Components/EditProfile"
 
 export default function MyProfile () {
     const userID = useGetUserID ()
@@ -46,7 +47,7 @@ export default function MyProfile () {
            ):(
             <div>
                 <button onClick={handleSaveProfile}>Save</button>
-                
+                <EditProfile/>
 
             </div>
            ) }
