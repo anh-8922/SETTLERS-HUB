@@ -46,7 +46,7 @@ export default function MyProfile () {
                         
            ):(
             <div>
-                <button onClick={handleSaveProfile}>Save</button>
+                <button onClick={handleSaveProfile}>Back</button>
                 <EditProfile/>
 
             </div>
