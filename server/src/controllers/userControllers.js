@@ -73,10 +73,12 @@ export const handleUserRegister = async (req, res) => {
 
 
   export const handleUpdateProfile = async (req, res) => {
-    
+    console.log("data to update profile:", req.body)
   
     try {
-    
+      if (!req.user) return res.send({ success: false, error: "Unauthorized" });
+      const { firstName, lastName, username, email, password} = req.body;
+      console.log("user:", req.user)
       console.log("User Image Uploaded")
       res.send("User Image Uploaded");
     } catch (error) {
@@ -106,6 +108,7 @@ export const handleUserRegister = async (req, res) => {
 
     
     try{
+
       const id = req.params.id
       console.log('selected user id:', id)
       if (!id) return res.send({ success: false, error: "No id provided" });

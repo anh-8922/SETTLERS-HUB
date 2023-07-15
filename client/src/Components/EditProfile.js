@@ -16,6 +16,10 @@ import useFetchData from '../CustomHooks/useFetchData';
 import profile from "../Assets/profile.png"
 
 export default function EditProfile () {
+    const userID = useGetUserID ()
+    console.log("Add property post ueseID:", userID)
+    const [ cookies, _] = useCookies(["access_token"])
+    console.log("acess:", cookies)
     const [gender, setGender] = useState('')
     const [title, setTitle] =useState('Mr')
     const [addressline1, setAddressline1] = useState('')
@@ -42,19 +46,68 @@ export default function EditProfile () {
     
         if (!e.currentTarget.files[0]) return;
     
-        if (e.currentTarget.files[0].size > 1000000) {
-          alert("This file is bigger than 10kB");
-          return;
-        }
+        // if (e.currentTarget.files[0].size > 1000000) {
+        //   alert("This file is bigger than 10kB");
+        //   return;
+        // }
         setImage({
           url: URL.createObjectURL(e.currentTarget.files[0]),
           file: e.currentTarget.files[0],
         });
       };
 
-    const handleSubmit = (e) => {
+      useEffect(() => {
+        console.log("gender:", gender)
+ 
+      }, [userID,
+          gender, 
+          title, 
+          about, 
+          telephone, 
+          addressline1, 
+          addressline2, 
+          city, 
+          postCode, 
+        ]);
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-    }
+        const formData = new FormData()
+        formData.append("owner", userID )
+        // formData.append("cookies", cookies )
+        formData.append("gender", gender)
+        formData.append("address[0][addressline1]", addressline1)
+        formData.append("address[0][addressline2]", addressline2)
+        formData.append("address[0][city]", city)
+        formData.append("address[0][postcode]", postCode)
+        formData.append("title", title)
+        formData.append("telephone", telephone)
+        formData.append("about", about)
+        formData.append("image", image)
+        
+
+        console.log("formData:", formData)
+        try {
+          const response = await axios.put(`http://localhost:5000/user/updateprofile`, formData, {
+          withCredentials: true,
+            headers: {
+              "Content-type": "multipart/form-data; charset=UTF-8",
+            },
+          });
+          
+          setFormSubmitted(true);
+          console.log("form data", formData)
+          console.log("Response:", response);
+          
+          // navigate("/user");
+        } catch (error) {
+          console.log("Error:", error);
+        }
+
+  }
+
+  
+    
 
     return(
         <div>
@@ -211,7 +264,7 @@ export default function EditProfile () {
      </Button>
    </Form>
       ): ( 
-        <div style={{display:"flex", justifyContent:"flex-end", marginRight:"3rem"}}>
+        <div style={{display:"flex", justifyContent:"flex-end", alignItems:"flex-end", marginRight:"3rem"}}>
         <Stack sx={{ width: '30%' }} spacing={2} onClick={() => navigate("/profile")}>
               <Alert variant="filled" severity="success">
                 <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>

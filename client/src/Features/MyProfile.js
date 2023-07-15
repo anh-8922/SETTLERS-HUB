@@ -23,7 +23,7 @@ export default function MyProfile () {
     const handleSaveProfile =() => {
         setProfileUpdate(false)
     }
-    const {firstName, lastName, email, username, telephone, address,} = data.selectedUser
+    const {firstName, lastName, email, username, telephone, address} = data.selectedUser
    
     // const city = address[0].city
     return (
