@@ -155,7 +155,7 @@ export const handeleDeleteProperty = async (req, res) => {
 
         const deleteProperty = await House.findByIdAndDelete(req.params.id)
         console.log('Delete Property:', deleteProperty)
-        res.send("Property deleted from the DB")
+        res.send({ success: true, deleteProperty})
     } catch (error) {
         console.log('Error deleting Property:', error.message)
         res.send('Error in deleting Property:', error.message)
@@ -163,99 +163,7 @@ export const handeleDeleteProperty = async (req, res) => {
 
 }
 
-// export const handleEditProperties = async (req, res) => {
-//     const id = req.query.id
-//     console.log("Property to edit:", id)
-//     console.log("User:", req.user);
-//     try{
-//         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
-//         let {address,  
-//             rate, 
-//             beds, 
-//             baths, 
-//             category, 
-//             owner,
-//             longitude, 
-//             latitude,
-//             description,
-//             availableOn,
-//             houseType,
-//             deposit,
-//             furnishedType,
-//             letType,
-//             councilTaxBand,
-//             feature} = req.body
-//             const images = req.files
-//             console.log("images backend:", images)
-     
-//      if (!owner) {
-//          res.send({success: false, error: "Register your self to create advertiestments"})
-//          return
-//      }
 
-//      if (!address ||
-//          !images,  
-//          !rate ||
-//          !beds ||
-//          !baths ||
-//          !category||
-//          !longitude ||
-//          !latitude ||
-//          !description ||
-//          !availableOn ||
-//          !letType ||
-//          ! furnishedType ||
-//          !houseType) {
-//          res.send({success: false, error: "All fields must fill"})
-//          return
-//      }
-
-//      const uploadedImages = [];
-//      const uploadPromises = images.map((image) =>
-//        cloudinary.uploader.upload(image.path)
-//      );
-
-//      const uploadedResults = await Promise.all(uploadPromises);
-//      console.log("uploaded result:", uploadedResults)
-
-//      uploadedResults.forEach((result) => {
-//          uploadedImages.push(result.secure_url);
-//        })
-
-    
-//      const editedPropertyPost = await (await House.findByIdAndUpdate( id, {
-//             address,
-//             image: uploadedImages,
-//             rate, 
-//             beds, 
-//             baths, 
-//             category, 
-//             owner, 
-//             longitude, 
-//             latitude,
-//             description,
-//             availableOn,
-//             houseType,
-//             feature,
-//             deposit,
-//             furnishedType,
-//             councilTaxBand,
-//             letType,
-//      },
-//      { new: true }))
-        
-
-//         if (!id) return res.send({ success: false, error: "Property id is not provided" })
-//         console.log("property edited:" , editedPropertyPost)
-//         res.send("Property updated in the DB")
-
-//     } catch (error) {
-//         console.log("error in edit property:", error.message)
-//         res.send({success: false, error: error.message})
-//     }
-
-
-// }
 
 export const handleEditProperties = async (req, res) => {
     const id = req.query.id

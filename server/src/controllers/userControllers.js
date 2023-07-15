@@ -101,8 +101,15 @@ export const handleUserRegister = async (req, res) => {
   }
 
   export const handleListOneUsers = async (req, res) => {
+    const id = req.params.id
+    console.log('selected user id:', id)
+
+    
     try{
-      const selectedUser = await User.findById()
+      const id = req.params.id
+      console.log('selected user id:', id)
+      if (!id) return res.send({ success: false, error: "No id provided" });
+      const selectedUser = await User.findById(id)
       .select("-password -__v")
       res.send({ success: true, selectedUser });
       console.log(selectedUser)

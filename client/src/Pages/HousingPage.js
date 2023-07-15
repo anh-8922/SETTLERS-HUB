@@ -10,12 +10,14 @@ import MainLayout from '../Layout/MainLayout';
 import house1 from '../Assets/house1.jpg';
 import house2 from '../Assets/house2.jpg';
 import NewsLetter from "../Components/NewsLetter";
+import Filters from "../Features/Filters"
 
 export default function Housing() {
 
   return (
     <MainLayout>
       <HeroSectionD/>
+      <Filters/>
       <div className='housing-content'>
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
