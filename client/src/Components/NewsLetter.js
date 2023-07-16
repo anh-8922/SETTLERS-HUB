@@ -21,11 +21,11 @@ export default function NewsLetter() {
                     </div>
                     <div className="N-child-center">
                         <h2>SIGN UP TO THE NEWSLETTER</h2>
-                        <div className="subcribe-form" >
+                        <form className="subcribe-form" action="https://app.convertkit.com/forms/3a2b48f297/subscriptions"  >
                             <input className="subcribe-input" type="text" placeholder="Name" name="name" required/>
                             <input className="subcribe-input" type="text" placeholder="Email address" name="mail" required/>
                             <input type="submit" value="Subscribe"></input>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div className="N-body" style={{width: "25%"}}>
@@ -34,6 +34,8 @@ export default function NewsLetter() {
                 </div>
                 
             </div>
+            
         </div>
     )
 }
+

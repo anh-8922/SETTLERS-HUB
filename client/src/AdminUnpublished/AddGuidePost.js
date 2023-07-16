@@ -74,7 +74,7 @@ export default function AddGuidePost ( ) {
 
     return(
         <>
-        
+          <Embed url='https://settlers-hub.ck.page/f4c05927d7' />
           <div className='Admin-addPost' style={{
             display: "flex",
             flexDirection:"column",
