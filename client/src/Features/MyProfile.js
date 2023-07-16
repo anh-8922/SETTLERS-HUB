@@ -2,76 +2,39 @@ import useFetchData from "../CustomHooks/useFetchData"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import profile from "../Assets/profile.png"
 import Spinner from "./Spinner"
-import axios from 'axios'
-import { useEffect, useState, useCallback } from "react"
+import { useEffect, useState } from "react"
 import EditProfile from "../Components/EditProfile"
 
 export default function MyProfile () {
     const userID = useGetUserID ()
     console.log("profileuser:", userID)
-    // const [fetchedData, setFetchedData] = useState(null)
-    const {data} = useFetchData(`http://localhost:5000/user/listoneuser/${userID}`)
+    const {data, refetch} = useFetchData(`http://localhost:5000/user/listoneuser/${userID}`)
     console.log("user data profile:", data)
     const [profileUpdate, setProfileUpdate] = useState(false)
+    const [saveClick, setSaveClick] = useState(false)
+
+
 
     useEffect( () => {
-        
-    }, [data])
+        if(saveClick) {
+            refetch();
+            setSaveClick(false); //reset the saveClick state
+        }
+    }, [saveClick])
 
     if (!data) {
         return <Spinner />; 
       }
-
-
-    // const fetchData = async () => {
-    //     try {
-    //       const response = await axios.get(`http://localhost:5000/user/listoneuser/${userID}`, {
-    //         withCredentials: true
-    //       });
-    //       const responseData = response.data;
-    //       setFetchedData(responseData);
-    //       console.log("Data by user:", responseData);
-    //     } catch (error) {
-    //       console.error("Error fetching data:", error.message);
-    //     }
-    //   };
-    
-//    useEffect ( () => {
-//     const fetchData = async () => {
-//         try {
-//           const response = await axios.get(`http://localhost:5000/user/listoneuser/${userID}`, {
-//             withCredentials: true
-//           });
-//           const responseData = response.data;
-//           setFetchedData(responseData);
-//           console.log("Data by user:", responseData);
-//         } catch (error) {
-//           console.error("Error fetching data:", error.message);
-//         }
-//         fetchData()
-//       };
-//    })
-    
-
-
-//     if (!fetchedData || fetchedData.selectedUser){
-//         return <Spinner />
-//     }
-
-    if (!data) {
-        return <Spinner />; 
-      }
-
-
-    
+      
     const handleUpdateProfile = () => {
         setProfileUpdate(true)
     }
 
     const handleSaveProfile =() => {
         setProfileUpdate(false)
-        
+        setSaveClick(true)
     }
+
     const {firstName, 
            lastName, 
            email, 

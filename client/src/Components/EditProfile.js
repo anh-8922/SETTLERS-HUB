@@ -22,7 +22,7 @@ export default function EditProfile () {
     const [ cookies, _] = useCookies(["access_token"])
     console.log("acess:", cookies)
     const [gender, setGender] = useState('')
-    const [title, setTitle] =useState('Mr')
+    const [title, setTitle] =useState('')
     const [addressline1, setAddressline1] = useState('')
     const [addressline2, setAddressline2] = useState('')
     const [city, setCity] = useState ('')
