@@ -11,11 +11,11 @@ import Modal from 'react-bootstrap/Modal';
 import '../Style/page.css'
 
 export default function CommunityPage() {
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
-    const handleAddPostPage = () => {
-        navigate('/addcommunitypost')
-    }
+    // const handleAddPostPage = () => {
+    //     navigate('/addcommunitypost')
+    // }
     const [show, setShow] = useState(false);
 
     return (

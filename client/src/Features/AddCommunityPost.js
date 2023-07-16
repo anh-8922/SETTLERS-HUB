@@ -11,28 +11,28 @@ export default function AddCommunitypost () {
     console.log("Add Community post ueseID:", userID)
     const [cookies, _] = useCookies(["access_token"])
     const [text, setText] = useState ( " ")
-    const [image, setImage] = useState({
-        url: noimage,
-        file: null,
-      });
+    // const [image, setImage] = useState({
+    //     url: noimage,
+    //     file: null,
+    //   });
     const [formSubmitted, setFormSubmitted] = useState(false);
     
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleImageChange = (e) => {
+    // const handleImageChange = (e) => {
 
-        setImage({
-          url: URL.createObjectURL(e.currentTarget.files[0]),
-          file: e.currentTarget.files[0],
-        });
-      };
+    //     setImage({
+    //       url: URL.createObjectURL(e.currentTarget.files[0]),
+    //       file: e.currentTarget.files[0],
+    //     });
+    //   };
 
       const handleSubmit = async (e) => {
         e.preventDefault();
     
         const formData = new FormData();
         formData.append("text", text);
-        formData.append("image", image.file);
+        // formData.append("image", image.file);
         formData.append("owner", userID );
     
         try {
@@ -66,7 +66,7 @@ export default function AddCommunitypost () {
               style={{width:"40rem", height:"40rem"}}
             />
             </label>
-            <div>
+            {/* <div>
             <img style={{marginTop:"2rem", width:"30rem", height:"30rem"}}
                 className="w-[300px] h-[300px] object-cover"
                 src={image.url || noimage}
@@ -83,7 +83,7 @@ export default function AddCommunitypost () {
               </label>
 
               
-            </div >
+            </div > */}
             <div style={{display:"flex", alignSelf:"center"}}>
             <button type="submit"style={{marginTop:"2rem",fontSize:"1.5rem", width:"8rem", backgroundColor:"#38AA5E"}}>Submit</button>
             </div>
