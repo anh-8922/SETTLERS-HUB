@@ -18,7 +18,7 @@ export default function MyProfile () {
     useEffect( () => {
         if(saveClick) {
             refetch();
-            setSaveClick(false); //reset the saveClick state
+            setSaveClick(false)
         }
     }, [saveClick])
 

@@ -1,20 +1,18 @@
 
-import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import InputGroup from 'react-bootstrap/InputGroup';
-import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
+import Form from 'react-bootstrap/Form'
+import Row from 'react-bootstrap/Row'
+import { useState, useEffect } from 'react'
 import { useCookies } from "react-cookie"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from 'axios';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-import { useNavigate, useParams } from 'react-router-dom';
-import useFetchData from '../CustomHooks/useFetchData';
+import Alert from '@mui/material/Alert'
+import AlertTitle from '@mui/material/AlertTitle'
+import Stack from '@mui/material/Stack'
+import { useNavigate} from 'react-router-dom'
+import useFetchData from '../CustomHooks/useFetchData'
 import profile from "../Assets/profile.png"
-import Spinner from '../Features/Spinner';
 
 export default function EditProfile () {
     const userID = useGetUserID ()
@@ -79,20 +77,7 @@ export default function EditProfile () {
         setTelephone(telephone);
         setAbout(about);
       } 
-      // else {
-      //   setGender();
-      //   setTitle();
-      //   setAddressline1();
-      //   setAddressline2();
-      //   setCity();
-      //   setPostCode();
-      //   setImage({
-      //     url: profile,
-      //     file: null,
-      // });
-      //   setTelephone();
-      //   setAbout();}
-      
+
     }, [data]);
 
 
@@ -106,11 +91,7 @@ export default function EditProfile () {
         console.log("the file is", e.currentTarget.files[0]);
     
         if (!e.currentTarget.files[0]) return;
-    
-        // if (e.currentTarget.files[0].size > 1000000) {
-        //   alert("This file is bigger than 10kB");
-        //   return;
-        // }
+
         setImage({
           url: URL.createObjectURL(e.currentTarget.files[0]),
           file: e.currentTarget.files[0],
@@ -122,7 +103,6 @@ export default function EditProfile () {
         e.preventDefault()
         const formData = new FormData()
         formData.append("owner", userID )
-        // formData.append("cookies", cookies )
         formData.append("gender", gender)
         formData.append("address[0][addressline1]", addressline1)
         formData.append("address[0][addressline2]", addressline2)

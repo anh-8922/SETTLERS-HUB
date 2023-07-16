@@ -94,6 +94,8 @@ export default function MyAds() {
           })}
         </tbody>
       </Table>
+      <div>Service Ads</div>
+      <div>Ads for Requests</div>
     </div>
   );
 }
