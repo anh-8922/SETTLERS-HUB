@@ -64,20 +64,35 @@ export default function EditProfile () {
           telephone,
           about,
         } = data.selectedUser;
-        const addressline1 = address[0].addressline1;
-        const addressline2 = address[0].addressline2;
-        const city = address[0].city;
-        const postCode = address[0].postcode;
+        const addressline1 = address && address.length > 0 ? address[0].addressline1 : " "
+        const addressline2 = address && address.length > 0 ? address[0].addressline2 : " "
+        const city = address && address.length > 0 ? address[0].city : '';
+        const postCode = address && address.length > 0 ? address[0].postcode : ''
+        const profileImage = image ? `https://res.cloudinary.com/dgnqjr0we/image/upload/${image}` : profile 
         setGender(gender);
         setTitle(title);
         setAddressline1(addressline1);
         setAddressline2(addressline2);
         setCity(city);
         setPostCode(postCode);
-        setImage(`https://res.cloudinary.com/dgnqjr0we/image/upload/${image}`);
+        setImage(profileImage);
         setTelephone(telephone);
         setAbout(about);
-      }
+      } 
+      // else {
+      //   setGender();
+      //   setTitle();
+      //   setAddressline1();
+      //   setAddressline2();
+      //   setCity();
+      //   setPostCode();
+      //   setImage({
+      //     url: profile,
+      //     file: null,
+      // });
+      //   setTelephone();
+      //   setAbout();}
+      
     }, [data]);
 
 
@@ -138,7 +153,10 @@ export default function EditProfile () {
         }
 
   }
+  const handleClose =() => {
 
+    navigate("/profile")
+  }
   
     
 
@@ -285,8 +303,8 @@ export default function EditProfile () {
      </Button>
    </Form>
       ): ( 
-        <div style={{display:"flex", justifyContent:"flex-end", alignItems:"flex-end", marginRight:"3rem"}}>
-        <Stack sx={{ width: '30%' }} spacing={2} onClick={() => navigate("/profile")}>
+        <div style={{display:"flex", justifyContent:"flex-end", alignItems:"flex-end", marginRight:"3rem"}} onClick={handleClose}>
+        <Stack sx={{ width: '30%' }} spacing={2} >
               <Alert variant="filled" severity="success">
                 <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>
                 <strong style={{ color: 'white' }}>Profile Updated Successfully!</strong>
