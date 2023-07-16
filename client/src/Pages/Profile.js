@@ -60,7 +60,7 @@ export default function ProfilePage ()  {
             <button onClick={() => navigate('/addnewad')}>Add new Ad</button>
             <div style={{ marginTop:"3vh"}}>
             <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:"80vh", marginTop:"3rem" }}
+      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:"80vh", width:"100vw", marginTop:"3rem" }}
     >
       <Tabs
         orientation="vertical"

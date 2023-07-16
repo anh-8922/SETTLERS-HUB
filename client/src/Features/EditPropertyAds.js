@@ -443,9 +443,21 @@ export default function EditProperties() {
      </Form.Group>
 
      {/* <Container> */}
-     <div>
+     {/* <div>
      {selectedImages.map((file, index) => (
      <div key={index}>{file.name}</div>
+   ))}
+     </div> */}
+
+     <div style={{ display: "flex", flexDirection:"row", flexWrap:"wrap", gap: "10px" }}>
+     {selectedImages.map((file, index) => (
+    //  <div key={index}>{file.name}</div>
+    
+     <img key={index} 
+          alt={file.name} 
+          src={URL.createObjectURL(file)}
+          style={{width:'150px', height:"150px"}}/>
+    
    ))}
      </div>
 

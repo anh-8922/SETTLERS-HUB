@@ -53,6 +53,7 @@ const userSchema = new Schema ({
       gender:String,
       telephone:String,
       about: String,
+      title: String,
 
     })
 

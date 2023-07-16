@@ -365,14 +365,6 @@ export default function NewProperty() {
                        onChange={(e) => setCity(e.target.value)}/>
        </Form.Group>
 
-       {/* <Form.Group as={Col} controlId="formGridState">
-         <Form.Label>City</Form.Label>
-         <Form.Select defaultValue="Choose...">
-           <option>Choose...</option>
-           <option>...</option>
-         </Form.Select>
-       </Form.Group> */}
-
        <Form.Group as={Col} controlId="formGridZip">
          <Form.Label>Post Code</Form.Label>
          <Form.Control  value={postCode}
@@ -389,9 +381,15 @@ export default function NewProperty() {
      </Form.Group>
 
      {/* <Container> */}
-     <div>
+     <div style={{ display: "flex", flexDirection:"row", flexWrap:"wrap", gap: "10px" }}>
      {selectedImages.map((file, index) => (
-     <div key={index}>{file.name}</div>
+    //  <div key={index}>{file.name}</div>
+    
+     <img key={index} 
+          alt={file.name} 
+          src={URL.createObjectURL(file)}
+          style={{width:'150px', height:"150px"}}/>
+    
    ))}
      </div>
 
