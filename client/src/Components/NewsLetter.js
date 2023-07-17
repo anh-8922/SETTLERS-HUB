@@ -1,6 +1,15 @@
 import '../Style/component.css';
+import React, {useState, useEffect} from 'react';
+//import jsonp from 'jsonp';
+import MailchimpSubscribe from "react-mailchimp-subscribe";
+//import InputField from './InputField';
+//import { useGHStContext } from '../Context/ModelContext';
 
 export default function NewsLetter() {
+
+    const url = `https://gmail.us14.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_ID}`;
+    const SimpleForm = () => <MailchimpSubscribe url={url}/>
+
     return(
         <div className="newsletter"> 
             
@@ -20,12 +29,40 @@ export default function NewsLetter() {
                         <h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5>
                     </div>
                     <div className="N-child-center">
+                    {/*<form
+                        className="subcribe-form"
+                        onSubmit={(e) => handleSubmit(e)}
+                        method="POST" noValidate
+                    >
                         <h2>SIGN UP TO THE NEWSLETTER</h2>
-                        <div className="subcribe-form" >
-                            <input className="subcribe-input" type="text" placeholder="Name" name="name" required/>
-                            <input className="subcribe-input" type="text" placeholder="Email address" name="mail" required/>
-                            <input type="submit" value="Subscribe"></input>
-                        </div>
+                        <label>Email</label>
+                        <input
+                        type="email"
+                        name="EMAIL"
+                        required
+                        onChange={(e) => setEmail(e.target.value)}
+                        ></input>
+                        <input
+                        type="text"
+                        name="FNAME"
+                        onChange={(e) => setFullName(e.target.value)}
+                        ></input>
+                        <button type="submit">Submit</button>
+                        
+                            
+                           
+    </form>*/}
+                        <MailchimpSubscribe
+    url={url}
+    render={({ subscribe, status, message }) => (
+      <div>
+        <SimpleForm onSubmitted={formData => subscribe(formData)} />
+        {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
+        {status === "error" && <div style={{ color: "red" }} dangerouslySetInnerHTML={{__html: message}}/>}
+        {status === "success" && <div style={{ color: "green" }}>Subscribed !</div>}
+      </div>
+    )}
+  />
                     </div>
                 </div>
                 <div className="N-body" style={{width: "25%"}}>
@@ -34,6 +71,26 @@ export default function NewsLetter() {
                 </div>
                 
             </div>
+            
         </div>
     )
 }
+
+{/*export function MailchimpFormModel(props) {
+    const postUrl = `https://gmail.us14.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_ID}`;
+    return(
+        <>
+            <MailchimpSubscribe
+                url = {postUrl}
+                render = {({ subscribe, status, message }) => (
+                    <NewsLetter
+                        status = {status}
+                        message = {message}
+                        onValidated={formData => subscribe(formData)}
+                    />
+                )}
+            />
+        </>
+    )
+                */}
+
