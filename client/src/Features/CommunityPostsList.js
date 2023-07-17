@@ -1,13 +1,15 @@
 import useFetchData from "../CustomHooks/useFetchData"
 import TimeAgo from 'react-timeago'
+import { useEffect } from "react"
 import '../Style/feature.css'
 
 export default function ListCommunityPost () {
-    const {data,error} = useFetchData(`http://localhost:5000/community/listpost`)
+    const {data,error, refetch} = useFetchData(`http://localhost:5000/community/listpost`)
     console.log(data)
     // const post = data.communityPosts
 
     // console.log("posts:", post)
+ 
 
     if (!data){
         return (
@@ -17,10 +19,10 @@ export default function ListCommunityPost () {
 
     return (
         <div className="community_post_list">
-            <div>community posts</div>
+           
             {
                data.communityPosts.map((item) => {
-                    const {_id, owner, text, date, image} = item
+                    const {_id, owner, text, createdAt, image} = item
                     return (
                         <div key={_id}>
                             <div className="post-owner" style={{fontSize:"1.2rem", fontWeight:"bold"}}>
@@ -34,7 +36,7 @@ export default function ListCommunityPost () {
                                 {text}
                             </div>
                             <div>
-                            <TimeAgo date={date}/>
+                            <TimeAgo date={createdAt}/>
                             </div>
 
                         </div>
