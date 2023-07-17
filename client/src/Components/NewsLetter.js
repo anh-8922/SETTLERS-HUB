@@ -7,7 +7,7 @@ import MailchimpSubscribe from "react-mailchimp-subscribe";
 
 export default function NewsLetter() {
 
-    const url = "https://gmail.us14.list-manage.com/subscribe/post?u=6a87fbd0acfde1990f478f459&id=1dc21506de";
+    const url = `https://gmail.us14.list-manage.com/subscribe/post?u=${process.env.REACT_APP_MAILCHIMP_U}&id=${process.env.REACT_APP_MAILCHIMP_ID}`;
     const SimpleForm = () => <MailchimpSubscribe url={url}/>
 
     return(
