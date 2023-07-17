@@ -4,8 +4,12 @@ import Communitypost from "../model/Communitypost.js"
 export const handleAddPostToCommunity = async (req, res) =>{
     console.log("Add new community post:", req.body)
     console.log("req.user:", req.user)
+   
     // console.log("Add new community post image file:", req.file)
     try{
+
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+
         let  {owner, 
               text, 
             //   image
@@ -47,7 +51,7 @@ export const handleListPostFromCommunity = async (req, res) => {
         const communityPosts = await Communitypost.find()
             .populate({ path: "owner", select: "username email image firstName lastName" })
             .select("-__v")
-            .limit(10)
+            .limit(30)
             .skip(0)
             .sort({ _id: "desc" });
         console.log("Community post list:", communityPosts)
@@ -57,3 +61,62 @@ export const handleListPostFromCommunity = async (req, res) => {
         res.send("Error in List community post:"+ error.message)
     }
 }
+
+
+export const handleLikePost = async (req, res) => {
+    console.log("reqsert user like:", req.user)
+    try{
+        res.send("like here")
+    } catch (error) {
+        console.log("error handleLike:", error.message)
+
+        res.send("Error in handleLike" + error.message)
+    }
+}
+
+// export const handleDeleteCommunityPost = async (req, res) => {
+//     console.log("request user delete", req.user)
+//     console.log(" handleDelete:", req.params.id)
+    
+
+//     try{
+//         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+
+//         const postToDelete = await Communitypost.findByIdAndDelete({
+//             _id: req.params.id,
+//             owner: req.user,
+//           });
+//           console.log(" post to delete:", postToDelete);
+//         res.send({ success: true })
+//     } catch (error) {
+//         console.log("error handle delete:", error.message)
+
+//         res.send("Error in handle delete" + error.message)
+//     }
+// }
+
+export const handleDeleteCommunityPost = async (req, res) => {
+    console.log("request user delete", req.user);
+    console.log("handleDelete:", req.params.id);
+  
+    try {
+      if (!req.user) return res.send({ success: false, error: "Unauthorized" });
+  
+      const postToDelete = await Communitypost.findOneAndDelete({
+        _id: req.params.id,
+        owner: req.user 
+      });
+  
+      if (!postToDelete) {
+        return res.send({ success: false, error: "Post not found" });
+      }
+  
+      console.log("post to delete:", postToDelete);
+      res.send({ success: true, postToDelete });
+    } catch (error) {
+      console.log("error handle delete:", error.message);
+  
+      res.send("Error in handle delete" + error.message);
+    }
+  };
+  

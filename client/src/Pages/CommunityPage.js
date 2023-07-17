@@ -1,23 +1,31 @@
 
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { HeroSectionC } from "../Components/HeroSection";
-import MainLayout from "../Layout/MainLayout";
-import ListCommunityPost from "../Features/CommunityPostsList";
-import AddCommunitypost from "../Features/AddCommunityPost";
-import { SpotlightNews } from "../Components/SpotLight";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import useFetchData from "../CustomHooks/useFetchData";
-import "../Style/page.css";
+import { useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import { HeroSectionC } from "../Components/HeroSection"
+import MainLayout from "../Layout/MainLayout"
+import ListCommunityPost from "../Features/CommunityPostsList"
+import AddCommunitypost from "../Features/AddCommunityPost"
+import { SpotlightNews } from "../Components/SpotLight"
+import Button from "react-bootstrap/Button"
+import Modal from "react-bootstrap/Modal"
+import useFetchData from "../CustomHooks/useFetchData"
+import "../Style/page.css"
+import { useGetUserID } from "../CustomHooks/useGetUserID"
+import axios from "axios"
+import { useCookies } from "react-cookie"
 
 export default function CommunityPage() {
-  const { data, error, refetch } = useFetchData(
+    const userID= useGetUserID ()
+    console.log("user:", userID)
+    const [ cookies, _] = useCookies(["access_token"])
+    console.log("cookies:", cookies)
+    const { data, error, refetch } = useFetchData(
     "http://localhost:5000/community/listpost"
   );
   console.log("data:", data);
   console.log("error:", error);
   const [show, setShow] = useState(false);
+
 
   useEffect(() => {
     refetch();
@@ -26,8 +34,39 @@ export default function CommunityPage() {
   const handleClose = () => {
     setShow(false);
     refetch();
+  }
+
+  // const handleDeletePost = async (_id) => {
+  //   console.log("post to dlete:", _id)
+  //   const response = await axios.delete(`/community/delete/${_id}`, {},
+  //   {withCredentials: true})
+  //   console.log("response delete:", response)
+  //   refetch()
+
+
+  // }
+
+  const handleDeletePost = async (_id) => {
+    console.log("post to delete:", _id);
+    try {
+      const response = await axios.delete(`/community/delete/${_id}`, {
+        withCredentials: true,
+      });
+      refetch();
+    } catch (error) {
+      console.log("Error deleting post:", error);
+      // Handle the error
+    }
   };
 
+  const handleEditPost = () => {
+
+  }
+
+  const handleLikePosts = async () => {
+    const response = await axios.post('/community/like', {})
+
+  }
   return (
     <MainLayout>
       <HeroSectionC />
@@ -64,7 +103,9 @@ export default function CommunityPage() {
                     lastName={item.owner.lastName}
                     createdAt={item.createdAt}
                     text={item.text}
-                  />
+                    handleLike={handleLikePosts}
+                    handleDeletePost={handleDeletePost}
+                    handleEditPost={handleEditPost} />
                 ))}
             </div>
             <SpotlightNews />
