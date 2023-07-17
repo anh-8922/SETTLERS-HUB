@@ -36,26 +36,17 @@ export default function CommunityPage() {
     refetch();
   }
 
-  // const handleDeletePost = async (_id) => {
-  //   console.log("post to dlete:", _id)
-  //   const response = await axios.delete(`/community/delete/${_id}`, {},
-  //   {withCredentials: true})
-  //   console.log("response delete:", response)
-  //   refetch()
 
-
-  // }
 
   const handleDeletePost = async (_id) => {
-    console.log("post to delete:", _id);
+    console.log("post to delete:", _id)
     try {
       const response = await axios.delete(`/community/delete/${_id}`, {
-        withCredentials: true,
+        withCredentials: true
       });
       refetch();
     } catch (error) {
-      console.log("Error deleting post:", error);
-      // Handle the error
+      console.log("Error deleting post:", error)
     }
   };
 
