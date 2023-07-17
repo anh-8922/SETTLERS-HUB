@@ -2,7 +2,6 @@ import { useCookies } from "react-cookie"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import { useState } from "react"
 import noimage from '../Assets/noimage.png'
-import { useNavigate } from "react-router-dom"
 import axios from "axios"
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'

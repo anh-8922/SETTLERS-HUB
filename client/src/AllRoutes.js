@@ -41,9 +41,6 @@ export default function AllRoutes () {
         <Route path="/" element={<HomePage/>}/>
         <Route path="/service" element={<ServicePage/>}/>
         <Route path="/community" element={<Community/>}/>
-        {/* <Route path="/userregister" element={<Register/>}/> */}
-        {/* <Route path="/login" element={<Login/>}/> */}
-        {/* <Route path="/profile" element={<ProfilePage/>}/> */}
         <Route path="/guide/info" element={<InfoLondon/>}/>
         <Route path='/guide/accommodations' element={<Accommodations/>}/>
         <Route path='/guide/work' element={<Work/>}/>
@@ -52,21 +49,15 @@ export default function AllRoutes () {
         <Route path='/guide/leisure' element={<Leisure/>}/>
         <Route path='/guide/transport' element={<Transport/>}/>
         <Route path='/guide/miscellaneous' element={<Miscellaneous/>}/>
-        {/* <Route path="/resetpassword" element={<ResetPassowrd/>}/>
-        <Route path="/forgotpassword" element={<ForgotPassowrd/>}/> */}
         <Route path='/admin/addguidepost' element={<AddGuidePost/>}/>
         <Route path="/singleguidepost/:id" element={<SingleSubPage/>} />
-        {/* <Route path='/addcommunitypost' element={<AddCommunitypost/>}/> */}
-        {/* <Route path='/addnewad' element={<AddNewAds/>}/> */}
         <Route path='/housing' element= {<Housing/>} />
         <Route path= '/singlepropertypage/:id' element = {<SingleProperty/>} />
-        <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
 
       <Route element={<ProtectedLayout/>}>
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
         <Route path='/editpropertyad/:id' element={<EditProperties/>}/>
-        <Route path='/addcommunitypost' element={<AddCommunitypost/>}/>
       </Route>
 
     </Routes>
