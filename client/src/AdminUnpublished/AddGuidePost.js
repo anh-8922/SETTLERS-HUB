@@ -74,7 +74,7 @@ export default function AddGuidePost ( ) {
 
     return(
         <>
-        
+          
           <div className='Admin-addPost' style={{
             display: "flex",
             flexDirection:"column",
