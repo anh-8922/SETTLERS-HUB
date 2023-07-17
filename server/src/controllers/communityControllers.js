@@ -102,6 +102,34 @@ export const handleDeleteCommunityPost = async (req, res) => {
   
 
 export const handleEditCommunityPost = async ( req, res) => {
-    console.log("request user delete", req.user)
-    console.log("handleDelete:", req.params.id)
+    console.log("request user edit", req.user)
+    const id = req.params.id
+    console.log("handle edit community post:", req.params.id)
+
+    try{
+        const {text} = req.params.text
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+
+        if (!text || text.trim() === "") {
+            res.send({success: false, error: "Text field is empty"})
+            return
+        }
+
+        const editedCommunityPost = await Communitypost.findByIdAndUpdate(
+            id,
+            {text},
+            {new: true}
+
+        )
+
+        if (!editedCommunityPost) {
+            return res.send({ success: false, error: "Post not found" })
+          }
+        
+        console.log("community post to edit:", editedCommunityPost)
+        res.send({ success: true, editedCommunityPost})
+    } catch (error){
+        console.log("Error in handle edit community post" + error.message)
+        res.send("Error in handle edit community post" + error.message)
+    }
 }

@@ -8,7 +8,7 @@ import { FaRegComments } from "react-icons/fa"
 export default function ListCommunityPost({ _id, firstName, lastName, createdAt, handleLike, text, handleDeletePost, handleEditPost }) {
   return (
     <div key={_id} className="community_post_list">
-      <div><button onClick={() => handleDeletePost(_id)}>Edit</button> <button onClick={() => handleDeletePost(_id)}>Delete</button></div>
+      <div><button onClick={() => handleEditPost(_id, text)}>Edit</button> <button onClick={() => handleDeletePost(_id)}>Delete</button></div>
       <div className="post-owner" style={{ fontSize: "1.2rem", fontWeight: "bold" }}>
         {firstName} <span>{lastName}</span>
       </div>

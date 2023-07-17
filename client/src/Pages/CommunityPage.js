@@ -13,6 +13,7 @@ import "../Style/page.css"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from "axios"
 import { useCookies } from "react-cookie"
+import EditCommunitypost from "../Components/EditCommunityPost"
 
 export default function CommunityPage() {
     const userID= useGetUserID ()
@@ -25,6 +26,9 @@ export default function CommunityPage() {
   console.log("data:", data);
   console.log("error:", error);
   const [show, setShow] = useState(false);
+  const [showEdit, setShowEdit] = useState(false)
+  const [existingText, setExistingText] = useState("")
+  const [editPostId, setEditPostId] = useState(null)
 
 
   useEffect(() => {
@@ -33,6 +37,11 @@ export default function CommunityPage() {
 
   const handleClose = () => {
     setShow(false);
+    refetch();
+  }
+
+  const handleCloseEdit = () => {
+    setShowEdit(false);
     refetch();
   }
 
@@ -45,13 +54,17 @@ export default function CommunityPage() {
         withCredentials: true
       });
       refetch();
+      console.log("handleDeletePost:" , response)
     } catch (error) {
       console.log("Error deleting post:", error)
     }
   };
 
-  const handleEditPost = () => {
-
+  const handleEditPost = (_id, text) => {
+    console.log("post to edit:", _id)
+    setExistingText(text)
+    console.log("exisiting text:", text)
+    setShowEdit(true)
   }
 
   const handleLikePosts = async () => {
@@ -83,6 +96,25 @@ export default function CommunityPage() {
               <button onClick={handleClose}>Close</button>
             </Modal.Footer>
           </Modal>
+          <Modal
+            show={showEdit}
+            onHide={handleCloseEdit}
+            dialogClassName="modal-90w"
+            aria-labelledby="example-custom-modal-styling-title"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="example-custom-modal-styling-title">
+                Edit your post{" "}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <EditCommunitypost postId={editPostId} existingText={existingText}/>
+            </Modal.Body>
+            <Modal.Footer>
+              <button onClick={() => setShowEdit(false)}>Cancel</button>
+              <button onClick={handleCloseEdit}>Close</button>
+            </Modal.Footer>
+          </Modal>
           <div className="communityRight">
             <div>
               {data &&
@@ -96,7 +128,7 @@ export default function CommunityPage() {
                     text={item.text}
                     handleLike={handleLikePosts}
                     handleDeletePost={handleDeletePost}
-                    handleEditPost={handleEditPost} />
+                    handleEditPost={() => handleEditPost(item._id, item.text)} />
                 ))}
             </div>
             <SpotlightNews />
