@@ -3,24 +3,26 @@ import Communitypost from "../model/Communitypost.js"
 
 export const handleAddPostToCommunity = async (req, res) =>{
     console.log("Add new community post:", req.body)
-    console.log("Add new community post image file:", req.file)
+    console.log("req.user:", req.user)
+    // console.log("Add new community post image file:", req.file)
     try{
         let  {owner, 
               text, 
-              image} = req.body
+            //   image
+            } = req.body
               
-        image  = req.file.filename
+        // image  = req.file.filename
         console.log("community post:", req.body)
         
 
 
-        if (!owner || !text) {
-            res.send({success: false, error: 1})
+        if (!text || text.trim() === "") {
+            res.send({success: false, error: "Text field is empty"})
             return
         }
         const newPost = await (await Communitypost.create( {
             text,
-            image,
+            // image,
             owner
         })).populate({
             path: "owner",
