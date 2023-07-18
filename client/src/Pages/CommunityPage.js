@@ -64,8 +64,22 @@ export default function CommunityPage() {
     setShowEdit(true)
   }
 
-  const handleLikePosts = async () => {
-    const response = await axios.post('/community/like', {})
+  const handleLikePosts = async (_id) => {
+    console.log("post to like:", _id)
+    console.log("liked user:", userID)
+    try{
+      const response = await axios.put('/community/like',{ _id},{
+        withCredentials: true,
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+      console.log("like response:", response)
+      refetch()
+    } catch (error) {
+      console.log("Error like post:", error)
+
+    }
 
   }
   return (

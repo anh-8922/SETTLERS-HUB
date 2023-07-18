@@ -49,7 +49,17 @@ export const handleListPostFromCommunity = async (req, res) => {
 
     try{
         const communityPosts = await Communitypost.find()
-            .populate({ path: "owner", select: "username email image firstName lastName" })
+            .populate({ 
+              path: "owner", 
+              select: "username email image firstName lastName" })
+            .populate({
+              path: "likes",
+              select: "username email image firstName lastName",
+            })
+            .populate({
+              path: "comments.owner",
+              select: "username email image firstName lastName",
+            })
             .select("-__v")
             .limit(30)
             .skip(0)
@@ -65,8 +75,53 @@ export const handleListPostFromCommunity = async (req, res) => {
 
 export const handleLikePost = async (req, res) => {
     console.log("reqsert user like:", req.user)
+    console.log("handle Like:", req.body)
     try{
-        res.send("like here")
+      const likedPost = await Communitypost.findOne({
+        _id: req.body._id,
+        likes : { $elemMatch: {$eq: req.user}}
+      })
+      console.log("liked post:", likedPost)
+      let newLikedPost = {}
+      if(!likedPost) {
+        newLikedPost = await Communitypost.findByIdAndUpdate(
+          req.body,
+          {
+            $push: {likes: req.user}
+          },
+          {new: true}
+        )
+        .populate({
+          path: "owner",
+          select: "username email image firstName lastName",
+        })
+        .populate({
+          path: "likes",
+          select: "username email image firstName lastName",
+        })
+        console.log("newLiked Post:", newLikedPost)
+      } else {
+        newLikedPost = await Communitypost.findByIdAndUpdate(
+          req.body,
+          {
+            $pull: { likes: req.user }
+          },
+          {
+            new: true,
+          }
+        )
+        .populate({
+          path: "owner",
+          select: "username email image firstName lastName",
+        })
+        .populate({
+          path: "likes",
+          select: "username email image firstName lastName",
+        })
+        console.log("newLiked Post:", newLikedPost)
+      }
+      
+        res.send({ success: true, post: newLikedPost })
     } catch (error) {
         console.log("error handleLike:", error.message)
 
