@@ -3,7 +3,8 @@ import auth from '../middleware/auth.js'
 import {handleAddPostToCommunity,
         handleListPostFromCommunity,
         handleLikePost,
-        handleDeleteCommunityPost} from '../controllers/communityControllers.js'
+        handleDeleteCommunityPost,
+        handleEditCommunityPost} from '../controllers/communityControllers.js'
 import upload from "../config/cloudinary.js"
 
 
@@ -13,5 +14,6 @@ router.post('/addnewpost', auth, upload.single("image"), handleAddPostToCommunit
 router.post('/like', auth, handleLikePost)
 router.get('/listpost',  handleListPostFromCommunity)
 router.delete('/delete/:id', auth, handleDeleteCommunityPost)
+router.put('/edit/:id', auth, handleEditCommunityPost)
 
 export default router

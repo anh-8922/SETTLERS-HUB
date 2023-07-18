@@ -17,29 +17,15 @@ export default function AddCommunitypost () {
     const [text, setText] = useState ( " ")
     console.log("texte:", text)
     console.log("access:", cookies)
-    // const [image, setImage] = useState({
-    //     url: noimage,
-    //     file: null,
-    //   });
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [emptyTextError, setEmptyTextError] = useState(false)
     
-    // const navigate = useNavigate();
-
-    // const handleImageChange = (e) => {
-
-    //     setImage({
-    //       url: URL.createObjectURL(e.currentTarget.files[0]),
-    //       file: e.currentTarget.files[0],
-    //     });
-    //   };
 
       const handleSubmit = async (e) => {
         e.preventDefault();
     
         const formData = new FormData();
         formData.append("text", text);
-        // formData.append("image", image.file);
         formData.append("owner", userID );
 
         if (text.trim() === "") {
@@ -59,7 +45,6 @@ export default function AddCommunitypost () {
     
           setFormSubmitted(true)
           console.log("Response:", response)
-          // navigate("/user");
         } catch (error) {
           console.log("Error:", error);
         }
@@ -75,31 +60,12 @@ export default function AddCommunitypost () {
             <textarea
               type="text"
               id="text"
-              // placeholder="Instructions"
               value={text}
               required={true}
               onChange={(e) => setText(e.target.value)}
               style={{width:"40rem", height:"40rem"}}
             />
             </label>
-            {/* <div>
-            <img style={{marginTop:"2rem", width:"30rem", height:"30rem"}}
-                className="w-[300px] h-[300px] object-cover"
-                src={image.url || noimage}
-                alt=""
-              />
-              <label style={{display:"flex", gap:"2rem", marginTop:"2rem",fontSize:"1.5rem"}}>Add an image:
-              <input
-                type="file"
-                accept="image/png, image/jpeg"
-                name="image"
-                onChange={handleImageChange}
-                style={{marginTop:"2rem", width:"20rem", height:"8rem"}}
-              />
-              </label>
-
-              
-            </div > */}
             <div style={{display:"flex", alignSelf:"center"}}>
             <button type="submit"style={{marginTop:"2rem",fontSize:"1.5rem", width:"8rem", backgroundColor:"#38AA5E"}}>Submit</button>
             </div>

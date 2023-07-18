@@ -74,30 +74,10 @@ export const handleLikePost = async (req, res) => {
     }
 }
 
-// export const handleDeleteCommunityPost = async (req, res) => {
-//     console.log("request user delete", req.user)
-//     console.log(" handleDelete:", req.params.id)
-    
-
-//     try{
-//         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
-
-//         const postToDelete = await Communitypost.findByIdAndDelete({
-//             _id: req.params.id,
-//             owner: req.user,
-//           });
-//           console.log(" post to delete:", postToDelete);
-//         res.send({ success: true })
-//     } catch (error) {
-//         console.log("error handle delete:", error.message)
-
-//         res.send("Error in handle delete" + error.message)
-//     }
-// }
 
 export const handleDeleteCommunityPost = async (req, res) => {
-    console.log("request user delete", req.user);
-    console.log("handleDelete:", req.params.id);
+    console.log("request user delete", req.user)
+    console.log("handleDelete:", req.params.id)
   
     try {
       if (!req.user) return res.send({ success: false, error: "Unauthorized" });
@@ -108,15 +88,61 @@ export const handleDeleteCommunityPost = async (req, res) => {
       });
   
       if (!postToDelete) {
-        return res.send({ success: false, error: "Post not found" });
+        return res.send({ success: false, error: "Post not found" })
       }
   
-      console.log("post to delete:", postToDelete);
-      res.send({ success: true, postToDelete });
+      console.log("post to delete:", postToDelete)
+      res.send({ success: true, postToDelete })
     } catch (error) {
-      console.log("error handle delete:", error.message);
+      console.log("error handle delete:", error.message)
   
-      res.send("Error in handle delete" + error.message);
+      res.send("Error in handle delete" + error.message)
     }
-  };
+  }
   
+
+
+export const handleEditCommunityPost = async (req, res) => {
+  console.log("request user edit", req.user);
+  const id = req.params.id;
+  console.log("handle edit community post:", req.params.id);
+  console.log("edit post:", req.params);
+  console.log("edit body:", req.body);
+
+  try {
+    const text = req.body.text
+    console.log("text:", text)
+
+    if (!req.user) return res.send({ success: false, error: "Unauthorized" });
+
+    if (!text) {
+      res.send({ success: false, error: "Text field is empty" });
+      return;
+    }
+
+    const editedCommunityPost = await Communitypost.findById(id);
+
+    if (!editedCommunityPost) {
+      return res.send({ success: false, error: "Post not found" });
+    }
+
+    const postOwner = editedCommunityPost.owner.toString()
+    console.log("post owner:", postOwner)
+    const currentUser = req.user
+    console.log("current user:", currentUser)
+
+    if (postOwner !== currentUser) {
+      return res.send({ success: false, error: "Not authorized to edit this post" })
+    }
+
+    editedCommunityPost.text = text
+    const savedPost = await editedCommunityPost.save()
+
+    console.log("community post to edit:", savedPost)
+    res.send({ success: true, editedCommunityPost: savedPost })
+  } catch (error) {
+    console.log("Error in handle edit community post" + error.message)
+    res.send("Error in handle edit community post" + error.message)
+  }
+}
+
