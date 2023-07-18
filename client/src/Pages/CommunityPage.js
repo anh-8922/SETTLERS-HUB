@@ -28,8 +28,9 @@ export default function CommunityPage() {
   const [show, setShow] = useState(false);
   const [showEdit, setShowEdit] = useState(false)
   const [existingText, setExistingText] = useState("")
+  // const { editPostId } = useParams()
+  // console.log("exisiting id:", editPostId)
   const [editPostId, setEditPostId] = useState(null)
-
 
   useEffect(() => {
     refetch();
@@ -64,6 +65,8 @@ export default function CommunityPage() {
     console.log("post to edit:", _id)
     setExistingText(text)
     console.log("exisiting text:", text)
+    setEditPostId(_id)
+    console.log("exisiting id:", _id)
     setShowEdit(true)
   }
 
@@ -108,7 +111,8 @@ export default function CommunityPage() {
               </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <EditCommunitypost postId={editPostId} existingText={existingText}/>
+              <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
+              {/* <EditCommunitypost editPostId={editPostId} existingText={existingText} /> */}
             </Modal.Body>
             <Modal.Footer>
               <button onClick={() => setShowEdit(false)}>Cancel</button>
@@ -128,7 +132,7 @@ export default function CommunityPage() {
                     text={item.text}
                     handleLike={handleLikePosts}
                     handleDeletePost={handleDeletePost}
-                    handleEditPost={() => handleEditPost(item._id, item.text)} />
+                    handleEditPost={(text) => handleEditPost(item._id, item.text)} />
                 ))}
             </div>
             <SpotlightNews />

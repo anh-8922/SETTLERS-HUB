@@ -1,42 +1,49 @@
 
 import { useCookies } from "react-cookie";
 import { useGetUserID } from "../CustomHooks/useGetUserID";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import Stack from "@mui/material/Stack";
 import useFetchData from "../CustomHooks/useFetchData";
 
-export default function EditCommunitypost({ existingText }) {
+export default function EditCommunitypost({ existingText, editPostId }) {
   const userID = useGetUserID();
   console.log("Add Community post userID:", userID);
-  const [cookies, _] = useCookies(["access_token"]);
+  const [ cookies, _] = useCookies(["access_token"])
   console.log("access:", cookies);
-  const [text, setText] = useState(existingText);
-  console.log("text:", text);
+  const [textEdit, setTextEdit] = useState(existingText);
+  console.log("text:", textEdit);
   console.log("access:", cookies);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [emptyTextError, setEmptyTextError] = useState(false);
+  // const [editedPostId, setEditPostId] = useState(editPostId);
+  console.log("id:", editPostId)
+
+  useEffect(() => {
+    setTextEdit(existingText);
+  }, [existingText])
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
 
     const formData = new FormData();
-    formData.append("text", text);
+    formData.append("text", textEdit);
     formData.append("owner", userID);
 
-    if (!text || text.trim() === "") {
+    if (!textEdit || textEdit.trim() === "") {
       setEmptyTextError(true);
       console.log("Post text cannot be empty");
       return;
     }
 
     try {
-      const response = await axios.put(`/community/edit/`, formData, {
+      const response = await axios.put(`/community/edit/${editPostId}`, formData, {
         withCredentials: true,
         headers: {
-          "Content-type": "multipart/form-data; charset=UTF-8",
+          "Content-Type": "application/json",
+          // "Authorization": `Bearer ${cookies.access_token}`,
         },
       });
 
@@ -63,9 +70,9 @@ export default function EditCommunitypost({ existingText }) {
               <textarea
                 type="text"
                 id="text"
-                value={text}
-                required={true}
-                onChange={(e) => setText(e.target.value)}
+                value={textEdit}
+                // required={true}
+                onChange={(e) => setTextEdit(e.target.value)}
                 style={{ width: "40rem", height: "40rem" }}
               />
             </label>
