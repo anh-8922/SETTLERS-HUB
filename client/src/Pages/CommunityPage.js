@@ -130,6 +130,7 @@ export default function CommunityPage() {
             <div>
               {data &&
                 data.communityPosts.map((item) => (
+                
                   <ListCommunityPost
                     key={item._id}
                     _id={item._id}
@@ -139,7 +140,9 @@ export default function CommunityPage() {
                     text={item.text}
                     handleLikePost={handleLikePosts}
                     handleDeletePost={handleDeletePost}
-                    handleEditPost={(text) => handleEditPost(item._id, item.text)} />
+                    handleEditPost={(text) => handleEditPost(item._id, item.text)} 
+                    likes={item.likes.length}
+                    />
                 ))}
             </div>
             <SpotlightNews />

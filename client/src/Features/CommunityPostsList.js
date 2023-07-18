@@ -4,7 +4,8 @@ import TimeAgo from "react-timeago";
 import "../Style/feature.css";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaRegComments } from "react-icons/fa"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+
 
 export default function ListCommunityPost({ _id, 
                                             firstName, 
@@ -12,13 +13,23 @@ export default function ListCommunityPost({ _id,
                                             createdAt, 
                                             handleLikePost, 
                                             text, 
+                                            likes,
                                             handleDeletePost, 
                                             handleEditPost }) {
   const [liked, setLiked] = useState(false)
 
+  useEffect(() => {
+    const storedLiked = localStorage.getItem(`liked_${_id}`)
+    if (storedLiked) {
+      setLiked(JSON.parse(storedLiked))
+    }
+  }, [])
+
   const handleLike = () => {
     handleLikePost(_id)
-    setLiked(!liked)
+    const updatedLiked = !liked
+    setLiked(updatedLiked)
+    localStorage.setItem(`liked_${_id}`, JSON.stringify(updatedLiked))
   }
 
   return (
@@ -34,14 +45,15 @@ export default function ListCommunityPost({ _id,
       <div>
         {liked ? (
           <AiFillHeart
-          className="text-red-500 text-[2rem] cursor-pointer"
+          className="heart-icon"
+          // className="text-red-500 text-[2rem] cursor-pointer"
           // onClick={() => handleLikePost(_id)}
           onClick={handleLike}
         />
 
         ) : (
           <AiOutlineHeart
-          className="text-red-500 text-[2rem] cursor-pointer"
+            className="heart-icon"
           // onClick={() => handleLikePost(_id)}
           onClick={handleLike}
         />
@@ -51,7 +63,7 @@ export default function ListCommunityPost({ _id,
         {/* {liked ? <span>Liked</span> : <span>Like</span>} */}
       
 
-
+        <span>Likes: {likes}</span>
         <FaRegComments className="text-slate-500 hover:text-red-500 text-[2rem] cursor-pointer" />
       </div>
       <div>comment</div>
