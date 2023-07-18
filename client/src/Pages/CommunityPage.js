@@ -1,12 +1,10 @@
 
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
 import { HeroSectionC } from "../Components/HeroSection"
 import MainLayout from "../Layout/MainLayout"
 import ListCommunityPost from "../Features/CommunityPostsList"
 import AddCommunitypost from "../Features/AddCommunityPost"
 import { SpotlightNews } from "../Components/SpotLight"
-import Button from "react-bootstrap/Button"
 import Modal from "react-bootstrap/Modal"
 import useFetchData from "../CustomHooks/useFetchData"
 import "../Style/page.css"
@@ -20,17 +18,13 @@ export default function CommunityPage() {
     console.log("user:", userID)
     const [ cookies, _] = useCookies(["access_token"])
     console.log("cookies:", cookies)
-    const { data, error, refetch } = useFetchData(
-    "http://localhost:5000/community/listpost"
-  );
-  console.log("data:", data);
-  console.log("error:", error);
-  const [show, setShow] = useState(false);
-  const [showEdit, setShowEdit] = useState(false)
-  const [existingText, setExistingText] = useState("")
-  // const { editPostId } = useParams()
-  // console.log("exisiting id:", editPostId)
-  const [editPostId, setEditPostId] = useState(null)
+    const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
+    console.log("data:", data);
+    console.log("error:", error);
+    const [show, setShow] = useState(false);
+    const [showEdit, setShowEdit] = useState(false)
+    const [existingText, setExistingText] = useState("")
+    const [editPostId, setEditPostId] = useState(null)
 
   useEffect(() => {
     refetch();
@@ -112,7 +106,6 @@ export default function CommunityPage() {
             </Modal.Header>
             <Modal.Body>
               <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
-              {/* <EditCommunitypost editPostId={editPostId} existingText={existingText} /> */}
             </Modal.Body>
             <Modal.Footer>
               <button onClick={() => setShowEdit(false)}>Cancel</button>
@@ -130,7 +123,7 @@ export default function CommunityPage() {
                     lastName={item.owner.lastName}
                     createdAt={item.createdAt}
                     text={item.text}
-                    handleLike={handleLikePosts}
+                    handleLikePost={handleLikePosts}
                     handleDeletePost={handleDeletePost}
                     handleEditPost={(text) => handleEditPost(item._id, item.text)} />
                 ))}
@@ -140,5 +133,5 @@ export default function CommunityPage() {
         </div>
       </div>
     </MainLayout>
-  );
+  )
 }

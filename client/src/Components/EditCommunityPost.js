@@ -1,40 +1,38 @@
 
-import { useCookies } from "react-cookie";
-import { useGetUserID } from "../CustomHooks/useGetUserID";
-import { useEffect, useState } from "react";
-import axios from "axios";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
-import useFetchData from "../CustomHooks/useFetchData";
+import { useCookies } from "react-cookie"
+import { useGetUserID } from "../CustomHooks/useGetUserID"
+import { useEffect, useState } from "react"
+import axios from "axios"
+import Alert from "@mui/material/Alert"
+import AlertTitle from "@mui/material/AlertTitle"
+import Stack from "@mui/material/Stack"
 
 export default function EditCommunitypost({ existingText, editPostId }) {
-  const userID = useGetUserID();
-  console.log("Add Community post userID:", userID);
+  const userID = useGetUserID()
+  console.log("Add Community post userID:", userID)
   const [ cookies, _] = useCookies(["access_token"])
-  console.log("access:", cookies);
-  const [textEdit, setTextEdit] = useState(existingText);
-  console.log("text:", textEdit);
-  console.log("access:", cookies);
-  const [formSubmitted, setFormSubmitted] = useState(false);
-  const [emptyTextError, setEmptyTextError] = useState(false);
-  // const [editedPostId, setEditPostId] = useState(editPostId);
+  console.log("access:", cookies)
+  const [textEdit, setTextEdit] = useState(existingText)
+  console.log("text:", textEdit)
+  console.log("access:", cookies)
+  const [formSubmitted, setFormSubmitted] = useState(false)
+  const [emptyTextError, setEmptyTextError] = useState(false)
   console.log("id:", editPostId)
 
   useEffect(() => {
-    setTextEdit(existingText);
+    setTextEdit(existingText)
   }, [existingText])
 
   const handleSubmitEdit = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("text", textEdit);
-    formData.append("owner", userID);
+    const formData = new FormData()
+    formData.append("text", textEdit)
+    formData.append("owner", userID)
 
     if (!textEdit || textEdit.trim() === "") {
       setEmptyTextError(true);
-      console.log("Post text cannot be empty");
+      console.log("Post text cannot be empty")
       return;
     }
 
@@ -43,14 +41,13 @@ export default function EditCommunitypost({ existingText, editPostId }) {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
-          // "Authorization": `Bearer ${cookies.access_token}`,
         },
       });
 
-      setFormSubmitted(true);
-      console.log("Response:", response);
+      setFormSubmitted(true)
+      console.log("Response:", response)
     } catch (error) {
-      console.log("Error:", error);
+      console.log("Error:", error)
     }
   };
 
@@ -125,5 +122,5 @@ export default function EditCommunitypost({ existingText, editPostId }) {
         </div>
       )}
     </div>
-  );
+  )
 }
