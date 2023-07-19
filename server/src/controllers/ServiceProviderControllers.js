@@ -1,8 +1,11 @@
 import Serviceproviderr from "../model/ServiceProvider.js";
 
 export const handleAddNewServiceProvider = async (res, req) => {
+    console.log("add service/:", req.body)
+    console.log("req user add service:", req.user)
 
     try{
+        if (!req.user)return res.send({ success: false, error: "Unauthorized" })
         console.log("Add new service provider")
         res.send("Add new service provider sucess")
     } catch (error) {

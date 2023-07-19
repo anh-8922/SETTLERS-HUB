@@ -35,6 +35,10 @@ const serviceProviderSchema = new Schema ( {
     required: true,
   },
   image: String,
+  featured:{
+    type:String,
+    default: false,
+  },
   likes: [
     {
       type: Schema.Types.ObjectId,
