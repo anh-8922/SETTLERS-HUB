@@ -25,10 +25,22 @@ export default function CommunityPage() {
     const [showEdit, setShowEdit] = useState(false)
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
+    const [isPostLiked, setIsPostLiked] = useState(false);
+    const [likedPostIds, setLikedPostIds] = useState([]);
 
   useEffect(() => {
     refetch();
   }, []);
+  useEffect(() => {
+    if (data) {
+      const likedPosts = data.communityPosts.filter((post) =>
+        post.likes.some((like) => like._id === userID)
+      );
+      setLikedPostIds(likedPosts.map((post) => post._id))
+    }
+  }, [data])
+
+
 
   const handleClose = () => {
     setShow(false);
@@ -40,6 +52,7 @@ export default function CommunityPage() {
     refetch();
   }
 
+  
 
 
   const handleDeletePost = async (_id) => {
@@ -74,14 +87,19 @@ export default function CommunityPage() {
           "Content-Type": "application/json",
         }
       })
+
       console.log("like response:", response)
       refetch()
+
     } catch (error) {
       console.log("Error like post:", error)
 
     }
 
   }
+
+
+
   return (
     <MainLayout>
       <HeroSectionC />
@@ -142,6 +160,8 @@ export default function CommunityPage() {
                     handleDeletePost={handleDeletePost}
                     handleEditPost={(text) => handleEditPost(item._id, item.text)} 
                     likes={item.likes.length}
+                    loggedInUserId={userID}
+                    isPostLiked={likedPostIds.includes(item._id)}
                     />
                 ))}
             </div>
