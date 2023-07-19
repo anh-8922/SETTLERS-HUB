@@ -25,12 +25,12 @@ export default function CommunityPage() {
     const [showEdit, setShowEdit] = useState(false)
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
-    const [isPostLiked, setIsPostLiked] = useState(false);
-    const [likedPostIds, setLikedPostIds] = useState([]);
+    const [likedPostIds, setLikedPostIds] = useState([])
 
   useEffect(() => {
-    refetch();
-  }, []);
+    refetch()
+  }, [])
+
   useEffect(() => {
     if (data) {
       const likedPosts = data.communityPosts.filter((post) =>
@@ -40,20 +40,15 @@ export default function CommunityPage() {
     }
   }, [data])
 
-
-
   const handleClose = () => {
     setShow(false);
     refetch();
   }
 
   const handleCloseEdit = () => {
-    setShowEdit(false);
-    refetch();
+    setShowEdit(false)
+    refetch()
   }
-
-  
-
 
   const handleDeletePost = async (_id) => {
     console.log("post to delete:", _id)
@@ -87,18 +82,12 @@ export default function CommunityPage() {
           "Content-Type": "application/json",
         }
       })
-
       console.log("like response:", response)
       refetch()
-
     } catch (error) {
       console.log("Error like post:", error)
-
     }
-
   }
-
-
 
   return (
     <MainLayout>
