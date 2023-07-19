@@ -1,5 +1,3 @@
-
-
 import TimeAgo from "react-timeago";
 import "../Style/feature.css";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";

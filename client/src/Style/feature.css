@@ -155,8 +155,13 @@
 /*~~~~COMMUNITY LIST ~~~~~~~*/
 /*--------FETCH AND LIST DATA --------*/
 /*====================================*/
+
 .community_post_list {
     background-color: pink;
-    width: 100%;
-    padding: 2rem 2rem 2rem 10rem;
+    border: 1px solid grey;
+    margin: 2rem;
+    padding: 1rem;
+    
+    
 }
+   
