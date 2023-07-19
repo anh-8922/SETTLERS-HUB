@@ -25,10 +25,20 @@ export default function CommunityPage() {
     const [showEdit, setShowEdit] = useState(false)
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
+    const [likedPostIds, setLikedPostIds] = useState([])
 
   useEffect(() => {
-    refetch();
-  }, []);
+    refetch()
+  }, [])
+
+  useEffect(() => {
+    if (data) {
+      const likedPosts = data.communityPosts.filter((post) =>
+        post.likes.some((like) => like._id === userID)
+      );
+      setLikedPostIds(likedPosts.map((post) => post._id))
+    }
+  }, [data])
 
   const handleClose = () => {
     setShow(false);
@@ -36,11 +46,9 @@ export default function CommunityPage() {
   }
 
   const handleCloseEdit = () => {
-    setShowEdit(false);
-    refetch();
+    setShowEdit(false)
+    refetch()
   }
-
-
 
   const handleDeletePost = async (_id) => {
     console.log("post to delete:", _id)
@@ -78,10 +86,9 @@ export default function CommunityPage() {
       refetch()
     } catch (error) {
       console.log("Error like post:", error)
-
     }
-
   }
+
   return (
     <MainLayout>
       <HeroSectionC />
@@ -130,6 +137,7 @@ export default function CommunityPage() {
             <div>
               {data &&
                 data.communityPosts.map((item) => (
+                
                   <ListCommunityPost
                     key={item._id}
                     _id={item._id}
@@ -139,7 +147,11 @@ export default function CommunityPage() {
                     text={item.text}
                     handleLikePost={handleLikePosts}
                     handleDeletePost={handleDeletePost}
-                    handleEditPost={(text) => handleEditPost(item._id, item.text)} />
+                    handleEditPost={(text) => handleEditPost(item._id, item.text)} 
+                    likes={item.likes.length}
+                    loggedInUserId={userID}
+                    isPostLiked={likedPostIds.includes(item._id)}
+                    />
                 ))}
             </div>
             <SpotlightNews />

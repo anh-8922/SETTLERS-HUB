@@ -160,3 +160,13 @@
     width: 100%;
     padding: 2rem 2rem 2rem 10rem;
 }
+
+
+/* ============== */
+/* HEART ICON IN COMMUNITY POST LIKE */
+/* BY LAKMALI */
+
+.heart-icon{
+    color: blue !important;
+    cursor:pointer;
+}
