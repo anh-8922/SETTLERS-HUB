@@ -13,6 +13,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchData from '../CustomHooks/useFetchData';
+import SinglePostLayout from '../Layout/SinglePostLayout';
 
 
 export default function EditProperties() {
@@ -255,6 +256,7 @@ export default function EditProperties() {
 
   
   return (
+    <SinglePostLayout>
     <div>
       { !isFormSubmit ? (
         <Form onSubmit={handleSubmit}>
@@ -510,5 +512,6 @@ export default function EditProperties() {
     
 
     </div>
+    </SinglePostLayout>
   );
 }

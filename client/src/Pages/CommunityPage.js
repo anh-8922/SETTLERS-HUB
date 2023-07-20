@@ -151,6 +151,7 @@ export default function CommunityPage() {
                     likes={item.likes.length}
                     loggedInUserId={userID}
                     isPostLiked={likedPostIds.includes(item._id)}
+                    isUser={item.owner}
                     />
                 ))}
             </div>

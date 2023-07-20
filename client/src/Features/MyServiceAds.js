@@ -54,7 +54,7 @@ export default function MyServiceAds() {
   }
 
   const handleEditProperty = (id) => {
-    navigate (`/editpropertyad/${id}`)
+    navigate (`/editservicead/${id}`)
   }
 
   return (

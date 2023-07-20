@@ -57,6 +57,7 @@ export default function ProfilePage ()  {
         <SinglePostLayout>
         <div>
             <div>Hi from profile</div>
+            <button onClick={() => navigate('/')}>Home</button>
             <button onClick={() => navigate('/addnewad')}>Add new Ad</button>
             <div style={{ marginTop:"3vh"}}>
             <Box

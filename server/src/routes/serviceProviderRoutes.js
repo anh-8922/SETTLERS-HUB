@@ -16,6 +16,6 @@ router.get ('/listserviceproviders', handleListServiceProviders)
 router.get ('/listoneserviceprovider/:id', handleListOneServiceProvider)
 router.get ('/listserviceadsbyuser', auth, handleListServiceAdsByUSer)
 router.delete('/delete/:id', auth,  handeleDeleteService)
-router.put('/edit', auth, handleEditSerice)
+router.put('/edit/:id', auth, handleEditSerice)
 
 export default router
