@@ -159,9 +159,28 @@
 .community_post_list {
     background-color: pink;
     border: 1px solid grey;
-    margin: 2rem;
+    margin: 0.5rem 2rem;
     padding: 1rem;
     
     
 }
+
+.edit-del {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.like-reply{
+    display: flex;
+    flex-direction: row;
+}
+
+
    

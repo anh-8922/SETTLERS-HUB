@@ -13,7 +13,9 @@ import "../Style/page.css"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from "axios"
 import { useCookies } from "react-cookie"
-import EditCommunitypost from "../Components/EditCommunityPost"
+import EditCommunitypost from "../Components/EditCommunityPost";
+import {TbUserQuestion} from 'react-icons/tb';
+
 
 export default function CommunityPage() {
     const userID= useGetUserID ()
@@ -91,19 +93,22 @@ export default function CommunityPage() {
           <CommunityBar/>
           <div className="community-content">
             <div className="fetched-community-list">
-              {data &&
-                data.communityPosts.map((item) => (
-                  <ListCommunityPost
-                    key={item._id}
-                    _id={item._id}
-                    firstName={item.owner.firstName}
-                    lastName={item.owner.lastName}
-                    createdAt={item.createdAt}
-                    text={item.text}
-                    handleLikePost={handleLikePosts}
-                    handleDeletePost={handleDeletePost}
-                    handleEditPost={(text) => handleEditPost(item._id, item.text)} />
-                ))}
+             
+                {data &&
+                  data.communityPosts.map((item) => (
+                    <ListCommunityPost
+                      key={item._id}
+                      _id={item._id}
+                      firstName={item.owner.firstName}
+                      lastName={item.owner.lastName}
+                      createdAt={item.createdAt}
+                      text={item.text}
+                      handleLikePost={handleLikePosts}
+                      handleDeletePost={handleDeletePost}
+                      handleEditPost={(text) => handleEditPost(item._id, item.text)} />
+                  ))}
+             
+                
             </div>
             <SpotlightNews />
           </div>
@@ -118,7 +123,7 @@ function CommunityBar() {
   const handleClose = () => setOpen(false);
   return(
     <div className="community-bar">
-      <button onClick={handleOpen}>Add new post</button>
+      <Button onClick={handleOpen} id='ask-button'>Ask a question<TbUserQuestion/></Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -127,7 +132,7 @@ function CommunityBar() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            Ask a question
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <AddCommunitypost/>
@@ -149,3 +154,4 @@ const style = {
   boxShadow: 24,
   p: 4,
 };
+
