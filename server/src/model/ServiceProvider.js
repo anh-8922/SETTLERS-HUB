@@ -34,7 +34,7 @@ const serviceProviderSchema = new Schema ( {
     type: String,
     required: true,
   },
-  experiance: {
+  experience: {
     type: String,
     required: true,
   },

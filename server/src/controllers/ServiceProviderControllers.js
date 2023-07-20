@@ -3,22 +3,24 @@ import Serviceprovider from "../model/ServiceProvider.js";
 export const handleAddNewServiceProvider = async ( req, res) => {
     console.log("add service:", req.body)
     console.log("req user add service:", req.user)
-
+    
     try{
         if (!req.user)return res.send({ success: false, error: "Unauthorized" })
         
+        
         let {
             category,
+            owner,
             subject,
             location,
             rate,
             experience,
-            qulification,
+            qulifications,
             telephone,
             description,
             featured,
           } = req.body
-
+           owner = req.user
           if (!description || description.trim() === "") {
             res.send({success: false, error: "Text field is empty"})
             return
@@ -26,22 +28,21 @@ export const handleAddNewServiceProvider = async ( req, res) => {
 
         const newServicePost = await Serviceprovider.create({
             category,
+            owner,
             subject,
             location,
             rate,
             experience,
-            qulification,
+            qulifications,
             telephone,
             description,
             featured,
-        }).populate({
-            path: "owner",
-            select: "username email image firstName lastName",
         })
         console.log("Add new service provider")
-        res.send("Add new service provider sucess")
+        res.send({success: true, newServicePost})
     } catch (error) {
-        console.log("Error in adding service provider")
+        console.log("Error in adding service provider:" + error.message)
+        res.send({success: false, error})
     }
 }
 

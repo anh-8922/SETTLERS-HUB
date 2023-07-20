@@ -19,7 +19,7 @@ export default function NewServiceAds() {
   console.log("Ads service post ueseID:", userID)
   const [ cookies, _] = useCookies(["access_token"])
   console.log("acess:", cookies)
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('Plumber')
   const [subject, setSubject] = useState('')
   const [telephone, setTelephone] = useState('')
   const [rate, setRate] = useState('')
@@ -66,7 +66,7 @@ export default function NewServiceAds() {
             location: location,
             rate: rate,
             experience: experience,
-            qulification: qulification,
+            qulifications: qulification,
             telephone: telephone,
             description: description,
             featured: featured,
