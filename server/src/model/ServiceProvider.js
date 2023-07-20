@@ -61,6 +61,18 @@ const serviceProviderSchema = new Schema ( {
       },
     },
   ],
+  reviews:[
+    {
+    text:{
+      type: String,
+      required: true,
+    },
+    rating:{
+      type:Number,
+      required: true,
+    }
+    }
+  ]
 },
 {
   timestamps: true,

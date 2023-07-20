@@ -46,26 +46,46 @@ export const handleAddNewServiceProvider = async ( req, res) => {
     }
 }
 
-export const handleListServiceProviders = (req, res) => {
-
+export const handleListServiceProviders = async (req, res) => {
+    console.log("handle List Service providers Ads:", req.body)
     try{
-        console.log("New Service post:", newServicePost)
-        res.send({success: true, newServicePost})
+        const serviceProvidersAds = await Serviceprovider.find()
+        .populate({
+            path: "owner",
+            select: "username email image firstName lastName",
+        })
+        .select ("-__v")
+        .sort({ _id: "desc" })
+        console.log("New Service post:", serviceProvidersAds)
+        res.send({success: true, serviceProvidersAds})
     } catch (error) {
         console.log("Error in list service providers:",  + error.message)
-        res.send("Error in list service providers")
+        res.send({success: false, error: message})
     }
 }
-export const handleListServiceAdssByUSer = (req, res) => {
+
+
+export const handleListServiceAdsByUSer = async (req, res) => {
 
     try{
-        console.log("List serice by users")
-        res.send("List serice by users")
+        const owner = req.query.owner
+        console.log("owner:", owner)
+        if (!owner) return res.send({ success: false, error: "User id is not provided" })
+
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+
+        const adverticedServiceByUser = await Serviceprovider.find({owner: owner})
+        .select("category location rate createdAt ") 
+
+        console.log("List serice by users:", adverticedServiceByUser)
+        res.send({success: true, adverticedServiceByUser})
     } catch (error) {
-        console.log("Error list service by  user")
-        res.send("Error list service by  user")
+        console.log("Error list service by  user:", + error.message)
+        res.send({success: false, error: message})
     }
 }
+
+
 
 export const handeleDeleteService = (req, res) => {
     try{
