@@ -21,10 +21,20 @@ export const handleAddNewServiceProvider = async ( req, res) => {
             featured,
           } = req.body
            owner = req.user
-          if (!description || description.trim() === "") {
-            res.send({success: false, error: "Text field is empty"})
-            return
-        }
+
+           if (
+            !category ||
+            !subject ||
+            !location ||
+            !rate ||
+            !experience||
+            !qulifications ||
+            !telephone ||
+            !description || description.trim() === ""
+            ) {
+                return res.send({ success: false, error: "All fields must be filled" });
+              }
+          
 
         const newServicePost = await Serviceprovider.create({
             category,
@@ -104,24 +114,82 @@ export const handeleDeleteService = async (req, res) => {
 
 }
 
-export const handleEditSerice = (req, res) => {
+export const handleEditSerice = async (req, res) => {
+    const id = req.query.id
+    console.log("Service provider to edit:", id)
+    console.log("User:", req.user)
     try{
-        console.log("delete service")
-        res.send("delete service")
+        if (!req.user) {
+            return res.send({ success: false, error: "Unauthorized" })
+          }
+          if (!id) {
+            return res.send({ success: false, error: "Service ID is not provided" })
+          }
+
+        let {
+            category,
+            owner,
+            subject,
+            location,
+            rate,
+            experience,
+            qulifications,
+            telephone,
+            description,
+            featured,
+            } = req.body
+        owner = req.user
+
+        if (
+            !category ||
+            !subject ||
+            !location ||
+            !rate ||
+            !experience||
+            !qulifications ||
+            !telephone ||
+            !description || description.trim() === ""
+            ) {
+                return res.send({ success: false, error: "All fields must be filled" });
+              }
+
+        const editedServicePost = await Serviceprovider.findByIdAndUpdate(
+            id,
+            {
+                category,
+                owner,
+                subject,
+                location,
+                rate,
+                experience,
+                qulifications,
+                telephone,
+                description,
+                featured,
+                },
+                { new: true }
+        )
+        console.log("Edit service provider:", editedServicePost)
+        res.send({success: true, editedServicePost})
     } catch (error) {
-        console.log("Error delete service")
-        res.send("Error delete service")
+        console.log("Error edit service provider:", error.message)
+        res.send({success: false, error})
     }
 
 }
 
-export const handleListOneServiceProvider = (req, res) => {
+export const handleListOneServiceProvider = async (req, res) => {
+    
+
     try{
-        console.log("delete service")
-        res.send("delete service")
+        const id = req.params.id
+        if (!id) return res.send({ success: false, error: "Service provider id is not provided" })
+        const selectedServiceProviderAd = await Serviceprovider.findById (id)
+        console.log("List service provider ad:", selectedServiceProviderAd)
+        res.send({success: true, selectedServiceProviderAd})
     } catch (error) {
-        console.log("Error delete service")
-        res.send("Error delete service")
+        console.log("Error List service provider ad:", error.message)
+        res.send({success: false, error})
     }
 
 }

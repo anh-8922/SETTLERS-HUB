@@ -17,6 +17,8 @@ export default function ListCommunityPost({
   handleDeletePost,
   handleEditPost,
   isPostLiked,
+  isUser,
+  loggedInUserId
 }) {
 
 
@@ -24,13 +26,17 @@ export default function ListCommunityPost({
     handleLikePost(_id)
   }
 
+  const isCurrentUserOwner = isUser && isUser._id === loggedInUserId
 
   return (
     <div key={_id} className="community_post_list">
-      <div>
-        <button onClick={() => handleEditPost(_id, text)}>Edit</button>{" "}
-        <button onClick={() => handleDeletePost(_id)}>Delete</button>
-      </div>
+      { isCurrentUserOwner? (
+              <div>
+              <button onClick={() => handleEditPost(_id, text)}>Edit</button>{" "}
+              <button onClick={() => handleDeletePost(_id)}>Delete</button>
+            </div>
+      ): null}
+
       <div
         className="post-owner"
         style={{ fontSize: "1.2rem", fontWeight: "bold" }}

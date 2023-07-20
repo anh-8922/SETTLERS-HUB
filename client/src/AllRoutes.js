@@ -24,6 +24,7 @@ import SingleProperty from "./SubPage/SinglePropertyPage";
 import ProtectedLayout from "./Layout/ProtectedLayout";
 import LoginLayout from "./Layout/LoginLayout";
 import EditProperties from "./Features/EditPropertyAds";
+import EditServiceAd from './Features/EditServiceAd.js'
 
 
 
@@ -58,6 +59,7 @@ export default function AllRoutes () {
         <Route path="/profile" element={<ProfilePage/>}/>
         <Route path='/addnewad' element={<AddNewAds/>}/>
         <Route path='/editpropertyad/:id' element={<EditProperties/>}/>
+        <Route path='/editservicead/:id' element= {<EditServiceAd/>}/>
       </Route>
 
     </Routes>
