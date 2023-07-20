@@ -1,11 +1,43 @@
-import Serviceproviderr from "../model/ServiceProvider.js";
+import Serviceprovider from "../model/ServiceProvider.js";
 
-export const handleAddNewServiceProvider = async (res, req) => {
-    console.log("add service/:", req.body)
+export const handleAddNewServiceProvider = async ( req, res) => {
+    console.log("add service:", req.body)
     console.log("req user add service:", req.user)
 
     try{
         if (!req.user)return res.send({ success: false, error: "Unauthorized" })
+        
+        let {
+            category,
+            subject,
+            location,
+            rate,
+            experience,
+            qulification,
+            telephone,
+            description,
+            featured,
+          } = req.body
+
+          if (!description || description.trim() === "") {
+            res.send({success: false, error: "Text field is empty"})
+            return
+        }
+
+        const newServicePost = await Serviceprovider.create({
+            category,
+            subject,
+            location,
+            rate,
+            experience,
+            qulification,
+            telephone,
+            description,
+            featured,
+        }).populate({
+            path: "owner",
+            select: "username email image firstName lastName",
+        })
         console.log("Add new service provider")
         res.send("Add new service provider sucess")
     } catch (error) {
@@ -16,10 +48,10 @@ export const handleAddNewServiceProvider = async (res, req) => {
 export const handleListServiceProviders = (req, res) => {
 
     try{
-        console.log("List service providers")
-        res.send("List service providers")
+        console.log("New Service post:", newServicePost)
+        res.send({success: true, newServicePost})
     } catch (error) {
-        console.log("Error in list service providers")
+        console.log("Error in list service providers:",  + error.message)
         res.send("Error in list service providers")
     }
 }

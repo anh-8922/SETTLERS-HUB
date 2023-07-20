@@ -1,12 +1,12 @@
 import express from 'express'
+import auth from '../middleware/auth.js'
 import {handleAddNewServiceProvider,
         handleListServiceProviders,
         handleListServiceAdssByUSer,
         handeleDeleteService,
         handleEditSerice,
         handleListOneServiceProvider} from '../controllers/ServiceProviderControllers.js'
-import auth from '../middleware/auth.js'
-import upload from "../config/cloudinary.js"
+
 
 
 const router = express.Router()

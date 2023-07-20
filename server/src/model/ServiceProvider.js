@@ -18,7 +18,7 @@ const serviceProviderSchema = new Schema ( {
     type: String,
     required: true,
   },
-  title: {
+  subject: {
     type: String,
     required: true,
   },
@@ -27,6 +27,10 @@ const serviceProviderSchema = new Schema ( {
     required: true,
   },
   qulifications: {
+    type: String,
+    required: true,
+  },
+  location:{
     type: String,
     required: true,
   },

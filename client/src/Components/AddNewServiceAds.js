@@ -28,6 +28,7 @@ export default function NewServiceAds() {
   const [description, setDescription] = useState ()
   const [featured, setFeatured] = useState (false)
   const [isFormSubmit, setFormSubmitted] = useState (false)
+  const [location, setLocation] = useState ('')
   const navigate = useNavigate()
 
 
@@ -58,7 +59,18 @@ export default function NewServiceAds() {
 
 
         try {
-          const response = await axios.post("/housing/addnewproperty", {
+          const response = await axios.post("/serviceprovider/addnewserviceprovider", 
+          {
+            category: category,
+            subject: subject,
+            location: location,
+            rate: rate,
+            experience: experience,
+            qulification: qulification,
+            telephone: telephone,
+            description: description,
+            featured: featured,
+          },{
             withCredentials: true,
             headers: {
               "Content-Type": "application/json",
@@ -87,7 +99,7 @@ export default function NewServiceAds() {
 
         <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCategoryType">
-        <Form.Label>Service Catergory</Form.Label>
+        <Form.Label>Catergory</Form.Label>
          <Form.Select value={category} 
                       onChange={handleCategory}>
            {/* <option >Select...</option> */}
@@ -101,6 +113,26 @@ export default function NewServiceAds() {
           
          </Form.Select>
         </Form.Group>
+
+        <Form.Group as={Col} className="mb-3" controlId="formGridSubject">
+       <Form.Label>Subject</Form.Label>
+       <Form.Control placeholder="Safety First: Certified Electrician for Your Peace of Mind"
+                     value={subject}
+                     required = {true}
+                     onChange={(e) => setSubject(e.target.value)}/>
+     </Form.Group>
+      
+     <Form.Group as={Col} className="mb-3" controlId="formGridLocation">
+       <Form.Label>Location</Form.Label>
+       <Form.Control placeholder="Richmond"
+                     value={location}
+                     required = {true}
+                     onChange={(e) => setLocation(e.target.value)}/>
+     </Form.Group>
+       
+
+       </Row>
+        <Row className="mb-3">
 
         <Form.Group as={Col} controlId="formGridRate">
        <Form.Label>Rate p/hr</Form.Label>
@@ -130,17 +162,6 @@ export default function NewServiceAds() {
          </Form.Select>
         </Form.Group>
 
-
-       </Row>
-        <Row className="mb-3">
-
-        <Form.Group as={Col} className="mb-3" controlId="formGridSubject">
-       <Form.Label>Subject</Form.Label>
-       <Form.Control placeholder="Safety First: Certified Electrician for Your Peace of Mind"
-                     value={subject}
-                     required = {true}
-                     onChange={(e) => setSubject(e.target.value)}/>
-     </Form.Group>
 
      <Form.Group as={Col} controlId="formGridQulification">
        <Form.Label>Qulification </Form.Label>
