@@ -79,12 +79,11 @@ export default function NewServiceAds() {
     
           
           console.log("Response:", response);
-          if (response.data.sucsess){
+          if (response.data.success === true){
             setFormSubmitted(true)
-            navigate("/user")
+            // navigate("/profile")
           }
           
-        //   navigate("/user");
         } catch (error) {
           console.log("Error:", error);
         }

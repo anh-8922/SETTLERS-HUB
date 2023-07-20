@@ -86,6 +86,7 @@ export const handleAddNewProperty = async (req, res) => {
 
     } catch (error) {
         console.log("Error in adding new property:", error)
+        res.send({success: false, error})
     }
 }
 
