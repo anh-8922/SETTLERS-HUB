@@ -81,19 +81,25 @@ export const handleListServiceAdsByUSer = async (req, res) => {
         res.send({success: true, adverticedServiceByUser})
     } catch (error) {
         console.log("Error list service by  user:", + error.message)
-        res.send({success: false, error: message})
+        res.send({success: false, error})
     }
 }
 
 
 
-export const handeleDeleteService = (req, res) => {
+export const handeleDeleteService = async (req, res) => {
+    console.log("Delete Service Ad:", req.params)
+
     try{
-        console.log("delete service")
-        res.send("delete service")
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+        
+        const deleteService = await Serviceprovider.findByIdAndDelete(req.params.id)
+
+        console.log("delete service:", deleteService)
+        res.send({ success: true, deleteService})
     } catch (error) {
-        console.log("Error delete service")
-        res.send("Error delete service")
+        console.log("Error deleting service:", error.message)
+        res.send({success: false, error})
     }
 
 }
