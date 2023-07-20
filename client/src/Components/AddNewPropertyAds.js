@@ -189,9 +189,14 @@ export default function NewProperty() {
               "Content-type": "multipart/form-data; charset=UTF-8",
             },
           });
+
+          if (response.data.success === true){
+            setFormSubmitted(true)
+            // navigate("/profile")
+          }
     
-          setFormSubmitted(true);
-          console.log("Response:", response);
+          // setFormSubmitted(true);
+          // console.log("Response:", response);
           
           // navigate("/user");
         } catch (error) {
