@@ -254,7 +254,6 @@ export default function EditProperties() {
 
   }
 
-  
   return (
     <SinglePostLayout>
     <div>
