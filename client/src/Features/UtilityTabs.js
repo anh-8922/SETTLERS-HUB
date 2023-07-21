@@ -7,12 +7,12 @@ export default function UtilityTabs() {
 
   
           <Tabs
-        defaultActiveKey="home"
+        defaultActiveKey="water"
         transition={false}
         id="noanim-tab-example"
         className="mb-3"
       >
-            <Tab eventKey="contact" title="" disabled></Tab>
+            
             <Tab eventKey="water" title="Water">Water</Tab>
             <Tab eventKey="electricity" title="Electricity">Electricity</Tab>
             <Tab eventKey="telecommunication" title="Telecommunication">Telecommunication</Tab>

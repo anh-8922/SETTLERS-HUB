@@ -25,15 +25,15 @@ export default function ServiceProviderTabs() {
               <Plumbers/>
             </Tab>
             <Tab eventKey="electricians" title="Electricians">
-              <h1>Electrician</h1>
+              <h1>Electricians</h1>
               <Electricians/>
             </Tab>
             <Tab eventKey="hvactechnician" title="HVAC Technicians">
-              <h1>HVAC Technician</h1>
+              <h1>HVAC Technicians</h1>
               <HVACTechnicians/>
             </Tab>
             <Tab eventKey="mechanics" title="Mechanics">
-              <h1>Mechanic</h1>
+              <h1>Mechanics</h1>
               <Mechanics/>
             </Tab>
             <Tab eventKey="painters" title="Painters">
