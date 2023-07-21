@@ -1,10 +1,13 @@
 import NewAddTabs from "../Features/NewAdsTabs";
+import SinglePostLayout from "../Layout/SinglePostLayout";
 
 export default function AddNewAds () {
     return (
-        <div>
-            Hello new Ads
-            <NewAddTabs/>
-        </div>
+        <SinglePostLayout>
+            <div style={{height:"100vh"}}>
+                Create your new Advertisement
+                <NewAddTabs/>
+            </div>
+        </SinglePostLayout>
     )
 }
