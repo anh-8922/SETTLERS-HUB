@@ -42,7 +42,7 @@ export default function MyRequestsAds() {
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`serviceprovider/delete/${id}`, {
+      await axios.delete(`servicerequests/delete/${id}`, {
         withCredentials: true
       });
     fetchData()
@@ -65,7 +65,7 @@ export default function MyRequestsAds() {
             <th>#</th>
             <th>Category</th>
             <th>Location</th>
-            <th>Telephone</th>
+            <th>Subject</th>
             <th>Created On</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -73,7 +73,7 @@ export default function MyRequestsAds() {
         </thead>
         <tbody>
           {servicesRequests.map((item, index) => {
-            const { _id, category, location, telephone, createdAt} = item
+            const { _id, category, location, subject, createdAt} = item
             const created = new Date (createdAt)
             const year = created.getFullYear()
             const month = created.getMonth() + 1
@@ -84,7 +84,7 @@ export default function MyRequestsAds() {
                 <td>{index + 1}</td>
                 <td>{category}</td>
                 <td>{location}</td>
-                <td>{telephone}</td>
+                <td>{subject}</td>
                 <td>{year}-{month}-{day}</td>
                 <td><button onClick={() => handleEditProperty(_id)}>Edit</button></td>
                 <td><button onClick={() => handleDeleteProperty(_id)}>Delete</button></td>

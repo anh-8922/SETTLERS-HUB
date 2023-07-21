@@ -28,7 +28,7 @@ export default function MyServiceAds() {
       });
       const responseData = response
       setFetchedData(responseData)
-      console.log("Ads by user:", responseData)
+      console.log("Service Ads by user:", responseData)
     } catch (error) {
       console.error("Error fetching data:", error.message)
     }
@@ -66,6 +66,7 @@ export default function MyServiceAds() {
             <th>#</th>
             <th>Category</th>
             <th>Location</th>
+            <th>Telephone</th>
             <th>Rate p/hr</th>
             <th>Created On</th>
             <th>Edit</th>
@@ -74,7 +75,7 @@ export default function MyServiceAds() {
         </thead>
         <tbody>
           {services.map((item, index) => {
-            const { _id, category, location, rate, createdAt} = item
+            const { _id, category, location, rate, telephone, createdAt} = item
             const created = new Date (createdAt)
             const year = created.getFullYear()
             const month = created.getMonth() + 1
@@ -85,6 +86,7 @@ export default function MyServiceAds() {
                 <td>{index + 1}</td>
                 <td>{category}</td>
                 <td>{location}</td>
+                <td>{telephone}</td>
                 <td>£ {rate}</td>
                 <td>{year}-{month}-{day}</td>
                 <td><button onClick={() => handleEditProperty(_id)}>Edit</button></td>

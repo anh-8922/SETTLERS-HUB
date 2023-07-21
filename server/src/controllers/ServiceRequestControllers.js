@@ -76,7 +76,7 @@ export const handleListRequestAdsByUSer = async(req, res) => {
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
 
         const adverticedRequestByUser = await Servicerequest.find({owner: owner})
-        .select("category location telephone  createdAt ") 
+        .select("category location subject  createdAt ") 
 
         console.log("List service request by user:", adverticedRequestByUser)
         res.send({success: true, adverticedRequestByUser})
@@ -87,11 +87,14 @@ export const handleListRequestAdsByUSer = async(req, res) => {
     }
 }
 
-export const handeleDeleteRequest = (req, res) => {
-
+export const handeleDeleteRequest = async (req, res) => {
+    console.log("Delete Service Request Ad:", req.params)
     try{
-        console.log("Delete service request")
-        res.send("Delete request")
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+        
+        const deleteRequest = await Servicerequest.findByIdAndDelete(req.params.id)
+        console.log("Delete service request:", deleteRequest)
+        res.send({ success: true, deleteRequest})
     } catch (error) {
         console.log("Error in deleting service request:" + error.message)
         res.send({success: false, error})

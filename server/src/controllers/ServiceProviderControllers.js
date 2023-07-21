@@ -85,12 +85,12 @@ export const handleListServiceAdsByUSer = async (req, res) => {
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
 
         const adverticedServiceByUser = await Serviceprovider.find({owner: owner})
-        .select("category location rate createdAt ") 
+        .select("category location rate telephone createdAt ") 
 
         console.log("List serice by users:", adverticedServiceByUser)
         res.send({success: true, adverticedServiceByUser})
     } catch (error) {
-        console.log("Error list service by  user:", + error.message)
+        console.log("Error list service by  user:", error)
         res.send({success: false, error})
     }
 }
@@ -98,7 +98,7 @@ export const handleListServiceAdsByUSer = async (req, res) => {
 
 
 export const handeleDeleteService = async (req, res) => {
-    console.log("Delete Service Ad:", req.params)
+    console.log("Delete Service  Ad:", req.params)
 
     try{
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
