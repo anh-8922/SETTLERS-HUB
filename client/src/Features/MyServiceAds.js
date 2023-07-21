@@ -6,7 +6,6 @@ import Spinner from "./Spinner";
 import axios from 'axios';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import TimeAgo from 'react-timeago'
 
 export default function MyServiceAds() {
   const userId = useGetUserID()

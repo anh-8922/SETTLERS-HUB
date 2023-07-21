@@ -45,7 +45,7 @@ export default function EditProperties() {
   const [isFormSubmit, setFormSubmitted] = useState (false)
   const navigate = useNavigate()
 
-  const {data, error} = useFetchData(`http://localhost:5000/housing/listoneproperty/${id}`)
+  const {data, error} = useFetchData(`/housing/listoneproperty/${id}`)
   console.log("data to edit:", data)
 
   useEffect(() => {
@@ -254,7 +254,6 @@ export default function EditProperties() {
 
   }
 
-  
   return (
     <SinglePostLayout>
     <div>

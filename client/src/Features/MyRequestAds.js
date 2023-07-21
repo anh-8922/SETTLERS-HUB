@@ -53,7 +53,7 @@ export default function MyRequestsAds() {
   }
 
   const handleEditProperty = (id) => {
-    navigate (`/editservicead/${id}`)
+    navigate (`/editrequestad/${id}`)
   }
 
   return (

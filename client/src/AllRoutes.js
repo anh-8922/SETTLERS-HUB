@@ -25,6 +25,7 @@ import ProtectedLayout from "./Layout/ProtectedLayout";
 import LoginLayout from "./Layout/LoginLayout";
 import EditProperties from "./Features/EditPropertyAds";
 import EditServiceAd from './Features/EditServiceAd.js'
+import EditRequestAds from "./Features/EditRequestAds";
 
 
 
@@ -60,9 +61,11 @@ export default function AllRoutes () {
         <Route path='/addnewad' element={<AddNewAds/>}/>
         <Route path='/editpropertyad/:id' element={<EditProperties/>}/>
         <Route path='/editservicead/:id' element= {<EditServiceAd/>}/>
+        <Route path='/editrequestad/:id' element= {<EditRequestAds/>}/>
       </Route>
 
     </Routes>
       </>
     )
 }
+

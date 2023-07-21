@@ -101,22 +101,67 @@ export const handeleDeleteRequest = async (req, res) => {
     }
 }
 
-export const handleEditRequest = (req, res) => {
+export const handleEditRequest = async (req, res) => {
+    const id = req.params.id
+    console.log("Service request to edit:", id)
+    console.log("User:", req.user)
 
     try{
-        console.log("Edit service request")
-        res.send("Edit request")
+        if (!req.user) {
+            return res.send({ success: false, error: "Unauthorized" })
+          }
+          if (!id) {
+            return res.send({ success: false, error: "Service Request ID is not provided" })
+          }
+          let {
+            category,
+            owner,
+            subject,
+            location,
+            telephone,
+            description,
+            featured,
+          } = req.body
+           owner = req.user
+
+           if (
+            !category ||
+            !subject ||
+            !location ||
+            !telephone ||
+            !description || description.trim() === ""
+            ) {
+                return res.send({ success: false, error: "All fields must be filled" });
+              }
+              const editedRequestPost = await Servicerequest.findByIdAndUpdate(
+                id,
+                {
+                    category,
+                    owner,
+                    subject,
+                    location,
+                    telephone,
+                    description,
+                    featured,
+                  },
+                  { new: true }
+            )    
+        console.log("Edit service request:", editedRequestPost)
+        res.send({success: true, editedRequestPost})
     } catch (error) {
         console.log("Error in editing service request:" + error.message)
         res.send({success: false, error})
     }
 }
 
-export const handleListOneServiceRequset = (req, res) => {
+export const handleListOneServiceRequset = async (req, res) => {
 
     try{
-        console.log("List one service request")
-        res.send("List one service request")
+        const id = req.params.id
+        if (!id) return res.send({ success: false, error: "Service request id is not provided" })
+        const selectedServiceRequestAd = await Servicerequest.findById (id)
+        console.log("List one service request ad:", selectedServiceRequestAd)
+        res.send({success: true, selectedServiceRequestAd})
     } catch (error) {
         console.log("Error in list one service request:" + error.message)
         res.send({success: false, error})
