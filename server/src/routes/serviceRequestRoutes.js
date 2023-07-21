@@ -11,11 +11,11 @@ import {handleAddNewServiceRequset,
 
 const router = express.Router()
 
-router.post('/addnewservicerequset',  handleAddNewServiceRequset)
+router.post('/addnewservicerequset', auth,  handleAddNewServiceRequset)
 router.get ('/listservicerequset', handleListServiceRequset)
 router.get ('/listoneservicerequset/:id', handleListOneServiceRequset)
-router.get ('/listrequestadsbyuser',  handleListRequestAdsByUSer)
-router.delete('/delete/:id', handeleDeleteRequest)
-router.put('/edit/:id',  handleEditRequest)
+router.get ('/listrequestadsbyuser', auth, handleListRequestAdsByUSer)
+router.delete('/delete/:id', auth, handeleDeleteRequest)
+router.put('/edit/:id',  auth, handleEditRequest)
 
 export default router

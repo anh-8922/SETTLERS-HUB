@@ -1,9 +1,45 @@
+import Servicerequest from "../model/ServiceRequest.js"
 
-export const handleAddNewServiceRequset = (req, res) => {
-
+export const handleAddNewServiceRequset = async (req, res) => {
+    console.log("add service request:", req.body)
+    console.log("req user add service request:", req.user)
     try{
-        console.log("Add new service request")
-        res.send( "add request")
+        if (!req.user)return res.send({ success: false, error: "Unauthorized" })
+
+        let {
+            category,
+            owner,
+            subject,
+            location,
+            telephone,
+            description,
+            featured,
+          } = req.body
+           owner = req.user
+
+           if (
+            !category ||
+            !subject ||
+            !location ||
+            !telephone ||
+            !description || description.trim() === ""
+            ) {
+                return res.send({ success: false, error: "All fields must be filled" });
+              }
+    
+        const newRequestPost = await Servicerequest.create(
+            {
+                category,
+                owner,
+                subject,
+                location,
+                telephone,
+                description,
+                featured,
+              }
+        )
+        console.log("Add new service request:", newRequestPost)
+        res.send({success: true, newRequestPost})
     } catch (error) {
         console.log("Error in adding service request:" + error.message)
         res.send({success: false, error})
@@ -11,6 +47,7 @@ export const handleAddNewServiceRequset = (req, res) => {
 }
 
 export const handleListServiceRequset = (req, res) => {
+
 
     try{
         console.log("List service request")
