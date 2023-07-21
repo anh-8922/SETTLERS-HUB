@@ -154,9 +154,9 @@ export default function NewServiceAds() {
            {/* <option >Select...</option> */}
            <option value="<1 year">{"< 1 year"}</option>
            <option value="1 year">1 year</option>
-           <option value="2 year">2 years</option>
-           <option value="3 year">3 years</option>
-           <option value="> 3 year"> {"> 3 years"}</option>
+           <option value="2 years">2 years</option>
+           <option value="3 years">3 years</option>
+           <option value="> 3 years"> {"> 3 years"}</option>
           
          </Form.Select>
         </Form.Group>

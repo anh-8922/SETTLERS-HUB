@@ -2,7 +2,7 @@ import ServiceProvidertCard from "../../Components/ServiceProviderCard";
 import useFetchData from "../../CustomHooks/useFetchData";
 import Spinner from "../Spinner"
 
-export default function Plumbers () {
+export default function Landscapers () {
     const {data} = useFetchData('/serviceprovider/listserviceproviders')
     console.log("request data:", data)
 
@@ -11,8 +11,8 @@ export default function Plumbers () {
       }
 
 
-    const plumbers = data.serviceProvidersAds.filter((item) => item.category === "Plumber")
-    console.log("plumbers:", plumbers)
+    const landscapers = data.serviceProvidersAds.filter((item) => item.category === "Gardener/ Landscaper")
+    console.log(" landscapers:", landscapers)
 
     const handleRequestMessage = () => {
 
@@ -25,7 +25,7 @@ export default function Plumbers () {
     return(
         <div>
             {
-                plumbers.map((item) => {
+                 landscapers.map((item) => {
                     const {_id, subject, location, createdAt, description, rate, qulifications, experience, owner } = item
                     const created = new Date (createdAt)
                     const year = created.getFullYear()
@@ -53,6 +53,7 @@ export default function Plumbers () {
         </div>
     )
 }
+
 
 
 
