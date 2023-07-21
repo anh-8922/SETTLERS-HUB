@@ -66,13 +66,23 @@ export const handleListServiceRequset = async (req, res) => {
     }
 }
 
-export const handleListRequestAdsByUSer = (req, res) => {
+export const handleListRequestAdsByUSer = async(req, res) => {
 
     try{
-        console.log("List service request by user")
-        res.send("list by user")
+        const owner = req.query.owner
+        console.log("owner:", owner)
+        if (!owner) return res.send({ success: false, error: "User id is not provided" })
+
+        if (!req.user) return res.send({ success: false, error: "Unauthorized" })
+
+        const adverticedRequestByUser = await Servicerequest.find({owner: owner})
+        .select("category location telephone  createdAt ") 
+
+        console.log("List service request by user:", adverticedRequestByUser)
+        res.send({success: true, adverticedRequestByUser})
+
     } catch (error) {
-        console.log("Error in list service request by user:" + error.message)
+        console.log("Error in list service request by user:" + error)
         res.send({success: false, error})
     }
 }
