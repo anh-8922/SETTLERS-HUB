@@ -46,12 +46,20 @@ export const handleAddNewServiceRequset = async (req, res) => {
     }
 }
 
-export const handleListServiceRequset = (req, res) => {
-
+export const handleListServiceRequset = async (req, res) => {
+    console.log("handle List Service request Ads:", req.body)
 
     try{
-        console.log("List service request")
-        res.send("List requests")
+        const serviceRequestAds = await Servicerequest.find()
+        .populate({
+            path: "owner",
+            select: "username email image firstName lastName",
+        })
+        .select ("-__v")
+        .sort({ _id: "desc" })
+        console.log("New Service post:", serviceRequestAds)
+        res.send({success: true, serviceRequestAds})
+
     } catch (error) {
         console.log("Error in list service request:" + error.message)
         res.send({success: false, error})
