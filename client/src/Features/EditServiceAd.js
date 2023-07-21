@@ -246,7 +246,7 @@ export default function EditServiceAd() {
         <Stack sx={{ width: '30%' }} spacing={2} onClick={() => navigate("/profile")}>
               <Alert variant="filled" severity="success">
                 <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>
-                <strong style={{ color: 'white' }}>Posted Successfully!</strong>
+                <strong style={{ color: 'white' }}>Edited Successfully!</strong>
               </Alert>
               </Stack>
         </div>
