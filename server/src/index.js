@@ -7,6 +7,7 @@ import guideRoutes from './routes/guideRoutes.js'
 import communityRoutes from './routes/communityRoutes.js'
 import housingRoutes from './routes/housingRoutes.js'
 import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
+import  serviceRequestRoutes from './routes/serviceRequestRoutes.js'
 import cookieParser from "cookie-parser"
 
 dotenv.config();
@@ -29,6 +30,7 @@ app.use('/user', userRoutes)
 app.use('/community', communityRoutes)
 app.use('/housing', housingRoutes)
 app.use('/serviceprovider', serviceProviderRoutes)
+app.use('/servicerequests', serviceRequestRoutes)
 app.use("/image", express.static("./server/uploads"));
 
 app.use("/uploads", express.static("./server/uploads"))
