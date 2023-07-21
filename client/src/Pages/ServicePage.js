@@ -9,6 +9,7 @@ import Box from '@mui/material/Box'
 import {useState} from "react"
 import UtilityTabs from "../Features/UtilityTabs";
 import ServiceProviderTabs from "../Features/ServiceProvidersTab";
+import ServiceRequestTabs from "../Features/ServiceRequestTabs";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -86,6 +87,7 @@ export default function HomePage() {
       </TabPanel>
       <TabPanel value={value} index={2}>
        <h1>Requests</h1> 
+       <ServiceRequestTabs/>
        
       </TabPanel>
 
