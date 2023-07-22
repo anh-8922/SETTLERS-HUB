@@ -56,16 +56,16 @@ export default function AddCommunitypost () {
         {!formSubmitted ? (
           <form onSubmit={handleSubmit}>
             
-            <label style={{display:"flex", gap:"2rem", marginTop:"2rem",fontSize:"1.2rem"}}>
+            <label style={{display:"flex", gap:"2rem", marginTop:"2rem",fontSize:"1.2rem"}}>Add text</label>
             <textarea
               type="text"
               id="text"
               value={text}
               required={true}
               onChange={(e) => setText(e.target.value)}
-              style={{width:"40rem", height:"40rem"}}
+              style={{width:"40rem", height:"10rem"}}
             />
-            </label>
+            
             <div style={{display:"flex", alignSelf:"center"}}>
             <button type="submit"style={{marginTop:"2rem",fontSize:"1.5rem", width:"8rem", backgroundColor:"#38AA5E"}}>Submit</button>
             </div>
