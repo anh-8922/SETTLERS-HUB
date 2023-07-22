@@ -32,20 +32,22 @@ export default function ListCommunityPost({
       <div className="edit-del">
   
           <div style={{ fontSize: "1.5rem", fontWeight: "bold" }} className="post-topic">Ask: {text}</div>
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              <SlOptions/>
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
+       
               { isCurrentUserOwner? (
                 <div>
-                  <Dropdown.Item onClick={() => handleEditPost(_id, text)}>Edit</Dropdown.Item>{" "}
-                  <Dropdown.Item onClick={() => handleDeletePost(_id)}>Delete</Dropdown.Item>
+                  <Dropdown>
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                      <SlOptions/>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item onClick={() => handleEditPost(_id, text)}>Edit</Dropdown.Item>{" "}
+                      <Dropdown.Item onClick={() => handleDeletePost(_id)}>Delete</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                  
                 </div>
               ): null}                                         
-            </Dropdown.Menu>
-          </Dropdown>
+          
           
         
       </div>
@@ -86,6 +88,7 @@ export default function ListCommunityPost({
       
       
       
+      </div>
     </div>
   );
 }
