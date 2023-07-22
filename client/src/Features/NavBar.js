@@ -9,7 +9,7 @@ export default function NavBar() {
                 <NavLink className="NavItems" to="/">HOME</NavLink>
                 <NavLink className="NavItems" to="/service">SERVICES</NavLink>
                 <NavLink to="/housing" className="NavItems">HOUSING</NavLink>
-                <NavLink to="/community" className="NavItems">COMMUNITY</NavLink>
+                <NavLink to="/community" className="NavItems">ASK THE COMMUNITY</NavLink>
             </div>
             <SearchBar/>
         </div>
