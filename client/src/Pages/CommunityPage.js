@@ -44,10 +44,10 @@ export default function CommunityPage() {
     }
   }, [data])
 
-  const handleClose = () => {
-    setShow(false);
-    refetch();
-  }
+  // const handleClose = () => {
+  //   setShow(false);
+  //   refetch();
+  // }
 
   const handleCloseEdit = () => {
     setShowEdit(false)
@@ -68,12 +68,13 @@ export default function CommunityPage() {
   };
 
   const handleEditPost = (_id, text) => {
+    setShowEdit(true)
     console.log("post to edit:", _id)
     setExistingText(text)
     console.log("exisiting text:", text)
     setEditPostId(_id)
     console.log("exisiting id:", _id)
-    setShowEdit(true)
+    
   }
 
   const handleLikePosts = async (_id) => {
@@ -122,16 +123,34 @@ export default function CommunityPage() {
                     />
                 ))}
                 </div>
+      
+      <Modal
+        open={showEdit}
+        onClose={handleCloseEdit}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          Edit your post{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
+          </Typography>
+        </Box>
+      </Modal>
+         
+            </div>
+
                 
             <SpotlightNews />
           </div>
-      </div>
+      
     </MainLayout>
   )
 }
              
                 
-
     
 {/*<Modal
             show={showEdit}
