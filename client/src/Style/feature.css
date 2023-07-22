@@ -155,11 +155,36 @@
 /*~~~~COMMUNITY LIST ~~~~~~~*/
 /*--------FETCH AND LIST DATA --------*/
 /*====================================*/
+
 .community_post_list {
-    background-color: pink;
-    width: 100%;
-    padding: 2rem 2rem 2rem 10rem;
+
+    background-color: white;
+    border: 1px solid grey;
+    margin: 0.5rem 2rem;
+    padding: 1rem;
+    
+    
 }
+
+.edit-del {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.like-reply{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
 
 
 /* ============== */
@@ -170,3 +195,4 @@
     color: blue !important;
     cursor:pointer;
 }
+

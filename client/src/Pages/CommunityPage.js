@@ -1,17 +1,21 @@
-
 import { useEffect, useState } from "react"
 import { HeroSectionC } from "../Components/HeroSection"
 import MainLayout from "../Layout/MainLayout"
 import ListCommunityPost from "../Features/CommunityPostsList"
 import AddCommunitypost from "../Features/AddCommunityPost"
 import { SpotlightNews } from "../Components/SpotLight"
-import Modal from "react-bootstrap/Modal"
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import useFetchData from "../CustomHooks/useFetchData"
 import "../Style/page.css"
 import { useGetUserID } from "../CustomHooks/useGetUserID"
 import axios from "axios"
 import { useCookies } from "react-cookie"
-import EditCommunitypost from "../Components/EditCommunityPost"
+import EditCommunitypost from "../Components/EditCommunityPost";
+import {TbUserQuestion} from 'react-icons/tb';
+
 
 export default function CommunityPage() {
     const userID= useGetUserID ()
@@ -92,29 +96,43 @@ export default function CommunityPage() {
   return (
     <MainLayout>
       <HeroSectionC />
-      <div className="community-content">
-        <div className="forum">
-          <button onClick={() => setShow(true)}>Add New Post</button>
-          <Modal
-            show={show}
-            onHide={handleClose}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                Add new post{" "}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <AddCommunitypost />
-            </Modal.Body>
-            <Modal.Footer>
-              <button onClick={() => setShow(false)}>Cancel</button>
-              <button onClick={handleClose}>Close</button>
-            </Modal.Footer>
-          </Modal>
-          <Modal
+
+      <div className="forum">
+          <CommunityBar/>
+          <div className="community-content">
+            <div className="fetched-community-list">
+             
+                {data &&
+                data.communityPosts.map((item) => (
+                
+                  <ListCommunityPost
+                    key={item._id}
+                    _id={item._id}
+                    firstName={item.owner.firstName}
+                    lastName={item.owner.lastName}
+                    createdAt={item.createdAt}
+                    text={item.text}
+                    handleLikePost={handleLikePosts}
+                    handleDeletePost={handleDeletePost}
+                    handleEditPost={(text) => handleEditPost(item._id, item.text)} 
+                    likes={item.likes.length}
+                    loggedInUserId={userID}
+                    isPostLiked={likedPostIds.includes(item._id)}
+                    isUser={item.owner}
+                    />
+                ))}
+                </div>
+            <SpotlightNews />
+          </div>
+      </div>
+    </MainLayout>
+  )
+}
+             
+                
+
+    
+{/*<Modal
             show={showEdit}
             onHide={handleCloseEdit}
             dialogClassName="modal-90w"
@@ -134,31 +152,45 @@ export default function CommunityPage() {
             </Modal.Footer>
           </Modal>
           <div className="communityRight">
-            <div>
-              {data &&
-                data.communityPosts.map((item) => (
-                
-                  <ListCommunityPost
-                    key={item._id}
-                    _id={item._id}
-                    firstName={item.owner.firstName}
-                    lastName={item.owner.lastName}
-                    createdAt={item.createdAt}
-                    text={item.text}
-                    handleLikePost={handleLikePosts}
-                    handleDeletePost={handleDeletePost}
-                    handleEditPost={(text) => handleEditPost(item._id, item.text)} 
-                    likes={item.likes.length}
-                    loggedInUserId={userID}
-                    isPostLiked={likedPostIds.includes(item._id)}
-                    isUser={item.owner}
-                    />
-                ))}
-            </div>
-            <SpotlightNews />
-          </div>
-        </div>
-      </div>
-    </MainLayout>
+            <div>*/}
+              
+
+
+function CommunityBar() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  return(
+    <div className="community-bar">
+      <Button onClick={handleOpen} id='ask-button'>Ask a question<TbUserQuestion/></Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Ask a question{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+            <AddCommunitypost/>
+          </Typography>
+        </Box>
+      </Modal>
+    </div>
   )
 }
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 1000,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+

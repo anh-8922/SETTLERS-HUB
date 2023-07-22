@@ -1,10 +1,10 @@
-
-
-
 import TimeAgo from "react-timeago";
 import "../Style/feature.css";
-import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
-import { FaRegComments } from "react-icons/fa";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { FaRegComments } from "react-icons/fa"
+import { useState } from "react";
+import Dropdown from 'react-bootstrap/Dropdown';
+import {SlOptions} from 'react-icons/sl';
 
 export default function ListCommunityPost({
   _id,
@@ -21,7 +21,6 @@ export default function ListCommunityPost({
   loggedInUserId
 }) {
 
-
   const handleLike = () => {
     handleLikePost(_id)
   }
@@ -30,40 +29,63 @@ export default function ListCommunityPost({
 
   return (
     <div key={_id} className="community_post_list">
-      { isCurrentUserOwner? (
-              <div>
-              <button onClick={() => handleEditPost(_id, text)}>Edit</button>{" "}
-              <button onClick={() => handleDeletePost(_id)}>Delete</button>
-            </div>
-      ): null}
+      <div className="edit-del">
+  
+          <div style={{ fontSize: "1.5rem", fontWeight: "bold" }} className="post-topic">Ask: {text}</div>
+          <Dropdown>
+            <Dropdown.Toggle variant="success" id="dropdown-basic">
+              <SlOptions/>
+            </Dropdown.Toggle>
 
-      <div
-        className="post-owner"
-        style={{ fontSize: "1.2rem", fontWeight: "bold" }}
-      >
-        {firstName} <span>{lastName}</span>
+            <Dropdown.Menu>
+              { isCurrentUserOwner? (
+                <div>
+                  <Dropdown.Item onClick={() => handleEditPost(_id, text)}>Edit</Dropdown.Item>{" "}
+                  <Dropdown.Item onClick={() => handleDeletePost(_id)}>Delete</Dropdown.Item>
+                </div>
+              ): null}                                         
+            </Dropdown.Menu>
+          </Dropdown>
+          
+        
       </div>
-      <div className="post-topic">{text}</div>
-      <div>
-        <TimeAgo date={createdAt} />
-      </div>
-      <div>
-        {isPostLiked? (
-          <AiFillHeart
-            className="heart-icon"
-            onClick={handleLike}
-          />
-        ) : (
-          <AiOutlineHeart
-            className="heart-icon"
-            onClick={handleLike}
-          />
-        )}
+      <div className="post-details">
+        <div className="like-reply">
+          <div style={{fontSize:'1.5rem', padding:'none'}}>
+            {isPostLiked ? (
+              <AiFillHeart id="like-icon"
+              // onClick={() => handleLikePost(_id)}
+              onClick={handleLike}
+            />
 
-        <span>Likes: {likes}</span>
-        <FaRegComments className="text-slate-500 hover:text-red-500 text-[2rem] cursor-pointer" />
-      </div>
-      <div>comment</div>
+            ) : (
+              <AiOutlineHeart
+              className="text-red-500 text-[2rem] cursor-pointer"
+              // onClick={() => handleLikePost(_id)}
+              onClick={handleLike}
+            />
+
+            )}
+
+          </div>
+          <button>Reply</button>
+        </div>
+        <div className="author-time">
+          <div className="post-owner" >Author: <span style={{marginRight:'2px'}}/>
+            {firstName} <span>{lastName}</span>
+          </div>
+      
+          <div>
+            Date:<span style={{marginRight:'2px'}}/><TimeAgo date={createdAt} />
+          </div>
+          
+        </div>
+
+      
+      
+      
+      
+      
     </div>
   );
 }
