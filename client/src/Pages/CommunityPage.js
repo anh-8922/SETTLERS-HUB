@@ -18,7 +18,7 @@ export default function CommunityPage() {
     console.log("user:", userID)
     const [ cookies, _] = useCookies(["access_token"])
     console.log("cookies:", cookies)
-    const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
+    const { data, error, refetch } = useFetchData("/community/listpost" )
     console.log("data:", data);
     console.log("error:", error);
     const [show, setShow] = useState(false);
