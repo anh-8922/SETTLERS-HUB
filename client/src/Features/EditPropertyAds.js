@@ -13,6 +13,7 @@ import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFetchData from '../CustomHooks/useFetchData';
+import SinglePostLayout from '../Layout/SinglePostLayout';
 
 
 export default function EditProperties() {
@@ -44,7 +45,7 @@ export default function EditProperties() {
   const [isFormSubmit, setFormSubmitted] = useState (false)
   const navigate = useNavigate()
 
-  const {data, error} = useFetchData(`http://localhost:5000/housing/listoneproperty/${id}`)
+  const {data, error} = useFetchData(`/housing/listoneproperty/${id}`)
   console.log("data to edit:", data)
 
   useEffect(() => {
@@ -253,8 +254,8 @@ export default function EditProperties() {
 
   }
 
-  
   return (
+    <SinglePostLayout>
     <div>
       { !isFormSubmit ? (
         <Form onSubmit={handleSubmit}>
@@ -510,5 +511,6 @@ export default function EditProperties() {
     
 
     </div>
+    </SinglePostLayout>
   );
 }

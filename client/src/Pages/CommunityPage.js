@@ -29,10 +29,20 @@ export default function CommunityPage() {
     const [showEdit, setShowEdit] = useState(false)
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
+    const [likedPostIds, setLikedPostIds] = useState([])
 
   useEffect(() => {
-    refetch();
-  }, []);
+    refetch()
+  }, [])
+
+  useEffect(() => {
+    if (data) {
+      const likedPosts = data.communityPosts.filter((post) =>
+        post.likes.some((like) => like._id === userID)
+      );
+      setLikedPostIds(likedPosts.map((post) => post._id))
+    }
+  }, [data])
 
   const handleClose = () => {
     setShow(false);
@@ -40,11 +50,9 @@ export default function CommunityPage() {
   }
 
   const handleCloseEdit = () => {
-    setShowEdit(false);
-    refetch();
+    setShowEdit(false)
+    refetch()
   }
-
-
 
   const handleDeletePost = async (_id) => {
     console.log("post to delete:", _id)
@@ -82,40 +90,71 @@ export default function CommunityPage() {
       refetch()
     } catch (error) {
       console.log("Error like post:", error)
-
     }
-
   }
+
   return (
     <MainLayout>
       <HeroSectionC />
+
       <div className="forum">
           <CommunityBar/>
           <div className="community-content">
             <div className="fetched-community-list">
              
                 {data &&
-                  data.communityPosts.map((item) => (
-                    <ListCommunityPost
-                      key={item._id}
-                      _id={item._id}
-                      firstName={item.owner.firstName}
-                      lastName={item.owner.lastName}
-                      createdAt={item.createdAt}
-                      text={item.text}
-                      handleLikePost={handleLikePosts}
-                      handleDeletePost={handleDeletePost}
-                      handleEditPost={(text) => handleEditPost(item._id, item.text)} />
-                  ))}
-             
+                data.communityPosts.map((item) => (
                 
-            </div>
+                  <ListCommunityPost
+                    key={item._id}
+                    _id={item._id}
+                    firstName={item.owner.firstName}
+                    lastName={item.owner.lastName}
+                    createdAt={item.createdAt}
+                    text={item.text}
+                    handleLikePost={handleLikePosts}
+                    handleDeletePost={handleDeletePost}
+                    handleEditPost={(text) => handleEditPost(item._id, item.text)} 
+                    likes={item.likes.length}
+                    loggedInUserId={userID}
+                    isPostLiked={likedPostIds.includes(item._id)}
+                    isUser={item.owner}
+                    />
+                ))}
+                </div>
             <SpotlightNews />
           </div>
       </div>
     </MainLayout>
   )
 }
+             
+                
+
+    
+{/*<Modal
+            show={showEdit}
+            onHide={handleCloseEdit}
+            dialogClassName="modal-90w"
+            aria-labelledby="example-custom-modal-styling-title"
+          >
+            <Modal.Header closeButton>
+              <Modal.Title id="example-custom-modal-styling-title">
+                Edit your post{" "}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
+            </Modal.Body>
+            <Modal.Footer>
+              <button onClick={() => setShowEdit(false)}>Cancel</button>
+              <button onClick={handleCloseEdit}>Close</button>
+            </Modal.Footer>
+          </Modal>
+          <div className="communityRight">
+            <div>*/}
+              
+
 
 function CommunityBar() {
   const [open, setOpen] = useState(false);
@@ -132,7 +171,7 @@ function CommunityBar() {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Ask a question
+            Ask a question{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <AddCommunitypost/>

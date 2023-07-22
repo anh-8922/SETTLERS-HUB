@@ -6,11 +6,10 @@ import Spinner from "./Spinner";
 import axios from 'axios';
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import MyServiceAds from "./MyServiceAds";
-import MyRequestsAds from "./MyRequestAds";
 
-export default function MyAds() {
-  const userId = useGetUserID();
+export default function MyRequestsAds() {
+  const userId = useGetUserID()
+  console.log("my request User:", userId)
   const [cookies, _] = useCookies(["access_token"]);
   const [fetchedData, setFetchedData] = useState(null);
   const navigate = useNavigate()
@@ -23,27 +22,27 @@ export default function MyAds() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`, {
+      const response = await axios.get(`/servicerequests/listrequestadsbyuser?owner=${userId}`, {
         withCredentials: true
       });
-      const responseData = response;
-      setFetchedData(responseData);
-      console.log("Ads by user:", responseData);
+      const responseData = response
+      setFetchedData(responseData)
+      console.log("Ads by user:", responseData)
     } catch (error) {
-      console.error("Error fetching data:", error.message);
+      console.error("Error fetching data:", error.message)
     }
   };
 
-  if (!fetchedData || !fetchedData.data.adverticedPropertyByUser) {
+  if (!fetchedData || !fetchedData.data.adverticedRequestByUser) {
     return <Spinner />;
   }
 
-  const properties = fetchedData.data.adverticedPropertyByUser;
+  const servicesRequests = fetchedData.data.adverticedRequestByUser
 
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
+      await axios.delete(`servicerequests/delete/${id}`, {
         withCredentials: true
       });
     fetchData()
@@ -54,41 +53,39 @@ export default function MyAds() {
   }
 
   const handleEditProperty = (id) => {
-    navigate (`/editpropertyad/${id}`)
+    navigate (`/editrequestad/${id}`)
   }
 
   return (
     <div>
-      <div>Property Ads</div>
+      <div>Request Ads</div>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
             <th>#</th>
             <th>Category</th>
-            <th>City</th>
-            <th>Beds</th>
-            <th>Baths</th>
-            <th>Rate</th>
-            <th>Deposit</th>
-            <th>Property Available On</th>
+            <th>Location</th>
+            <th>Subject</th>
+            <th>Created On</th>
             <th>Edit</th>
             <th>Delete</th>
           </tr>
         </thead>
         <tbody>
-          {properties.map((item, index) => {
-            const { _id, address, availableOn, baths, beds, category, deposit, rate } = item
-            const city = address[0].city
+          {servicesRequests.map((item, index) => {
+            const { _id, category, location, subject, createdAt} = item
+            const created = new Date (createdAt)
+            const year = created.getFullYear()
+            const month = created.getMonth() + 1
+            const day = created.getDate()
+            
             return (
               <tr key={_id}>
                 <td>{index + 1}</td>
                 <td>{category}</td>
-                <td>{city}</td>
-                <td>{beds}</td>
-                <td>{baths}</td>
-                <td>£ {rate}</td>
-                <td>£ {deposit}</td>
-                <td>{availableOn}</td>
+                <td>{location}</td>
+                <td>{subject}</td>
+                <td>{year}-{month}-{day}</td>
                 <td><button onClick={() => handleEditProperty(_id)}>Edit</button></td>
                 <td><button onClick={() => handleDeleteProperty(_id)}>Delete</button></td>
               </tr>
@@ -96,12 +93,7 @@ export default function MyAds() {
           })}
         </tbody>
       </Table>
-      <div>
-        <MyServiceAds/>
-      </div>
-      <div>
-        <MyRequestsAds/>
-      </div>
+      
     </div>
   );
 }

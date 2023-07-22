@@ -6,20 +6,26 @@ import { useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 import {SlOptions} from 'react-icons/sl';
 
-export default function ListCommunityPost({ _id, 
-                                            firstName, 
-                                            lastName, 
-                                            createdAt, 
-                                            handleLikePost, 
-                                            text, 
-                                            handleDeletePost, 
-                                            handleEditPost }) {
-  const [liked, setLiked] = useState(false)
+export default function ListCommunityPost({
+  _id,
+  firstName,
+  lastName,
+  createdAt,
+  handleLikePost,
+  text,
+  likes,
+  handleDeletePost,
+  handleEditPost,
+  isPostLiked,
+  isUser,
+  loggedInUserId
+}) {
 
   const handleLike = () => {
     handleLikePost(_id)
-    setLiked(!liked)
   }
+
+  const isCurrentUserOwner = isUser && isUser._id === loggedInUserId
 
   return (
     <div key={_id} className="community_post_list">
@@ -32,9 +38,12 @@ export default function ListCommunityPost({ _id,
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item onClick={() => handleEditPost(_id, text)}>Edit</Dropdown.Item>
-              <Dropdown.Item onClick={() => handleDeletePost(_id)}>Delete</Dropdown.Item>
-              
+              { isCurrentUserOwner? (
+                <div>
+                  <Dropdown.Item onClick={() => handleEditPost(_id, text)}>Edit</Dropdown.Item>{" "}
+                  <Dropdown.Item onClick={() => handleDeletePost(_id)}>Delete</Dropdown.Item>
+                </div>
+              ): null}                                         
             </Dropdown.Menu>
           </Dropdown>
           
@@ -43,7 +52,7 @@ export default function ListCommunityPost({ _id,
       <div className="post-details">
         <div className="like-reply">
           <div style={{fontSize:'1.5rem', padding:'none'}}>
-            {liked ? (
+            {isPostLiked ? (
               <AiFillHeart id="like-icon"
               // onClick={() => handleLikePost(_id)}
               onClick={handleLike}
@@ -58,11 +67,6 @@ export default function ListCommunityPost({ _id,
 
             )}
 
-            {/* {liked ? <span>Liked</span> : <span>Like</span>} */}
-          
-
-
-            {/*<FaRegComments className="text-slate-500 hover:text-red-500 text-[2rem] cursor-pointer" />*/}
           </div>
           <button>Reply</button>
         </div>
@@ -76,7 +80,7 @@ export default function ListCommunityPost({ _id,
           </div>
           
         </div>
-      </div>
+
       
       
       
