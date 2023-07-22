@@ -18,7 +18,9 @@ export default function ListCommunityPost({
   handleEditPost,
   isPostLiked,
   isUser,
-  loggedInUserId
+  loggedInUserId,
+  handleReplyPost,
+  reply
 }) {
 
   const handleLike = () => {
@@ -70,7 +72,7 @@ export default function ListCommunityPost({
             )}
 
           </div>
-          <button>Reply</button>
+          <button onClick={() => handleReplyPost()}>Reply</button>
         </div>
         <div className="author-time">
           <div className="post-owner" >Author: <span style={{marginRight:'2px'}}/>
@@ -80,9 +82,10 @@ export default function ListCommunityPost({
           <div>
             Date:<span style={{marginRight:'2px'}}/><TimeAgo date={createdAt} />
           </div>
+
+          
           
         </div>
-
       
       
       

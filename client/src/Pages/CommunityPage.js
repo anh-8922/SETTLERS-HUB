@@ -15,6 +15,7 @@ import axios from "axios"
 import { useCookies } from "react-cookie"
 import EditCommunitypost from "../Components/EditCommunityPost";
 import {TbUserQuestion} from 'react-icons/tb';
+import ReplyToAPost from "../Components/ReplyToPost"
 
 
 export default function CommunityPage() {
@@ -30,6 +31,9 @@ export default function CommunityPage() {
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
     const [likedPostIds, setLikedPostIds] = useState([])
+    const [showReply, setShowReply] = useState (false)
+    const [postIdToReply, setPostIdToReply] = useState('')
+    console.log("postIdToReply:",postIdToReply)
 
   useEffect(() => {
     refetch()
@@ -94,6 +98,20 @@ export default function CommunityPage() {
     }
   }
 
+  const handleReplyPosts = (_id) => {
+    
+    console.log("id to reply:", _id)
+    setPostIdToReply(_id)
+    console.log("set reply post id:", postIdToReply)
+    setShowReply(true)
+
+  }
+
+  const handleCloseReply = () => {
+    setShowReply(false)
+    refetch()
+  }
+
   return (
     <MainLayout>
       <HeroSectionC />
@@ -120,6 +138,7 @@ export default function CommunityPage() {
                     loggedInUserId={userID}
                     isPostLiked={likedPostIds.includes(item._id)}
                     isUser={item.owner}
+                    handleReplyPost={() => handleReplyPosts(item._id)}
                     />
                 ))}
                 </div>
@@ -136,6 +155,22 @@ export default function CommunityPage() {
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
           <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
+          </Typography>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={showReply}
+        onClose={handleCloseReply}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          Reply{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+         <ReplyToAPost  postId={postIdToReply}/>
           </Typography>
         </Box>
       </Modal>
