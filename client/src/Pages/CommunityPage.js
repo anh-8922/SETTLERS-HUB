@@ -122,6 +122,7 @@ export default function CommunityPage() {
                     />
                 ))}
                 </div>
+                
             <SpotlightNews />
           </div>
       </div>
