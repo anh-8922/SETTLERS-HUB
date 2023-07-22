@@ -139,6 +139,7 @@ export default function CommunityPage() {
                     isPostLiked={likedPostIds.includes(item._id)}
                     isUser={item.owner}
                     handleReplyPost={() => handleReplyPosts(item._id)}
+                    comments={item.comments}
                     />
                 ))}
                 </div>

@@ -13,14 +13,13 @@ export default function ListCommunityPost({
   createdAt,
   handleLikePost,
   text,
-  likes,
   handleDeletePost,
   handleEditPost,
   isPostLiked,
   isUser,
   loggedInUserId,
   handleReplyPost,
-  reply
+  comments
 }) {
 
   const handleLike = () => {
@@ -82,14 +81,22 @@ export default function ListCommunityPost({
           <div>
             Date:<span style={{marginRight:'2px'}}/><TimeAgo date={createdAt} />
           </div>
-
-          
-          
         </div>
-      
-      
-      
-      
+
+        {comments && comments.length > 0 && (
+                  <div>
+                    <div>Replies</div>
+                    {comments.map((comment) => (
+                      <div key={comment._id}>
+                        <div>
+                          Author: <span style={{ marginRight: "2px" }} />
+                          {comment.owner.firstName} <span>{comment.owner.lastName}</span>
+                        </div>
+                        <div>Reply: {comment.text}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
       
       </div>
     </div>
