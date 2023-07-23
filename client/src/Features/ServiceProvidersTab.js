@@ -7,6 +7,7 @@ import Mechanics from './ServiceCategories/Mechanic';
 import Painters from './ServiceCategories/Painters';
 import Landscapers from './ServiceCategories/Landscapers';
 import GeneralServiceProviders from './ServiceCategories/GeneralServiceProviders';
+import '../Style/feature.css';
 
 export default function ServiceProviderTabs() {
   return (
@@ -53,3 +54,5 @@ export default function ServiceProviderTabs() {
     
   );
 }
+
+
