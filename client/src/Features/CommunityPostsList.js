@@ -89,7 +89,7 @@ export default function ListCommunityPost({
                     {comments.map((comment) => (
                       <div key={comment._id}>
                         <div>
-                          Author: <span style={{ marginRight: "2px" }} />
+                          User: <span style={{ marginRight: "2px" }} />
                           {comment.owner.firstName} <span>{comment.owner.lastName}</span>
                         </div>
                         <div>Reply: {comment.text}</div>
