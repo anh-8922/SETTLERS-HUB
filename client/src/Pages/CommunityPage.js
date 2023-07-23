@@ -48,11 +48,6 @@ export default function CommunityPage() {
     }
   }, [data])
 
-  // const handleClose = () => {
-  //   setShow(false);
-  //   refetch();
-  // }
-
   const handleCloseEdit = () => {
     setShowEdit(false)
     refetch()
@@ -185,30 +180,6 @@ export default function CommunityPage() {
     </MainLayout>
   )
 }
-             
-                
-    
-{/*<Modal
-            show={showEdit}
-            onHide={handleCloseEdit}
-            dialogClassName="modal-90w"
-            aria-labelledby="example-custom-modal-styling-title"
-          >
-            <Modal.Header closeButton>
-              <Modal.Title id="example-custom-modal-styling-title">
-                Edit your post{" "}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
-            </Modal.Body>
-            <Modal.Footer>
-              <button onClick={() => setShowEdit(false)}>Cancel</button>
-              <button onClick={handleCloseEdit}>Close</button>
-            </Modal.Footer>
-          </Modal>
-          <div className="communityRight">
-            <div>*/}
               
 
 
