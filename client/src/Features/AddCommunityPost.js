@@ -19,6 +19,7 @@ export default function AddCommunitypost () {
     console.log("access:", cookies)
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [emptyTextError, setEmptyTextError] = useState(false)
+    const [invalidUser, setInvalidUser] = useState(false)
     
 
       const handleSubmit = async (e) => {
@@ -28,8 +29,14 @@ export default function AddCommunitypost () {
         formData.append("text", text);
         formData.append("owner", userID );
 
-        if (text.trim() === "") {
+        if (!text || text.trim() === "") {
           setEmptyTextError(true)
+          console.log("Post text cannot be empty");
+          return
+        }
+
+        if (!userID) {
+          setInvalidUser(true)
           console.log("Post text cannot be empty");
           return
         }
@@ -94,6 +101,27 @@ export default function AddCommunitypost () {
                 </Alert>
                 </Stack>
           </div>
+      )}
+
+      
+{invalidUser && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            marginRight: "3rem",
+          }}
+        >
+          <Stack sx={{ width: "30%" }} spacing={2}>
+            <Alert variant="filled" severity="error">
+              <AlertTitle style={{ color: "white" }}>Error</AlertTitle>
+              <strong style={{ color: "white" }}>
+                Unauthorized!. Please login!
+              </strong>
+            </Alert>
+          </Stack>
+        </div>
       )}
         </div>
     )

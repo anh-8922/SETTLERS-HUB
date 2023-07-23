@@ -15,6 +15,7 @@ import axios from "axios"
 import { useCookies } from "react-cookie"
 import EditCommunitypost from "../Components/EditCommunityPost";
 import {TbUserQuestion} from 'react-icons/tb';
+import ReplyToAPost from "../Components/ReplyToPost"
 
 
 export default function CommunityPage() {
@@ -22,7 +23,7 @@ export default function CommunityPage() {
     console.log("user:", userID)
     const [ cookies, _] = useCookies(["access_token"])
     console.log("cookies:", cookies)
-    const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
+    const { data, error, refetch } = useFetchData("/community/listpost" )
     console.log("data:", data);
     console.log("error:", error);
     const [show, setShow] = useState(false);
@@ -30,6 +31,9 @@ export default function CommunityPage() {
     const [existingText, setExistingText] = useState("")
     const [editPostId, setEditPostId] = useState(null)
     const [likedPostIds, setLikedPostIds] = useState([])
+    const [showReply, setShowReply] = useState (false)
+    const [postIdToReply, setPostIdToReply] = useState('')
+    console.log("postIdToReply:",postIdToReply)
 
   useEffect(() => {
     refetch()
@@ -44,10 +48,10 @@ export default function CommunityPage() {
     }
   }, [data])
 
-  const handleClose = () => {
-    setShow(false);
-    refetch();
-  }
+  // const handleClose = () => {
+  //   setShow(false);
+  //   refetch();
+  // }
 
   const handleCloseEdit = () => {
     setShowEdit(false)
@@ -68,12 +72,13 @@ export default function CommunityPage() {
   };
 
   const handleEditPost = (_id, text) => {
+    setShowEdit(true)
     console.log("post to edit:", _id)
     setExistingText(text)
     console.log("exisiting text:", text)
     setEditPostId(_id)
     console.log("exisiting id:", _id)
-    setShowEdit(true)
+    
   }
 
   const handleLikePosts = async (_id) => {
@@ -91,6 +96,20 @@ export default function CommunityPage() {
     } catch (error) {
       console.log("Error like post:", error)
     }
+  }
+
+  const handleReplyPosts = (_id) => {
+    
+    console.log("id to reply:", _id)
+    setPostIdToReply(_id)
+    console.log("set reply post id:", postIdToReply)
+    setShowReply(true)
+
+  }
+
+  const handleCloseReply = () => {
+    setShowReply(false)
+    refetch()
   }
 
   return (
@@ -119,19 +138,55 @@ export default function CommunityPage() {
                     loggedInUserId={userID}
                     isPostLiked={likedPostIds.includes(item._id)}
                     isUser={item.owner}
+                    handleReplyPost={() => handleReplyPosts(item._id)}
+                    comments={item.comments}
                     />
                 ))}
                 </div>
+      
+      <Modal
+        open={showEdit}
+        onClose={handleCloseEdit}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          Edit your post{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+          <EditCommunitypost editPostId={editPostId} existingText={existingText}/>
+          </Typography>
+        </Box>
+      </Modal>
+
+      <Modal
+        open={showReply}
+        onClose={handleCloseReply}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+          Reply{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+         <ReplyToAPost  postId={postIdToReply}/>
+          </Typography>
+        </Box>
+      </Modal>
+         
+            </div>
+
                 
             <SpotlightNews />
           </div>
-      </div>
+      
     </MainLayout>
   )
 }
              
                 
-
     
 {/*<Modal
             show={showEdit}
