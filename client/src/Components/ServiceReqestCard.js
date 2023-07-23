@@ -13,7 +13,7 @@ export default function ServiceRequestCard ({
             <div>Location: {location}</div>
             <div>Description: {description}</div>
             <div>Posted Date: {createdAt}</div>
-            <button onClick={() => handleMessage(_id)}>Message</button>
+            <button onClick={() => handleMessage()}>Message</button>
         </div>
     )
 }

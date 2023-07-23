@@ -1,28 +1,28 @@
-import Communitypost from "../model/Communitypost.js"
+import Servicerequest from "../model/ServiceRequest.js"
 
-export const handleAddReply = async (req, res) =>{
+export const handleAddMessage = async (req, res) =>{
     console.log("Add new reply:", req.body)
     console.log("req.user:", req.user)
     try{
 
-        const newReply = await Communitypost.findByIdAndUpdate(
+        const textMesaage = await Servicerequest.findByIdAndUpdate(
             req.body.postId,
             {
               $push: {
-                comments: {
-                  text: req.body.replyPost,
+                message: {
+                  text: req.body.textMesaage,
                   owner: req.user,
                 },
               },
             },
             { new: true }
           ).populate({
-            path: "comments.owner",
+            path: "message.owner",
             select: "firstName lastName email ",
           });
-          console.log("newPost:", newReply);
+          console.log("newPost:", textMesaage);
       
-          res.send({ success: true, post: newReply});
+          res.send({ success: true, post: textMesaage});
         } catch (error) {
           console.log("error handleAddReply:", error.message);
       
