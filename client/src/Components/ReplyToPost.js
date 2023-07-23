@@ -14,6 +14,7 @@ export default function ReplyToAPost ({ postId }) {
     const [replyPost, setRelpyPost] = useState ('')
     const [isSubmit, setSubmit] = useState (false)
     const [emptyTextError, setEmptyTextError] = useState (false)
+    const [invalidUser, setInvalidUser] = useState (false)
     const navigate = useNavigate()
 
     const handleSubmitReply = async (e) => {
@@ -25,6 +26,11 @@ export default function ReplyToAPost ({ postId }) {
           console.log("Post text cannot be empty")
           return;
         }
+        if (!userID) {
+            setInvalidUser(true);
+            console.log("Post text cannot be empty")
+            return;
+          }
         const response = await axios.put('/reply/addnewreply' ,
         {replyPost, postId},{
             withCredentials: true,
@@ -78,6 +84,27 @@ export default function ReplyToAPost ({ postId }) {
               <AlertTitle style={{ color: "white" }}>Error</AlertTitle>
               <strong style={{ color: "white" }}>
                 Reply cannot be empty!
+              </strong>
+            </Alert>
+          </Stack>
+        </div>
+      )}
+
+
+{invalidUser && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "flex-end",
+            marginRight: "3rem",
+          }}
+        >
+          <Stack sx={{ width: "30%" }} spacing={2}>
+            <Alert variant="filled" severity="error">
+              <AlertTitle style={{ color: "white" }}>Error</AlertTitle>
+              <strong style={{ color: "white" }}>
+                Unauthorized!. Please login!
               </strong>
             </Alert>
           </Stack>
