@@ -28,21 +28,22 @@ export default function ServicePage() {
           <Col sm={3}>
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
-                <Nav.Link  eventKey="first"><img src={utility} style={{width:'15rem', borderRadius:'0.5rem'}}/>UTILITY</Nav.Link>
+                <Nav.Link className='house-tabs' eventKey="first"><img src={utility} style={{width:'15rem', borderRadius:'0.5rem'}}/>UTILITY</Nav.Link>
               </Nav.Item>
               <Nav.Item>
                 <Nav.Link className='house-tabs' eventKey="second"><img src={serviceprovider} style={{width:'15rem', borderRadius:'0.5rem'}}/>SERVICE PROVIDERS</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link  className='house-tabs' eventKey="third"><img src={ServiceRequest} style={{width:'15rem', borderRadius:'0.5rem'}}/>REQUESTS</Nav.Link>
+                <Nav.Link className='house-tabs' eventKey="third"><img src={ServiceRequest} style={{width:'15rem', borderRadius:'0.5rem'}}/>REQUEST</Nav.Link>
               </Nav.Item>
+             
             </Nav>
           </Col>
           <Col >
             <Tab.Content>
               <Tab.Pane eventKey="first" ><div style={{marginLeft:'5rem'}}><UtilityTabs/></div></Tab.Pane>
               <Tab.Pane eventKey="second"><ServiceProviderTabs/></Tab.Pane>
-              <Tab.Pane eventKey="third" ><ServiceRequestTabs/></Tab.Pane>
+              <Tab.Pane eventKey="third" ><div style={{marginLeft:'5rem'}}><ServiceRequestTabs/></div></Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
