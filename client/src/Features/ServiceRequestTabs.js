@@ -5,7 +5,7 @@ import Legal from './RequestCategories/Legal';
 import Tax from './RequestCategories/Tax';
 import Childcare from './RequestCategories/Childcare';
 import General from './RequestCategories/General';
-
+import '../Style/feature.css';
 
 export default function ServiceRequestTabs() {
   return (
@@ -44,3 +44,5 @@ export default function ServiceRequestTabs() {
     
   );
 }
+
+
