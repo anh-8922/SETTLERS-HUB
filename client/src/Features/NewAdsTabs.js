@@ -10,12 +10,12 @@ export default function NewAddTabs() {
 
   
           <Tabs
-        defaultActiveKey="home"
+        defaultActiveKey="housing"
         transition={false}
         id="noanim-tab-example"
         className="mb-3"
       >
-            <Tab eventKey="contact" title="" disabled></Tab>
+            
             <Tab eventKey="housing" title="Housing"><PostNewHousingAds/></Tab>
             <Tab eventKey="service" title="Service"><NewServiceAds/></Tab>
             <Tab eventKey="requests" title="Service Requests"><NewServiceRequestAds/></Tab>

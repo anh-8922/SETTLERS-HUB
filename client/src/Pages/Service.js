@@ -34,7 +34,7 @@ export default function ServicePage() {
                 <Nav.Link className='house-tabs' eventKey="second"><img src={serviceprovider} style={{width:'15rem', borderRadius:'0.5rem'}}/>SERVICE PROVIDERS</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link  eventKey="first"><img src={ServiceRequest} style={{width:'15rem', borderRadius:'0.5rem'}}/>REQUESTS</Nav.Link>
+                <Nav.Link  className='house-tabs' eventKey="third"><img src={ServiceRequest} style={{width:'15rem', borderRadius:'0.5rem'}}/>REQUESTS</Nav.Link>
               </Nav.Item>
             </Nav>
           </Col>
