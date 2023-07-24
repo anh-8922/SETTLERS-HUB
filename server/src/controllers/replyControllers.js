@@ -18,7 +18,7 @@ export const handleAddReply = async (req, res) =>{
             { new: true }
           ).populate({
             path: "comments.owner",
-            select: "username email ",
+            select: "firstName lastName email ",
           });
           console.log("newPost:", newReply);
       
