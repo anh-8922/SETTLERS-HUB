@@ -8,12 +8,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AddServiceMessages from "../AddServiceMessage"
+import AddServiceReview from "../AddServiceReview"
 import { useState } from "react"
 
 export default function Landscapers () {
     const {data, refetch} = useFetchData('/serviceprovider/listserviceproviders')
     console.log("request data:", data)
     const [message, setMessage] = useState(false)
+    const [review, setReview] = useState(false)
     const [postIdToMessage, setPostIdToMessage] = useState('')
     console.log("message post id:", postIdToMessage)
 
@@ -46,14 +48,22 @@ export default function Landscapers () {
 
     }
 
-    const handleRequestReview = () => {
+    const handleRequestReview = (_id) => {
+      console.log("Review for service req id:", _id)
+      setPostIdToMessage(_id)
+      console.log("set review post id:", _id)
+      setReview(true)
 
     }
-    
     const handleCloseMessage = () => {
         setMessage (false)
         refetch()
     }
+
+    const handleCloseReview = () => {
+      setReview (false)
+      refetch()
+  }
 
     return(
         <div>
@@ -66,18 +76,18 @@ export default function Landscapers () {
                     const day = created.getDate()
                     return(
                         <ServiceProvidertCard handleMessage={() => handleRequestMessage(item._id)}
-                                                handleReview={() => handleRequestReview (item._id)}
-                                                key={_id}
-                                                _id={_id}
-                                                firstName={owner.firstName}
-                                                lastName={owner.lastName}
-                                                subject={subject}
-                                                location={location}
-                                                rate={rate}
-                                                experience={experience}
-                                                qulifications={qulifications}
-                                                description={description}
-                                                createdAt = {`${year}-${month}-${day}`}/>
+                                              handleReview={() => handleRequestReview (item._id)}
+                                              key={_id}
+                                              _id={_id}
+                                              firstName={owner.firstName}
+                                              lastName={owner.lastName}
+                                              subject={subject}
+                                              location={location}
+                                              rate={rate}
+                                              experience={experience}
+                                              qulifications={qulifications}
+                                              description={description}
+                                              createdAt = {`${year}-${month}-${day}`}/>
                     )
                 })
             }
@@ -102,6 +112,27 @@ export default function Landscapers () {
             </div>): (null)
        
     }    
+
+{ review ? (     <div>
+       <Modal sx={style}
+        open={review}
+        onClose={handleCloseReview}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box >
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+           Review{" "}
+          </Typography>
+          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                <AddServiceReview  postId={postIdToMessage}
+                                     handleCloseReview ={handleCloseReview}/>
+          </Typography>
+        </Box>
+      </Modal>
+            </div>): (null)
+       
+    }
             
         </div>
     )

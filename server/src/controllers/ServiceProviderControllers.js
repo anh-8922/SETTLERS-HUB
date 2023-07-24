@@ -64,6 +64,14 @@ export const handleListServiceProviders = async (req, res) => {
             path: "owner",
             select: "username email image firstName lastName",
         })
+        .populate({
+            path: "message.owner",
+            select: "username email image firstName lastName",
+        })
+        .populate({
+            path: "reviews.owner",
+            select: "username email image firstName lastName",
+        })
         .select ("-__v")
         .sort({ _id: "desc" })
         console.log("New Service post:", serviceProvidersAds)

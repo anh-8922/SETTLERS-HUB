@@ -41,7 +41,7 @@ export const handleAddNewServiceMessage = async (req, res) =>{
           req.body.postId,
           {
             $push: {
-              message: {
+              reviews: {
                 text: req.body.textMesaage,
                 owner: req.user,
               },
@@ -62,3 +62,34 @@ export const handleAddNewServiceMessage = async (req, res) =>{
       }
 }
 
+
+
+export const handleAddNewServiceReview = async (req, res) =>{
+  console.log("Add new review:", req.body)
+  console.log("req.user:", req.user)
+  try{
+
+      const textReview = await Serviceprovider.findByIdAndUpdate(
+          req.body.postId,
+          {
+            $push: {
+              reviews: {
+                text: req.body.textReview,
+                owner: req.user,
+              },
+            },
+          },
+          { new: true }
+        ).populate({
+          path: "message.owner",
+          select: "firstName lastName email ",
+        });
+        console.log("newPost:", textReview);
+    
+        res.send({ success: true, post: textReview});
+      } catch (error) {
+        console.log("error handleAddReply:", error.message);
+    
+        res.send("Error in handleAddReply" + error.message);
+      }
+}
