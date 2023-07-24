@@ -27,18 +27,18 @@ export default function NewProperty() {
   const [deposit, setDeposit] = useState('')
   const [addressline1, setAddressline1] = useState('')
   const [addressline2, setAddressline2] = useState('')
-  const [city, setCity] = useState ('')
-  const [ postCode, setPostCode] = useState ('EN2 0RD')
+  const [city, setCity] = useState('')
+  const [ postCode, setPostCode] = useState('EN2 0RD')
   const [ beds, setBeds] = useState (0)
   const [ baths, setBaths] = useState (0)
   const [selectedImages, setSelectedImages] = useState([])
   const [longitude, setLongitude] = useState()
-  const [latitude, setLatitude] = useState ()
-  const [description, setDescription] = useState ()
-  const [featured, setFeatured] = useState (false)
+  const [latitude, setLatitude] = useState()
+  const [description, setDescription] = useState()
+  const [featured, setFeatured] = useState(false)
   const [councilTaxBand, setCouncilTaxBand] = useState('')
-  const [ furnishedType, setFurnishedType] = useState ('Furnished')
-  const [isFormSubmit, setFormSubmitted] = useState (false)
+  const [ furnishedType, setFurnishedType] = useState('Furnished')
+  const [isFormSubmit, setFormSubmitted] = useState(false)
   const navigate = useNavigate()
 
   // const myLocationAPI = process.env.REACT_APP_MY_GOOGLE_API
@@ -195,7 +195,7 @@ export default function NewProperty() {
             setFormSubmitted(true)
             // navigate("/profile")
           }
-    
+  
           // setFormSubmitted(true);
           // console.log("Response:", response);
           
