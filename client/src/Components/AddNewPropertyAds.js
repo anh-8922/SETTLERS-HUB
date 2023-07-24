@@ -184,7 +184,7 @@ export default function NewProperty() {
 
         console.log("formData:", formData)
         try {
-          const response = await axios.post("/housing/addnewproperty", formData, {
+          const response = await axios.post("https://settlers-hub-server.vercel.app/housing/addnewproperty", formData, {
             withCredentials: true,
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {TransportLayout} from '../Layout/GuideLayout'
 
 export default function Transport() {
-    const { data } = useFetchData("http://localhost:5000/guide/list" );
+    const { data } = useFetchData("https://settlers-hub-server.vercel.app/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
   
