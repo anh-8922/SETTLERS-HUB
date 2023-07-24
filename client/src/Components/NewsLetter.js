@@ -29,45 +29,26 @@ export default function NewsLetter() {
                         <h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5><h5>NEWS</h5>
                     </div>
                     <div className="N-child-center">
-                    {/*<form
-                        className="subcribe-form"
-                        onSubmit={(e) => handleSubmit(e)}
-                        method="POST" noValidate
-                    >
-                        <h2>SIGN UP TO THE NEWSLETTER</h2>
-                        <label>Email</label>
-                        <input
-                        type="email"
-                        name="EMAIL"
-                        required
-                        onChange={(e) => setEmail(e.target.value)}
-                        ></input>
-                        <input
-                        type="text"
-                        name="FNAME"
-                        onChange={(e) => setFullName(e.target.value)}
-                        ></input>
-                        <button type="submit">Submit</button>
-                        
-                            
-                           
-    </form>*/}
-                        <MailchimpSubscribe
-    url={url}
-    render={({ subscribe, status, message }) => (
-      <div>
-        <SimpleForm onSubmitted={formData => subscribe(formData)} />
-        {status === "sending" && <div style={{ color: "blue" }}>sending...</div>}
-        {status === "error" && <div style={{ color: "red" }} dangerouslySetInnerHTML={{__html: message}}/>}
-        {status === "success" && <div style={{ color: "green" }}>Subscribed !</div>}
-      </div>
-    )}
-  />
+                   
+                    <MailchimpSubscribe
+                        url={url}
+                        render={({ subscribe, status, message }) => (
+                        <div>
+                            <h2>SIGN UP TO THE NEWS LETTER</h2>
+                            <SimpleForm onSubmitted={formData => subscribe(formData)} />
+                            {status === "sending" && <div style={{ color: "blue", }}>sending...</div>}
+                            {status === "error" && <div style={{ color: "red", }} dangerouslySetInnerHTML={{__html: message}}/>}
+                            {status === "success" && <div style={{ color: "green",}}>Subscribed !</div>}
+                        </div>
+                        )}
+                    />
                     </div>
                 </div>
                 <div className="N-body" style={{width: "25%"}}>
-                    <div className="N-child-1" style={{borderTopRightRadius:'1rem'}}></div>
-                    <div></div>
+                    <div className="N-child-1" style={{borderTopRightRadius:'1rem'}}>ALL ABOARD</div>
+                    <div>
+                        <h6>WWW.SETTLERHUB.COM</h6>
+                    </div>
                 </div>
                 
             </div>
