@@ -75,18 +75,18 @@ export default function Electricians () {
                     const day = created.getDate()
                     return(
                         <ServiceProvidertCard handleMessage={() => handleRequestMessage(item._id)}
-                                                handleReview={() => handleRequestReview (item._id)}
-                                                key={_id}
-                                                _id={_id}
-                                                firstName={owner.firstName}
-                                                lastName={owner.lastName}
-                                                subject={subject}
-                                                location={location}
-                                                rate={rate}
-                                                experience={experience}
-                                                qulifications={qulifications}
-                                                description={description}
-                                                createdAt = {`${year}-${month}-${day}`}/>
+                                              handleReview={() => handleRequestReview (item._id)}
+                                              key={_id}
+                                              _id={_id}
+                                              firstName={owner.firstName}
+                                              lastName={owner.lastName}
+                                              subject={subject}
+                                              location={location}
+                                              rate={rate}
+                                              experience={experience}
+                                              qulifications={qulifications}
+                                              description={description}
+                                              createdAt = {`${year}-${month}-${day}`}/>
                     )
                 })
             }
