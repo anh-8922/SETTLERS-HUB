@@ -69,11 +69,14 @@ export default function Mechanics () {
         <div>
             {
                 mechanics.map((item) => {
-                    const {_id, subject, location, createdAt, description, rate, qulifications, experience, owner } = item
+                    const {_id, subject, location, createdAt, description, rate, qulifications, experience, owner, reviews } = item
                     const created = new Date (createdAt)
                     const year = created.getFullYear()
                     const month = created.getMonth() + 1
                     const day = created.getDate()
+
+                    const reviewerFirstNames = reviews?.map((review) => review.owner.firstName) || []
+                    const reviewerLastNames = reviews?.map((review) => review.owner.lastName) || []
                     return(
                         <ServiceProvidertCard handleMessage={() => handleRequestMessage(item._id)}
                                               handleReview={() => handleRequestReview (item._id)}
@@ -87,7 +90,12 @@ export default function Mechanics () {
                                               experience={experience}
                                               qulifications={qulifications}
                                               description={description}
-                                              createdAt = {`${year}-${month}-${day}`}/>
+                                              createdAt = {`${year}-${month}-${day}`}
+                                              reviewerFirstNames={reviewerFirstNames}
+                                              reviewerLastNames={reviewerLastNames}
+                                              text={reviews && reviews.length > 0 ? reviews[0].text : ''}
+                                              reviews={reviews || []}
+                                              />
                     )
                 })
             }
