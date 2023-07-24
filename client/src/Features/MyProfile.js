@@ -8,7 +8,7 @@ import EditProfile from "../Components/EditProfile"
 export default function MyProfile () {
     const userID = useGetUserID ()
     console.log("profileuser:", userID)
-    const {data, refetch} = useFetchData(`http://localhost:5000/user/listoneuser/${userID}`)
+    const {data, refetch} = useFetchData(`/user/listoneuser/${userID}`)
     console.log("user data profile:", data)
     const [profileUpdate, setProfileUpdate] = useState(false)
     const [saveClick, setSaveClick] = useState(false)

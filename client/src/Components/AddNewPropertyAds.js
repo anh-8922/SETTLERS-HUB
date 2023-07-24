@@ -28,7 +28,7 @@ export default function NewProperty() {
   const [addressline1, setAddressline1] = useState('')
   const [addressline2, setAddressline2] = useState('')
   const [city, setCity] = useState ('')
-  const [ postCode, setPostCode] = useState ('')
+  const [ postCode, setPostCode] = useState ('EN2 0RD')
   const [ beds, setBeds] = useState (0)
   const [ baths, setBaths] = useState (0)
   const [selectedImages, setSelectedImages] = useState([])

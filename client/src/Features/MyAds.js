@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 import {useGetUserID} from "../CustomHooks/useGetUserID";
 import Table from 'react-bootstrap/Table';
 import Spinner from "./Spinner";
@@ -23,7 +23,7 @@ export default function MyAds() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`, {
+      const response = await axios.get(`/housing/listpropertiesbyuser?owner=${userId}`, {
         withCredentials: true
       });
       const responseData = response;
@@ -43,7 +43,7 @@ export default function MyAds() {
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
+      await axios.delete(`/housing/delete/${id}`, {
         withCredentials: true
       });
     fetchData()
