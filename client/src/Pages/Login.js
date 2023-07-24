@@ -45,7 +45,7 @@ export default function SignIn() {
     };
 
     try {
-      const response = await axios.post('http://localhost:5000/user/login', User, {
+      const response = await axios.post('https://settlers-hub-server.vercel.app/user/login', User, {
         headers: {
           'Content-Type': 'application/json',
         },
