@@ -51,7 +51,7 @@ function HeroSectionMb() {
 
 function SpotLightMb() {
     const ref = useRef();
-    const { data } = useFetchData("http://localhost:5000/guide/list" );
+    const { data } = useFetchData("https://settlers-hub-server.vercel.app/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
   

@@ -7,7 +7,7 @@ import SinglePostLayout from '../Layout/SinglePostLayout';
 
 export default function SingleSubPage() {
   const { id } = useParams();
-  const { data } = useFetchData("http://localhost:5000/guide/list");
+  const { data } = useFetchData("https://settlers-hub-server.vercel.app/guide/list");
 
   if (!data) {
     return <Spinner />;
