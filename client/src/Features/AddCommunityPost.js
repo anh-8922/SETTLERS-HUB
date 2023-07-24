@@ -62,8 +62,6 @@ export default function AddCommunitypost () {
             <div className="AddNewPostToCommunity">
         {!formSubmitted ? (
           <form onSubmit={handleSubmit}>
-            
-            <label style={{display:"flex", gap:"2rem", marginTop:"2rem",fontSize:"1.2rem"}}>Add text</label>
             <textarea
               type="text"
               id="text"

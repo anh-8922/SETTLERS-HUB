@@ -9,7 +9,7 @@ import Modal from '@mui/material/Modal';
 import AddMessages from "../AddMessages";
 
 export default function Childcare () {
-    const {data} = useFetchData('/servicerequests/listservicerequset')
+    const {data, refetch} = useFetchData('/servicerequests/listservicerequset')
     console.log("request data:", data)
     const [message, setMessage] = useState(false)
     const [postIdToMessage, setPostIdToMessage] = useState('')
@@ -46,8 +46,9 @@ export default function Childcare () {
     
       }
 
-    const handlesSendMessage = () => {
+    const handleCloseMessage = () => {
         setMessage (false)
+        refetch()
     }
 
     return(
@@ -74,7 +75,7 @@ export default function Childcare () {
             { message ? (     <div>
         <Modal sx={style}
         open={message}
-        // onClose={handleCloseEdit}
+        onClose={handleCloseMessage}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -83,7 +84,8 @@ export default function Childcare () {
             Message{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                <AddMessages  postId={postIdToMessage}/>
+                <AddMessages  postId={postIdToMessage}
+                              handleCloseMessage ={handleCloseMessage}/>
           </Typography>
         </Box>
       </Modal>

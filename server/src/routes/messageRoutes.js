@@ -1,6 +1,7 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
 import {handleAddMessage,
+        handleAddNewServiceMessage
         // handleDeleteReply,
         // handleEditReply,
     } from '../controllers/messageControllers.js'
@@ -12,5 +13,6 @@ const router = express.Router()
 router.put('/addnewrmessage', auth, handleAddMessage)
 // router.delete('/delete/:id', auth, handleDeleteReply)
 // router.put('/edit/:id', auth, handleEditReply)
+router.put('/addnewservicemessage', auth, handleAddNewServiceMessage)
 
 export default router

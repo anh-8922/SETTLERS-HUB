@@ -7,7 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGetUserID } from "../CustomHooks/useGetUserID";
 import { useCookies } from "react-cookie"
 
-export default function AddMessages ({ postId, handleCloseMessage }) {
+export default function AddServiceMessages ({ postId, handleCloseMessage }) {
     const userID = useGetUserID()
     const [ cookies, _] = useCookies(["access_token"])
     console.log("post id:", postId)
@@ -36,7 +36,7 @@ export default function AddMessages ({ postId, handleCloseMessage }) {
             console.log("Post text cannot be empty")
             return;
           }
-        const response = await axios.put('/message/addnewrmessage' ,
+        const response = await axios.put('/message/addnewservicemessage' ,
         {textMesaage, postId},{
             withCredentials: true,
             headers: {
@@ -114,7 +114,7 @@ export default function AddMessages ({ postId, handleCloseMessage }) {
         <Stack sx={{ width: '30%' }} spacing={2} onClose={() => navigate("/service")}>
               <Alert variant="filled" severity="success" >
                 <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>
-                <strong style={{ color: 'white' }}>Reply Added Successfully!</strong>
+                <strong style={{ color: 'white' }}>Message Added Successfully!</strong>
               </Alert>
               </Stack>
         </div>
