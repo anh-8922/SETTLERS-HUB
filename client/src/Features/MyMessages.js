@@ -254,10 +254,18 @@ export default function MyMessages() {
     }
   }
 
+  const handleDeleteServiceProvidersMessage = () => {
+
+  }
+
+  const handleDeleteServiceSeekersMessage = () => {
+    
+  }
+
   return (
     <div>
       <div>
-        Messages from Service Providers
+       <h3> Messages from Service Providers</h3>
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
@@ -275,7 +283,7 @@ export default function MyMessages() {
                   <td>{text}</td>
                   <td>{firstName} {lastName}</td>
                   <td>{email}</td>
-                  <td><button>Delete</button></td>
+                  <td><button onClick={() => handleDeleteServiceProvidersMessage(messageId)}>Delete</button></td>
                 </tr>
               )
             })}
@@ -283,7 +291,7 @@ export default function MyMessages() {
         </Table>
       </div>
       <div>
-        Messages from Service Seekers
+        <h3>Messages from Service Seekers</h3>
         <Table striped bordered hover size="sm">
           <thead>
             <tr>
@@ -301,7 +309,7 @@ export default function MyMessages() {
                   <td>{text}</td>
                   <td>{firstName} {lastName}</td>
                   <td>{email}</td>
-                  <td><button>Delete</button></td>
+                  <td><button onClick={() => handleDeleteServiceSeekersMessage(messageId)}>Delete</button></td>
                 </tr>
               )
             })}

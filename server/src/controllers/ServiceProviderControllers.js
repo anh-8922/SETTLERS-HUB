@@ -128,7 +128,7 @@ export const handeleDeleteService = async (req, res) => {
 }
 
 export const handleEditSerice = async (req, res) => {
-    const id = req.query.id
+    const id = req.params.id
     console.log("Service provider to edit:", id)
     console.log("User:", req.user)
     try{

@@ -96,7 +96,7 @@ export default function EditServiceAd() {
 
 
         try {
-          const response = await axios.put(`http://localhost:5000/serviceprovider/edit?id=${id}`, 
+          const response = await axios.put(`http://localhost:5000/serviceprovider/edit/${id}`, 
           {
             category: category,
             subject: subject,
