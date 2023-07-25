@@ -45,7 +45,7 @@ export default function EditProperties() {
   const [isFormSubmit, setFormSubmitted] = useState (false)
   const navigate = useNavigate()
 
-  const {data, error} = useFetchData(`/housing/listoneproperty/${id}`)
+  const {data, error} = useFetchData(`http://localhost:5000/housing/listoneproperty/${id}`)
   console.log("data to edit:", data)
 
   useEffect(() => {
@@ -236,10 +236,11 @@ export default function EditProperties() {
 
         console.log("formData:", formData)
         try {
-          const response = await axios.put(`/housing/edit?id=${id}`, formData, {
+          const response = await axios.put(`http://localhost:5000/housing/edit?id=${id}`, formData, {
           withCredentials: true,
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",
+              Authorization: `Bearer ${cookies.access_token}`
             },
           });
           

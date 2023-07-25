@@ -43,10 +43,11 @@ export default function AddCommunitypost () {
        
     
         try {
-          const response = await axios.post("/community/addnewpost", formData, {
+          const response = await axios.post("http://localhost:5000/community/addnewpost", formData, {
             withCredentials: true,
             headers: {
-              "Content-type": "multipart/form-data; charset=UTF-8"
+              "Content-type": "multipart/form-data; charset=UTF-8",
+              Authorization: `Bearer ${cookies.access_token}`
             },
           });
     
@@ -62,8 +63,6 @@ export default function AddCommunitypost () {
             <div className="AddNewPostToCommunity">
         {!formSubmitted ? (
           <form onSubmit={handleSubmit}>
-            
-            <label style={{display:"flex", gap:"2rem", marginTop:"2rem",fontSize:"1.2rem"}}>Add text</label>
             <textarea
               type="text"
               id="text"
