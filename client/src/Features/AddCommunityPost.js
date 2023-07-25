@@ -43,7 +43,7 @@ export default function AddCommunitypost () {
        
     
         try {
-          const response = await axios.post("/community/addnewpost", formData, {
+          const response = await axios.post("http://localhost:5000/community/addnewpost", formData, {
             withCredentials: true,
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",

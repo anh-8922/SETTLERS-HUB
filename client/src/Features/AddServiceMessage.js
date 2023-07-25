@@ -36,7 +36,7 @@ export default function AddServiceMessages ({ postId, handleCloseMessage }) {
             console.log("Post text cannot be empty")
             return;
           }
-        const response = await axios.put('/message/addnewservicemessage' ,
+        const response = await axios.put('http://localhost:5000/message/addnewservicemessage' ,
         {textMesaage, postId},{
             withCredentials: true,
             headers: {

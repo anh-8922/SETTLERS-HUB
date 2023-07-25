@@ -39,8 +39,23 @@ export default function MyMessages () {
       return <Spinner />;
     }
 
-    const messages = fetchedData.data.adverticedRequestByUser
-    console.log("messages:", messages)
+    const posts = fetchedData.data.adverticedRequestByUser
+   
+    const allMessages = [];
+
+    for (const post of posts) {
+      const messages = post.message;
+  
+      for (const message of messages) {
+        // Access the properties of each message
+        const { _id: messageId, owner, text } = message;
+        const { firstName, lastName, email } = owner;
+        
+        // Push the message data to the allMessages array
+        allMessages.push({ messageId, firstName, lastName, email, text });
+      }
+    
+    }
     return (
         <div>
             hi message
@@ -54,24 +69,22 @@ export default function MyMessages () {
           </tr>
         </thead>
         <tbody>
-          {/* {properties.map((item, index) => {
-            const { _id, address, availableOn, baths, beds, category, deposit, rate } = item
-            const city = address[0].city
+        {allMessages.map((message) => {
+            const { messageId, firstName, lastName, email, text } = message;
             return (
-              <tr key={_id}>
-                <td>{index + 1}</td>
-                <td>{category}</td>
-                <td>{city}</td>
-                <td>{beds}</td>
-                <td>{baths}</td>
-                <td>£ {rate}</td>
-                <td>£ {deposit}</td>
-                <td>{availableOn}</td>
+              <tr key={messageId}>
+                <td>{text}</td>
+                <td>{firstName} {lastName}</td>
+                <td>{email}</td>
+                <td><button>Delete</button></td>
+               
               </tr>
             )
-          })} */}
+          })}
         </tbody>
       </Table>
         </div>
     )
 }
+
+

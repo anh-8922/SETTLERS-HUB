@@ -43,7 +43,7 @@ export default function MyAds() {
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`/housing/delete/${id}`, {
+      await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
         withCredentials: true
         
       });

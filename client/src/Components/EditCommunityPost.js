@@ -37,7 +37,7 @@ export default function EditCommunitypost({ existingText, editPostId }) {
     }
 
     try {
-      const response = await axios.put(`/community/edit/${editPostId}`, formData, {
+      const response = await axios.put(`http://localhost:5000/community/edit/${editPostId}`, formData, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",

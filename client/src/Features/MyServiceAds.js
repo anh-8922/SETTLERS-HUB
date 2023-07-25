@@ -42,7 +42,7 @@ export default function MyServiceAds() {
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`serviceprovider/delete/${id}`, {
+      await axios.delete(`http://localhost:5000/serviceprovider/delete/${id}`, {
         withCredentials: true
       });
     fetchData()

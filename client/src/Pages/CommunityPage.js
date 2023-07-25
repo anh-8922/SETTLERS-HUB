@@ -23,7 +23,7 @@ export default function CommunityPage() {
     console.log("user:", userID)
     const [ cookies, _] = useCookies(["access_token"])
     console.log("cookies:", cookies)
-    const { data, error, refetch } = useFetchData("/community/listpost" )
+    const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
     console.log("data:", data);
     console.log("error:", error);
     const [show, setShow] = useState(false);
@@ -56,7 +56,7 @@ export default function CommunityPage() {
   const handleDeletePost = async (_id) => {
     console.log("post to delete:", _id)
     try {
-      const response = await axios.delete(`/community/delete/${_id}`, {
+      const response = await axios.delete(`http://localhost:5000/community/delete/${_id}`, {
         withCredentials: true
       });
       refetch();
@@ -80,7 +80,7 @@ export default function CommunityPage() {
     console.log("post to like:", _id)
     console.log("liked user:", userID)
     try{
-      const response = await axios.put('/community/like',{ _id},{
+      const response = await axios.put('http://localhost:5000/community/like',{ _id},{
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",

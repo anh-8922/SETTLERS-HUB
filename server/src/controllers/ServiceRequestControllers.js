@@ -80,12 +80,12 @@ export const handleListRequestAdsByUSer = async(req, res) => {
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
 
         const adverticedRequestByUser = await Servicerequest.find({owner: owner})
-        // .select("category location subject  createdAt message.text  ") 
-        // .populate({
-        //     path: "message.owner",
-        //     select: "username email image firstName lastName"
+        // .select(" _id category location subject  createdAt message.text  ") 
+        .populate({
+            path: "message.owner",
+            select: "username email image firstName lastName"
 
-        // })
+        })
         // .populate({
         //     path: "message.text",
         //     select: "text"

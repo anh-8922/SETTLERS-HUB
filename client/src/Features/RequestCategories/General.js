@@ -10,7 +10,7 @@ import Modal from '@mui/material/Modal';
 import AddMessages from "../AddMessages";
 
 export default function General () {
-    const {data, refetch} = useFetchData('/servicerequests/listservicerequset')
+    const {data, refetch} = useFetchData('http://localhost:5000/servicerequests/listservicerequset')
     console.log("request data:", data)
     const [message, setMessage] = useState(false)
     const [postIdToMessage, setPostIdToMessage] = useState('')
