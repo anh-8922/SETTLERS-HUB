@@ -8,7 +8,8 @@ import {useState} from "react"
 import SinglePostLayout from '../Layout/SinglePostLayout';
 import MyAds from "../Features/MyAds";
 import MyProfile from "../Features/MyProfile";
-import MyMessages from "../Features/MyMessages";
+import '../Style/page.css'
+
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -55,13 +56,13 @@ export default function ProfilePage ()  {
     return (
         <SinglePostLayout>
         <div>
-            <div>Hi from profile</div>
-            <button onClick={() => navigate('/')}>Home</button>
-            <button onClick={() => navigate('/addnewad')}>Add new Ad</button>
+            <h3>Hello</h3>
+            <button className="single-post-btn" onClick={() => navigate('/')}>Back to home</button>
+            <button className='single-post-btn' onClick={() => navigate('/addnewad')}>Add new Ad</button>
             <div style={{ marginTop:"3vh"}}>
-            <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height:"80vh", width:"100vw", marginTop:"3rem" }}
-    >
+            <Box style={{
+              backgroundColor:'whitesmoke', display:'flex', flexDirection:'row',
+              borderRadius:'1rem', border:'1px solid grey'}}>
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -70,13 +71,13 @@ export default function ProfilePage ()  {
         aria-label="Vertical tabs example"
         three={{ borderRight: 1, borderColor: 'divider' }}
       >
-        <Tab label="Your Profile" {...a11yProps(0)} />
+        <Tab label="My Profile" {...a11yProps(0)} />
         <Tab label="My Ads" {...a11yProps(1)} />
         <Tab label="Message" {...a11yProps(2)} />
         {/* <Tab label="Notificatios" {...a11yProps(3)} /> */}
       </Tabs>
       <TabPanel value={value} index={0}>
-        <h1>Your Profile</h1>
+        <h1>My Profile</h1>
         <MyProfile/>
         
       </TabPanel>

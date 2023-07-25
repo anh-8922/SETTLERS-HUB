@@ -23,7 +23,7 @@ export default function MyAds() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`https://settlers-hub-server.vercel.app/housing/listpropertiesbyuser?owner=${userId}`, {
+      const response = await axios.get(`http://localhost:5000/housing/listpropertiesbyuser?owner=${userId}`, {
         withCredentials: true
       });
       const responseData = response;
@@ -43,8 +43,9 @@ export default function MyAds() {
   const handleDeleteProperty = async (id) => {
     console.log("id:", id);
     try {
-      await axios.delete(`https://settlers-hub-server.vercel.app/housing/delete/${id}`, {
+      await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
         withCredentials: true
+        
       });
     fetchData()
     

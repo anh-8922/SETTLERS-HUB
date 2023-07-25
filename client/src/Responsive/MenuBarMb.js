@@ -32,7 +32,7 @@ export default function MenuBarMb() {
                         gap:'1rem', alignItems:'flex-start', alignContent:'stretch', padding:'2rem'}}>
                         <Link className='MenuMb-items' to='/'>Home</Link>
                         <Link className='MenuMb-items' to="/service">Service</Link>
-                        <Link className='MenuMb-items'>Housing</Link>
+                        <Link className='MenuMb-items'to="/housing">Housing</Link>
                         <Link className='MenuMb-items' to="/community">Community</Link>
                         <Link className='MenuMb-items' to="/userregister">Signup</Link>
                         <Link className='MenuMb-items' to="/login">Login</Link>

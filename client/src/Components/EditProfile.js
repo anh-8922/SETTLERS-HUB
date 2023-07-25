@@ -32,7 +32,7 @@ export default function EditProfile () {
         file: null,
     })
     const [isFormSubmit, setFormSubmitted] = useState (false)
-    const {data} = useFetchData(`https://settlers-hub-server.vercel.app/user/listoneuser/${userID}`)
+    const {data} = useFetchData(`http://localhost:5000/user/listoneuser/${userID}`)
     console.log("data:", data)
 
     const navigate = useNavigate ()
@@ -116,10 +116,12 @@ export default function EditProfile () {
 
         console.log("formData:", formData)
         try {
-          const response = await axios.put(`https://settlers-hub-server.vercel.app/user/updateprofile`, formData, {
+          const response = await axios.put(`http://localhost:5000/user/updateprofile`, formData, {
           withCredentials: true,
             headers: {
               "Content-type": "multipart/form-data; charset=UTF-8",
+              Authorization: `Bearer ${cookies.access_token}`
+              
             },
           });
           

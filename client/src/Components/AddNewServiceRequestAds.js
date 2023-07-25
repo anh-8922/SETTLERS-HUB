@@ -62,6 +62,7 @@ export default function NewServiceRequestAds() {
             withCredentials: true,
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${cookies.access_token}`
             },
           });
     

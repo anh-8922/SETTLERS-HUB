@@ -36,7 +36,7 @@ export default function AddServiceReview ({ postId, handleCloseReview }) {
             console.log("Post text cannot be empty")
             return;
           }
-        const response = await axios.put('/message/addnewservicereview' ,
+        const response = await axios.put('http://localhost:5000/message/addnewservicereview' ,
         {textReview, postId},{
             withCredentials: true,
             headers: {

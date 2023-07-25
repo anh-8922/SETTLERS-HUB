@@ -46,7 +46,7 @@ export default function Register() {
 
       try {
         const response = await axios.post(
-          "https://settlers-hub-server.vercel.app/user/register",
+          "/user/register",
         User,
         {
           Headers: {

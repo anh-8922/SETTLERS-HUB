@@ -13,7 +13,7 @@ import AddServiceReview from "../AddServiceReview"
 import { useState } from "react"
 
 export default function GeneralServiceProviders () {
-    const {data, refetch} = useFetchData('/serviceprovider/listserviceproviders')
+    const {data, refetch} = useFetchData('http://localhost:5000/serviceprovider/listserviceproviders')
     console.log("request data:", data)
     const [message, setMessage] = useState(false)
     const [review, setReview] = useState(false)
