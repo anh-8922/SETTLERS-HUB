@@ -10,7 +10,6 @@ import utility from '../Assets/utility.jpg';
 import serviceprovider from '../Assets/serviceprovider.jpg';
 import ServiceRequest from '../Assets/ServiceRequest.jpg';
 import NewsLetter from "../Components/NewsLetter";
-import Filters from "../Features/Filters"
 
 import UtilityTabs from "../Features/UtilityTabs";
 import ServiceProviderTabs from "../Features/ServiceProvidersTab";
@@ -21,7 +20,6 @@ export default function ServicePage() {
     return (
       <MainLayout>
         <HeroSectionB/>
-        <Filters/>
         <div className='housing-content'>
         <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
