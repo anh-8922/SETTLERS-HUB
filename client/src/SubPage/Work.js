@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {WorkLayout} from '../Layout/GuideLayout'
 
 export default function Work() {
-    const { data } = useFetchData("/guide/list" );
+    const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
   
