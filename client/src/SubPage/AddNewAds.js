@@ -4,8 +4,8 @@ import SinglePostLayout from "../Layout/SinglePostLayout";
 export default function AddNewAds () {
     return (
         <SinglePostLayout>
-            <div style={{height:"100vh"}}>
-                Create your new Advertisement
+            <div style={{height:"max-content"}}>
+                <h3 style={{margin:'0 0 2rem 2rem'}}>Create your new Advertisement:</h3>
                 <NewAddTabs/>
             </div>
         </SinglePostLayout>

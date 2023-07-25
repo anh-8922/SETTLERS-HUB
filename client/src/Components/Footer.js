@@ -20,7 +20,7 @@ export default function Footer() {
 function FootNavigator() {
     return(
         <div className='foot-navigator'>
-            <NavLink className="footNav-items">About us</NavLink>
+            <NavLink className="footNav-items" to='/aboutus'>About us</NavLink>
             <NavLink className="footNav-items">Contact</NavLink>
             <NavLink className="footNav-items">FAQ</NavLink>
             <NavLink className="footNav-items">Terms and Conditions</NavLink>
