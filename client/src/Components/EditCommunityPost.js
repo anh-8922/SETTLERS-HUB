@@ -116,7 +116,7 @@ export default function EditCommunitypost({ existingText, editPostId }) {
             <Alert variant="filled" severity="error">
               <AlertTitle style={{ color: "white" }}>Error</AlertTitle>
               <strong style={{ color: "white" }}>
-                Edited post cannot be empty!
+                Edited post can not be empty!
               </strong>
             </Alert>
           </Stack>

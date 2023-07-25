@@ -50,7 +50,7 @@ export default function NewServiceRequestAds() {
 
 
         try {
-          const response = await axios.post("/servicerequests/addnewservicerequset", 
+          const response = await axios.post("http://localhost:5000/servicerequests/addnewservicerequset", 
           {
             category: category,
             subject: subject,
