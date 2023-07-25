@@ -30,7 +30,7 @@ export default function EditRequestAds() {
   const [location, setLocation] = useState ('')
   const navigate = useNavigate()
 
-  const {data, error} = useFetchData(`/servicerequests/listoneservicerequset/${id}`)
+  const {data, error} = useFetchData(`http://localhost:5000/servicerequests/listoneservicerequset/${id}`)
   console.log("request data to edit:", data)
 
   useEffect(() => {
@@ -77,7 +77,7 @@ export default function EditRequestAds() {
 
 
         try {
-          const response = await axios.put(`/servicerequests/edit/${id}`, 
+          const response = await axios.put(`http://localhost:5000/servicerequests/edit/${id}`, 
           {
             category: category,
             subject: subject,
@@ -89,6 +89,7 @@ export default function EditRequestAds() {
             withCredentials: true,
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${cookies.access_token}`
             },
           });
     

@@ -31,7 +31,7 @@ const defaultTheme = createTheme();
 
 export default function SignIn() {
 
-  const [_, setCookies] = useCookies(["access_token"])
+  const [cookies, setCookies] = useCookies(["access_token"])
   const [error, setError] = useState("")
   const [showPass, setShowPass] = useState(false)
 
@@ -48,6 +48,7 @@ export default function SignIn() {
       const response = await axios.post('http://localhost:5000/user/login', User, {
         headers: {
           'Content-Type': 'application/json',
+          
         },
       });
       console.log(response.data);

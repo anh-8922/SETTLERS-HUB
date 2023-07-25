@@ -38,7 +38,7 @@ export default function EditServiceAd() {
   const navigate = useNavigate()
 
 
-  const {data, error} = useFetchData(`/serviceprovider/listoneserviceprovider/${id}`)
+  const {data, error} = useFetchData(`http://localhost:5000/serviceprovider/listoneserviceprovider/${id}`)
   console.log("data to edit:", data)
 
 

@@ -17,7 +17,7 @@ export default function PropertyDetails () {
     const [zoom, setZoom] = useState(8)
     const mapRef = useRef(null)
     console.log("selected single property id:", id)
-    const {data, error} = useFetchData(`http://localhost:5000/housing/listoneproperty/${id}`)
+    const {data, error} = useFetchData(`/housing/listoneproperty/${id}`)
     console.log("selected property data:", data)
     const myMap = process.env.REACT_APP_MY_GOOGLE_API
 

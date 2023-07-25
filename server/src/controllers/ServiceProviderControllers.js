@@ -64,6 +64,14 @@ export const handleListServiceProviders = async (req, res) => {
             path: "owner",
             select: "username email image firstName lastName",
         })
+        .populate({
+            path: "message.owner",
+            select: "username email image firstName lastName",
+        })
+        .populate({
+            path: "reviews.owner",
+            select: "username email image firstName lastName",
+        })
         .select ("-__v")
         .sort({ _id: "desc" })
         console.log("New Service post:", serviceProvidersAds)
@@ -85,7 +93,12 @@ export const handleListServiceAdsByUSer = async (req, res) => {
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
 
         const adverticedServiceByUser = await Serviceprovider.find({owner: owner})
-        .select("category location rate telephone createdAt ") 
+        .select("category location rate telephone createdAt message.text ") 
+        .populate({
+            path: "message.owner",
+            select: "username email image firstName lastName"
+
+        })
 
         console.log("List serice by users:", adverticedServiceByUser)
         res.send({success: true, adverticedServiceByUser})
