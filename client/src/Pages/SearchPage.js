@@ -85,7 +85,7 @@ export default function SearchPage() {
 
   const handleReadMore = (_id) => {
     console.log("_id", _id)
-  navigate(`/singleguidepost/${_id}`);
+  navigate(`/singlesearchpost/${_id}`);
 };
 
   return (
