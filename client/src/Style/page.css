@@ -138,3 +138,34 @@
   margin: 1rem 0 1rem 3rem;
   font-size: 1.5rem;
 }
+
+/*==================*/
+/*==PROFILE PAGE==*/
+/*==================*/
+
+
+.single-post-btn {
+  margin-right: 0.5rem;
+  display: inline-block;
+  outline: 0;
+  text-align: center;
+  cursor: pointer;
+  
+  padding: 0.7rem 0.8rem;
+  color: #fff;
+  vertical-align: top;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition: all .3s ease;
+  background: var(--Red-Pictorial-Carmine);
+  border-color: var(--Red-Pictorial-Carmine);
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 16px;
+  font-size: 1rem;  
+}
+.single-post-btn:hover{
+    background: var(--Red-button);
+    border-color: var(--Red-button);
+}
+
