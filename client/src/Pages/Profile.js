@@ -8,6 +8,7 @@ import {useState} from "react"
 import SinglePostLayout from '../Layout/SinglePostLayout';
 import MyAds from "../Features/MyAds";
 import MyProfile from "../Features/MyProfile";
+import MyMessages from "../Features/MyMessages";
 import '../Style/page.css'
 
 
