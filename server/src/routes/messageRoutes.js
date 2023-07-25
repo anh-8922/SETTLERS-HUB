@@ -1,16 +1,20 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
-import {handleAddReply,
+import {handleAddMessage,
+        handleAddNewServiceMessage,
+        handleAddNewServiceReview,
         // handleDeleteReply,
         // handleEditReply,
-    } from '../controllers/replyControllers.js'
+    } from '../controllers/messageControllers.js'
 // import upload from "../config/cloudinary.js"
 
 
 const router = express.Router()
 
-router.put('/addnewreply', auth, handleAddReply)
+router.put('/addnewrmessage', auth, handleAddMessage)
 // router.delete('/delete/:id', auth, handleDeleteReply)
 // router.put('/edit/:id', auth, handleEditReply)
+router.put('/addnewservicemessage', auth, handleAddNewServiceMessage)
+router.put("/addnewservicereview", auth, handleAddNewServiceReview)
 
 export default router

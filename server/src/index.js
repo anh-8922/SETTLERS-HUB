@@ -10,6 +10,7 @@ import serviceProviderRoutes from './routes/serviceProviderRoutes.js'
 import  serviceRequestRoutes from './routes/serviceRequestRoutes.js'
 import replyRoutes from "./routes/replyRoutes.js"
 import cookieParser from "cookie-parser"
+import messageRoutes from './routes/messageRoutes.js'
 
 dotenv.config();
 dbConnect();
@@ -33,6 +34,7 @@ app.use('/housing', housingRoutes)
 app.use('/serviceprovider', serviceProviderRoutes)
 app.use('/servicerequests', serviceRequestRoutes)
 app.use('/reply', replyRoutes)
+app.use('/message', messageRoutes)
 app.use("/image", express.static("./server/uploads"));
 
 app.use("/uploads", express.static("./server/uploads"))

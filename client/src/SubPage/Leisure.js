@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {LeisureLayout} from '../Layout/GuideLayout'
 
 export default function Leisure() {
-    const { data } = useFetchData("http://localhost:5000/guide/list" );
+    const { data } = useFetchData("/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
   

@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import{ useState, useEffect } from "react";
 import {useGetUserID} from "../CustomHooks/useGetUserID";
 import Table from 'react-bootstrap/Table';
 import Spinner from "./Spinner";
@@ -45,6 +45,7 @@ export default function MyAds() {
     try {
       await axios.delete(`http://localhost:5000/housing/delete/${id}`, {
         withCredentials: true
+        
       });
     fetchData()
     

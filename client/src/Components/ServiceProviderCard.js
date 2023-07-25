@@ -10,7 +10,12 @@ export default function ServiceProvidertCard ({
     experience,
     handleMessage,
     handleReview,
-    qulifications
+    qulifications,
+    text,
+    reviewd,
+    reviewerFirstNames,
+    reviewerLastNames,
+    reviews
 }) {
 
     return (
@@ -25,6 +30,20 @@ export default function ServiceProvidertCard ({
             <div>Posted Date: {createdAt}</div>
             <button onClick={() => handleMessage(_id)}>Message</button>
             <button onClick={() => handleReview(_id)}>Review</button>
+                { reviews && reviews.length > 0 ? (
+        reviews.map((review, index) => (
+          <div key={index}>
+            <div>{review.text}</div>
+            {index < reviewerFirstNames.length && index < reviewerLastNames.length && (
+              <div>
+                By: {reviewerFirstNames[index]} {reviewerLastNames[index]}
+              </div>
+            )}
+          </div>
+        ))
+      )  : (
+        null
+      )}
         </div>
     )
 }
