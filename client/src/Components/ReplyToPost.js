@@ -31,7 +31,7 @@ export default function ReplyToAPost ({ postId }) {
             console.log("Post text cannot be empty")
             return;
           }
-        const response = await axios.put('/reply/addnewreply' ,
+        const response = await axios.put('http://localhost:5000/reply/addnewreply' ,
         {replyPost, postId},{
             withCredentials: true,
             headers: {

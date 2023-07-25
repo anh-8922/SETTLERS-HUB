@@ -59,7 +59,7 @@ export default function NewServiceAds() {
 
 
         try {
-          const response = await axios.post("/serviceprovider/addnewserviceprovider", 
+          const response = await axios.post("http://localhost:5000/serviceprovider/addnewserviceprovider", 
           {
             category: category,
             subject: subject,

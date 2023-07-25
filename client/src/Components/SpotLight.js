@@ -28,7 +28,7 @@ export default function SpotLight() {
 
 export function SpotlightNews() {
     const ref = useRef();
-    const { data } = useFetchData("/guide/list" );
+    const { data } = useFetchData("http://localhost:5000/guide/list" );
     // console.log("datafetched",data)
     const navigate = useNavigate();
   
