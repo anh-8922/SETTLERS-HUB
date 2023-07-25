@@ -8,7 +8,7 @@ import { useRef, useState, useEffect } from 'react';
 import TimeAgo from 'react-timeago'
 import {FaBath} from "react-icons/fa"
 import {FaBed} from "react-icons/fa"
-
+import '../Style/feature.css'
 
 
 export default function PropertyDetails () {
@@ -113,12 +113,10 @@ export default function PropertyDetails () {
                 />
         </div>  
         <Link to="/housing">
-            <button style={{
-                          fontSize:'1.5rem', 
-                          backgroundColor:'pink', 
-                          marginLeft:'5rem', 
-                          padding:'0.8rem',
-                          borderRadius:'0.5rem'}}>Back to Housing</button>
+            <button style={{fontSize:'1.3rem', margin:'1rem 0', padding:'1rem'}} 
+            className='update-profile-btn'>
+                Back to housing
+            </button>
           </Link>
         
         </div>
