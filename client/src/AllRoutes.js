@@ -27,6 +27,7 @@ import EditProperties from "./Features/EditPropertyAds";
 import EditServiceAd from './Features/EditServiceAd.js'
 import EditRequestAds from "./Features/EditRequestAds";
 import SearchPage from "./Pages/SearchPage";
+import AboutUs from "./SubPage/AboutUs";
 
 
 
@@ -57,6 +58,8 @@ export default function AllRoutes () {
         <Route path='/housing' element= {<Housing/>} />
         <Route path= '/singlepropertypage/:id' element = {<SingleProperty/>} />
         <Route path='/search' element={<SearchPage/>}/>
+        <Route path='/aboutus' element={<AboutUs/>}/>
+
 
       <Route element={<ProtectedLayout/>}>
         <Route path="/profile" element={<ProfilePage/>}/>

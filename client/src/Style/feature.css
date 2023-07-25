@@ -208,3 +208,25 @@
 #noanim-tab-example h1 {
     font-size: 3rem;
 }
+
+/*====================================*/
+/*~~~~PROFILE FEATURES ~~~~~~~*/
+/*---------------------------- --------*/
+/*====================================*/
+
+.update-profile-btn{
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #333A44;
+  padding: 0.5rem 0.6rem;
+  color: var(--black-color);
+  vertical-align: top;
+  border-radius: 3px;
+  
+ 
+  background: var(--platinum);
+  
+  font-weight: 600;
+  line-height: 16px;
+  font-size: 0.9rem;  
+}

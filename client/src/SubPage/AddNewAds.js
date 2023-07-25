@@ -5,8 +5,9 @@ import { Link } from "react-router-dom";
 export default function AddNewAds () {
     return (
         <SinglePostLayout>
-            <div style={{height:"100vh"}}>
-               <h1>Create your new Advertisement</h1> 
+
+            <div style={{height:"max-content"}}>
+                <h3 style={{margin:'0 0 2rem 2rem'}}>Create your new Advertisement:</h3>
                 <NewAddTabs/>
                 <Link to="/profile">
                      <button style={{

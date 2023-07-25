@@ -3,7 +3,8 @@ import { useGetUserID } from "../CustomHooks/useGetUserID"
 import profile from "../Assets/profile.png"
 import Spinner from "./Spinner"
 import { useEffect, useState } from "react"
-import EditProfile from "../Components/EditProfile"
+import EditProfile from "../Components/EditProfile";
+import '../Style/feature.css';
 
 export default function MyProfile () {
     const userID = useGetUserID ()
@@ -53,7 +54,7 @@ export default function MyProfile () {
 
            { !profileUpdate ? (
                         <div>
-                        <button onClick={handleUpdateProfile}>Update</button>
+                        <button className="update-profile-btn" onClick={handleUpdateProfile}>Update</button>
                         <div>
                             <img src={profileImage} alt="Profile Image" style={{width:'200px', height:'200px'}}/>
                         </div>
