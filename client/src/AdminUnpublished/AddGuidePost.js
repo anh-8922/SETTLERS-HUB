@@ -63,7 +63,7 @@ export default function AddGuidePost ( ) {
       }
     
       try {
-        const response = await axios.post('https://settlers-hub-server.vercel.app/guide/add', formData,);
+        const response = await axios.post('/guide/add', formData,);
         setFormSubmitted(true);
         console.log("Response:", response);
       } catch (error) {

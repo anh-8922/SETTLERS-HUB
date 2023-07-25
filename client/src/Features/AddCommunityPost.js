@@ -46,7 +46,8 @@ export default function AddCommunitypost () {
           const response = await axios.post("/community/addnewpost", formData, {
             withCredentials: true,
             headers: {
-              "Content-type": "multipart/form-data; charset=UTF-8"
+              "Content-type": "multipart/form-data; charset=UTF-8",
+              Authorization: `Bearer ${cookies.access_token}`
             },
           });
     

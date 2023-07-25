@@ -15,7 +15,7 @@ export default function LoginButtons() {
     const [loggedIn, setLoggedIn] = useState(false)
     console.log("userID:", userID)
     const navigate = useNavigate()
-    const {data} = useFetchData(`https://settlers-hub-server.vercel.app/user/userlist`)
+    const {data} = useFetchData(`/user/userlist`)
     console.log("list user:", data)
     const profile = data?.users || []
 

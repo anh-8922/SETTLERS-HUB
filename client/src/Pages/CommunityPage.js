@@ -186,7 +186,7 @@ export default function CommunityPage() {
 function CommunityBar() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {setOpen(false)};
   return(
     <div className="community-bar">
       <Button onClick={handleOpen} id='ask-button'>Ask a question<TbUserQuestion/></Button>

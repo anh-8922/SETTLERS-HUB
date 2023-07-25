@@ -4,7 +4,7 @@ import Spinner from "../Features/Spinner";
 import { useNavigate } from "react-router-dom";
 
 export default function RentedHouses  ( ) {
-    const {data} = useFetchData("https://settlers-hub-server.vercel.app/housing/listproperties")
+    const {data} = useFetchData("/housing/listproperties")
     console.log("listed properties:", data)
     // const newPropertyAds = data
     // console.log("listed new properties:", newPropertyAds)

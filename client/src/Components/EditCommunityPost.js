@@ -41,6 +41,7 @@ export default function EditCommunitypost({ existingText, editPostId }) {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${cookies.access_token}`
         },
       });
 

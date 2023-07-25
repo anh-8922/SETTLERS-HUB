@@ -22,7 +22,7 @@ export default function MyServiceAds() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`/serviceprovider/listserviceadsbyuser?owner=${userId}`, {
+      const response = await axios.get(`http://localhost:5000/serviceprovider/listserviceadsbyuser?owner=${userId}`, {
         withCredentials: true
       });
       const responseData = response
