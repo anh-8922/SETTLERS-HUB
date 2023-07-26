@@ -7,7 +7,7 @@ export default function SingleProperty () {
     return (
         <SinglePostLayout>
             <div>
-                <h2>Hi from single property</h2>
+                {/* <h2>Hi from single property</h2> */}
                 <PropertyDetails/>
             </div>
             

@@ -5,7 +5,7 @@ import useFetchData from "../CustomHooks/useFetchData";
 import '../Style/page.css';
 import SinglePostLayout from '../Layout/SinglePostLayout';
 
-export default function SingleSubPage() {
+export default function SearchSubPage() {
   const { id } = useParams();
   const { data } = useFetchData("http://localhost:5000/guide/list");
 
@@ -38,13 +38,13 @@ export default function SingleSubPage() {
             paragraph1={paragraph1}
             paragraph2={paragraph2}
           />
-          <Link to="/">
+          <Link to="/search">
             <button style={{
                           fontSize:'1.5rem', 
                           backgroundColor:'pink', 
                           marginLeft:'5rem', 
                           padding:'0.8rem',
-                          borderRadius:'0.5rem'}}>Back to Home</button>
+                          borderRadius:'0.5rem'}}>Back to Search</button>
           </Link>
         </div>
     </SinglePostLayout>
