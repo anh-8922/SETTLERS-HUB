@@ -30,14 +30,12 @@ export default function ListCommunityPost({
 
   return (
     <div key={_id} className="community_post_list">
-      <div className="edit-del">
-  
-          <div style={{ fontSize: "1.5rem", fontWeight: "bold" }} className="post-topic">Ask: {text}</div>
-       
+      <div className="post-heading">
+        <div style={{ fontSize: "1.5rem", fontWeight: "bold" }} className="post-topic">Ask: {text}</div>
               { isCurrentUserOwner? (
                 <div>
                   <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Dropdown.Toggle variant="success" style={{backgroundColor:'whitesmoke', color:'grey'}}>
                       <SlOptions/>
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -48,13 +46,17 @@ export default function ListCommunityPost({
                   
                 </div>
               ): null}                                         
-          
-          
-        
       </div>
       <div className="post-details">
-        <div className="like-reply">
-          <div style={{fontSize:'1.5rem', padding:'none'}}>
+        <div className="author-time">
+          <div style={{fontSize:'1.1rem'}}><span style={{marginRight:'5px', fontWeight:'bold'}}>Author:</span>
+            {firstName} <span>{lastName}</span>
+          </div>
+          <div style={{fontSize:'1.1rem'}}>
+            <span style={{marginRight:'5px', fontWeight:'bold'}}>Date:</span><TimeAgo date={createdAt} />
+          </div>
+          <div >
+            <span style={{marginRight:'5px', fontWeight:'bold'}}>Like:</span> 
             {isPostLiked ? (
               <AiFillHeart id="like-icon"
               // onClick={() => handleLikePost(_id)}
@@ -71,33 +73,28 @@ export default function ListCommunityPost({
             )}
 
           </div>
-          <button onClick={() => handleReplyPost()}>Reply</button>
         </div>
-        <div className="author-time">
-          <div className="post-owner" >Author: <span style={{marginRight:'2px'}}/>
-            {firstName} <span>{lastName}</span>
-          </div>
-      
-          <div>
-            Date:<span style={{marginRight:'2px'}}/><TimeAgo date={createdAt} />
-          </div>
+        <div className="like-reply">
+          
+          <button className="reply-button" onClick={() => handleReplyPost()}>Answer</button>
         </div>
-
-        {comments && comments.length > 0 && (
-                  <div>
-                    <div>Replies</div>
-                    {comments.map((comment) => (
-                      <div key={comment._id}>
-                        <div>
-                          User: <span style={{ marginRight: "2px" }} />
-                          {comment.owner.firstName} <span>{comment.owner.lastName}</span>
-                        </div>
-                        <div>Reply: {comment.text}</div>
+      </div>
+      <div className="post-footer">
+          {comments && comments.length > 0 && (
+                      <div>
+                        <div>Replies</div>
+                        {comments.map((comment) => (
+                          <div key={comment._id}>
+                            <div>
+                              User: <span style={{ marginRight: "2px" }} />
+                              {comment.owner.firstName} <span>{comment.owner.lastName}</span>
+                            </div>
+                            <div>Reply: {comment.text}</div>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                )}
-      
+            )}
+
       </div>
     </div>
   );
