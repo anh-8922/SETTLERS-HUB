@@ -1,0 +1,71 @@
+.guidelayout{
+    background-color: #caebf2;
+    padding-bottom: 2rem;
+}
+
+.guide-heading {
+    background-image: url("../Assets/art1.jpg");
+    background-size: contain;
+    height: 23rem;
+    border-radius: 1rem;
+    margin: 2rem 10rem 0 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:center ;
+    align-items: center;  
+}
+
+.css-button-neumorphic {
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 1rem;
+    border: none;
+    background: #efefef;
+    box-shadow: inset 1px 1px 3px #c8d0e7, inset -1px -1px 3px #fff;
+    color: #585858;
+  }
+
+
+.guide-list-content {
+    background-color: whitesmoke;
+    margin: 2rem 10rem;
+    border-radius: 1rem;
+    padding: 2rem;
+    
+}
+
+.single-post-content {
+    margin: 2rem 10rem;
+    background-color: whitesmoke;
+    border-radius: 1rem;
+    padding: 3rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+ .link-to-home {
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--black-color);
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    gap: 1rem;
+    border-bottom: 3px double grey;
+ }
+
+ .link-to-home > h5 {
+    font-size: 1.7rem;
+ }
+
+ .link-to-home:hover {
+    color: grey;
+ }
+
+

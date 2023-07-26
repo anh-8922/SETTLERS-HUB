@@ -1,0 +1,281 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ysabeau Infant', sans-serif; 
+    margin: 0;
+    padding: 0;
+    color:#333A44;
+    
+}
+:root {
+--black-color: #333A44;
+--dark-silver: #7A6969;
+--khaki-color: #E7D4C0;
+--pale-blue: #B6EAF1;
+--platinum: #EDE9E2;
+--Red-Pictorial-Carmine:  #C80E50;
+--font-second: 'Hanken Grotesk', sans-serif;
+--Red-button: #C72D22;
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------HEADER - LOG BUTTONS--------*/
+/*====================================*/
+
+.log-button {
+        margin-left: 1rem;
+        
+        
+        color: #fff;
+        padding: 0.5rem 1.5rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        outline: none;
+        border-radius: 5px;
+        z-index: 0;
+        background: #fff;
+        overflow: hidden;
+        border: 2px solid var(--black-color);
+        color: var(--black-color);
+        font-size: 1.2rem;
+}
+.log-button:hover {
+        color: #fff;
+}
+.log-button:hover:after {
+        width: 100%;
+}
+.log-button:after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        transition: all 0.3s ease;
+        left: 0;
+        top: 0;
+        width: 0;
+        height: 100%;
+        background: var(--black-color);
+}
+
+
+.heroSection {
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------HEADER - WITH RED LOGO--------*/
+/*====================================*/
+
+.single-post-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2rem;
+    margin: 0 10rem;
+}
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------SPOTLIGHTS --------*/
+/*====================================*/
+.spotlight {
+    background-color: grey;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.spotlight-content {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+    
+}
+
+.spotlight-slide {
+    height: 37rem;
+    width: 50rem;
+}
+
+.spotlight-items {
+    background-color: whitesmoke;
+    width: 27%;
+    height: max-content;
+}
+
+.london-guide {
+    width: 100%;
+    height: 100vh;
+    background-color: whitesmoke;
+}
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------NEWSLETTER --------*/
+/*====================================*/
+.newsletter {
+    width: 100%;
+    background-image: url(../Assets/dome.jpg);
+    text-align: center ;
+    padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-content {
+    background-color: whitesmoke;
+    width: 80%;
+    height: 20rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 1rem;
+}
+.N-body {
+    height: 100%;
+    border: 0.5px dotted rgb(187, 181, 181);
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.N-child-1{
+    width: 100%;
+    height: 15%;
+    background-color: pink;
+    
+}
+
+#child-1a {
+    writing-mode: vertical-lr;
+    rotate: 180deg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 85%;
+    gap: 1rem;
+}
+.N-child-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem
+}
+.subcribe-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    gap: 1rem;
+    
+    
+}
+
+.subcribe-input {
+    width: 30rem;
+    height: 3rem;
+    border-radius: 0.7rem;
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------FOOTER --------*/
+/*====================================*/
+
+.footer {
+    width: 100%;
+    height: 50vh;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 5rem;
+    border-bottom: 1rem solid #B5A197;
+    
+}
+
+.foot-navigator {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 1.2rem;
+}
+.footNav-items {
+    text-decoration: none;
+    color: var(--black-color)
+}
+
+.social-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.socialBar-items {
+    font-size: 2rem;
+    color: var(--black-color)
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------LONDON GUIDE --------*/
+/*====================================*/
+.london-guide{
+    padding: 3rem;
+    height: max-content;
+    text-align: center;
+}
+.guide-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.guide-items {
+    width: 17rem;
+    height: 17rem;
+    background-color: #B6EAF1;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    
+}
+
+.guide-topic {
+    color: var(--black-color);
+    text-decoration: none;
+    font-size: 3rem;
+}
+
+.guide-topic h3 {
+    font-size: 1.7rem;
+}
+.guide-topic p {
+    font-size: 1.2rem;
+}

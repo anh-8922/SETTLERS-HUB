@@ -1,0 +1,232 @@
+:root {
+    --black-color: #333A44;
+}
+
+.nav-bar {
+    background-color: whitesmoke;
+    margin: 2rem;
+    border-radius: 5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.navigator {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    margin: 1.7rem 1rem 1rem 4rem
+}
+.NavItems {
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--black-color);
+    font-weight: 800;
+}
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------NAVIGATOR BAR --------*/
+/*====================================*/
+.search-box {
+    background-color: pink;
+    width: 25rem;
+    position: relative;
+    display: flex;
+    margin: 1rem;
+    border-radius: 2rem;
+    border: 4px solid pink;
+    border-style: groove;
+}
+
+.btn-search {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    margin: 0 5px 5px 0;
+    
+}
+.input-search {
+    width: 100%;
+    border: none;
+    background: none;
+    padding: 0.5rem 0 0.5rem 2rem;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
+    font-size: 1.5rem;
+
+    
+}
+
+/*====================================*/
+/*~~~~SUMMARY CARD FOR GUIDE SECTION~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.summary-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+}
+.guide-card {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 0;
+    border-bottom: 2px solid grey;
+    gap: 2rem;
+  
+}
+.guide-img {
+    width: 20rem;
+    border-radius: 0.5rem;
+}
+
+.css-button-sliding-to-left--red {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    z-index: 0;
+    background: #fff;
+    overflow: hidden;
+    border: 2px solid #d90429;
+    color: #d90429;
+  }
+  .css-button-sliding-to-left--red:hover {
+    color: #fff;
+  }
+  .css-button-sliding-to-left--red:hover:after {
+    width: 100%;
+  }
+  .css-button-sliding-to-left--red:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    transition: all 0.3s ease;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    background: #d90429;
+  }
+
+/*====================================*/
+/*~~~~SUMMARY CARD FOR SPOTLIGHS~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.spotlights-parts{
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+}
+
+.spot-img {
+    width: 7rem;
+    margin-right: 1rem;
+    border-radius: 0.3rem;
+}
+
+/*====================================*/
+/*~~~~SUMMARY CARD FOR HOUSING SECTION~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.housing-summary-card {
+    display: flex;
+    flex-direction: column;
+    margin-left: 3rem;
+}
+.house-card {
+    display: flex;
+    flex-direction: row;
+    padding: 2rem 0;
+    border-bottom: 2px solid grey;
+    gap: 2rem;
+    width: 50rem;
+}
+
+/*====================================*/
+/*~~~~COMMUNITY LIST ~~~~~~~*/
+/*--------FETCH AND LIST DATA --------*/
+/*====================================*/
+
+.community_post_list {
+
+    background-color: white;
+    border: 1px solid grey;
+    margin: 0.5rem 2rem;
+    padding: 1rem;
+    
+    
+}
+
+.edit-del {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.post-details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.like-reply{
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+/* ============== */
+/* HEART ICON IN COMMUNITY POST LIKE */
+/* BY LAKMALI */
+
+.heart-icon{
+    color: blue !important;
+    cursor:pointer;
+}
+
+/*====================================*/
+/*~~~~SERVICE FEATURES ~~~~~~~*/
+/*---------------------------- --------*/
+/*====================================*/
+
+.newadd-tab{
+    margin-left: 2rem;
+}
+
+#noanim-tab-example h1 {
+    font-size: 3rem;
+}
+
+/*====================================*/
+/*~~~~PROFILE FEATURES ~~~~~~~*/
+/*---------------------------- --------*/
+/*====================================*/
+
+.update-profile-btn{
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #333A44;
+  padding: 0.5rem 0.6rem;
+  color: var(--black-color);
+  vertical-align: top;
+  border-radius: 3px;
+  
+ 
+  background: var(--platinum);
+  
+  font-weight: 600;
+  line-height: 16px;
+  font-size: 0.9rem;  
+}

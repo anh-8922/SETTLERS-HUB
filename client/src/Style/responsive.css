@@ -1,0 +1,62 @@
+:root {
+    --black-color: #333A44;
+    --khaki-color: #E7D4C0;
+    }
+
+.MenuMb-items {
+    text-decoration: none;
+    font-size: 2rem;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    padding-bottom: 1rem;
+    color: var(--black-color);
+}
+
+.MenuMb-items:hover {
+    background-color: var(--black-color);
+    color: whitesmoke
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------CATEGORY GUIDE --------*/
+/*====================================*/
+
+.categoryMb-items{
+    width: 45%;
+    height: 13rem;
+    background-color: #B6EAF1;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/*====================================*/
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*--------FOOTER MENU --------*/
+/*====================================*/
+
+.footermenu {
+    width: 100%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem 5rem;
+    border-bottom: 1rem solid #B5A197;
+    border-top: 1px solid #B5A197;
+    
+}
+
+.footNav-items {
+    text-decoration: none;
+    color: var(--black-color)
+}
+
+.SB-items {
+    font-size: 1.5rem;
+    color: var(--black-color)
+}
