@@ -41,7 +41,7 @@ export const handleAddNewServiceMessage = async (req, res) =>{
           req.body.postId,
           {
             $push: {
-              reviews: {
+              message: {
                 text: req.body.textMesaage,
                 owner: req.user,
               },
@@ -92,4 +92,58 @@ export const handleAddNewServiceReview = async (req, res) =>{
     
         res.send("Error in handleAddReply" + error.message);
       }
+}
+
+export const handleDeleteServiceMessage = async(req, res) => {
+  console.log("handleDeleteRequestMessage body:", req.body)
+
+
+  try {
+    const newPost = await Serviceprovider.findByIdAndUpdate(
+      req.body.postId,
+      {
+        $pull: {
+          message: {
+            _id: req.body.messageId,
+          },
+        },
+      },
+      {
+        new: true,
+      }
+    );
+    console.log("delete service messaage:", newPost)
+    res.send({ success: true, post: newPost })
+  } catch (error){
+    console.log("Error deleting service message:", + error.message)
+    res.send("Error deleting service message:", + error.message)
+  }
+}
+
+export const handleDeleteServiceRequestMessage= async (req, res) => {
+  
+  console.log("handleDeleteRequestMessage body:", req.body)
+
+
+  try {
+    const newPost = await Servicerequest.findByIdAndUpdate(
+      req.body.postId,
+      {
+        $pull: {
+          message: {
+            _id: req.body.messageId,
+          },
+        },
+      },
+      {
+        new: true,
+      }
+    );
+
+    console.log("delete service Request messaage:", newPost)
+    res.send({ success: true, post: newPost })
+  } catch (error){
+    console.log("Error deleting service request message:", + error.message)
+    res.send("Error deleting service request message:", + error.message)
+  }
 }
