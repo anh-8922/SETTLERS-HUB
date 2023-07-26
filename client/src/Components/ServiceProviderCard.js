@@ -28,7 +28,8 @@ export default function ServiceProvidertCard ({
             <div>Experience: {experience}</div>
             <div>Description: {description}</div>
             <div>Posted Date: {createdAt}</div>
-            <button onClick={() => handleMessage(_id)}>Message</button>
+            <div><button onClick={() => handleMessage(_id)}>Message</button></div>
+            
             <button onClick={() => handleReview(_id)}>Review</button>
                 { reviews && reviews.length > 0 ? (
         reviews.map((review, index) => (

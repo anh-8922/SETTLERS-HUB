@@ -29,13 +29,14 @@
 /*====================================*/
 .search-box {
     background-color: pink;
-    width: 25rem;
+    width: 25vw;
     position: relative;
     display: flex;
     margin: 1rem;
     border-radius: 2rem;
     border: 4px solid pink;
     border-style: groove;
+    border:1px solid #333A44;
 }
 
 .btn-search {
@@ -52,8 +53,9 @@
     padding: 0.5rem 0 0.5rem 2rem;
     border-radius: 5px 0 0 5px;
     outline: none;
-    color: #9DBFAF;
+    color: #070707;
     font-size: 1.5rem;
+    
 
     
 }

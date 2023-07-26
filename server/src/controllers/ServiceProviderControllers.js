@@ -93,7 +93,7 @@ export const handleListServiceAdsByUSer = async (req, res) => {
         if (!req.user) return res.send({ success: false, error: "Unauthorized" })
 
         const adverticedServiceByUser = await Serviceprovider.find({owner: owner})
-        .select("category location rate telephone createdAt message.text ") 
+        .select("category location rate telephone createdAt message.text message._id ") 
         .populate({
             path: "message.owner",
             select: "username email image firstName lastName"
