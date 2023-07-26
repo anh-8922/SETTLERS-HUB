@@ -16,7 +16,7 @@ export default function SpotLight() {
 
     return(
         <div className="spotlight">
-            <h1>What's on in London</h1>
+            <h1 style={{fontWeight:'bold', marginBottom:'2rem'}}>What's on in London</h1>
             <div className='spotlight-content'>
                 <CarouselA/>
                 <SpotlightNews/>
