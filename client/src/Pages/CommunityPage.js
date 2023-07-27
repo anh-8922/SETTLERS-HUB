@@ -115,7 +115,6 @@ export default function CommunityPage() {
           <CommunityBar refetch={refetch}/>
           <div className="community-content">
             <div className="fetched-community-list">
-             
                 {data &&
                 data.communityPosts.map((item) => (
                 
@@ -137,7 +136,7 @@ export default function CommunityPage() {
                     comments={item.comments}
                     />
                 ))}
-                </div>
+            </div>
       
       <Modal
         open={showEdit}
@@ -170,11 +169,11 @@ export default function CommunityPage() {
           </Typography>
         </Box>
       </Modal>
-         
-            </div>
+            <SpotlightNews />
+          </div>
 
                 
-            <SpotlightNews />
+            
           </div>
       
     </MainLayout>

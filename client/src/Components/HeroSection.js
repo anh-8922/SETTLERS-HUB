@@ -11,13 +11,14 @@ export default function HeroSectionA() {
         <div className="heroSection" style={{backgroundImage: `url("${londonA}")`}}>
             <Header/>
             <NavBar/>
-            <h1 style={{
+            <h1 className='main-h1' style={{
                 display:"flex", 
                 flexDirection:"column", 
                 justifyContent: "center", 
                 height:"100%",
-                color:"whitesmoke"}}>
-            Some Main Text Should Be Here
+                color:"whitesmoke",
+                fontSize:'3rem'}}>
+            Navigating New Beginnings, Together
             </h1>
         </div>
     )
@@ -28,13 +29,14 @@ export function HeroSectionB() {
         <div className="heroSection" style={{backgroundImage: `url("${service1}")`}}>
             <Header/>
             <NavBar/>
-            <h1 style={{
+            <h1 className='main-h1' style={{
                 display:"flex", 
                 flexDirection:"column", 
                 justifyContent: "center", 
                 height:"100%",
-                color:"whitesmoke"}}> 
-            Some Main Text Should Be Here
+                color:"whitesmoke",
+                fontSize:'3rem'}}> 
+            Connecting Talents, Impacting Lives: Join Us Today
             </h1>
         </div>
     )
@@ -45,13 +47,14 @@ export function HeroSectionC() {
         <div className="heroSection" style={{backgroundImage: `url("${trafargal}")`, backgroundPosition:'center'}}>
             <Header/>
             <NavBar/>
-            <h1 style={{
+            <h1 className='main-h1' style={{
                 display:"flex", 
                 flexDirection:"column", 
                 justifyContent: "center", 
                 height:"100%",
-                color:"whitesmoke"}}>
-            Some Main Text Should Be Here
+                color:"whitesmoke",
+                fontSize:'3rem'}}>
+            From Settlers to Community: Join the Conversation
             </h1>
         </div>
     )
@@ -62,13 +65,14 @@ export function HeroSectionD() {
         <div className="heroSection" style={{backgroundImage: `url("${heroSectionD}")`}}>
             <Header/>
             <NavBar/>
-            <h1 style={{
+            <h1 className='main-h1' style={{
                 display:"flex", 
                 flexDirection:"column", 
                 justifyContent: "center", 
                 height:"100%",
+                fontSize:'3rem',
                 color:"whitesmoke"}}>
-            Some Main Text Should Be Here
+            Find Your Sanctuary: Explore Properties for Settlers
             </h1>
         </div>
     )
