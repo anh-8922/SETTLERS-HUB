@@ -112,7 +112,7 @@ export default function CommunityPage() {
       <HeroSectionC />
 
       <div className="forum">
-          <CommunityBar/>
+          <CommunityBar refetch={refetch}/>
           <div className="community-content">
             <div className="fetched-community-list">
                 {data &&
@@ -182,10 +182,16 @@ export default function CommunityPage() {
               
 
 
-function CommunityBar() {
+function CommunityBar({refetch}) {
+  // const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => {setOpen(false)};
+  // const handleClose = () => {setOpen(false)};
+  const handleClose = () => {
+    setOpen(false);
+    // Call the refetch function from props when the modal is closed
+    // refetch();
+  };
   return(
     <div className="community-bar">
       <Button onClick={handleOpen} id='ask-button'>Ask a question<TbUserQuestion/></Button>
@@ -200,7 +206,7 @@ function CommunityBar() {
             Ask a question{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <AddCommunitypost/>
+            <AddCommunitypost refetch={refetch}/>
           </Typography>
         </Box>
       </Modal>

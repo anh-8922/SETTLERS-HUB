@@ -6,9 +6,10 @@ import axios from "axios"
 import Alert from '@mui/material/Alert'
 import AlertTitle from '@mui/material/AlertTitle'
 import Stack from '@mui/material/Stack'
+import useFetchData from "../CustomHooks/useFetchData"
 
 
-export default function AddCommunitypost () {
+export default function AddCommunitypost ({ refetch }) {
     
     const userID = useGetUserID ()
     console.log("Add Community post uesrID:", userID)
@@ -20,6 +21,7 @@ export default function AddCommunitypost () {
     const [formSubmitted, setFormSubmitted] = useState(false)
     const [emptyTextError, setEmptyTextError] = useState(false)
     const [invalidUser, setInvalidUser] = useState(false)
+    // const { data, error, refetch } = useFetchData("http://localhost:5000/community/listpost" )
     
 
       const handleSubmit = async (e) => {
@@ -52,6 +54,7 @@ export default function AddCommunitypost () {
           });
     
           setFormSubmitted(true)
+          refetch()
           console.log("Response:", response)
         } catch (error) {
           console.log("Error:", error);
