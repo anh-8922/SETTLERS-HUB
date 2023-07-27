@@ -93,14 +93,14 @@
 /*--------SPOTLIGHTS --------*/
 /*====================================*/
 .spotlight {
-    background-color: grey;
+    background-color: #DBE9E9;
     width: 100%;
     height: max-content;
     display: flex;
     flex-direction: column;
     padding: 2rem;
     text-align: center;
-    color: whitesmoke;
+   
 }
 
 .spotlight-content {
@@ -120,6 +120,15 @@
     background-color: whitesmoke;
     width: 27%;
     height: max-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spotlight-news{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .london-guide {

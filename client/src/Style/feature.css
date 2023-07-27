@@ -159,33 +159,63 @@
 /*====================================*/
 
 .community_post_list {
-
+    border-radius: 0.3rem;
     background-color: white;
     border: 1px solid grey;
-    margin: 0.5rem 2rem;
-    padding: 1rem;
+    margin: 0 2rem 1.5rem 2rem;
     
-    
+   
 }
 
-.edit-del {
+.post-heading {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    border-bottom: 1px solid #333A44;
+    padding: 0.5rem;
+    background-color: var(--dark-silver);
+    
+}
+
+.post-topic {
+    color: whitesmoke
+}
+
+#dropdown-basic.dropdown-toggle.show.btn.btn-success {
+    background-color: whitesmoke;
 }
 
 .post-details {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 0.5rem 0.5rem 1rem 0.5rem;
 }
 
 .like-reply{
-    display: flex;
-    flex-direction: row;
+    display: inline-block
+    
 }
 
+.reply-button{
+    text-align: center;
+  cursor: pointer;
+  border: 1px solid #333A44;
+  padding: 0.5rem 0.4rem;
+  color: var(--black-color);
+  
+  border-radius: 3px;
+  background: var(--platinum);
+  font-weight: 600;
+  
+  font-size: 1.1rem; 
+}
 
+.post-footer{
+    padding: 0.5rem 0 1rem 5rem;
+    background-color: var(--platinum);
+    
+}
 
 
 
@@ -224,10 +254,7 @@
   color: var(--black-color);
   vertical-align: top;
   border-radius: 3px;
-  
- 
   background: var(--platinum);
-  
   font-weight: 600;
   line-height: 16px;
   font-size: 0.9rem;  
