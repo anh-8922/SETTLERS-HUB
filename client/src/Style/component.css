@@ -288,3 +288,8 @@
 .guide-topic p {
     font-size: 1.2rem;
 }
+
+.main-h1{
+    text-shadow: 3px 5px 2px #474747;
+    font: 4rem;
+}
