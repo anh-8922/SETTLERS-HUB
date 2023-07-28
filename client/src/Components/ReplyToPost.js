@@ -50,13 +50,17 @@ export default function ReplyToAPost ({ postId }) {
         <div>
             {!isSubmit? (
                 <div>
-                        <input
+                        <textarea
                             type="text"
                             required={true}
                             value={replyPost}
-                            onChange={(e) => setRelpyPost(e.target.value)}/>
-            
-                        <button onClick={handleSubmitReply}> Submit</button>
+                            onChange={(e) => setRelpyPost(e.target.value)}
+                            style={{width:"40rem", height:"10rem"}}
+                            />
+               <div style={{display:"flex", alignSelf:"center"}}>
+                        <button style={{marginTop:"2rem",fontSize:"1.5rem", width:"8rem", backgroundColor:"#38AA5E"}}
+                                onClick={handleSubmitReply}> Submit</button>
+                </div>
                 </div>
             ):(
                 <div style={{display:"flex", justifyContent:"flex-end", marginRight:"3rem"}}>
