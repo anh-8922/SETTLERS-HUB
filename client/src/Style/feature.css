@@ -259,3 +259,28 @@
   line-height: 16px;
   font-size: 0.9rem;  
 }
+
+/*====================================*/
+/*~~~~UTILITY FEATURES ~~~~~~~*/
+/*---------------------------- --------*/
+/*====================================*/
+
+.Water-Suppliers {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+}
+.W-supplier {
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: var(--pale-blue);
+    font-size: 1.2rem;
+}
+
+.E-supplier-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+}
