@@ -259,7 +259,7 @@ export default function NewProperty() {
 
         <Form.Group as={Col} controlId="formGridlettingType">
         <Form.Label>Furnished type</Form.Label>
-         <Form.Select value={letType} 
+         <Form.Select value={furnishedType} 
                       onChange={handleFernishedType}>
            {/* <option >Select...</option> */}
            <option value="Furnished">Furnished</option>
