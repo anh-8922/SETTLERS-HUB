@@ -55,12 +55,12 @@ export default function PropertyDetails () {
     return (
         <div className="single-property-details">
             <div style={{display:"flex", justifyContent:"center"}}>
-                <Carousel style={{width: '80%', height:'100%'}}>
+                <Carousel style={{width: '80%', height:'80%'}}>
                 {
                     image.map((imageUrl, index) => {
                         return(
 
-                            <Carousel.Item key={index}  style={{background: `url(${imageUrl})`, height: '60vh', backgroundSize: "cover"}}>
+                            <Carousel.Item key={index}  style={{background: `url(${imageUrl})`, height: '60vh', backgroundSize: "cover", backgroundPosition: 'center'}}>
                             
                             </Carousel.Item>
 
