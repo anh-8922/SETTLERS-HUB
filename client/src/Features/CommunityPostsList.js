@@ -19,7 +19,8 @@ export default function ListCommunityPost({
   isUser,
   loggedInUserId,
   handleReplyPost,
-  comments
+  comments,
+  likes,
 }) {
 
   const handleLike = () => {
@@ -58,11 +59,13 @@ export default function ListCommunityPost({
           <div >
             <span style={{marginRight:'5px', fontWeight:'bold'}}>Like:</span> 
             {isPostLiked ? (
+              <>
               <AiFillHeart id="like-icon"
               // onClick={() => handleLikePost(_id)}
               onClick={handleLike}
             />
-
+              <span style={{marginLeft:'10px', fontWeight:'500'}}>{likes}</span>
+            </>
             ) : (
               <AiOutlineHeart
               className="text-red-500 text-[2rem] cursor-pointer"
@@ -82,14 +85,14 @@ export default function ListCommunityPost({
       <div className="post-footer">
           {comments && comments.length > 0 && (
                       <div>
-                        <div>Replies</div>
+                        <div style={{fontSize:'1.1rem', marginRight:'5px', fontWeight:'bold'}}>Replies</div>
                         {comments.map((comment) => (
                           <div key={comment._id}>
                             <div>
-                              User: <span style={{ marginRight: "2px" }} />
+                            <span style={{marginRight:'5px', fontWeight:'bold'}}>User: </span><span style={{ marginRight: "2px" }} />
                               {comment.owner.firstName} <span>{comment.owner.lastName}</span>
                             </div>
-                            <div>Reply: {comment.text}</div>
+                            <div><span style={{marginRight:'5px', fontWeight:'bold'}}>Reply:</span> {comment.text}</div>
                           </div>
                         ))}
                       </div>
