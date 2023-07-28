@@ -35,3 +35,17 @@ export function SpotlightsCard (props) {
         </div>
     )
 }
+
+export function ServiceUtilityCard (props) {
+    const {_id, image, title, abstract} =props
+    const imagePath = `https://res.cloudinary.com/dgnqjr0we/image/upload/v1688490791/${image}`;
+
+    return (
+        <div>
+            <div key={_id} className="spotlights-parts" onClick={props.onHandleClick} style={{cursor:'pointer'}}>
+                <img className='spot-img' src={imagePath} alt={image} />
+                <h3 style={{fontWeight:"bold", fontSize: "1.2rem", textAlign:'left'}}>{title}</h3>
+            </div>
+        </div>
+    )
+}
