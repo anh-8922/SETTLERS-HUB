@@ -71,7 +71,7 @@ export default function PropertyDetails () {
                 </Carousel>
             </div>
             <div className="place-property-details"
-                 style={{marginLeft:"6rem",
+                 style={{marginLeft:"10rem",
                          marginTop:"20px",
                          fontSize:"1.5rem", fontWeight:"700"}}>
                 {city} 
@@ -81,14 +81,14 @@ export default function PropertyDetails () {
                                 width:"10rem",
                                 height:"3rem"}}
                                 className="css-button-sliding-to-left--red" > 
-                    <PlaceIcon /> See map </button>
+                    <PlaceIcon style={{fontSize:"2rem"}} /> See map </button>
 
             </div>
             <div className="rate-property-details">
                 <div style={{display:"flex", 
                              flexDirection:"row", 
                              gap:"5rem",
-                             marginLeft:"6rem",
+                             marginLeft:"10rem",
                              marginTop:"1.2rem"}}>
                     {category === "Rent" ?  
                         <div>
@@ -111,9 +111,9 @@ export default function PropertyDetails () {
            </div>
            <div style={{display:"flex",
                         justifyContent:"space-between",
-                        marginRight:"8rem"}}>
+                        marginRight:"10rem"}}>
                 <div className='houseType'
-                     style={{marginLeft:"6rem",
+                     style={{marginLeft:"10rem",
                              marginTop:"1rem"}}> 
                         <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Property Type:</span> 
                         <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}> {houseType} </span>
@@ -127,14 +127,14 @@ export default function PropertyDetails () {
                 <div style={{display:"flex",
                             marginTop:"1rem",
                             gap:"3rem"}}>
-                        <p> <FaBed/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{beds}</span> </p>
-                        <p> <FaBath/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{baths}</span> </p>
+                        <p> <FaBed style={{fontSize:"2rem"}}/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem", padding:"0"}}>{beds}</span> </p>
+                        <p> <FaBath style={{fontSize:"1.7rem"}}/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{baths}</span> </p>
                 </div>
             </div>
             <div style={{display:"flex",
                         justifyContent:"space-between",
-                        marginRight:"8rem",
-                        marginLeft:"6rem",
+                        marginRight:"10rem",
+                        marginLeft:"10rem",
                         marginTop:"1rem"}}>
                 <div className='avialableOn'>
                     <span style={{fontSize:"1.5rem", fontWeight:"600",  }}> Available On: </span>
@@ -151,17 +151,17 @@ export default function PropertyDetails () {
             </div>
             <div style={{fontSize:"1.5rem", 
                          fontWeight:"600",
-                         marginRight:"8rem",
-                         marginLeft:"6rem",
+                         marginRight:"10rem",
+                         marginLeft:"10rem",
                          marginTop:"1rem"}}>Description : </div>
             <pre style={{ whiteSpace: 'pre-wrap', 
                           fontFamily: 'Ysabeau Infant, sans-serif', 
                           fontSize: '1.2rem', 
-                          margin: "1rem 8rem 0 6rem"}}className='description'>{description}</pre>
+                          margin: "1rem 10rem 0 10rem"}}className='description'>{description}</pre>
             <div style={{display:"flex",
                         justifyContent:"space-between",
-                        marginRight:"8rem",
-                        marginLeft:"6rem",
+                        marginRight:"10rem",
+                        marginLeft:"10rem",
                         marginTop:"1rem"}}>
                 <div className='contact'> 
                     <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Contact: </span>
@@ -188,7 +188,7 @@ export default function PropertyDetails () {
             <button style={{
                           fontSize:'1.5rem', 
                           backgroundColor:'pink', 
-                          marginLeft:'6rem', 
+                          marginLeft:'10rem', 
                           padding:'0.8rem',
                           borderRadius:'0.5rem',
                           marginTop:"1rem"}}>Back to Housing</button>
