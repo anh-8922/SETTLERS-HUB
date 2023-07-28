@@ -64,7 +64,7 @@ export default function ListCommunityPost({
               // onClick={() => handleLikePost(_id)}
               onClick={handleLike}
             />
-              <span style={{marginLeft:'10px', fontWeight:'500'}}>{likes}</span>
+             
             </>
             ) : (
               <AiOutlineHeart
@@ -74,7 +74,7 @@ export default function ListCommunityPost({
             />
 
             )}
-
+           <span style={{marginLeft:'10px', fontWeight:'500'}}>{likes}</span>
           </div>
         </div>
         <div className="like-reply">
