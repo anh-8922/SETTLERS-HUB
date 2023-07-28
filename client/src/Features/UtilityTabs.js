@@ -2,6 +2,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import '../Style/feature.css';
 import { Link } from 'react-router-dom';
+import water from '../Assets/water.jpg'
 
 export default function UtilityTabs() {
   return (
@@ -29,6 +30,7 @@ function WaterSupplier() {
   return(
     <div>
         <h1>Find out your water and wastewater provider</h1>
+        <div style={{backgroundImage: `url("${water}")`, height:'12rem', backgroundSize:'cover', margin:' 1rem 0'}}></div>
         <h3>Service Area: London</h3>
         <div className='Water-Suppliers'>
           <div className='W-supplier'>
