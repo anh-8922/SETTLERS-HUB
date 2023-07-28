@@ -277,3 +277,10 @@
     background-color: var(--pale-blue);
     font-size: 1.2rem;
 }
+
+.E-supplier-head{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem;
+}
