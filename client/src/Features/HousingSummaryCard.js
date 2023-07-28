@@ -21,12 +21,14 @@ export default function HousinhgSummaryCard (props) {
                     {/* <h4> <PlaceIcon /><span> <Link to="/location" style={{textDecoration:"none"}}>{address} </Link></span></h4> */}
 
                     {category === "Rent" ?  
-                    <div>£ {rate} PCM </div> : 
-                    <div>£ {rate}</div>}
-                    
-                    <div>
-                    <p> <FaBed/> {beds}</p>
-                    <p> <FaBath/> {baths}</p>
+                    <div style={{fontSize:"1.5rem", fontWeight:"600"}}>£ {rate} PCM </div> : 
+                    <div style={{fontSize:"1.5rem", fontWeight:"600"}}>£ {rate}</div>}
+
+                    <div style={{display:"flex",
+                            marginTop:"1rem",
+                            gap:"3rem"}}>
+                        <p> <FaBed style={{fontSize:"2rem"}}/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem", padding:"0"}}>{beds}</span> </p>
+                        <p> <FaBath style={{fontSize:"1.7rem"}}/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{baths}</span> </p>
                     </div>
                     <button className="css-button-sliding-to-left--red" 
                     onClick={props.onHandleClick}>Details...</button>
