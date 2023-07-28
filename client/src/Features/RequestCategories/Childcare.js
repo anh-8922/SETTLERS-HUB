@@ -3,7 +3,6 @@ import ServiceRequestCard from "../../Components/ServiceReqestCard";
 import useFetchData from "../../CustomHooks/useFetchData";
 import Spinner from "../Spinner"
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import AddMessages from "../AddMessages";
@@ -73,19 +72,20 @@ export default function Childcare () {
                 })
             }
             { message ? (     <div>
-        <Modal sx={style}
+        <Modal 
         open={message}
         onClose={handleCloseMessage}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box >
+        <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Message{" "}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                 <AddMessages  postId={postIdToMessage}
-                              handleCloseMessage ={handleCloseMessage}/>
+                              // handleCloseMessage ={handleCloseMessage}
+                              />
           </Typography>
         </Box>
       </Modal>
