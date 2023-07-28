@@ -22,17 +22,17 @@ export default function Housing() {
         <Col sm={3}>
           <Nav variant="pills" className="flex-column">
             <Nav.Item>
-              <Nav.Link  eventKey="first"><img src={house2} style={{width:'15rem', borderRadius:'0.5rem'}}/>PROPERTY FOR RENT</Nav.Link>
+              <Nav.Link  eventKey="first"><img src={house2} style={{width:'15rem', borderRadius:'0.5rem'}}/>RENT</Nav.Link>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link className='house-tabs' eventKey="second"><img src={house1} style={{width:'15rem', borderRadius:'0.5rem'}}/>PROPERTY FOR SALE</Nav.Link>
+              <Nav.Link className='house-tabs' eventKey="second"><img src={house1} style={{width:'15rem', borderRadius:'0.5rem'}}/>SALE</Nav.Link>
             </Nav.Item>
           </Nav>
         </Col>
         <Col sm={9}>
           <Tab.Content>
-            <Tab.Pane eventKey="first" ><h2 style={{paddingLeft:'2rem'}}>This is where we list rent property</h2><RentedHouses/></Tab.Pane>
-            <Tab.Pane eventKey="second"><h2 style={{paddingLeft:'2rem'}}>This is where we list sale property</h2><PropertyToSale/></Tab.Pane>
+            <Tab.Pane eventKey="first" ><h2 style={{paddingLeft:'2rem'}}>Properties for Rent</h2><RentedHouses/></Tab.Pane>
+            <Tab.Pane eventKey="second"><h2 style={{paddingLeft:'2rem'}}>Properties for Sale</h2><PropertyToSale/></Tab.Pane>
           </Tab.Content>
         </Col>
       </Row>

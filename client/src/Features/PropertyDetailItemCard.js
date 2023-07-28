@@ -54,53 +54,125 @@ export default function PropertyDetails () {
 
     return (
         <div className="single-property-details">
-            <Carousel style={{width: '70%', height:'100%'}}>
-            {
-                image.map((imageUrl, index) => {
-                    return(
-                        
-                        <Carousel.Item key={index}  style={{background: `url(${imageUrl})`, height: '60vh', backgroundSize: "cover"}}>
-                       
-                        </Carousel.Item>
-                
-                        
-                    )
-                })
-            }
-            </Carousel>
-            <div className="place-property-details">
+            <div style={{display:"flex", justifyContent:"center"}}>
+                <Carousel style={{width: '80%', height:'100%'}}>
+                {
+                    image.map((imageUrl, index) => {
+                        return(
+
+                            <Carousel.Item key={index}  style={{background: `url(${imageUrl})`, height: '60vh', backgroundSize: "cover"}}>
+                            
+                            </Carousel.Item>
+
+
+                        )
+                    })
+                }
+                </Carousel>
+            </div>
+            <div className="place-property-details"
+                 style={{marginLeft:"6rem",
+                         marginTop:"20px",
+                         fontSize:"1.5rem", fontWeight:"700"}}>
                 {city} 
                 <sapan> {postCode}</sapan>
-                | <button onClick={handleSeeMapClick} > 
-                    <PlaceIcon /> See map</button>
+                <button onClick={handleSeeMapClick} 
+                        style={{margin:"10px", 
+                                width:"10rem",
+                                height:"3rem"}}
+                                className="css-button-sliding-to-left--red" > 
+                    <PlaceIcon /> See map </button>
 
             </div>
             <div className="rate-property-details">
-            {category === "Rent" ?  
-                    <div>Rent: £ {rate} PCM </div> : 
-                    <div>£ {rate}</div>}
+                <div style={{display:"flex", 
+                             flexDirection:"row", 
+                             gap:"5rem",
+                             marginLeft:"6rem",
+                             marginTop:"1.2rem"}}>
+                    {category === "Rent" ?  
+                        <div>
+                            <span style={{fontSize:"1.5rem", fontWeight:"600"}}>Rent:</span> 
+                            <span style={{fontSize:"1.3rem", fontWeight:"500"}}> £ {rate} PCM </span>
+                            </div> :
+                        <div style={{fontSize:"1.3rem", fontWeight:"600"}}>£ {rate}</div>}
+
+                <div>
+                    {category === "Rent"  && (
+                            <div className='deposit'> 
+                                <span style={{fontSize:"1.5rem", fontWeight:"600"}}>Deposit: </span>
+                                <span style={{fontSize:"1.3rem", fontWeight:"500"}}> £ {deposit}</span> 
+                            </div>
+                        )
+                    }
+                </div>
             </div>
 
-            <div className='houseType'> Property Type: {houseType}</div>
-            <div>
-            {category === "Rent"  && (
-                <div className='deposit'> Deposit: £ {deposit}</div>
-            )
-            }
            </div>
-                        
-            <div className='let-type'> Let Type: {letType}</div>
-            <div>
-                    <p> <FaBed/> {beds}</p>
-                    <p> <FaBath/> {baths}</p>
+           <div style={{display:"flex",
+                        justifyContent:"space-between",
+                        marginRight:"8rem"}}>
+                <div className='houseType'
+                     style={{marginLeft:"6rem",
+                             marginTop:"1rem"}}> 
+                        <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Property Type:</span> 
+                        <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}> {houseType} </span>
+                </div>
+                    
+                <div className='let-type'
+                     style={{marginTop:"1rem"}}> 
+                    <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Let Type:</span>
+                    <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}> {letType}</span> 
+                </div>
+                <div style={{display:"flex",
+                            marginTop:"1rem",
+                            gap:"3rem"}}>
+                        <p> <FaBed/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{beds}</span> </p>
+                        <p> <FaBath/> <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem", marginLeft:"1rem"}}>{baths}</span> </p>
+                </div>
             </div>
-            <div className='avialableOn'> Available On: {availableOn}</div>
-            <div className='funished-type'> Fernished Type: {furnishedType}</div>
-            <div className='taxt-band'> Council Tax: Band {councilTaxBand}</div>
-            <div>Description : </div>
-            <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'sans-serif', fontSize: '1rem', margin: "2rem 0"}}className='description'>{description}</pre>
-            <div className='contact'> Contact: {contact}</div>
-            <div className='advertised-on'> Advertised On: <TimeAgo date={date}/></div>
+            <div style={{display:"flex",
+                        justifyContent:"space-between",
+                        marginRight:"8rem",
+                        marginLeft:"6rem",
+                        marginTop:"1rem"}}>
+                <div className='avialableOn'>
+                    <span style={{fontSize:"1.5rem", fontWeight:"600",  }}> Available On: </span>
+                    <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}>{availableOn} </span>
+                </div>
+                <div className='funished-type'>
+                    <span style={{fontSize:"1.5rem", fontWeight:"600",  }}> Fernished Type: </span>
+                    <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}>{furnishedType}</span>
+                </div>
+                <div className='taxt-band'>
+                <span style={{fontSize:"1.5rem", fontWeight:"600",  }}> Council Tax: </span>
+                <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}> Band {councilTaxBand}</span>
+                </div>
+            </div>
+            <div style={{fontSize:"1.5rem", 
+                         fontWeight:"600",
+                         marginRight:"8rem",
+                         marginLeft:"6rem",
+                         marginTop:"1rem"}}>Description : </div>
+            <pre style={{ whiteSpace: 'pre-wrap', 
+                          fontFamily: 'Ysabeau Infant, sans-serif', 
+                          fontSize: '1.2rem', 
+                          margin: "1rem 8rem 0 6rem"}}className='description'>{description}</pre>
+            <div style={{display:"flex",
+                        justifyContent:"space-between",
+                        marginRight:"8rem",
+                        marginLeft:"6rem",
+                        marginTop:"1rem"}}>
+                <div className='contact'> 
+                    <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Contact: </span>
+                    <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}>{contact}</span>
+                </div>
+                <div className='advertised-on'>
+                    <span style={{fontSize:"1.5rem", fontWeight:"600",  }}>Advertised On: </span>
+                    <span style={{fontSize:"1.3rem", fontWeight:"500",  marginTop:"1.2rem"}}><TimeAgo date={date}/></span>
+                </div>
+            </div>
+    
             
         <div className="map-container" ref={mapRef}>
           
@@ -116,9 +188,10 @@ export default function PropertyDetails () {
             <button style={{
                           fontSize:'1.5rem', 
                           backgroundColor:'pink', 
-                          marginLeft:'5rem', 
+                          marginLeft:'6rem', 
                           padding:'0.8rem',
-                          borderRadius:'0.5rem'}}>Back to Housing</button>
+                          borderRadius:'0.5rem',
+                          marginTop:"1rem"}}>Back to Housing</button>
           </Link>
         
         </div>
