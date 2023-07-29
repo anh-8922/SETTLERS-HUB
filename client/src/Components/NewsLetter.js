@@ -1,6 +1,7 @@
 import '../Style/component.css';
 import React, {useState, useEffect} from 'react';
 import MailchimpSubscribe from "react-mailchimp-subscribe";
+import phone1 from '../Assets/phone1.png';
 
 export default function NewsLetter() {
 
@@ -44,6 +45,7 @@ export default function NewsLetter() {
                 <div className="N-body" style={{width: "25%"}}>
                     <div className="N-child-1" style={{borderTopRightRadius:'1rem'}}>ALL ABOARD</div>
                     <div>
+                        <div style={{width:'15rem', height:'15rem', backgroundSize:'cover', backgroundImage: `url("${phone1}")`}}></div>
                         <h6>WWW.SETTLERHUB.COM</h6>
                     </div>
                 </div>
