@@ -6,7 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 
 import { HeroSectionB } from '../Components/HeroSection';
 import MainLayout from '../Layout/MainLayout';
-import utility from '../Assets/utility.jpg';
+import utility from '../Assets/utility.png';
 import serviceprovider from '../Assets/serviceprovider.jpg';
 import ServiceRequest from '../Assets/ServiceRequest.jpg';
 import NewsLetter from "../Components/NewsLetter";
