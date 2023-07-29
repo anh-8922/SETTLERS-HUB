@@ -7,7 +7,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { useGetUserID } from "../CustomHooks/useGetUserID";
 import { useCookies } from "react-cookie"
 
-export default function AddServiceMessages ({ postId, handleCloseMessage }) {
+export default function AddServiceMessages ({ postId
+                                            //  handleCloseMessage 
+                                            }) {
     const userID = useGetUserID()
     const [ cookies, _] = useCookies(["access_token"])
     console.log("post id:", postId)
@@ -18,9 +20,9 @@ export default function AddServiceMessages ({ postId, handleCloseMessage }) {
     const navigate = useNavigate()
 
     
-    const handleCancel = () => {
-      handleCloseMessage();
-    };
+    // const handleCancel = () => {
+    //   handleCloseMessage();
+    // };
 
     const handleSubmitMessage= async (e) => {
 
@@ -50,7 +52,7 @@ export default function AddServiceMessages ({ postId, handleCloseMessage }) {
         }
           if (response.data.success === true){
             setSubmit(true)
-            handleCloseMessage()
+            // handleCloseMessage()
             // navigate("/")
           }
 
@@ -74,11 +76,11 @@ export default function AddServiceMessages ({ postId, handleCloseMessage }) {
                     value={textMesaage}
                     // required={true}
                     onChange={(e) => setTextMassage(e.target.value)}
-                    style={{ width: "40rem", height: "40rem" }}
+                    style={{ width: "80%", height: "10rem" }}
                   />
                 </label>
                 <div style={{ display: "flex", alignSelf: "center" }}>
-                <button
+                {/* <button
                     type="button"
                     onClick={handleCancel}
                     style={{
@@ -91,7 +93,7 @@ export default function AddServiceMessages ({ postId, handleCloseMessage }) {
                     }}
                   >
                     Cancel
-                  </button>
+                  </button> */}
                   <button
                     type="submit"
                     style={{

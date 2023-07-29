@@ -101,13 +101,13 @@ export default function Mechanics () {
             }
 
 { message ? (     <div>
-       <Modal sx={style}
+       <Modal 
         open={message}
         onClose={handleCloseMessage}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box >
+        <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Message{" "}
           </Typography>
@@ -122,13 +122,13 @@ export default function Mechanics () {
     } 
 
     { review ? (     <div>
-       <Modal sx={style}
+       <Modal 
         open={review}
         onClose={handleCloseReview}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box >
+        <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
            Review{" "}
           </Typography>
