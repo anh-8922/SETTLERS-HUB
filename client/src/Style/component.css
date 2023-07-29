@@ -37,16 +37,16 @@
         position: relative;
         display: inline-block;
         outline: none;
-        border-radius: 5px;
+        border-radius: 2rem;
         z-index: 0;
-        background: #fff;
+        background: #DD7513;
         overflow: hidden;
         border: 2px solid var(--black-color);
-        color: var(--black-color);
+        
         font-size: 1.2rem;
 }
 .log-button:hover {
-        color: #fff;
+        color: var(--black-color);
 }
 .log-button:hover:after {
         width: 100%;
@@ -60,7 +60,8 @@
         top: 0;
         width: 0;
         height: 100%;
-        background: var(--black-color);
+        color: var(--black-color);
+        background: var(--platinum);
 }
 
 

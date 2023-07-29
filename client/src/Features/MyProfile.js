@@ -54,7 +54,7 @@ export default function MyProfile () {
 
            { !profileUpdate ? (
                         <div>
-                        <button className="update-profile-btn" onClick={handleUpdateProfile}>Update</button>
+                        <button style={{width:'5rem', borderRadius:'0.7rem', padding:'5px 0', margin:'0.5rem 0'}} className='reply-button' onClick={handleUpdateProfile}>Update</button>
                         <div>
                             <img src={profileImage} alt="Profile Image" style={{width:'200px', height:'200px'}}/>
                         </div>
@@ -69,7 +69,7 @@ export default function MyProfile () {
                         
            ):(
             <div>
-                <button onClick={handleSaveProfile}>Back</button>
+                <button style={{width:'5rem', borderRadius:'0.7rem', padding:'5px 0', margin:'0.5rem 0'}} className='reply-button' onClick={handleSaveProfile}>Back</button>
                 <EditProfile/>
 
             </div>

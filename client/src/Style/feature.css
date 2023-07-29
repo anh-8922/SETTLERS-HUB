@@ -28,7 +28,7 @@
 /*--------NAVIGATOR BAR --------*/
 /*====================================*/
 .search-box {
-    background-color: pink;
+    background-color: var(--pale-blue);
     width: 25vw;
     position: relative;
     display: flex;
