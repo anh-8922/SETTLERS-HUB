@@ -286,9 +286,9 @@ export default function EditProfile () {
    </Form>
       ): ( 
         <div style={{display:"flex", justifyContent:"flex-end", alignItems:"flex-end", marginRight:"3rem"}} onClick={handleClose}>
-        <Stack sx={{ width: '30%' }} spacing={2} >
+        <Stack sx={{ width: '16rem', fontSize:'1.1rem', backgroundColor:''}} spacing={2} >
               <Alert variant="filled" severity="success">
-                <AlertTitle style={{ color: 'white' }}>Sucess</AlertTitle>
+                <AlertTitle style={{ color: 'white' }}>Success</AlertTitle>
                 <strong style={{ color: 'white' }}>Profile Updated Successfully!</strong>
               </Alert>
               </Stack>
