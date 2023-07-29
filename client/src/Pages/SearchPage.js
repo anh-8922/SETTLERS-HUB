@@ -2,7 +2,7 @@
 import SinglePostLayout from "../Layout/SinglePostLayout";
 import { SearchContext } from "../Context/SearchContext";
 import { useState, useEffect, useContext } from "react";
-import InfoLayout from "../Layout/GuideLayout";
+import SearchLayout from "../Layout/SearchLayout";
 import SummaryCard1 from "../Features/SummaryCard";
 import { useNavigate } from "react-router-dom";
 
@@ -38,7 +38,7 @@ export default function SearchPage() {
 };
 
   return (
-    <InfoLayout>
+    <SearchLayout>
       <div>
         {searchData.map((item) => {
           const { _id, image, title, abstract } = item;
@@ -53,6 +53,6 @@ export default function SearchPage() {
           );
         })}
       </div>
-    </InfoLayout>
+    </SearchLayout>
   );
 }
